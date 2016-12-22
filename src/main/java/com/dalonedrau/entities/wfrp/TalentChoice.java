@@ -9,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Schema(name = "wfrp")
 public class TalentChoice {
-	@Unique
-	@VarChar(length = 40)
-	private String			name;
-	@JsonProperty("num_to_choose")
-	private int				numToChoose;
-	private List<Talent>	talents;
+    @Unique
+    @VarChar(length = 40)
+    private String name;
+    @JsonProperty("num_to_choose")
+    private int numToChoose;
+    private List<Talent> talents;
 }

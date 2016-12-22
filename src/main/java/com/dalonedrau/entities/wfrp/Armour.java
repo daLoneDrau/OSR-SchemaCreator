@@ -8,10 +8,10 @@ import com.dalonedrau.schemacreator.Annotations.VarChar;
 
 @Schema(name = "wfrp")
 public class Armour {
-	private int						ap;
-	private List<ArmourCoverage>	coverage;
-	@Unique
-	@VarChar(length = 40)
-	private String					name;
-	private ArmourType				type;
+    private int ap;
+    private List<ArmourCoverage> coverage;
+    @Unique
+    @VarChar(length = 40)
+    private String name;
+    private ArmourType type;
 }

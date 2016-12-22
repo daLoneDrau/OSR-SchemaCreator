@@ -9,9 +9,9 @@ import com.dalonedrau.schemacreator.Annotations.VarChar;
  */
 @UniqueCompositeKey(column0 = "die", column1 = "number")
 public final class DieRoll {
-	@Unique
-	@VarChar(length = 5)
-	private String	code;
-	private Die		die;
-	private int		number;
+    @Unique
+    @VarChar(length = 5)
+    private String code;
+    private Die die;
+    private int number;
 }

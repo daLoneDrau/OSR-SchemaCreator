@@ -6,9 +6,9 @@ import com.dalonedrau.schemacreator.Annotations.VarChar;
 
 @Schema(name = "wfrp")
 public class WeaponType {
-	@Unique
-	private int		code;
-	@Unique
-	@VarChar(length = 20)
-	private String	name;
+    @Unique
+    private int code;
+    @Unique
+    @VarChar(length = 20)
+    private String name;
 }

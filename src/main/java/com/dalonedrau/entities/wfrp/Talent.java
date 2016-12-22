@@ -7,11 +7,11 @@ import com.dalonedrau.schemacreator.Annotations.VarChar;
 
 @Schema(name = "wfrp")
 public class Talent {
-	@Unique
-	private String	description;
-	@Unique
-	@VarChar(length = 40)
-	private String	name;
-	@CanBeNull
-	private Talent	prerequisite;
+    @Unique
+    private String description;
+    @Unique
+    @VarChar(length = 40)
+    private String name;
+    @CanBeNull
+    private Talent prerequisite;
 }

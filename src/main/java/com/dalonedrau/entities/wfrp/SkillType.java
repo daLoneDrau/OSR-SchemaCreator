@@ -6,9 +6,9 @@ import com.dalonedrau.schemacreator.Annotations.VarChar;
 
 @Schema(name = "wfrp")
 public class SkillType {
-	@Unique
-	private int		code;
-	@Unique
-	@VarChar(length = 10)
-	private String	name;
+    @Unique
+    private int code;
+    @Unique
+    @VarChar(length = 10)
+    private String name;
 }

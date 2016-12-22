@@ -7,6 +7,6 @@ import com.dalonedrau.schemacreator.Annotations.VarChar;
  * @author drau
  */
 public class MovePlayerAction extends ScriptAction {
-	@VarChar(length = 3)
-	private String roomCode;
+    @VarChar(length = 3)
+    private String roomCode;
 }

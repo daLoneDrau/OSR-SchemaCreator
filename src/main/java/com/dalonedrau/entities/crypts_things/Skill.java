@@ -1,13 +1,18 @@
-package com.dalonedrau.entities.wfrp;
+package com.dalonedrau.entities.crypts_things;
 
-import com.dalonedrau.schemacreator.Annotations.Schema;
 import com.dalonedrau.schemacreator.Annotations.Unique;
 import com.dalonedrau.schemacreator.Annotations.VarChar;
 
-@Schema(name = "wfrp")
-public class ArmourType {
+/**
+ * 
+ * @author 588648
+ *
+ */
+public final class Skill {
+    /** description. */
     @Unique
-    private int code;
+    private String description;
+    /** name. */
     @Unique
     @VarChar(length = 20)
     private String name;

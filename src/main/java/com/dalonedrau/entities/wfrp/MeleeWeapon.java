@@ -8,10 +8,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Schema(name = "wfrp")
 public class MeleeWeapon {
-	@CanBeNull
-	@JsonProperty("dmg_modifier")
-	private int		dmgModifier;
-	@Unique
-	@VarChar(length = 40)
-	private String	name;
+    @CanBeNull
+    @JsonProperty("dmg_modifier")
+    private int dmgModifier;
+    @Unique
+    @VarChar(length = 40)
+    private String name;
 }

@@ -1,6 +1,6 @@
 package com.dalonedrau.entities.lablord;
 
 public class Armor {
-	private int			ac;
-	private ArmorType	type;
+    private int ac;
+    private ArmorType type;
 }

@@ -7,9 +7,9 @@ import com.dalonedrau.schemacreator.Annotations.VarChar;
  * @author drau
  */
 public final class Die {
-	@Unique
-	@VarChar(length = 4)
-	private String	code;
-	@Unique
-	private int		value;
+    @Unique
+    @VarChar(length = 4)
+    private String code;
+    @Unique
+    private int value;
 }
