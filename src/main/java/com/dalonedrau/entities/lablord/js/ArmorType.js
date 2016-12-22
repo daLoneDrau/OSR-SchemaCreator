@@ -1,0 +1,31 @@
+  [{
+    "code": 0,
+    "name": "Padded"
+  }, {
+    "code": 1,
+    "name": "Leather"
+  }, {
+    "code": 2,
+    "name": "Studded"
+  }, {
+    "code": 3,
+    "name": "Scale"
+  }, {
+    "code": 4,
+    "name": "Chain"
+  }, {
+    "code": 5,
+    "name": "Banded"
+  }, {
+    "code": 6,
+    "name": "Splint"
+  }, {
+    "code": 7,
+    "name": "Plate"
+  }, {
+    "code": 8,
+    "name": "Helmet"
+  }, {
+    "code": 9,
+    "name": "Shield"
+  }]

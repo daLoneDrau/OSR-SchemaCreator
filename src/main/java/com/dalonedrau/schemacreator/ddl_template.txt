@@ -1,0 +1,151 @@
+§work
+/****** Object:  Trigger [<dataPoint>DataPoint_trau]    Script Date: 07/13/2016 09:08:37 ******/
+IF  EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'[Tamarin].[<dataPoint>DataPoint_trau]'))
+DROP TRIGGER [Tamarin].[<dataPoint>DataPoint_trau]
+GO
+
+§
+§lookup_table
+-- Table: <schema>.<table1>_<field_table_name>_lookup
+-- lookup table for <table1>s and their associated <field_table_name>s.
+
+DROP TABLE IF EXISTS <schema>.<table1>_<field_table_name>_lookup CASCADE;
+
+CREATE TABLE <schema>.<table1>_<field_table_name>_lookup
+(
+  <table1>_id smallint NOT NULL,
+  <table2Key>_id smallint NOT NULL,
+  CONSTRAINT <table1>_<field_table_name>_lookup_<table1>_id_<table2Key>_id_pk PRIMARY KEY (<table1>_id, <table2Key>_id),
+  CONSTRAINT <table1>_<field_table_name>_lookup_<table1>_id_fk FOREIGN KEY (<table1>_id)
+	REFERENCES <schema>.<table1> (<table1>_id) MATCH SIMPLE
+	ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT <table1>_<field_table_name>_lookup_<table2Key>_id_fk FOREIGN KEY (<table2Key>_id)
+	REFERENCES <schema>.<table2> (<table2>_id) MATCH SIMPLE
+	ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+§
+§lookup_table_primitive
+-- Table: <schema>.<table>_<field_table_name>_lookup
+-- lookup table for <table>s and their associated <field>.
+
+DROP TABLE IF EXISTS <schema>.<table>_<field_table_name>_lookup CASCADE;
+
+CREATE TABLE <schema>.<table>_<field_table_name>_lookup
+(
+  <table>_id smallint NOT NULL,
+  <field_table_name> <field_type> NOT NULL,
+  CONSTRAINT <table>_<field_table_name>_lookup_<table>_id_<field_table_name>_pk PRIMARY KEY (<table>_id, <field_table_name>),
+  CONSTRAINT <table>_<field_table_name>_lookup_<table>_id_fk FOREIGN KEY (<table>_id)
+	REFERENCES <schema>.<table> (<table>_id) MATCH SIMPLE
+	ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+§
+§lookup_map_table
+-- Table: <schema>.<table1>_<fieldTableName>_lookup
+-- lookup table for <table1>s and their associated <fieldTableName>s.
+
+DROP TABLE IF EXISTS <schema>.<table1>_<fieldTableName>_lookup CASCADE;
+
+CREATE TABLE <schema>.<table1>_<fieldTableName>_lookup
+(
+  <table1>_id smallint NOT NULL,
+  <key> <columnType> NOT NULL,
+  <value>_id smallint NOT NULL,
+  CONSTRAINT <table1>_<fieldTableName>_lookup_<table1>_id_<key>_pk PRIMARY KEY (<table1>_id, <key>),
+  CONSTRAINT <table1>_<fieldTableName>_lookup_<table1>_fk FOREIGN KEY (<table1>_id)
+	REFERENCES <schema>.<table1> (<table1>_id) MATCH SIMPLE
+	ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT <table1>_<fieldTableName>_lookup_<key>_fk FOREIGN KEY (<key>)
+	REFERENCES <schema>.<keyTable> (<keyField>) MATCH SIMPLE
+	ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT <table1>_<fieldTableName>_lookup_<value>_id_fk FOREIGN KEY (<value>_id)
+	REFERENCES <schema>.<table2> (<table2>_id) MATCH SIMPLE
+	ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+§
+§constraint_table_key_pk
+  CONSTRAINT <owner_table>_<fieldTableName>_lookup_<owner_table>_id_<key>_pk PRIMARY KEY (<owner_table>_id, <key>),
+§
+§constraint_map_table_pk_fk
+  CONSTRAINT <owner_table>_<fieldTableName>_lookup_<owner_table>_id_fk FOREIGN KEY (<owner_table>_id)
+	REFERENCES <schema>.<owner_table> (<owner_table>_id) MATCH SIMPLE
+	ON UPDATE NO ACTION ON DELETE NO ACTION,
+§
+§constraint_map_key_fk
+  CONSTRAINT <owner_table>_<fieldTableName>_lookup_key_fk FOREIGN KEY (key)
+	REFERENCES <schema>.<foreign_table> (<foreign_key>) MATCH SIMPLE
+	ON UPDATE NO ACTION ON DELETE NO ACTION
+§
+§constraint_map_value_fk
+  CONSTRAINT <owner_table>_<fieldTableName>_lookup_value_fk FOREIGN KEY (value)
+	REFERENCES <schema>.<foreign_table> (<foreign_key>) MATCH SIMPLE
+	ON UPDATE NO ACTION ON DELETE NO ACTION
+§
+§lookup_map_non_table_constraint
+-- Table: <schema>.<owner_table>_<fieldTableName>_lookup
+-- lookup table for <owner_table>s and their associated <fieldTableName>s.
+
+DROP TABLE IF EXISTS <schema>.<owner_table>_<fieldTableName>_lookup CASCADE;
+
+CREATE TABLE <schema>.<owner_table>_<fieldTableName>_lookup
+(
+  <owner_table>_id smallint NOT NULL,
+  <key> <key_type> NOT NULL,
+  <value> <value_class> NOT NULL,
+<constraints>
+);
+
+§
+§schema_header
+-- Schema: <schema>
+DROP SCHEMA IF EXISTS <schema> CASCADE;
+CREATE SCHEMA <schema>;
+
+§
+§table_header
+-- Table: <schema>.<table>
+-- TODO add table description
+
+DROP TABLE IF EXISTS <schema>.<table> CASCADE;
+
+CREATE SEQUENCE <schema>.<table>_id_seq MINVALUE 0;
+
+CREATE TABLE <schema>.<table>
+(
+  <table>_id smallint DEFAULT nextval('<schema>.<table>_id_seq') NOT NULL,
+§
+§table_field
+  <field_name> <field_type><null_flag>,
+§
+§table_constraint_pk
+  CONSTRAINT <table>_<table>_id_pk PRIMARY KEY (<table>_id)<sep>
+§
+§table_constraint_fk
+  CONSTRAINT <table>_<field_name>_fk FOREIGN KEY (<field_name>)
+    REFERENCES <schema>.<foreign_table> (<foreign_key>) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION<sep>
+§
+§table_constraint_un
+  CONSTRAINT <table>_<field_names>_un UNIQUE (<field_list>)<sep>
+§
+§table_map_header
+-- Table: <schema>.<table>_<field_name>_lookup
+-- lookup table for <table>s and their associated <field_name>s.
+
+DROP TABLE IF EXISTS <schema>.<table>_<field_name>_lookup CASCADE;
+
+CREATE TABLE <schema>.<table>_<field_name>_lookup
+(
+  <table>_id smallint NOT NULL,
+  key <key_type> NOT NULL,
+  value <value_type> NOT NULL,
+  CONSTRAINT <table>_<field_name>_lookup_<table>_id_key_pk PRIMARY KEY (<table>_id, key)<sep>
+§
+§table_map_constraint_fk
+  CONSTRAINT <table>_<field_name>_lookup_<field>_fk FOREIGN KEY (<field>)
+	REFERENCES <schema>.<foreign_table> (<foreign_key>) MATCH SIMPLE
+	ON UPDATE NO ACTION ON DELETE NO ACTION<sep>
+§

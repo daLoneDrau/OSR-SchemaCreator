@@ -1,0 +1,43 @@
+  [{
+    "code": 0,
+    "name": "Armour Piercing"
+  }, {
+    "code": 1,
+    "name": "Balanced"
+  }, {
+    "code": 2,
+    "name": "Defensive"
+  }, {
+    "code": 3,
+    "name": "Experimental"
+  }, {
+    "code": 4,
+    "name": "Fast"
+  }, {
+    "code": 5,
+    "name": "Impact"
+  }, {
+    "code": 6,
+    "name": "Precise"
+  }, {
+    "code": 7,
+    "name": "Pummelling"
+  }, {
+    "code": 8,
+    "name": "Shrapnel"
+  }, {
+    "code": 9,
+    "name": "Slow"
+  }, {
+    "code": 10,
+    "name": "Snare"
+  }, {
+    "code": 11,
+    "name": "Special"
+  }, {
+    "code": 12,
+    "name": "Tiring"
+  }, {
+    "code": 13,
+    "name": "Unreliable"
+  }]
