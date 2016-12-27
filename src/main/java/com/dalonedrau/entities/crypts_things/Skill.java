@@ -14,6 +14,6 @@ public final class Skill {
     private String description;
     /** name. */
     @Unique
-    @VarChar(length = 20)
+    @VarChar(length = 40)
     private String name;
 }

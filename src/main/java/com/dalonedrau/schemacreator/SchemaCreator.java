@@ -1,11 +1,14 @@
 package com.dalonedrau.schemacreator;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +35,10 @@ import com.dalonedrau.schemacreator.writers.ControllerWriter;
 import com.dalonedrow.pooled.PooledException;
 import com.dalonedrow.pooled.PooledStringBuilder;
 import com.dalonedrow.pooled.StringBuilderPool;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 
 /**
  * @author drau
@@ -46,7 +53,7 @@ public final class SchemaCreator {
                 "com.dalonedrau.entities.basic_dnd",
                 "com.dalonedrau.entities.crypts_things",
                 // "com.dalonedrau.entities.arkania",
-                // "com.dalonedrau.entities.avalon",
+                "com.dalonedrau.entities.avalon",
                 // "com.dalonedrau.entities.ff",
                 // "com.dalonedrau.entities.lablord",
                 // "com.dalonedrau.entities.wfrp"
@@ -977,87 +984,174 @@ public final class SchemaCreator {
     @SuppressWarnings("rawtypes")
     private void writeDML(final PrintWriter writer,
             final Class<?> clazz, final String pkg) throws Exception {
-        /*
-         * String table = SchemaUtilities.getInstance()
-         * .getTableName(clazz.getSimpleName()); writer.print("-- ADD ");
-         * writer.print(table.toUpperCase()); writer.println("S"); writer.print(
-         * "INSERT INTO "); writer.print(schema); writer.print(".");
-         * writer.print(table); writer.print("("); int numFields = 0;
-         * List<String[]> lookupTables = new ArrayList<String[]>();
-         * List<String[]> lookupMapTables = new ArrayList<String[]>();
-         * Map<String, List<String>> lookups = new HashMap<String,
-         * List<String>>(); Field[] fields = clazz.getDeclaredFields(); for (int
-         * i = 0, len = fields.length; i < len; i++) { Field field = fields[i];
-         * Type type = field.getGenericType(); if (type instanceof
-         * ParameterizedType) { if (((ParameterizedType)
-         * type).getRawType().getTypeName() .equalsIgnoreCase("java.util.List"))
-         * { Type[] types = ((ParameterizedType) type).getActualTypeArguments();
-         * String typeClassName = types[0].getTypeName().substring(
-         * types[0].getTypeName().lastIndexOf('.') + 1); if
-         * (tables.contains(typeClassName)) { // lookupTables.add(new String[] {
-         * // clazz.getSimpleName(), // typeClassName }); lookupTables.add(new
-         * String[] { clazz.getSimpleName(), typeClassName, field.getName() });
-         * } else if (((ParameterizedType) type).getRawType() .getTypeName()
-         * .equalsIgnoreCase("java.util.Map") || ((ParameterizedType)
-         * type).getRawType() .getTypeName()
-         * .equalsIgnoreCase("java.util.HashMap")) { String typeClassName0 =
-         * types[0].getTypeName().substring(
-         * types[0].getTypeName().lastIndexOf('.') + 1); String typeClassName1 =
-         * types[1].getTypeName().substring(
-         * types[1].getTypeName().lastIndexOf('.') + 1); if
-         * (tables.contains(typeClassName0) || tables.contains(typeClassName1))
-         * { lookupMapTables.add(new String[] { table, typeClassName0,
-         * typeClassName1, field.getName() }); } else { throw new Exception(
-         * "Need lookup table for non-entity field"); } } else { throw new
-         * Exception( "Need lookup table ddl for non-entity field"); } } } else
-         * if (!field.getType().equals(clazz)) { numFields++; } } int
-         * writtenFields = 0; for (int i = 0, len = fields.length; i < len; i++)
-         * { Field field = fields[i]; Type type = field.getGenericType(); if
-         * (type instanceof ParameterizedType) { } else { String fieldClass =
-         * field.getType().getSimpleName(); if (tables.contains(fieldClass)) {
-         * if (!field.getType().equals(clazz)) {
-         * writer.print(SchemaUtilities.getInstance()
-         * .getTableName(field.getName())); } } else {
-         * writer.print(SchemaUtilities.getInstance()
-         * .getTableName(field.getName())); } if (writtenFields + 1 < numFields)
-         * { writer.print(", "); } writtenFields++; } } writer.println(
-         * ") VALUES("); // try to open js file StringBuffer sb = new
-         * StringBuffer(); sb.append(pkg); sb.append(".js"); String scannedPath
-         * = sb.toString().replace('.', '/'); URL scannedUrl =
-         * Thread.currentThread().getContextClassLoader().getResource(
-         * scannedPath); if (scannedUrl == null) { throw new
-         * IllegalArgumentException( String.format(
-         * "Unable to get resources from path '%s'. " +
-         * "Are you sure the package '%s' exists?", scannedPath,
-         * sb.toString())); } File scannedDir = new File(scannedUrl.getFile());
-         * for (File file : scannedDir.listFiles()) { if
-         * (file.getName().substring(0, file.getName().length() - 3)
-         * .equalsIgnoreCase(clazz.getSimpleName())) { ObjectMapper mapper = new
-         * ObjectMapper(); mapper.disable(
-         * DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-         * mapper.setVisibility(VisibilityChecker.Std.defaultInstance()
-         * .withFieldVisibility(Visibility.ANY)); List<String> updates = new
-         * ArrayList<String>(); try { List list = (List) mapper.readValue(file,
-         * mapper.getTypeFactory().constructCollectionType( List.class, clazz));
-         * for (int i = 0, len = list.size(); i < len; i++) { try {
-         * writeDMLRecord(writer, fields, clazz, table, list.get(i), numFields,
-         * updates, lookups); } catch (IllegalArgumentException |
-         * IllegalAccessException | NoSuchFieldException | SecurityException e)
-         * { e.printStackTrace(); System.exit(1); } writer.print(")"); if (i + 1
-         * < len) { writer.println(", ("); } else { writer.println(";"); } } }
-         * catch (IOException e) { e.printStackTrace(); System.exit(1); }
-         * writer.println(); for (int i = 0, len = updates.size(); i < len; i++)
-         * { writer.println(updates.get(i)); } } } for (int i = 0, len =
-         * lookupTables.size(); i < len; i++) { writeDMLLookupTable(writer,
-         * lookupTables.get(i)[0], lookupTables.get(i)[1],
-         * lookupTables.get(i)[2], lookups.get(lookupTables.get(i)[2])); }
-         * writer.println(); for (int i = 0, len = lookupMapTables.size(); i <
-         * len; i++) { /* writeDMLMapLookupTable(writer,
-         * lookupMapTables.get(i)[0], lookupMapTables.get(i)[1],
-         * lookupMapTables.get(i)[2], lookupMapTables.get(i)[3]);
-         *//*
-           * }
-           */
+        String table = SchemaUtilities.getInstance()
+                .getTableName(clazz.getSimpleName());
+        writer.print("-- ADD ");
+        writer.print(table.toUpperCase());
+        writer.println("S");
+        writer.print("INSERT INTO ");
+        writer.print(schema);
+        writer.print(".");
+        writer.print(table);
+        writer.print("(");
+        int numFields = 0;
+        List<String[]> lookupTables = new ArrayList<String[]>();
+        List<String[]> lookupMapTables = new ArrayList<String[]>();
+        Map<String, List<String>> lookups = new HashMap<String,
+                List<String>>();
+        Field[] fields = clazz.getDeclaredFields();
+        for (int i = 0, len = fields.length; i < len; i++) {
+            Field field = fields[i];
+            Type type = field.getGenericType();
+            if (type instanceof ParameterizedType) {
+                if (((ParameterizedType) type).getRawType().getTypeName()
+                        .equalsIgnoreCase("java.util.List")) {
+                    Type[] types =
+                            ((ParameterizedType) type).getActualTypeArguments();
+                    String typeClassName = types[0].getTypeName().substring(
+                            types[0].getTypeName().lastIndexOf('.') + 1);
+                    if (tables.contains(typeClassName)) {
+                        lookupTables.add(new String[] { clazz.getSimpleName(),
+                                typeClassName, field.getName() });
+                    } else if (((ParameterizedType) type).getRawType()
+                            .getTypeName()
+                            .equalsIgnoreCase("java.util.Map")
+                            || ((ParameterizedType) type).getRawType()
+                                    .getTypeName()
+                                    .equalsIgnoreCase("java.util.HashMap")) {
+                        String typeClassName0 =
+                                types[0].getTypeName().substring(
+                                        types[0].getTypeName().lastIndexOf('.')
+                                                + 1);
+                        String typeClassName1 =
+                                types[1].getTypeName().substring(
+                                        types[1].getTypeName().lastIndexOf('.')
+                                                + 1);
+                        if (tables.contains(typeClassName0)
+                                || tables.contains(typeClassName1)) {
+                            lookupMapTables
+                                    .add(new String[] { table, typeClassName0,
+                                            typeClassName1, field.getName() });
+                        } else {
+                            throw new Exception(
+                                    "Need lookup table for non-entity field");
+                        }
+                    } else {
+                        // skip for now
+                        // throw new Exception(
+                        //        "Need lookup table ddl for non-entity field " + field.getName());
+                    }
+                }
+            } else if (!field.getType().equals(clazz)) {
+                numFields++;
+            }
+        }
+        int writtenFields = 0;
+        for (int i = 0, len = fields.length; i < len; i++) {
+            Field field = fields[i];
+            Type type = field.getGenericType();
+            if (type instanceof ParameterizedType) {} else {
+                String fieldClass =
+                        field.getType().getSimpleName();
+                if (tables.contains(fieldClass)) {
+                    if (!field.getType().equals(clazz)) {
+                        writer.print(SchemaUtilities.getInstance()
+                                .getTableName(field.getName()));
+                    }
+                } else {
+                    writer.print(SchemaUtilities.getInstance()
+                            .getTableName(field.getName()));
+                }
+                if (writtenFields + 1 < numFields) {
+                    writer.print(", ");
+                }
+                writtenFields++;
+            }
+        }
+        writer.println(") VALUES("); // try to open js file
+        StringBuffer sb = new StringBuffer();
+        sb.append(pkg);
+        sb.append(".js");
+        String scannedPath = sb.toString().replace('.', '/');
+        URL scannedUrl =
+                Thread.currentThread().getContextClassLoader().getResource(
+                        scannedPath);
+        if (scannedUrl == null) {
+            throw new IllegalArgumentException(String.format(
+                    "Unable to get resources from path '%s'. " +
+                            "Are you sure the package '%s' exists?",
+                    scannedPath,
+                    sb.toString()));
+        }
+        File scannedDir = new File(scannedUrl.getFile());
+        for (File file : scannedDir.listFiles()) {
+            if (file.getName().substring(0, file.getName().length() - 3)
+                    .equalsIgnoreCase(clazz.getSimpleName())) {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.disable(
+                        DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+                mapper.setVisibility(VisibilityChecker.Std.defaultInstance()
+                        .withFieldVisibility(Visibility.ANY));
+                List<String> updates = new ArrayList<String>();
+                try {
+                    List list = (List) mapper.readValue(file,
+                            mapper.getTypeFactory().constructCollectionType(
+                                    List.class, clazz));
+                    for (int i = 0, len = list.size(); i < len; i++) {
+                        try {
+                            writeDMLRecord(writer, fields, clazz, table,
+                                    list.get(i), numFields,
+                                    updates, lookups);
+                        } catch (IllegalArgumentException
+                                | IllegalAccessException | NoSuchFieldException
+                                | SecurityException e) {
+                            e.printStackTrace();
+                            System.exit(1);
+                        }
+                        writer.print(")");
+                        if (i + 1 < len) {
+                            writer.println(", (");
+                        } else {
+                            writer.println(";");
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.exit(1);
+                }
+                writer.println();
+                for (int i = 0, len = updates.size(); i < len; i++) {
+                    writer.println(updates.get(i));
+                }
+            }
+        }
+        for (int i = 0, len =
+                lookupTables.size(); i < len; i++) {
+            writeDMLLookupTable(writer,
+                    lookupTables.get(i)[0], lookupTables.get(i)[1],
+                    lookupTables.get(i)[2],
+                    lookups.get(lookupTables.get(i)[2]));
+        }
+        writer.println();
+        for (int i = 0, len = lookupMapTables.size(); i < len; i++) { /*
+                                                                       * writeDMLMapLookupTable
+                                                                       * (
+                                                                       * writer,
+                                                                       * lookupMapTables
+                                                                       * .get(i)
+                                                                       * [0],
+                                                                       * lookupMapTables
+                                                                       * .get(i)
+                                                                       * [1],
+                                                                       * lookupMapTables
+                                                                       * .get(i)
+                                                                       * [2],
+                                                                       * lookupMapTables
+                                                                       * .get(i)
+                                                                       * [3]);
+                                                                       */
+        }
+
     }
     /**
      * Writes the DML join table for two entities.
@@ -1123,6 +1217,7 @@ public final class SchemaCreator {
             final Map<String, List<String>> lookups)
             throws IllegalArgumentException, IllegalAccessException,
             NoSuchFieldException, SecurityException {
+        System.out.println("writing dml for "+clazz.getSimpleName());
         int writtenFields = 0;
         writer.print("  ");
         for (int i = 0, len = fields.length; i < len; i++) {
@@ -1147,6 +1242,7 @@ public final class SchemaCreator {
                     list = null;
                 }
             } else {
+                System.out.println("field "+field.getName());
                 String fieldClass = field.getType().getSimpleName();
                 if (tables.contains(fieldClass)) {
                     Object obj = field.get(o);
@@ -1171,6 +1267,7 @@ public final class SchemaCreator {
                     }
                     obj = null;
                 } else {
+                    System.out.println("class has no rules");
                     if (type.toString().equalsIgnoreCase("boolean")) {
                         writer.print(field.get(o));
                     } else if (type.toString().equalsIgnoreCase("int")) {

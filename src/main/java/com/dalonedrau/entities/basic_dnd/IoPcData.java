@@ -41,7 +41,7 @@ public class IoPcData {
     @CanBeNull
     private String internalScript;
     /** the player's key ring. */
-    @VarChar(length = 20)
+    @VarChar(length = 40)
     private List<String> keyring;
     /** the {@link IoPcData}'s level. */
     private int level = 0;
@@ -49,7 +49,7 @@ public class IoPcData {
     @VarChar(length = 40)
     private List<String> name;
     /** the {@link IoPcData}'s script. */
-    @MapForeignKey(keyColumnType = "character varying(20)", keyField = "code",
+    @MapForeignKey(keyColumnType = "character varying(40)", keyField = "code",
             keyTargetClass = "Event", valueColumnType = "character varying(50)",
             valueTargetClass = "ScriptBundle", valueField = "name")
     private Map<String, String> scriptedEvents;

@@ -5,7 +5,7 @@ import com.dalonedrau.schemacreator.Annotations.VarChar;
 
 public class EquipmentItemModifier {
     @Unique
-    @VarChar(length = 20)
+    @VarChar(length = 40)
     private String code;
     /** the flag indicating whether the modifier is a percentage modifier. */
     private boolean percent;

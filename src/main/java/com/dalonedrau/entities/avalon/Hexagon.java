@@ -1,6 +1,6 @@
 package com.dalonedrau.entities.avalon;
 
-import com.dalonedrau.schemacreator.Annotations.MappedSuperclass;;
+import com.dalonedrau.schemacreator.Annotations.MappedSuperclass;
 
 @MappedSuperclass
 public class Hexagon {

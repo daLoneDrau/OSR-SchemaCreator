@@ -5,6 +5,6 @@ import com.dalonedrau.schemacreator.Annotations.VarChar;
 
 public class Event {
     @Unique
-    @VarChar(length = 20)
+    @VarChar(length = 40)
     private String code;
 }

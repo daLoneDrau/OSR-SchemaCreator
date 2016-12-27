@@ -10,6 +10,6 @@ public final class Attribute {
     @Unique
     private String description;
     @Unique
-    @VarChar(length = 20)
+    @VarChar(length = 40)
     private String name;
 }

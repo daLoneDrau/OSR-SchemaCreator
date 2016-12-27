@@ -1,0 +1,33 @@
+  [{
+	"code": "I",
+    "spell_name": "Prayer",
+    "title": "Righteous"
+  }, {
+	"code": "II",
+    "spell_name": "Invocation",
+    "title": "Natural"
+  }, {
+	"code": "III",
+    "spell_name": "Glamour",
+    "title": "Fae"
+  }, {
+	"code": "IV",
+    "spell_name": "Rune",
+    "title": "Elemental"
+  }, {
+	"code": "V",
+    "spell_name": "Curse",
+    "title": "Infernal"
+  }, {
+	"code": "VI",
+    "spell_name": "Conjuration",
+    "title": "Conjuring"
+  }, {
+	"code": "VII",
+    "spell_name": "Charm",
+    "title": "Beneficial"
+  }, {
+	"code": "VIII",
+    "spell_name": "Hex",
+    "title": "Mischevious"
+  }]

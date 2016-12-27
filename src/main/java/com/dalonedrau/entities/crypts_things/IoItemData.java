@@ -12,6 +12,8 @@ public class IoItemData {
     private int count;
     /** the item's description. */
     private String description;
+    /** the amount of damage the weapon does. */
+    private Dice damages;
     /** dunno? */
     @CanBeNull
     private int foodValue;
@@ -21,7 +23,7 @@ public class IoItemData {
     @CanBeNull
     private String internalScript;
     /** the item's name. */
-    @VarChar(length = 30)
+    @VarChar(length = 40)
     private String itemName;
     /** flag indicating the left ring needs to be replaced. */
     @CanBeNull
@@ -34,7 +36,7 @@ public class IoItemData {
     /** the set of element modifiers. */
     @MapForeignKey(keyColumnType = "character varying(40)", keyField = "code",
             keyTargetClass = "EquipmentElementType",
-            valueColumnType = "character varying(20)",
+            valueColumnType = "character varying(40)",
             valueTargetClass = "EquipmentItemModifier",
             valueField = "code")
     private Map<String, String> modifiers;
