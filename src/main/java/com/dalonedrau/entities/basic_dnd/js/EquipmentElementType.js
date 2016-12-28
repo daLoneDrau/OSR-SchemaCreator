@@ -1,0 +1,100 @@
+[{
+	"code": "ELEMENT_ATTACK_BONUS_DRAGONS",
+	"value": 0
+}, {
+	"code": "ELEMENT_ATTACK_BONUS_GOBLINS",
+	"value": 1
+}, {
+	"code": "ELEMENT_ATTACK_BONUS_KOBOLDS",
+	"value": 2
+}, {
+	"code": "ELEMENT_ATTACK_BONUS_LYCANS",
+	"value": 3
+}, {
+	"code": "ELEMENT_ATTACK_BONUS_MAGICAL_MONSTERS",
+	"value": 4
+}, {
+	"code": "ELEMENT_ATTACK_BONUS_REGENERATING",
+	"value": 5
+}, {
+	"code": "ELEMENT_ATTACK_BONUS_UNDEAD",
+	"value": 6
+}, {
+	"code": "ELEMENT_ATTACK_BONUS_WIZARDS",
+	"value": 7
+}, {
+	"code": "ELEMENT_ARMOR_CLASS",
+	"value": 8
+}, {
+	"code": "ELEMENT_CHARISMA",
+	"value": 9
+}, {
+	"code": "ELEMENT_CONSTITUTION",
+	"value": 10
+}, {
+	"code": "ELEMENT_DAMAGE_BONUS",
+	"value": 11
+}, {
+	"code": "ELEMENT_DEXTERITY",
+	"value": 12
+}, {
+	"code": "ELEMENT_DAMAGES",
+	"value": 13
+}, {
+	"code": "ELEMENT_FORCE_DOORS_BONUS",
+	"value": 14
+}, {
+	"code": "ELEMENT_HIT_POINTS",
+	"value": 15
+}, {
+	"code": "ELEMENT_INITIATIVE_BONUS",
+	"value": 16
+}, {
+	"code": "ELEMENT_INTELLIGENCE",
+	"value": 17
+}, {
+	"code": "ELEMENT_MELEE_ATTACK_BONUS",
+	"value": 18
+}, {
+	"code": "ELEMENT_MISSILE_ATTACK_BONUS",
+	"value": 19
+}, {
+	"code": "ELEMENT_MAX_HIT_POINTS",
+	"value": 20
+}, {
+	"code": "ELEMENT_PRIME_REQUISITE_XP_BONUS",
+	"value": 21
+}, {
+	"code": "ELEMENT_REACTION",
+	"value": 22
+}, {
+	"code": "ELEMENT_SAVING_THROW_BREATH",
+	"value": 23
+}, {
+	"code": "ELEMENT_SAVING_THROW_DEATH",
+	"value": 24
+}, {
+	"code": "ELEMENT_SAVING_THROW_PETRIFY",
+	"value": 25
+}, {
+	"code": "ELEMENT_SAVING_THROW_MAGIC",
+	"value": 26
+}, {
+	"code": "ELEMENT_SAVING_THROW_POISON",
+	"value": 27
+}, {
+	"code": "ELEMENT_SAVING_THROW_PARALYZE",
+	"value": 28
+}, {
+	"code": "ELEMENT_STRENGTH",
+	"value": 29
+}, {
+	"code": "ELEMENT_SAVING_THROW_WAND",
+	"value": 30
+}, {
+	"code": "ELEMENT_SAVING_THROW_SPELL_DEVICES",
+	"value": 31
+}, {
+	"code": "ELEMENT_WISDOM",
+	"value": 32
+}]

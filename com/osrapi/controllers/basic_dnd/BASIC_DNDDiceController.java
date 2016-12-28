@@ -338,4 +338,23 @@ public class BASIC_DNDDiceController {
         iter = null;
         return resources;
     }
+    /**
+     * Gets a list of {@link BASIC_DNDDiceEntity}s that share a plus.
+     * @param plus the dice' plus
+     * @return {@link List}<{@link Resource}<{@link BASIC_DNDDiceEntity}>>
+     */
+    @RequestMapping(path = "plus/{plus}",
+            method = RequestMethod.GET)
+    public List<Resource<BASIC_DNDDiceEntity>> getByPlus(
+            @PathVariable final Long plus) {
+        Iterator<BASIC_DNDDiceEntity> iter = repository.findByPlus(plus)
+                .iterator();
+        List<Resource<BASIC_DNDDiceEntity>> resources =
+                new ArrayList<Resource<BASIC_DNDDiceEntity>>();
+        while (iter.hasNext()) {
+            resources.add(getDiceResource(iter.next()));
+        }
+        iter = null;
+        return resources;
+    }
 }

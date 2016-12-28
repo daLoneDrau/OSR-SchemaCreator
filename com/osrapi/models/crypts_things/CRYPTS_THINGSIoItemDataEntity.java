@@ -136,20 +136,20 @@ public final class CRYPTS_THINGSIoItemDataEntity {
     /** the ringType. */
     @Column(name = "ring_type")
     @JsonProperty("ring_type")
-    @NotNull
-    private long                    ringType;
+    
+    private Long                    ringType;
     /**
      * Gets the ringType.
-     * @return {@link long}
+     * @return {@link Long}
      */
-    public long getRingType() {
+    public Long getRingType() {
         return ringType;
     }
     /**
      * Sets the ringType.
      * @param val the new value
      */
-    public void setRingType(final long val) {
+    public void setRingType(final Long val) {
         ringType = val;
     }
 
@@ -176,20 +176,20 @@ public final class CRYPTS_THINGSIoItemDataEntity {
     /** the maxOwned. */
     @Column(name = "max_owned")
     @JsonProperty("max_owned")
-    @NotNull
-    private long                    maxOwned;
+    
+    private Long                    maxOwned;
     /**
      * Gets the maxOwned.
-     * @return {@link long}
+     * @return {@link Long}
      */
-    public long getMaxOwned() {
+    public Long getMaxOwned() {
         return maxOwned;
     }
     /**
      * Sets the maxOwned.
      * @param val the new value
      */
-    public void setMaxOwned(final long val) {
+    public void setMaxOwned(final Long val) {
         maxOwned = val;
     }
 
@@ -233,30 +233,30 @@ public final class CRYPTS_THINGSIoItemDataEntity {
         leftRing = val;
     }
 
-    /** the itemName. */
-    @Column(name = "item_name")
-    @JsonProperty("item_name")
+    /** the name. */
+    @Column(name = "name")
+    @JsonProperty("name")
     @NotNull
-    private String                    itemName;
+    private String                    name;
     /**
-     * Gets the itemName.
+     * Gets the name.
      * @return {@link String}
      */
-    public String getItemName() {
-        return itemName;
+    public String getName() {
+        return name;
     }
     /**
-     * Sets the itemName.
+     * Sets the name.
      * @param val the new value
      */
-    public void setItemName(final String val) {
-        itemName = val;
+    public void setName(final String val) {
+        name = val;
     }
 
     /** the internalScript. */
     @Column(name = "internal_script")
     @JsonProperty("internal_script")
-    
+    @NotNull
     private String                    internalScript;
     /**
      * Gets the internalScript.
@@ -293,28 +293,6 @@ public final class CRYPTS_THINGSIoItemDataEntity {
         foodValue = val;
     }
 
-    /** the damages. */
-    @ManyToOne(targetEntity = CRYPTS_THINGSDiceEntity.class, fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SELECT)
-    @JoinColumn(name = "damages")
-    @JsonProperty("dice")
-  @NotNull
-    private CRYPTS_THINGSDiceEntity    damages;
-    /**
-     * Gets the damages.
-     * @return {@link CRYPTS_THINGSDiceEntity}
-     */
-    public CRYPTS_THINGSDiceEntity getDamages() {
-        return damages;
-    }
-    /**
-     * Sets the damages.
-     * @param val the new value
-     */
-    public void setDamages(final CRYPTS_THINGSDiceEntity val) {
-        damages = val;
-    }
-
     /** the description. */
     @Column(name = "description")
     @JsonProperty("description")
@@ -335,23 +313,45 @@ public final class CRYPTS_THINGSIoItemDataEntity {
         description = val;
     }
 
+    /** the damages. */
+    @ManyToOne(targetEntity = CRYPTS_THINGSDiceEntity.class, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
+    @JoinColumn(name = "damages")
+    @JsonProperty("dice")
+  
+    private CRYPTS_THINGSDiceEntity    damages;
+    /**
+     * Gets the damages.
+     * @return {@link CRYPTS_THINGSDiceEntity}
+     */
+    public CRYPTS_THINGSDiceEntity getDamages() {
+        return damages;
+    }
+    /**
+     * Sets the damages.
+     * @param val the new value
+     */
+    public void setDamages(final CRYPTS_THINGSDiceEntity val) {
+        damages = val;
+    }
+
     /** the count. */
     @Column(name = "count")
     @JsonProperty("count")
-    @NotNull
-    private long                    count;
+    
+    private Long                    count;
     /**
      * Gets the count.
-     * @return {@link long}
+     * @return {@link Long}
      */
-    public long getCount() {
+    public Long getCount() {
         return count;
     }
     /**
      * Sets the count.
      * @param val the new value
      */
-    public void setCount(final long val) {
+    public void setCount(final Long val) {
         count = val;
     }
 

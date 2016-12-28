@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.Field;
 
 import com.dalonedrau.schemacreator.Annotations.CanBeNull;
+import com.dalonedrau.schemacreator.Annotations.IntegerNumericType;
 import com.dalonedrau.schemacreator.Annotations.VarChar;
 import com.dalonedrau.schemacreator.RPGException;
 import com.dalonedrau.schemacreator.SchemaUtilities;
@@ -33,7 +34,11 @@ public final class DDLField {
         if (field.getGenericType().toString().equalsIgnoreCase("boolean")) {
             fieldType = "boolean";
         } else if (field.getGenericType().toString().equalsIgnoreCase("int")) {
-            fieldType = "smallint";
+            if (field.isAnnotationPresent(IntegerNumericType.class)) {
+                fieldType = "integer";
+            } else {
+                fieldType = "smallint";
+            }
         } else if (field.getGenericType().toString().equalsIgnoreCase("long")) {
             fieldType = "bigint";
         } else if (field.getGenericType().toString()

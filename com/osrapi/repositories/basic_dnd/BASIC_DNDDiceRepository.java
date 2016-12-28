@@ -27,4 +27,10 @@ extends CrudRepository<BASIC_DNDDiceEntity, Long> {
 	 * @return {@link List}<{@link BASIC_DNDDiceEntity}>
 	 */
 	List<BASIC_DNDDiceEntity> findByNumber(Long number);
+	/**
+	 * Retrieves a list of dices by their plus.
+	 * @param plus the plus
+	 * @return {@link List}<{@link BASIC_DNDDiceEntity}>
+	 */
+	List<BASIC_DNDDiceEntity> findByPlus(Long plus);
 }

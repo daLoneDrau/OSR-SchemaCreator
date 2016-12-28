@@ -73,6 +73,26 @@ public final class CRYPTS_THINGSDiceEntity {
         id = val;
     }
 
+    /** the plus. */
+    @Column(name = "plus")
+    @JsonProperty("plus")
+    
+    private Long                    plus;
+    /**
+     * Gets the plus.
+     * @return {@link Long}
+     */
+    public Long getPlus() {
+        return plus;
+    }
+    /**
+     * Sets the plus.
+     * @param val the new value
+     */
+    public void setPlus(final Long val) {
+        plus = val;
+    }
+
     /** the number. */
     @Column(name = "number")
     @JsonProperty("number")

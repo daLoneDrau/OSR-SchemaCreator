@@ -338,4 +338,23 @@ public class CRYPTS_THINGSDiceController {
         iter = null;
         return resources;
     }
+    /**
+     * Gets a list of {@link CRYPTS_THINGSDiceEntity}s that share a plus.
+     * @param plus the dice' plus
+     * @return {@link List}<{@link Resource}<{@link CRYPTS_THINGSDiceEntity}>>
+     */
+    @RequestMapping(path = "plus/{plus}",
+            method = RequestMethod.GET)
+    public List<Resource<CRYPTS_THINGSDiceEntity>> getByPlus(
+            @PathVariable final Long plus) {
+        Iterator<CRYPTS_THINGSDiceEntity> iter = repository.findByPlus(plus)
+                .iterator();
+        List<Resource<CRYPTS_THINGSDiceEntity>> resources =
+                new ArrayList<Resource<CRYPTS_THINGSDiceEntity>>();
+        while (iter.hasNext()) {
+            resources.add(getDiceResource(iter.next()));
+        }
+        iter = null;
+        return resources;
+    }
 }

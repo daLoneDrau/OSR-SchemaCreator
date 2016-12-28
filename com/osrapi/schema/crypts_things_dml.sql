@@ -22,16 +22,17 @@ INSERT INTO crypts_things.die(code, value) VALUES(
 
 
 -- ADD DICES
-INSERT INTO crypts_things.dice(code, die, number) VALUES(
-  'ONE_D10', (SELECT die_id FROM crypts_things.die WHERE code='D10'), 1), (
-  'ONE_D2', (SELECT die_id FROM crypts_things.die WHERE code='D2'), 1), (
-  'ONE_D3', (SELECT die_id FROM crypts_things.die WHERE code='D3'), 1), (
-  'ONE_D4', (SELECT die_id FROM crypts_things.die WHERE code='D4'), 1), (
-  'ONE_D6', (SELECT die_id FROM crypts_things.die WHERE code='D6'), 1), (
-  'ONE_D8', (SELECT die_id FROM crypts_things.die WHERE code='D8'), 1), (
-  'THREE_D6', (SELECT die_id FROM crypts_things.die WHERE code='D6'), 3), (
-  'TWO_D4', (SELECT die_id FROM crypts_things.die WHERE code='D4'), 2), (
-  'TWO_D6', (SELECT die_id FROM crypts_things.die WHERE code='D6'), 2);
+INSERT INTO crypts_things.dice(code, die, number, plus) VALUES(
+  'ONE_D10', (SELECT die_id FROM crypts_things.die WHERE code='D10'), 1, 0), (
+  'ONE_D2', (SELECT die_id FROM crypts_things.die WHERE code='D2'), 1, 0), (
+  'ONE_D3', (SELECT die_id FROM crypts_things.die WHERE code='D3'), 1, 0), (
+  'ONE_D4', (SELECT die_id FROM crypts_things.die WHERE code='D4'), 1, 0), (
+  'ONE_D4_PLUS_1', (SELECT die_id FROM crypts_things.die WHERE code='D4'), 1, 1), (
+  'ONE_D6', (SELECT die_id FROM crypts_things.die WHERE code='D6'), 1, 0), (
+  'ONE_D8', (SELECT die_id FROM crypts_things.die WHERE code='D8'), 1, 0), (
+  'THREE_D6', (SELECT die_id FROM crypts_things.die WHERE code='D6'), 3, 0), (
+  'TWO_D4', (SELECT die_id FROM crypts_things.die WHERE code='D4'), 2, 0), (
+  'TWO_D6', (SELECT die_id FROM crypts_things.die WHERE code='D6'), 2, 0);
 
 
 -- ADD EQUIPMENT_ELEMENT_TYPES
@@ -83,10 +84,12 @@ INSERT INTO crypts_things.object_type(code, flag) VALUES(
 
 
 -- ADD IO_ITEM_DATAS
-INSERT INTO crypts_things.io_item_data(count, description, damages, food_value, internal_script, item_name, left_ring, light_value, max_owned, price, ring_type, stack_size, steal_value, weight) VALUES(
+INSERT INTO crypts_things.io_item_data(count, damages, description, food_value, internal_script, name, left_ring, light_value, max_owned, price, ring_type, stack_size, steal_value, weight) VALUES(
 -- ADD io_item_data's RELATED groupss
 
 -- ADD io_item_data's RELATED typess
+
+-- ADD io_item_data's RELATED modifierss
 
 
 -- ADD SCRIPT_ACTION_TYPES
@@ -105,6 +108,10 @@ INSERT INTO crypts_things.io_pc_data(bags, flags, gender, gold, interface_flags,
 -- ADD io_pc_data's RELATED groupss
 
 -- ADD io_pc_data's RELATED life_eventss
+
+-- ADD io_pc_data's RELATED attributess
+
+-- ADD io_pc_data's RELATED scripted_eventss
 
 
 -- ADD SKILLS

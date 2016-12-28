@@ -13,7 +13,7 @@ CREATE TABLE avalon.advantage
 (
   advantage_id smallint DEFAULT nextval('avalon.advantage_id_seq') NOT NULL,
   description text NOT NULL,
-  flag smallint NOT NULL,
+  flag integer NOT NULL,
   name character varying(40) NOT NULL,
   CONSTRAINT advantage_advantage_id_pk PRIMARY KEY (advantage_id),
   CONSTRAINT advantage_name_un UNIQUE (name)

@@ -1,5 +1,6 @@
 package com.dalonedrau.entities.basic_dnd;
 
+import com.dalonedrau.schemacreator.Annotations.CanBeNull;
 import com.dalonedrau.schemacreator.Annotations.Unique;
 import com.dalonedrau.schemacreator.Annotations.VarChar;
 
@@ -10,6 +11,7 @@ public class EquipmentItemModifier {
     /** the flag indicating whether the modifier is a percentage modifier. */
     private boolean percent;
     /** not used. yet. */
+    @CanBeNull
     private int special;
     /** the value of modifier to be applied. */
     private float value;

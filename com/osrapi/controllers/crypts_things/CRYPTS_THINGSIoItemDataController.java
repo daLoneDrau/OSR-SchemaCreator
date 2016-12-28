@@ -687,15 +687,15 @@ public class CRYPTS_THINGSIoItemDataController {
         return resources;
     }
     /**
-     * Gets a list of {@link CRYPTS_THINGSIoItemDataEntity}s that share a itemName.
-     * @param itemName the io_item_data' itemName
+     * Gets a list of {@link CRYPTS_THINGSIoItemDataEntity}s that share a name.
+     * @param name the io_item_data' name
      * @return {@link List}<{@link Resource}<{@link CRYPTS_THINGSIoItemDataEntity}>>
      */
-    @RequestMapping(path = "item_name/{itemName}",
+    @RequestMapping(path = "name/{name}",
             method = RequestMethod.GET)
-    public List<Resource<CRYPTS_THINGSIoItemDataEntity>> getByItemName(
-            @PathVariable final String itemName) {
-        Iterator<CRYPTS_THINGSIoItemDataEntity> iter = repository.findByItemName(itemName)
+    public List<Resource<CRYPTS_THINGSIoItemDataEntity>> getByName(
+            @PathVariable final String name) {
+        Iterator<CRYPTS_THINGSIoItemDataEntity> iter = repository.findByName(name)
                 .iterator();
         List<Resource<CRYPTS_THINGSIoItemDataEntity>> resources =
                 new ArrayList<Resource<CRYPTS_THINGSIoItemDataEntity>>();

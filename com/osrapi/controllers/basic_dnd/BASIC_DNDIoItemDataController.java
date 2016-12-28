@@ -687,15 +687,15 @@ public class BASIC_DNDIoItemDataController {
         return resources;
     }
     /**
-     * Gets a list of {@link BASIC_DNDIoItemDataEntity}s that share a itemName.
-     * @param itemName the io_item_data' itemName
+     * Gets a list of {@link BASIC_DNDIoItemDataEntity}s that share a name.
+     * @param name the io_item_data' name
      * @return {@link List}<{@link Resource}<{@link BASIC_DNDIoItemDataEntity}>>
      */
-    @RequestMapping(path = "item_name/{itemName}",
+    @RequestMapping(path = "name/{name}",
             method = RequestMethod.GET)
-    public List<Resource<BASIC_DNDIoItemDataEntity>> getByItemName(
-            @PathVariable final String itemName) {
-        Iterator<BASIC_DNDIoItemDataEntity> iter = repository.findByItemName(itemName)
+    public List<Resource<BASIC_DNDIoItemDataEntity>> getByName(
+            @PathVariable final String name) {
+        Iterator<BASIC_DNDIoItemDataEntity> iter = repository.findByName(name)
                 .iterator();
         List<Resource<BASIC_DNDIoItemDataEntity>> resources =
                 new ArrayList<Resource<BASIC_DNDIoItemDataEntity>>();

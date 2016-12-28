@@ -40,11 +40,11 @@ extends CrudRepository<BASIC_DNDIoItemDataEntity, Long> {
 	 */
 	List<BASIC_DNDIoItemDataEntity> findByInternalScript(String internalScript);
 	/**
-	 * Retrieves a list of io item datas by their itemName.
-	 * @param itemName the itemName
+	 * Retrieves a list of io item datas by their name.
+	 * @param name the name
 	 * @return {@link List}<{@link BASIC_DNDIoItemDataEntity}>
 	 */
-	List<BASIC_DNDIoItemDataEntity> findByItemName(String itemName);
+	List<BASIC_DNDIoItemDataEntity> findByName(String name);
 	/**
 	 * Retrieves a list of io item datas by their leftRing.
 	 * @param leftRing the leftRing

@@ -9,6 +9,7 @@ import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -997,7 +998,10 @@ public final class SchemaCreator {
         int numFields = 0;
         List<String[]> lookupTables = new ArrayList<String[]>();
         List<String[]> lookupMapTables = new ArrayList<String[]>();
+        List<String[]> mapLookupTables = new ArrayList<String[]>();
         Map<String, List<String>> lookups = new HashMap<String,
+                List<String>>();
+        Map<String, List<String>> mapLookups = new HashMap<String,
                 List<String>>();
         Field[] fields = clazz.getDeclaredFields();
         for (int i = 0, len = fields.length; i < len; i++) {
@@ -1040,6 +1044,39 @@ public final class SchemaCreator {
                         // skip for now
                         // throw new Exception(
                         //        "Need lookup table ddl for non-entity field " + field.getName());
+                    }
+                } else if (((ParameterizedType) type).getRawType()
+                        .getTypeName()
+                        .equalsIgnoreCase("java.util.Map")
+                        || ((ParameterizedType) type).getRawType()
+                                .getTypeName()
+                                .equalsIgnoreCase("java.util.HashMap")) {
+                    System.out.println("field "+clazz.getSimpleName()+"."+field.getName()+" is a map");
+                    Type[] types =
+                            ((ParameterizedType) type).getActualTypeArguments();
+                    String typeClassName0 =
+                            types[0].getTypeName().substring(
+                                    types[0].getTypeName().lastIndexOf('.')
+                                            + 1);
+                    String typeClassName1 =
+                            types[1].getTypeName().substring(
+                                    types[1].getTypeName().lastIndexOf('.')
+                                            + 1);
+                    System.out.println(typeClassName0+"->"+typeClassName1);
+                    if (tables.contains(typeClassName0)
+                            || tables.contains(typeClassName1)) {
+                        // lookupMapTables
+                        //        .add(new String[] { table, typeClassName0,
+                        //                typeClassName1, field.getName() });
+                    } else {
+                        System.out.println("check for annots");
+                        if (field.isAnnotationPresent(MapForeignKey.class)) {
+                            mapLookupTables.add(new String[] {
+                                    clazz.getSimpleName(),  // entity 1 table
+                                    field.getName() });     // field name
+                        }
+                        // throw new Exception(
+                        //        "Need lookup table for non-entity field");
                     }
                 }
             } else if (!field.getType().equals(clazz)) {
@@ -1101,7 +1138,7 @@ public final class SchemaCreator {
                         try {
                             writeDMLRecord(writer, fields, clazz, table,
                                     list.get(i), numFields,
-                                    updates, lookups);
+                                    updates, lookups, mapLookups);
                         } catch (IllegalArgumentException
                                 | IllegalAccessException | NoSuchFieldException
                                 | SecurityException e) {
@@ -1128,9 +1165,17 @@ public final class SchemaCreator {
         for (int i = 0, len =
                 lookupTables.size(); i < len; i++) {
             writeDMLLookupTable(writer,
-                    lookupTables.get(i)[0], lookupTables.get(i)[1],
-                    lookupTables.get(i)[2],
-                    lookups.get(lookupTables.get(i)[2]));
+                    lookupTables.get(i)[0], // entity 1 table
+                    lookupTables.get(i)[1], // entity 2 table
+                    lookupTables.get(i)[2], // field name
+                    lookups.get(lookupTables.get(i)[2])); // field values
+        }
+        for (int i = 0, len =
+                mapLookupTables.size(); i < len; i++) {
+            writeDMLMapLookupTable(writer,
+                    mapLookupTables.get(i)[0], // entity 1 table
+                    mapLookupTables.get(i)[1], // field name
+                    mapLookups.get(mapLookupTables.get(i)[1])); // field values
         }
         writer.println();
         for (int i = 0, len = lookupMapTables.size(); i < len; i++) { /*
@@ -1210,11 +1255,47 @@ public final class SchemaCreator {
         }
         writer.println();
     }
+    /**
+     * Writes the DML join table for two entities.
+     * @param writer the {@link PrintWriter} used to write the file
+     * @param table1 the table for entity 1
+     * @param table2 the table for entity 2
+     * @param field the name of the field used for the join table
+     * @param values the values to be added to the join table
+     */
+    private void writeDMLMapLookupTable(final PrintWriter writer,
+            final String table1, final String field,
+            final List<String> values) {
+        writer.print("-- ADD ");
+        writer.print(SchemaUtilities.getInstance().getTableName(table1));
+        writer.print("'s RELATED ");
+        writer.print(SchemaUtilities.getInstance().getTableName(field));
+        writer.println("s");
+        if (values != null) {
+            for (int i = 0, len = values.size(); i < len; i++) {
+                writer.print("INSERT INTO ");
+                writer.print(schema);
+                writer.print(".");
+                writer.print(
+                        SchemaUtilities.getInstance().getTableName(table1));
+                writer.print("_");
+                writer.print(SchemaUtilities.getInstance().getTableName(field));
+                writer.print("_lookup(");
+                writer.print(
+                        SchemaUtilities.getInstance().getTableName(table1));
+                writer.println("_id, key, value) VALUES (");
+                writer.print(values.get(i));
+                writer.println(");");
+            }
+        }
+        writer.println();
+    }
     @SuppressWarnings("rawtypes")
     private void writeDMLRecord(final PrintWriter writer, final Field[] fields,
             final Class<?> clazz, final String table, final Object o,
             final int numFields, final List<String> updateList,
-            final Map<String, List<String>> lookups)
+            final Map<String, List<String>> lookups,
+            final Map<String, List<String>> mapLookups)
             throws IllegalArgumentException, IllegalAccessException,
             NoSuchFieldException, SecurityException {
         System.out.println("writing dml for "+clazz.getSimpleName());
@@ -1225,6 +1306,7 @@ public final class SchemaCreator {
             field.setAccessible(true);
             Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {
+                System.out.println("field "+field.getName());
                 if (((ParameterizedType) type).getRawType().getTypeName()
                         .equalsIgnoreCase("java.util.List")) {
                     List list = (List) field.get(o);
@@ -1240,6 +1322,92 @@ public final class SchemaCreator {
                         }
                     }
                     list = null;
+                } else if (((ParameterizedType) type).getRawType()
+                        .getTypeName()
+                        .equalsIgnoreCase("java.util.Map")
+                        || ((ParameterizedType) type).getRawType()
+                                .getTypeName()
+                                .equalsIgnoreCase("java.util.HashMap")) {
+                    System.out.println("22map for "+field.getName());
+                    if (field.isAnnotationPresent(MapForeignKey.class)
+                            && field.get(o) != null) {
+                        MapForeignKey mfk =
+                                field.getAnnotation(MapForeignKey.class);
+                        Map map = (Map) field.get(o);
+                        System.out.println(map);
+                        try {
+                            Iterator iter = map.keySet().iterator();
+                            while (iter.hasNext()) {
+                                // create 2 new objects for lookup values
+                                String key = (String) iter.next();
+                                PooledStringBuilder sb = StringBuilderPool
+                                        .getInstance().getStringBuilder();
+                                sb.append(o.getClass().getPackage().getName());
+                                sb.append('.');
+                                sb.append(mfk.keyTargetClass());
+                                Object keyObj = Class.forName(
+                                        sb.toString()).newInstance();
+                                sb.setLength(0);
+                                Field keyField =
+                                        keyObj.getClass().getDeclaredField(
+                                                mfk.keyField());
+                                keyField.setAccessible(true);
+                                keyField.set(keyObj, key);
+                                // create value object
+                                sb.append(o.getClass().getPackage().getName());
+                                sb.append('.');
+                                sb.append(mfk.valueTargetClass());
+                                Object valObj = Class.forName(
+                                        sb.toString()).newInstance();
+                                sb.setLength(0);
+                                Field valField =
+                                        valObj.getClass().getDeclaredField(
+                                                mfk.valueField());
+                                valField.setAccessible(true);
+                                valField.set(valObj, map.get(key));
+                                if (mapLookups.get(field.getName()) == null) {
+                                    mapLookups.put(field.getName(), new ArrayList<String>());
+                                }
+                                sb.append("  ");
+                                sb.append(createSelectIdByIdentifier(o));
+                                sb.append(",\n");
+                                sb.append(createDMLLookupStatement(keyObj,
+                                        valObj));
+                                mapLookups.get(field.getName()).add(sb.toString());
+                                System.out.println("adding "+sb.toString());
+                                sb.returnToPool();
+                                sb = null;
+                            }
+                        } catch (ClassNotFoundException | PooledException | InstantiationException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                        /*
+                        if (lookups.get(field.getName()) == null) {
+                            lookups.get(field.getName()).add(
+                                    createDMLLookupStatement(o, list.get(j)));
+                        }
+                        */
+                    }
+                    /*
+                    String typeClassName0 =
+                            types[0].getTypeName().substring(
+                                    types[0].getTypeName().lastIndexOf('.')
+                                            + 1);
+                    String typeClassName1 =
+                            types[1].getTypeName().substring(
+                                    types[1].getTypeName().lastIndexOf('.')
+                                            + 1);
+                    if (tables.contains(typeClassName0)
+                            || tables.contains(typeClassName1)) {
+                        lookupMapTables
+                                .add(new String[] { table, typeClassName0,
+                                        typeClassName1, field.getName() });
+                    } else {
+                        throw new Exception(
+                                "Need lookup table for non-entity field");
+                    }
+                    */
                 }
             } else {
                 System.out.println("field "+field.getName());
@@ -1267,7 +1435,6 @@ public final class SchemaCreator {
                     }
                     obj = null;
                 } else {
-                    System.out.println("class has no rules");
                     if (type.toString().equalsIgnoreCase("boolean")) {
                         writer.print(field.get(o));
                     } else if (type.toString().equalsIgnoreCase("int")) {

@@ -1,4 +1,4 @@
-package com.dalonedrau.entities.basic_dnd;
+package com.dalonedrau.entities.crypts_things;
 
 import com.dalonedrau.schemacreator.Annotations.CanBeNull;
 import com.dalonedrau.schemacreator.Annotations.Unique;

@@ -96,20 +96,20 @@ public final class BASIC_DNDEquipmentItemModifierEntity {
     /** the special. */
     @Column(name = "special")
     @JsonProperty("special")
-    @NotNull
-    private long                    special;
+    
+    private Long                    special;
     /**
      * Gets the special.
-     * @return {@link long}
+     * @return {@link Long}
      */
-    public long getSpecial() {
+    public Long getSpecial() {
         return special;
     }
     /**
      * Sets the special.
      * @param val the new value
      */
-    public void setSpecial(final long val) {
+    public void setSpecial(final Long val) {
         special = val;
     }
 

@@ -19,6 +19,8 @@ public class Annotations {
         JOINED, SINGLE_TABLE, TABLE_PER_CLASS
     }
     @Retention(RetentionPolicy.RUNTIME)
+    public @interface IntegerNumericType {}
+    @Retention(RetentionPolicy.RUNTIME)
     public @interface MapForeignKey {
         String keyColumnType();
         String keyField();
