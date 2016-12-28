@@ -10,7 +10,7 @@ public class MagicType {
     private String code;
     @JsonProperty("spell_name")
     @Unique
-    @VarChar(length = 10)
+    @VarChar(length = 20)
     private String spellName;
     @Unique
     @VarChar(length = 40)
