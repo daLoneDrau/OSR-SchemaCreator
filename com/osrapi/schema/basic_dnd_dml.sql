@@ -153,6 +153,20 @@ INSERT INTO basic_dnd.object_type(code, flag) VALUES(
 -- ADD IO_ITEM_DATAS
 INSERT INTO basic_dnd.io_item_data(count, damages, description, food_value, internal_script, name, left_ring, light_value, max_owned, price, ring_type, stack_size, steal_value, weight) VALUES(
   0, (SELECT dice_id FROM basic_dnd.dice WHERE code='TWO_D4'), 'A straight, double-edged weapon with a long hilt and a blade 3'' long. A single- or two-hand grip is used when wielding.', 0, 'BastardSword', 'Longsword', false, 0, 99, 6.0, 0, 10, 0, 20.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D8'), 'An arm-length weapon borne in both hands.', 0, 'BattleAxe', 'Battle Axe', false, 0, 99, 6.0, 0, 10, 0, 6.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D4'), 'A short stick of fire-hardened oak.', 0, 'Club', 'Club', false, 0, 99, 3.0, 0, 10, 0, 3.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D4'), 'A knife with a very sharp point designed to be used as a thrusting or stabbing weapon.', 0, 'Dagger', 'Dagger', false, 0, 99, 3.0, 0, 15, 0, 1.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D4'), 'A missile weapon resembling a large arrow, with a weighted point.', 0, 'Dart', 'Dart', false, 0, 99, 0.5, 0, 20, 0, 0.5), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D6'), 'A wooden haft connected by a chain to a spherical striking end.', 0, 'Flail', 'Flail', false, 0, 99, 3.0, 0, 10, 0, 5.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D4'), 'A weapon of war intended for close combat action that resembles a hammer.', 0, 'Hammer', 'War Hammer', false, 0, 99, 1.0, 0, 10, 0, 2.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D6'), 'A small, light axe designed for use in one hand.', 0, 'HandAxe', 'Hand Axe', false, 0, 99, 1.0, 0, 10, 0, 3.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D8'), 'A heavy weapon consisting of a horizontal bow-like assembly mounted on a stock.', 0, 'HeavyCrossbow', 'Heavy Crossbow', false, 0, 99, 25.0, 0, 5, 0, 8.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D8'), 'A weapon based on the agricultural tool with a very long shaft attached to a hinged, roughly cylindrical striking end.', 0, 'HeavyFlail', 'Heavy Flail', false, 0, 99, 8.0, 0, 5, 0, 10.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D6'), 'A modified hammer''s head and spike mounted atop a long pole.', 0, 'HeavyHammer', 'Raven''s Beak', false, 0, 99, 7.0, 0, 10, 0, 5.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D8'), 'A type of war hammer that has a very long spike on the reverse of the hammer head. The horseman''s pick is used to penetrate thick plate armour or mail which a standard sword can not.', 0, 'HeavyPick', 'Horseman''s Pick', false, 0, 99, 8.0, 0, 5, 0, 6.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D6'), 'A light spear designed to be thrown as a ranged weapon.', 0, 'Javelin', 'Javelin', false, 0, 99, 1.0, 0, 15, 0, 2.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D6'), 'A thrusting spear popular for its extreme stopping power.', 0, 'Lance', 'Lance', false, 0, 99, 7.0, 0, 5, 0, 10.0), (
+  0, (SELECT dice_id FROM basic_dnd.dice WHERE code='ONE_D6'), 'A light weapon consisting of a horizontal bow-like assembly mounted on a stock.', 0, 'LightCrossbow', 'Light Crossbow', false, 0, 99, 7.0, 0, 5, 0, 10.0), (
   0, NULL, 'An armour made from horizontal overlapping rows or bands of solid armour plates.', 0, 'BandedMail', 'Segmented Cuirass', false, 0, 99, 250.0, 0, 10, 0, 35.0);
 
 -- ADD io_item_data's RELATED groupss
@@ -163,6 +177,78 @@ INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALU
   (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Longsword'),
   (SELECT group_id FROM basic_dnd.group WHERE name='HEAVY_WEAPON'));
 INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Battle Axe'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='EDGED_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Battle Axe'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='HEAVY_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Club'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='BLUNT_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Dagger'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='EDGED_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Dagger'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='LIGHT_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Dart'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='EDGED_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Dart'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='THROWN_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Flail'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='BLUNT_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='War Hammer'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='BLUNT_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Hand Axe'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='EDGED_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Heavy Crossbow'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='EDGED_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Heavy Crossbow'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='HEAVY_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Heavy Crossbow'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='PROJECTILE_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Heavy Flail'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='BLUNT_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Heavy Flail'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='HEAVY_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Raven's Beak'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='BLUNT_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Horseman's Pick'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='PIERCING_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Horseman's Pick'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='HEAVY_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Javelin'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='PIERCING_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Javelin'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='THROWN_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Lance'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='PIERCING_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Lance'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='HEAVY_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Light Crossbow'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='PIERCING_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Light Crossbow'),
+  (SELECT group_id FROM basic_dnd.group WHERE name='PROJECTILE_WEAPON'));
+INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Segmented Cuirass'),
   (SELECT group_id FROM basic_dnd.group WHERE name='HEAVY_ARMOUR'));
 
@@ -170,6 +256,48 @@ INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALU
 INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
   (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Longsword'),
   (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Battle Axe'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_2H'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Club'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Dagger'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_DAGGER'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Dart'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Flail'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='War Hammer'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Hand Axe'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Heavy Crossbow'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_BOW'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Heavy Flail'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_2H'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Raven's Beak'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_2H'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Horseman's Pick'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Javelin'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Lance'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_2H'));
+INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Light Crossbow'),
+  (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_2H'));
 INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
   (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Segmented Cuirass'),
   (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_ARMOR'));

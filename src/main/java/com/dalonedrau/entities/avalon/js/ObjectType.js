@@ -1,0 +1,70 @@
+[{
+	"flag": 1,
+	"code": "OBJECT_TYPE_WEAPON"
+}, {
+	"flag": 2,
+	"code": "OBJECT_TYPE_1H"
+}, {
+	"flag": 4,
+	"code": "OBJECT_TYPE_2H"
+}, {
+	"flag": 8,
+	"code": "OBJECT_TYPE_ARMOR"
+}, {
+	"flag": 16,
+	"code": "OBJECT_TYPE_SUIT_OF_ARMOR"
+}, {
+	"flag": 32,
+	"code": "OBJECT_TYPE_BREASTPLATE"
+}, {
+	"flag": 64,
+	"code": "OBJECT_TYPE_HELMET"
+}, {
+	"flag": 128,
+	"code": "OBJECT_TYPE_SHIELD"
+}, {
+	"flag": 256,
+	"code": "OBJECT_TYPE_BOOTS"
+}, {
+	"flag": 512,
+	"code": "OBJECT_TYPE_GLOVES"
+}, {
+	"flag": 1024,
+	"code": "OBJECT_TYPE_POTION"
+}, {
+	"flag": 2048,
+	"code": "OBJECT_TYPE_CLOAK"
+}, {
+	"flag": 4096,
+	"code": "OBJECT_TYPE_NECKLACE"
+}, {
+	"flag": 8192,
+	"code": "OBJECT_TYPE_BOOK"
+}, {
+	"flag": 16384,
+	"code": "OBJECT_TYPE_BELT"
+}, {
+	"flag": 32768,
+	"code": "OBJECT_TYPE_CLOAK"
+}, {
+	"flag": 65536,
+	"code": "OBJECT_TYPE_ARTIFACT"
+}, {
+	"flag": 131072,
+	"code": "OBJECT_TYPE_RING"
+}, {
+	"flag": 262144,
+	"code": "OBJECT_TYPE_FOCUS"
+}, {
+	"flag": 524288,
+	"code": "OBJECT_TYPE_BRACERS"
+}, {
+	"flag": 1048576,
+	"code": "OBJECT_TYPE_MAP"
+}, {
+	"flag": 2097152,
+	"code": "OBJECT_TYPE_MAGIC_ITEM"
+}, {
+	"flag": 4194304,
+	"code": "OBJECT_TYPE_MISC"
+}]
