@@ -177,8 +177,8 @@ INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id)
 -- ADD io_item_data's RELATED modifierss
 INSERT INTO basic_dnd.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES (
   (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Segmented Cuirass'),
-  (SELECT equipment_element_type_id FROM basic_dnd.equipment_element_type WHERE code='ELEMENT_ARMOR_CLASS'),
-  (SELECT equipment_item_modifier_id FROM basic_dnd.equipment_item_modifier WHERE code='MINUS_5'));
+  'ELEMENT_ARMOR_CLASS',
+  'MINUS_5');
 
 
 -- ADD SCRIPT_ACTION_TYPES

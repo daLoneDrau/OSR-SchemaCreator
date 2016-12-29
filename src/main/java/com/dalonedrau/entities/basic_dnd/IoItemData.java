@@ -14,6 +14,7 @@ public class IoItemData {
     private int count;
     /** the amount of damage the weapon does. */
     @CanBeNull
+    @JsonProperty("damages")
     private Dice damages;
     /** the item's description. */
     private String description;

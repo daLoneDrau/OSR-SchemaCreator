@@ -1370,9 +1370,12 @@ public final class SchemaCreator {
                                 }
                                 sb.append("  ");
                                 sb.append(createSelectIdByIdentifier(o));
-                                sb.append(",\n");
-                                sb.append(createDMLLookupStatement(keyObj,
-                                        valObj));
+                                sb.append(",\n  '");
+                                sb.append(key);
+                                sb.append("',\n");
+                                sb.append("  '");
+                                sb.append(map.get(key));
+                                sb.append("'");
                                 mapLookups.get(field.getName()).add(sb.toString());
                                 System.out.println("adding "+sb.toString());
                                 sb.returnToPool();

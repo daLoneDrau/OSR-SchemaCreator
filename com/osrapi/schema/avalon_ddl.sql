@@ -66,7 +66,7 @@ CREATE TABLE avalon.magic_type
 (
   magic_type_id smallint DEFAULT nextval('avalon.magic_type_id_seq') NOT NULL,
   code character varying(4) NOT NULL,
-  spell_name character varying(10) NOT NULL,
+  spell_name character varying(20) NOT NULL,
   title character varying(40) NOT NULL,
   CONSTRAINT magic_type_magic_type_id_pk PRIMARY KEY (magic_type_id),
   CONSTRAINT magic_type_code_un UNIQUE (code),
@@ -86,7 +86,7 @@ CREATE TABLE avalon.vulnerability
   vulnerability_id smallint DEFAULT nextval('avalon.vulnerability_id_seq') NOT NULL,
   code character varying(1) NOT NULL,
   harm_name character varying(40) NOT NULL,
-  weight_class character varying(10) NOT NULL,
+  weight_class character varying(20) NOT NULL,
   CONSTRAINT vulnerability_vulnerability_id_pk PRIMARY KEY (vulnerability_id),
   CONSTRAINT vulnerability_code_un UNIQUE (code),
   CONSTRAINT vulnerability_harm_name_un UNIQUE (harm_name),
