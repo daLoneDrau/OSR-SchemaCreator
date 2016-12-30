@@ -107,8 +107,6 @@ INSERT INTO basic_dnd.equipment_item_modifier(code, percent, special, value) VAL
   'MINUS_6', false, 0, -6.0);
 
 
--- ADD EVENTS
-INSERT INTO basic_dnd.event(code) VALUES(
 
 -- ADD GENDERS
 INSERT INTO basic_dnd.gender(description, name) VALUES(
@@ -222,13 +220,13 @@ INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALU
   (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Heavy Flail'),
   (SELECT group_id FROM basic_dnd.group WHERE name='HEAVY_WEAPON'));
 INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Raven's Beak'),
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Raven''s Beak'),
   (SELECT group_id FROM basic_dnd.group WHERE name='BLUNT_WEAPON'));
 INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Horseman's Pick'),
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Horseman''s Pick'),
   (SELECT group_id FROM basic_dnd.group WHERE name='PIERCING_WEAPON'));
 INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Horseman's Pick'),
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Horseman''s Pick'),
   (SELECT group_id FROM basic_dnd.group WHERE name='HEAVY_WEAPON'));
 INSERT INTO basic_dnd.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Javelin'),
@@ -284,10 +282,10 @@ INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id)
   (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Heavy Flail'),
   (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_2H'));
 INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Raven's Beak'),
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Raven''s Beak'),
   (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_2H'));
 INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Horseman's Pick'),
+  (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Horseman''s Pick'),
   (SELECT object_type_id FROM basic_dnd.object_type WHERE code='OBJECT_TYPE_1H'));
 INSERT INTO basic_dnd.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
   (SELECT io_item_data_id FROM basic_dnd.io_item_data WHERE name='Javelin'),
@@ -308,24 +306,5 @@ INSERT INTO basic_dnd.io_item_data_modifiers_lookup(io_item_data_id, key, value)
   'ELEMENT_ARMOR_CLASS',
   'MINUS_5');
 
-
--- ADD SCRIPT_ACTION_TYPES
-INSERT INTO basic_dnd.script_action_type(code) VALUES(
-
--- ADD SCRIPT_ACTIONS
-INSERT INTO basic_dnd.script_action(name, type) VALUES(
-
--- ADD SCRIPT_BUNDLES
-INSERT INTO basic_dnd.script_bundle(name) VALUES(
--- ADD script_bundle's RELATED scriptss
-
-
--- ADD IO_PC_DATAS
-INSERT INTO basic_dnd.io_pc_data(bags, flags, gender, gold, interface_flags, internal_script, level, xp) VALUES(
--- ADD io_pc_data's RELATED groupss
-
--- ADD io_pc_data's RELATED attributess
-
--- ADD io_pc_data's RELATED scripted_eventss
 
 

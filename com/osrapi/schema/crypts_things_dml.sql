@@ -35,14 +35,6 @@ INSERT INTO crypts_things.dice(code, die, number, plus) VALUES(
   'TWO_D6', (SELECT die_id FROM crypts_things.die WHERE code='D6'), 2, 0);
 
 
--- ADD EQUIPMENT_ELEMENT_TYPES
-INSERT INTO crypts_things.equipment_element_type(code, value) VALUES(
-
--- ADD EQUIPMENT_ITEM_MODIFIERS
-INSERT INTO crypts_things.equipment_item_modifier(code, percent, special, value) VALUES(
-
--- ADD EVENTS
-INSERT INTO crypts_things.event(code) VALUES(
 
 -- ADD GENDERS
 INSERT INTO crypts_things.gender(description, name) VALUES(
@@ -62,9 +54,6 @@ INSERT INTO crypts_things.group(name) VALUES(
   'MAIL_ARMOUR');
 
 
--- ADD LIFE_EVENTS
-INSERT INTO crypts_things.life_event(description, name) VALUES(
--- ADD life_event's RELATED modifierss
 
 
 -- ADD OBJECT_TYPES
@@ -82,38 +71,4 @@ INSERT INTO crypts_things.object_type(code, flag) VALUES(
   'OBJECT_TYPE_RING', 1024), (
   'OBJECT_TYPE_LEGGINGS', 2048);
 
-
--- ADD IO_ITEM_DATAS
-INSERT INTO crypts_things.io_item_data(count, damages, description, food_value, internal_script, name, left_ring, light_value, max_owned, price, ring_type, stack_size, steal_value, weight) VALUES(
--- ADD io_item_data's RELATED groupss
-
--- ADD io_item_data's RELATED typess
-
--- ADD io_item_data's RELATED modifierss
-
-
--- ADD SCRIPT_ACTION_TYPES
-INSERT INTO crypts_things.script_action_type(code) VALUES(
-
--- ADD SCRIPT_ACTIONS
-INSERT INTO crypts_things.script_action(name, type) VALUES(
-
--- ADD SCRIPT_BUNDLES
-INSERT INTO crypts_things.script_bundle(name) VALUES(
--- ADD script_bundle's RELATED scriptss
-
-
--- ADD IO_PC_DATAS
-INSERT INTO crypts_things.io_pc_data(bags, flags, gender, gold, interface_flags, internal_script, level, xp) VALUES(
--- ADD io_pc_data's RELATED groupss
-
--- ADD io_pc_data's RELATED life_eventss
-
--- ADD io_pc_data's RELATED attributess
-
--- ADD io_pc_data's RELATED scripted_eventss
-
-
--- ADD SKILLS
-INSERT INTO crypts_things.skill(description, name) VALUES(
 

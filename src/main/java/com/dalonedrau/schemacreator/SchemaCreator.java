@@ -622,7 +622,7 @@ public final class SchemaCreator {
                                                 + o.getClass().getSimpleName());
                             }
                             sb.append("title='");
-                            sb.append((String) f2.get(o));
+                            sb.append(((String) f2.get(o)).replaceAll("'", "''"));
                             sb.append("')");
                         } else {
                             throw new NoSuchFieldException(
@@ -632,7 +632,7 @@ public final class SchemaCreator {
                         }
                     }
                     sb.append("name='");
-                    sb.append((String) f2.get(o));
+                    sb.append(((String) f2.get(o)).replaceAll("'", "''"));
                     sb.append("')");
                 } else {
                     throw new NoSuchFieldException(
@@ -644,17 +644,17 @@ public final class SchemaCreator {
                 if (f2.getGenericType().toString().equalsIgnoreCase(
                         "class java.lang.String")) {
                     sb.append("code='");
-                    sb.append((String) f2.get(o));
+                    sb.append(((String) f2.get(o)).replaceAll("'", "''"));
                     sb.append("')");
                 } else if (f2.getGenericType().toString().equalsIgnoreCase(
                         "int")) {
                     sb.append("code=");
-                    sb.append(f2.getInt(o));
+                    sb.append(((String) f2.get(o)).replaceAll("'", "''"));
                     sb.append(")");
                 } else if (f2.getGenericType().toString().equalsIgnoreCase(
                         "long")) {
                     sb.append("code=");
-                    sb.append(f2.getLong(o));
+                    sb.append(((String) f2.get(o)).replaceAll("'", "''"));
                     sb.append(")");
                 }
             }
@@ -667,7 +667,7 @@ public final class SchemaCreator {
                                 + o.getClass().getSimpleName());
             }
             sb.append("name='");
-            sb.append((String) f2.get(o));
+            sb.append(((String) f2.get(o)).replaceAll("'", "''"));
             sb.append("')");
         } else if (fieldsHaveMember(fields, "title")) {
             Field f2 = o.getClass().getDeclaredField("title");
@@ -678,7 +678,7 @@ public final class SchemaCreator {
                                 + o.getClass().getSimpleName());
             }
             sb.append("title='");
-            sb.append((String) f2.get(o));
+            sb.append(((String) f2.get(o)).replaceAll("'", "''"));
             sb.append("')");
         }
         String s = sb.toString();

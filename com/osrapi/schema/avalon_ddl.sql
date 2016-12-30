@@ -98,6 +98,41 @@ CREATE TABLE avalon.daily_period
   CONSTRAINT daily_period_name_un UNIQUE (name)
 );
 
+-- Table: avalon.equipment_element_type
+-- TODO add table description
+
+DROP TABLE IF EXISTS avalon.equipment_element_type CASCADE;
+
+CREATE SEQUENCE avalon.equipment_element_type_id_seq MINVALUE 0;
+
+CREATE TABLE avalon.equipment_element_type
+(
+  equipment_element_type_id smallint DEFAULT nextval('avalon.equipment_element_type_id_seq') NOT NULL,
+  code character varying(40) NOT NULL,
+  value smallint NOT NULL,
+  CONSTRAINT equipment_element_type_equipment_element_type_id_pk PRIMARY KEY (equipment_element_type_id),
+  CONSTRAINT equipment_element_type_code_un UNIQUE (code),
+  CONSTRAINT equipment_element_type_value_un UNIQUE (value)
+);
+
+-- Table: avalon.equipment_item_modifier
+-- TODO add table description
+
+DROP TABLE IF EXISTS avalon.equipment_item_modifier CASCADE;
+
+CREATE SEQUENCE avalon.equipment_item_modifier_id_seq MINVALUE 0;
+
+CREATE TABLE avalon.equipment_item_modifier
+(
+  equipment_item_modifier_id smallint DEFAULT nextval('avalon.equipment_item_modifier_id_seq') NOT NULL,
+  code character varying(40) NOT NULL,
+  percent boolean NOT NULL,
+  special smallint,
+  value decimal NOT NULL,
+  CONSTRAINT equipment_item_modifier_equipment_item_modifier_id_pk PRIMARY KEY (equipment_item_modifier_id),
+  CONSTRAINT equipment_item_modifier_code_un UNIQUE (code)
+);
+
 -- Table: avalon.game_action
 -- TODO add table description
 
@@ -190,7 +225,7 @@ CREATE TABLE avalon.object_type
 (
   object_type_id smallint DEFAULT nextval('avalon.object_type_id_seq') NOT NULL,
   code character varying(40) NOT NULL,
-  flag smallint NOT NULL,
+  flag integer NOT NULL,
   CONSTRAINT object_type_object_type_id_pk PRIMARY KEY (object_type_id),
   CONSTRAINT object_type_code_un UNIQUE (code),
   CONSTRAINT object_type_flag_un UNIQUE (flag)

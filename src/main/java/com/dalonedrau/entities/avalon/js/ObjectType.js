@@ -45,26 +45,23 @@
 	"code": "OBJECT_TYPE_BELT"
 }, {
 	"flag": 32768,
-	"code": "OBJECT_TYPE_CLOAK"
-}, {
-	"flag": 65536,
 	"code": "OBJECT_TYPE_ARTIFACT"
 }, {
-	"flag": 131072,
+	"flag": 65536,
 	"code": "OBJECT_TYPE_RING"
 }, {
-	"flag": 262144,
+	"flag": 131072,
 	"code": "OBJECT_TYPE_FOCUS"
 }, {
-	"flag": 524288,
+	"flag": 262144,
 	"code": "OBJECT_TYPE_BRACERS"
 }, {
-	"flag": 1048576,
+	"flag": 524288,
 	"code": "OBJECT_TYPE_MAP"
 }, {
-	"flag": 2097152,
+	"flag": 1048576,
 	"code": "OBJECT_TYPE_MAGIC_ITEM"
 }, {
-	"flag": 4194304,
+	"flag": 2097152,
 	"code": "OBJECT_TYPE_MISC"
 }]
