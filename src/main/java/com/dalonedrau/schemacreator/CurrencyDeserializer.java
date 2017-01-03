@@ -3,7 +3,7 @@ package com.dalonedrau.schemacreator;
 import java.io.IOException;
 import java.util.AbstractMap;
 
-import com.dalonedrau.entities.lablord.Currency;
+import com.dalonedrau.entities.ll.Currency;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;

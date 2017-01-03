@@ -197,7 +197,7 @@ public final class TextLoader {
             sb.append(fileName);
             BufferedReader input;
             if (true) {
-                ClassLoader cl = ClassLoader.getSystemClassLoader();
+                ClassLoader cl = this.getClass().getClassLoader();
                 input = new BufferedReader(new InputStreamReader(
                         cl.getResourceAsStream(sb.toString()), "UTF-8"));
             } else {
@@ -236,6 +236,7 @@ public final class TextLoader {
             }
             input.close();
         } catch (IOException ex) {
+            ex.printStackTrace();
             PooledStringBuilder sb =
                     StringBuilderPool.getInstance().getStringBuilder();
             sb.append("Error opening file ");

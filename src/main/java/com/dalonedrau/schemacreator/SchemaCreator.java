@@ -51,10 +51,11 @@ public final class SchemaCreator {
      */
     public static void main(final String[] args) {
         String[] pkgs = new String[] {
-                "com.dalonedrau.entities.basic_dnd",
-                "com.dalonedrau.entities.crypts_things",
+                "com.dalonedrau.entities.ll",
+                "com.dalonedrau.entities.sw_ct",
                 // "com.dalonedrau.entities.arkania",
                 "com.dalonedrau.entities.avalon",
+                "com.dalonedrau.entities.bp",
                 // "com.dalonedrau.entities.ff",
                 // "com.dalonedrau.entities.lablord",
                 // "com.dalonedrau.entities.wfrp"
@@ -622,7 +623,8 @@ public final class SchemaCreator {
                                                 + o.getClass().getSimpleName());
                             }
                             sb.append("title='");
-                            sb.append(((String) f2.get(o)).replaceAll("'", "''"));
+                            sb.append(
+                                    ((String) f2.get(o)).replaceAll("'", "''"));
                             sb.append("')");
                         } else {
                             throw new NoSuchFieldException(
@@ -1043,7 +1045,8 @@ public final class SchemaCreator {
                     } else {
                         // skip for now
                         // throw new Exception(
-                        //        "Need lookup table ddl for non-entity field " + field.getName());
+                        // "Need lookup table ddl for non-entity field " +
+                        // field.getName());
                     }
                 } else if (((ParameterizedType) type).getRawType()
                         .getTypeName()
@@ -1051,7 +1054,8 @@ public final class SchemaCreator {
                         || ((ParameterizedType) type).getRawType()
                                 .getTypeName()
                                 .equalsIgnoreCase("java.util.HashMap")) {
-                    System.out.println("field "+clazz.getSimpleName()+"."+field.getName()+" is a map");
+                    System.out.println("field " + clazz.getSimpleName() + "."
+                            + field.getName() + " is a map");
                     Type[] types =
                             ((ParameterizedType) type).getActualTypeArguments();
                     String typeClassName0 =
@@ -1062,21 +1066,21 @@ public final class SchemaCreator {
                             types[1].getTypeName().substring(
                                     types[1].getTypeName().lastIndexOf('.')
                                             + 1);
-                    System.out.println(typeClassName0+"->"+typeClassName1);
+                    System.out.println(typeClassName0 + "->" + typeClassName1);
                     if (tables.contains(typeClassName0)
                             || tables.contains(typeClassName1)) {
                         // lookupMapTables
-                        //        .add(new String[] { table, typeClassName0,
-                        //                typeClassName1, field.getName() });
+                        // .add(new String[] { table, typeClassName0,
+                        // typeClassName1, field.getName() });
                     } else {
                         System.out.println("check for annots");
                         if (field.isAnnotationPresent(MapForeignKey.class)) {
                             mapLookupTables.add(new String[] {
-                                    clazz.getSimpleName(),  // entity 1 table
-                                    field.getName() });     // field name
+                                    clazz.getSimpleName(), // entity 1 table
+                                    field.getName() }); // field name
                         }
                         // throw new Exception(
-                        //        "Need lookup table for non-entity field");
+                        // "Need lookup table for non-entity field");
                     }
                 }
             } else if (!field.getType().equals(clazz)) {
@@ -1298,7 +1302,7 @@ public final class SchemaCreator {
             final Map<String, List<String>> mapLookups)
             throws IllegalArgumentException, IllegalAccessException,
             NoSuchFieldException, SecurityException {
-        System.out.println("writing dml for "+clazz.getSimpleName());
+        System.out.println("writing dml for " + clazz.getSimpleName());
         int writtenFields = 0;
         writer.print("  ");
         for (int i = 0, len = fields.length; i < len; i++) {
@@ -1306,7 +1310,7 @@ public final class SchemaCreator {
             field.setAccessible(true);
             Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {
-                System.out.println("field "+field.getName());
+                System.out.println("field " + field.getName());
                 if (((ParameterizedType) type).getRawType().getTypeName()
                         .equalsIgnoreCase("java.util.List")) {
                     List list = (List) field.get(o);
@@ -1328,7 +1332,7 @@ public final class SchemaCreator {
                         || ((ParameterizedType) type).getRawType()
                                 .getTypeName()
                                 .equalsIgnoreCase("java.util.HashMap")) {
-                    System.out.println("22map for "+field.getName());
+                    System.out.println("22map for " + field.getName());
                     if (field.isAnnotationPresent(MapForeignKey.class)
                             && field.get(o) != null) {
                         MapForeignKey mfk =
@@ -1366,7 +1370,8 @@ public final class SchemaCreator {
                                 valField.setAccessible(true);
                                 valField.set(valObj, map.get(key));
                                 if (mapLookups.get(field.getName()) == null) {
-                                    mapLookups.put(field.getName(), new ArrayList<String>());
+                                    mapLookups.put(field.getName(),
+                                            new ArrayList<String>());
                                 }
                                 sb.append("  ");
                                 sb.append(createSelectIdByIdentifier(o));
@@ -1376,44 +1381,37 @@ public final class SchemaCreator {
                                 sb.append("  '");
                                 sb.append(map.get(key));
                                 sb.append("'");
-                                mapLookups.get(field.getName()).add(sb.toString());
-                                System.out.println("adding "+sb.toString());
+                                mapLookups.get(field.getName())
+                                        .add(sb.toString());
+                                System.out.println("adding " + sb.toString());
                                 sb.returnToPool();
                                 sb = null;
                             }
-                        } catch (ClassNotFoundException | PooledException | InstantiationException e) {
+                        } catch (ClassNotFoundException | PooledException
+                                | InstantiationException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
                         /*
-                        if (lookups.get(field.getName()) == null) {
-                            lookups.get(field.getName()).add(
-                                    createDMLLookupStatement(o, list.get(j)));
-                        }
-                        */
+                         * if (lookups.get(field.getName()) == null) {
+                         * lookups.get(field.getName()).add(
+                         * createDMLLookupStatement(o, list.get(j))); }
+                         */
                     }
                     /*
-                    String typeClassName0 =
-                            types[0].getTypeName().substring(
-                                    types[0].getTypeName().lastIndexOf('.')
-                                            + 1);
-                    String typeClassName1 =
-                            types[1].getTypeName().substring(
-                                    types[1].getTypeName().lastIndexOf('.')
-                                            + 1);
-                    if (tables.contains(typeClassName0)
-                            || tables.contains(typeClassName1)) {
-                        lookupMapTables
-                                .add(new String[] { table, typeClassName0,
-                                        typeClassName1, field.getName() });
-                    } else {
-                        throw new Exception(
-                                "Need lookup table for non-entity field");
-                    }
-                    */
+                     * String typeClassName0 = types[0].getTypeName().substring(
+                     * types[0].getTypeName().lastIndexOf('.') + 1); String
+                     * typeClassName1 = types[1].getTypeName().substring(
+                     * types[1].getTypeName().lastIndexOf('.') + 1); if
+                     * (tables.contains(typeClassName0) ||
+                     * tables.contains(typeClassName1)) { lookupMapTables
+                     * .add(new String[] { table, typeClassName0,
+                     * typeClassName1, field.getName() }); } else { throw new
+                     * Exception( "Need lookup table for non-entity field"); }
+                     */
                 }
             } else {
-                System.out.println("field "+field.getName());
+                System.out.println("field " + field.getName());
                 String fieldClass = field.getType().getSimpleName();
                 if (tables.contains(fieldClass)) {
                     Object obj = field.get(o);

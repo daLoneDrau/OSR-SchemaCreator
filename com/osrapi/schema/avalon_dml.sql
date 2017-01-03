@@ -81,6 +81,9 @@ INSERT INTO avalon.group(name) VALUES(
   'NATIVE');
 
 
+-- ADD HEX_NODES
+INSERT INTO avalon.hex_node(description, flag, name) VALUES(
+
 -- ADD HORSE_TYPES
 INSERT INTO avalon.horse_type(name) VALUES(
   'Pony'), (
@@ -108,6 +111,9 @@ INSERT INTO avalon.magic_type(code, spell_name, title) VALUES(
   'VII', 'Charm', 'Beneficial'), (
   'VIII', 'Hex', 'Mischevious');
 
+
+-- ADD NODE_TYPES
+INSERT INTO avalon.node_type(code, description) VALUES(
 
 -- ADD OBJECT_TYPES
 INSERT INTO avalon.object_type(code, flag) VALUES(

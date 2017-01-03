@@ -163,6 +163,23 @@ CREATE TABLE avalon.group
   CONSTRAINT group_name_un UNIQUE (name)
 );
 
+-- Table: avalon.hex_node
+-- TODO add table description
+
+DROP TABLE IF EXISTS avalon.hex_node CASCADE;
+
+CREATE SEQUENCE avalon.hex_node_id_seq MINVALUE 0;
+
+CREATE TABLE avalon.hex_node
+(
+  hex_node_id smallint DEFAULT nextval('avalon.hex_node_id_seq') NOT NULL,
+  description text NOT NULL,
+  flag integer NOT NULL,
+  name character varying(40) NOT NULL,
+  CONSTRAINT hex_node_hex_node_id_pk PRIMARY KEY (hex_node_id),
+  CONSTRAINT hex_node_name_un UNIQUE (name)
+);
+
 -- Table: avalon.horse_type
 -- TODO add table description
 
@@ -212,6 +229,22 @@ CREATE TABLE avalon.magic_type
   CONSTRAINT magic_type_code_un UNIQUE (code),
   CONSTRAINT magic_type_spell_name_un UNIQUE (spell_name),
   CONSTRAINT magic_type_title_un UNIQUE (title)
+);
+
+-- Table: avalon.node_type
+-- TODO add table description
+
+DROP TABLE IF EXISTS avalon.node_type CASCADE;
+
+CREATE SEQUENCE avalon.node_type_id_seq MINVALUE 0;
+
+CREATE TABLE avalon.node_type
+(
+  node_type_id smallint DEFAULT nextval('avalon.node_type_id_seq') NOT NULL,
+  code character varying(40) NOT NULL,
+  description text NOT NULL,
+  CONSTRAINT node_type_node_type_id_pk PRIMARY KEY (node_type_id),
+  CONSTRAINT node_type_code_un UNIQUE (code)
 );
 
 -- Table: avalon.object_type
