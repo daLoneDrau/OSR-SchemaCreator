@@ -60,7 +60,6 @@ public final class DDLMarkup {
                             String ofn = ((DDLForeignKeyConstraint) oldC)
                                     .getFieldName();
                             if (nfn.equalsIgnoreCase(ofn)) {
-                                System.out.println(nfn);
                                 found = true;
                                 break;
                             }

@@ -51,12 +51,12 @@ public final class SchemaCreator {
      */
     public static void main(final String[] args) {
         String[] pkgs = new String[] {
-                "com.dalonedrau.entities.ll",
-                "com.dalonedrau.entities.sw_ct",
+                // "com.dalonedrau.entities.ll",
+                // "com.dalonedrau.entities.sw_ct",
                 // "com.dalonedrau.entities.arkania",
-                "com.dalonedrau.entities.avalon",
-                "com.dalonedrau.entities.bp",
-                // "com.dalonedrau.entities.ff",
+                // "com.dalonedrau.entities.avalon",
+                // "com.dalonedrau.entities.bp",
+                "com.dalonedrau.entities.ff",
                 // "com.dalonedrau.entities.lablord",
                 // "com.dalonedrau.entities.wfrp"
         };
@@ -145,6 +145,7 @@ public final class SchemaCreator {
         String table =
                 SchemaUtilities.getInstance()
                         .getTableName(clazz.getSimpleName());
+        System.out.println("write ddl markup for " + table);
         ddl.setTable(table);
         if (clazz.getAnnotation(UniqueCompositeKey.class) != null) {
             String col0 =
@@ -188,6 +189,7 @@ public final class SchemaCreator {
                         .equalsIgnoreCase("java.util.Map")
                         || ((ParameterizedType) type).getRawType().getTypeName()
                                 .equalsIgnoreCase("java.util.HashMap")) {
+                    System.out.println("field " + field.getName() + " is map");
                     Type[] types =
                             ((ParameterizedType) type).getActualTypeArguments();
                     String typeClassName0 =
@@ -1054,8 +1056,6 @@ public final class SchemaCreator {
                         || ((ParameterizedType) type).getRawType()
                                 .getTypeName()
                                 .equalsIgnoreCase("java.util.HashMap")) {
-                    System.out.println("field " + clazz.getSimpleName() + "."
-                            + field.getName() + " is a map");
                     Type[] types =
                             ((ParameterizedType) type).getActualTypeArguments();
                     String typeClassName0 =
@@ -1066,14 +1066,12 @@ public final class SchemaCreator {
                             types[1].getTypeName().substring(
                                     types[1].getTypeName().lastIndexOf('.')
                                             + 1);
-                    System.out.println(typeClassName0 + "->" + typeClassName1);
                     if (tables.contains(typeClassName0)
                             || tables.contains(typeClassName1)) {
                         // lookupMapTables
                         // .add(new String[] { table, typeClassName0,
                         // typeClassName1, field.getName() });
                     } else {
-                        System.out.println("check for annots");
                         if (field.isAnnotationPresent(MapForeignKey.class)) {
                             mapLookupTables.add(new String[] {
                                     clazz.getSimpleName(), // entity 1 table
@@ -1302,7 +1300,6 @@ public final class SchemaCreator {
             final Map<String, List<String>> mapLookups)
             throws IllegalArgumentException, IllegalAccessException,
             NoSuchFieldException, SecurityException {
-        System.out.println("writing dml for " + clazz.getSimpleName());
         int writtenFields = 0;
         writer.print("  ");
         for (int i = 0, len = fields.length; i < len; i++) {
@@ -1310,7 +1307,6 @@ public final class SchemaCreator {
             field.setAccessible(true);
             Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {
-                System.out.println("field " + field.getName());
                 if (((ParameterizedType) type).getRawType().getTypeName()
                         .equalsIgnoreCase("java.util.List")) {
                     List list = (List) field.get(o);
@@ -1332,13 +1328,11 @@ public final class SchemaCreator {
                         || ((ParameterizedType) type).getRawType()
                                 .getTypeName()
                                 .equalsIgnoreCase("java.util.HashMap")) {
-                    System.out.println("22map for " + field.getName());
                     if (field.isAnnotationPresent(MapForeignKey.class)
                             && field.get(o) != null) {
                         MapForeignKey mfk =
                                 field.getAnnotation(MapForeignKey.class);
                         Map map = (Map) field.get(o);
-                        System.out.println(map);
                         try {
                             Iterator iter = map.keySet().iterator();
                             while (iter.hasNext()) {
@@ -1383,7 +1377,6 @@ public final class SchemaCreator {
                                 sb.append("'");
                                 mapLookups.get(field.getName())
                                         .add(sb.toString());
-                                System.out.println("adding " + sb.toString());
                                 sb.returnToPool();
                                 sb = null;
                             }
@@ -1411,7 +1404,6 @@ public final class SchemaCreator {
                      */
                 }
             } else {
-                System.out.println("field " + field.getName());
                 String fieldClass = field.getType().getSimpleName();
                 if (tables.contains(fieldClass)) {
                     Object obj = field.get(o);

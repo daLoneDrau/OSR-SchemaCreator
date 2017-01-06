@@ -122,7 +122,6 @@ public class DDLMap {
         }
         if (valueTableName != null
                 && valueTableName.length() > 0) {
-            System.out.println(table + " " + valueTableName);
             section = TextLoader.getInstance().loadText(
                     "ddl_template.txt", "table_map_constraint_fk");
             String fk = valueFieldName;

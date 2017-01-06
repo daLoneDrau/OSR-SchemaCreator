@@ -7,9 +7,10 @@ public final class Attribute {
     @Unique
     @VarChar(length = 3)
     private String code;
+    private EquipmentElementType element;
     @Unique
     private String description;
     @Unique
-    @VarChar(length = 20)
+    @VarChar(length = 40)
     private String name;
 }
