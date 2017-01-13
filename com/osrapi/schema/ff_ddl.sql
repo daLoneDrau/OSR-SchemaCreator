@@ -195,8 +195,10 @@ CREATE TABLE ff.io_item_data
   ring_type smallint,
   stack_size smallint NOT NULL,
   steal_value smallint,
+  title character varying(40) NOT NULL,
   weight decimal NOT NULL,
-  CONSTRAINT io_item_data_io_item_data_id_pk PRIMARY KEY (io_item_data_id)
+  CONSTRAINT io_item_data_io_item_data_id_pk PRIMARY KEY (io_item_data_id),
+  CONSTRAINT io_item_data_name_un UNIQUE (name)
 );
 
 -- Table: ff.io_item_data_groups_lookup
@@ -517,10 +519,14 @@ CREATE TABLE ff.io_npc_data
   name character varying(50) NOT NULL,
   npc_flags bigint,
   title character varying(50) NOT NULL,
+  weapon text NOT NULL,
   xpvalue smallint,
   CONSTRAINT io_npc_data_io_npc_data_id_pk PRIMARY KEY (io_npc_data_id),
   CONSTRAINT io_npc_data_gender_fk FOREIGN KEY (gender)
     REFERENCES ff.gender (gender_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_weapon_fk FOREIGN KEY (weapon)
+    REFERENCES ff.io_item_data (name) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 

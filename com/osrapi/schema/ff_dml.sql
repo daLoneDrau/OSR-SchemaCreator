@@ -83,9 +83,9 @@ INSERT INTO ff.object_type(code, flag) VALUES(
 
 
 -- ADD IO_ITEM_DATAS
-INSERT INTO ff.io_item_data(count, description, food_value, internal_script, left_ring, light_value, max_owned, name, price, ring_type, stack_size, steal_value, weight) VALUES(
-  0, 'Your trusty iron sword.', 0, 'IronSword', false, 0, 1, 'Iron Sword', 0.0, 0, 1, 0, 1.0), (
-  0, 'A wicked Orc cleaver.', 0, 'OrcCleaver', false, 0, 1, 'Orc Cleaver', 0.0, 0, 1, 0, 1.0);
+INSERT INTO ff.io_item_data(count, description, food_value, internal_script, left_ring, light_value, max_owned, name, price, ring_type, stack_size, steal_value, title, weight) VALUES(
+  0, 'Your trusty iron sword.', 0, 'IronSword', false, 0, 1, 'Iron Sword', 0.0, 0, 1, 0, 'Iron Sword', 1.0), (
+  0, 'A wicked Orc cleaver.', 0, 'OrcCleaver', false, 0, 1, 'Orc Cleaver', 0.0, 0, 1, 0, 'Orc Cleaver', 1.0);
 
 -- ADD io_item_data's RELATED groupss
 
@@ -177,7 +177,7 @@ INSERT INTO ff.script_action(name, type) VALUES(
   '278_BASH_FAILURE', 'SHOW_TEXT'), (
   '278_BASH_SUCCESS', 'SHOW_TEXT'), (
   'SPAWN_ORC1', 'SPAWN_MOB'), (
-  NULL, 'TEST_YOUR_LUCK');
+  'TEST_YOUR_LUCK_71', 'TEST_YOUR_LUCK');
 
 
 -- ADD CREATE_EXIT_ACTIONS
@@ -206,8 +206,18 @@ INSERT INTO ff.door(attribute_test, direction, leads_to, locked, name, num_dice_
 
 
 -- ADD IO_NPC_DATAS
-INSERT INTO ff.io_npc_data(behavior, behavior_param, climb_count, collid_state, collid_time, critical, cut, cuts, damages, gender, internal_script, life, mana, maxlife, maxmana, name, npc_flags, title, xpvalue) VALUES(
+INSERT INTO ff.io_npc_data(behavior, behavior_param, climb_count, collid_state, collid_time, critical, cut, cuts, damages, gender, internal_script, life, mana, maxlife, maxmana, name, npc_flags, title, weapon, xpvalue) VALUES(
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'Orc', 0.0, 0.0, 0.0, 0.0, 'ORC1', 0, 'ORC', 'Orc Cleaver', 0);
+
 -- ADD io_npc_data's RELATED attributess
+INSERT INTO ff.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ff.io_npc_data WHERE name='ORC1'),
+  'SK',
+  '6');
+INSERT INTO ff.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ff.io_npc_data WHERE name='ORC1'),
+  'ST',
+  '5');
 
 -- ADD io_npc_data's RELATED scripted_eventss
 

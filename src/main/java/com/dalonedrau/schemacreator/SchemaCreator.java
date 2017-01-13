@@ -1352,6 +1352,7 @@ public final class SchemaCreator {
                                 keyField.setAccessible(true);
                                 keyField.set(keyObj, key);
                                 // create value object
+                                /*
                                 sb.append(o.getClass().getPackage().getName());
                                 sb.append('.');
                                 sb.append(mfk.valueTargetClass());
@@ -1363,6 +1364,7 @@ public final class SchemaCreator {
                                                 mfk.valueField());
                                 valField.setAccessible(true);
                                 valField.set(valObj, map.get(key));
+                                */
                                 if (mapLookups.get(field.getName()) == null) {
                                     mapLookups.put(field.getName(),
                                             new ArrayList<String>());
@@ -1432,6 +1434,8 @@ public final class SchemaCreator {
                         writer.print(field.get(o));
                     } else if (type.toString().equalsIgnoreCase("int")) {
                         writer.print(field.get(o));
+                    } else if (type.toString().equalsIgnoreCase("long")) {
+                        writer.print(field.get(o));
                     } else if (type.toString().equalsIgnoreCase("float")) {
                         writer.print(field.get(o));
                     } else if (type.toString()
@@ -1445,7 +1449,8 @@ public final class SchemaCreator {
                             writer.print("'");
                         }
                     } else {
-                        System.err.println("unknown type - " + type.toString());
+                        System.err.println("unknown type for field "
+                    + field.getName() + " - " + type.toString());
                         System.exit(1);
                     }
                     if (writtenFields + 1 < numFields) {

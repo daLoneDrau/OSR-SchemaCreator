@@ -40,7 +40,8 @@
     "name": "SPAWN_ORC1",
     "mob_code": "ORC1"
   }, {
-    "type": "TEST_YOUR_LUCK",
+	    "type": "TEST_YOUR_LUCK",
+	    "name": "TEST_YOUR_LUCK_71",
     "pass_scripts": "71_PASS_LUCK",
     "fail_scripts": "71_FAIL_LUCK"
   }]

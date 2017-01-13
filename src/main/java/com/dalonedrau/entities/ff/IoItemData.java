@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.dalonedrau.schemacreator.Annotations.CanBeNull;
 import com.dalonedrau.schemacreator.Annotations.MapForeignKey;
+import com.dalonedrau.schemacreator.Annotations.Unique;
 import com.dalonedrau.schemacreator.Annotations.VarChar;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -44,6 +45,7 @@ public class IoItemData {
             valueField = "code")
     private Map<String, String> modifiers;
     /** the item's name. */
+    @Unique
     @VarChar(length = 40)
     private String name;
     /** the item's price. */
@@ -59,6 +61,9 @@ public class IoItemData {
     @CanBeNull
     @JsonProperty("steal_value")
     private int stealValue;
+    /** the item's name. */
+    @VarChar(length = 40)
+    private String title;
     /** the list of object types. */
     private List<ObjectType> types;
     /** the item's weight. */

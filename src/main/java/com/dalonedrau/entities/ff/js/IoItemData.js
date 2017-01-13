@@ -8,6 +8,7 @@
 	},
 	"price": 0,
 	"stack_size": 1,
+	"title": "Iron Sword",
 	"types": [{
 		"code": "OBJECT_TYPE_1H"
 	}],
@@ -22,6 +23,7 @@
 	},
 	"price": 0,
 	"stack_size": 1,
+	"title": "Orc Cleaver",
 	"types": [{
 		"code": "OBJECT_TYPE_1H"
 	}],
