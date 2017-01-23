@@ -1,14 +1,16 @@
 [{
 	"attributes": {
 		"SK": 6,
-		"ST": 5
+		"ST": 5,
+		"MSK": 6,
+		"MST": 5
 	},
 	"behavior": 0,
 	"gender":  {
 		"name": "Male"
 	},
-	"internalScript": "Orc",
-	"name": "ORC1",
+	"internalScript": "OrcSentry",
+	"name": "ORC_SENTRY",
 	"title": "ORC",
 	"weapon": "Orc Cleaver"
 }]

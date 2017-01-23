@@ -207,16 +207,24 @@ INSERT INTO ff.door(attribute_test, direction, leads_to, locked, name, num_dice_
 
 -- ADD IO_NPC_DATAS
 INSERT INTO ff.io_npc_data(behavior, behavior_param, climb_count, collid_state, collid_time, critical, cut, cuts, damages, gender, internal_script, life, mana, maxlife, maxmana, name, npc_flags, title, weapon, xpvalue) VALUES(
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'Orc', 0.0, 0.0, 0.0, 0.0, 'ORC1', 0, 'ORC', 'Orc Cleaver', 0);
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'OrcSentry', 0.0, 0.0, 0.0, 0.0, 'ORC_SENTRY', 0, 'ORC', 'Orc Cleaver', 0);
 
 -- ADD io_npc_data's RELATED attributess
 INSERT INTO ff.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
-  (SELECT io_npc_data_id FROM ff.io_npc_data WHERE name='ORC1'),
+  (SELECT io_npc_data_id FROM ff.io_npc_data WHERE name='ORC_SENTRY'),
   'SK',
   '6');
 INSERT INTO ff.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
-  (SELECT io_npc_data_id FROM ff.io_npc_data WHERE name='ORC1'),
+  (SELECT io_npc_data_id FROM ff.io_npc_data WHERE name='ORC_SENTRY'),
   'ST',
+  '5');
+INSERT INTO ff.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ff.io_npc_data WHERE name='ORC_SENTRY'),
+  'MSK',
+  '6');
+INSERT INTO ff.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ff.io_npc_data WHERE name='ORC_SENTRY'),
+  'MST',
   '5');
 
 -- ADD io_npc_data's RELATED scripted_eventss
