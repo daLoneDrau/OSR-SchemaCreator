@@ -1,4 +1,4 @@
-package com.dalonedrau.entities.avalon;
+package com.dalonedrau.entities.ll;
 
 import java.util.Map;
 
@@ -12,6 +12,7 @@ public class IoNpcData {
     @MapForeignKey(keyColumnType = "character varying(3)", keyField = "code",
             keyTargetClass = "Attribute", valueColumnType = "smallint")
     private Map<String, Integer> attributes;
+    @CanBeNull
     long behavior;
     @CanBeNull
     float behaviorParam;
@@ -34,6 +35,7 @@ public class IoNpcData {
     /** the name of the internal script used. */
     @CanBeNull
     private String internalScript;
+    int level;
     @CanBeNull
     float life;
     @CanBeNull
@@ -42,6 +44,8 @@ public class IoNpcData {
     float maxlife;
     @CanBeNull
     float maxmana;
+    @CanBeNull
+    String module;
     /** the {@link IoNpcData}'s name. */
     @VarChar(length = 50)
     private String name;

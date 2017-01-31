@@ -12,6 +12,7 @@ public class IoNpcData {
     @MapForeignKey(keyColumnType = "character varying(3)", keyField = "code",
             keyTargetClass = "Attribute", valueColumnType = "smallint")
     private Map<String, Integer> attributes;
+    @CanBeNull
     long behavior;
     @CanBeNull
     float behaviorParam;
