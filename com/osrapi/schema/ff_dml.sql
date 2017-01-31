@@ -164,9 +164,13 @@ You peer into the gloom to see dark, slimy walls with pools of water on the ston
   '278', 'The passageway soon comes to an end at a locked wooden door. You listen at the door but hear nothing.
 '), (
   '278_WEST', 'You follow the passage west to the junction.'), (
-  'orc_sentry_ouch_strong', '~mugh agdum~'), (
-  'orc_sentry_ouch_medium', '~tum brakat mugh~'), (
-  'orc_sentry_ouch', '~azgdrar mugh~');
+  'orc_sentry_dying', '''~burz~'''), (
+  'orc_sentry_ouch', '''~azgdrar mugh~'' the orc declares.'), (
+  'orc_sentry_ouch_medium', 'The orc eyes you defiantly. ''~mugh... tum brakat~'''), (
+  'orc_sentry_ouch_strong', 'The orc screams at you in desperation. ''~MUGH AGDUM~'''), (
+  'orc_sentry_search', '''~tugh gimbat~''.  The orc scans the room.'), (
+  'orc_sentry_thief', '''~gulBIL~'''), (
+  'orc_sentry_threat', '''~tugh damad~''');
 
 
 -- ADD SCRIPT_ACTIONS

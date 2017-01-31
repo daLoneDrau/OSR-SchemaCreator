@@ -139,6 +139,7 @@ INSERT INTO ll.group(name) VALUES(
   'HEAVY_ARMOUR'), (
   'HEAVY_WEAPON'), (
   'HUMAN'), (
+  'LAWFUL'), (
   'LIGHT_WEAPON'), (
   'LONGBOW'), (
   'MAGE'), (
@@ -412,6 +413,39 @@ INSERT INTO ll.script_action(name, type) VALUES(
 -- ADD SCRIPT_BUNDLES
 INSERT INTO ll.script_bundle(name) VALUES(
 -- ADD script_bundle's RELATED scriptss
+
+
+-- ADD IO_NPC_DATAS
+INSERT INTO ll.io_npc_data(behavior, behavior_param, climb_count, collid_state, collid_time, critical, cut, cuts, damages, gender, internal_script, level, life, mana, maxlife, maxmana, module, name, npc_flags, title, weapon, xpvalue) VALUES(
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ll.gender WHERE name='Male'), NULL, 1, 0.0, 0.0, 0.0, 0.0, 'AC1 - The Shady Dragon Inn', 'Abel Artone', 0, NULL, NULL, 0);
+
+-- ADD io_npc_data's RELATED attributess
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'STR',
+  '10');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'INT',
+  '5');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'WIS',
+  '15');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'CON',
+  '9');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'DEX',
+  '8');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'CHA',
+  '12');
+
+-- ADD io_npc_data's RELATED scripted_eventss
 
 
 -- ADD IO_PC_DATAS

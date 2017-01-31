@@ -348,6 +348,82 @@ CREATE TABLE ll.script_bundle_scripts_lookup
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
+-- Table: ll.io_npc_data
+-- TODO add table description
+
+DROP TABLE IF EXISTS ll.io_npc_data CASCADE;
+
+CREATE SEQUENCE ll.io_npc_data_id_seq MINVALUE 0;
+
+CREATE TABLE ll.io_npc_data
+(
+  io_npc_data_id smallint DEFAULT nextval('ll.io_npc_data_id_seq') NOT NULL,
+  behavior bigint,
+  behavior_param decimal,
+  climb_count decimal,
+  collid_state bigint,
+  collid_time bigint,
+  critical decimal,
+  cut boolean,
+  cuts smallint,
+  damages decimal,
+  gender smallint NOT NULL,
+  internal_script text,
+  level smallint NOT NULL,
+  life decimal,
+  mana decimal,
+  maxlife decimal,
+  maxmana decimal,
+  module text,
+  name character varying(50) NOT NULL,
+  npc_flags bigint,
+  title character varying(50) NOT NULL,
+  weapon text NOT NULL,
+  xpvalue smallint,
+  CONSTRAINT io_npc_data_io_npc_data_id_pk PRIMARY KEY (io_npc_data_id),
+  CONSTRAINT io_npc_data_gender_fk FOREIGN KEY (gender)
+    REFERENCES ll.gender (gender_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_weapon_fk FOREIGN KEY (weapon)
+    REFERENCES ll.io_item_data (name) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+-- Table: ll.io_npc_data_attributes_lookup
+-- lookup table for io_npc_datas and their associated attributess.
+
+DROP TABLE IF EXISTS ll.io_npc_data_attributes_lookup CASCADE;
+
+CREATE TABLE ll.io_npc_data_attributes_lookup
+(
+  io_npc_data_id smallint NOT NULL,
+  key character varying(3) NOT NULL,
+  value smallint NOT NULL,
+  CONSTRAINT io_npc_data_attributes_lookup_io_npc_data_id_key_pk PRIMARY KEY (io_npc_data_id, key),
+  CONSTRAINT io_npc_data_attributes_lookup_key_fk FOREIGN KEY (key)
+    REFERENCES ll.attribute (code) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+-- Table: ll.io_npc_data_scripted_events_lookup
+-- lookup table for io_npc_datas and their associated scripted_eventss.
+
+DROP TABLE IF EXISTS ll.io_npc_data_scripted_events_lookup CASCADE;
+
+CREATE TABLE ll.io_npc_data_scripted_events_lookup
+(
+  io_npc_data_id smallint NOT NULL,
+  key character varying(20) NOT NULL,
+  value character varying(50) NOT NULL,
+  CONSTRAINT io_npc_data_scripted_events_lookup_io_npc_data_id_key_pk PRIMARY KEY (io_npc_data_id, key),
+  CONSTRAINT io_npc_data_scripted_events_lookup_key_fk FOREIGN KEY (key)
+    REFERENCES ll.event (code) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_scripted_events_lookup_value_fk FOREIGN KEY (value)
+    REFERENCES ll.script_bundle (name) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
 -- Table: ll.io_pc_data
 -- TODO add table description
 

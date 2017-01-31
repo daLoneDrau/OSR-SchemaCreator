@@ -501,7 +501,7 @@ CREATE SEQUENCE ff.io_npc_data_id_seq MINVALUE 0;
 CREATE TABLE ff.io_npc_data
 (
   io_npc_data_id smallint DEFAULT nextval('ff.io_npc_data_id_seq') NOT NULL,
-  behavior bigint NOT NULL,
+  behavior bigint,
   behavior_param decimal,
   climb_count decimal,
   collid_state bigint,
