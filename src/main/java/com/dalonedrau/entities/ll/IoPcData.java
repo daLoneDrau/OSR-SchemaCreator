@@ -36,6 +36,7 @@ public class IoPcData {
     /** the list of groups the item belongs to. */
     private List<Group> groups;
     /** interface flags. */
+    @CanBeNull
     private int interfaceFlags;
     /** the name of the internal script used. */
     @CanBeNull
@@ -45,9 +46,11 @@ public class IoPcData {
     private List<String> keyring;
     /** the {@link IoPcData}'s level. */
     private int level = 0;
+    @CanBeNull
+    private String module;
     /** the {@link IoPcData}'s name. */
     @VarChar(length = 40)
-    private List<String> name;
+    private String name;
     /** the {@link IoPcData}'s script. */
     @MapForeignKey(keyColumnType = "character varying(40)", keyField = "code",
             keyTargetClass = "Event", valueColumnType = "character varying(50)",

@@ -1,44 +1,39 @@
-[
-  {
-    "name": "BLUNT_WEAPON"
-  },
-  {
-    "name": "CLERIC"
-  },
-  {
-    "name": "DWARF"
-  },
-  {
-    "name": "EDGED_WEAPON"
-  },
-  {
-    "name": "HEAVY_ARMOUR"
-  },
-  {
-    "name": "HEAVY_WEAPON"
-  },
-  {
-    "name": "HUMAN"
-  },
-  {
-    "name": "LIGHT_WEAPON"
-  },
-  {
-    "name": "LONGBOW"
-  },
-  {
-    "name": "PIERCING_WEAPON"
-  },
-  {
-    "name": "PROJECTILE_WEAPON"
-  },
-  {
-    "name": "SILVER_WEAPON"
-  },
-  {
-    "name": "STAFF"
-  },
-  {
-    "name": "THROWN_WEAPON"
-  }
-]
+[{
+	"name": "BLUNT_WEAPON"
+}, {
+	"name": "CLERIC"
+}, {
+	"name": "DWARF"
+}, {
+	"name": "EDGED_WEAPON"
+}, {
+	"name": "ELF"
+}, {
+	"name": "FIGHTER"
+}, {
+	"name": "HALFLING"
+}, {
+	"name": "HEAVY_ARMOUR"
+}, {
+	"name": "HEAVY_WEAPON"
+}, {
+	"name": "HUMAN"
+}, {
+	"name": "LAWFUL"
+}, {
+	"name": "LIGHT_WEAPON"
+}, {
+	"name": "LONGBOW"
+}, {
+	"name": "MAGE"
+}, {
+	"name": "PIERCING_WEAPON"
+}, {
+	"name": "PROJECTILE_WEAPON"
+}, {
+	"name": "SILVER_WEAPON"
+}, {
+	"name": "STAFF"
+}, {
+	"name": "THROWN_WEAPON"
+}]
