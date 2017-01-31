@@ -50,6 +50,15 @@
     "name": "278",
     "text": "The passageway soon comes to an end at a locked wooden door. You listen at the door but hear nothing.\r\n"
   }, {
-    "name": "278_WEST",
-    "text": "You follow the passage west to the junction."
-  }]
+	    "name": "278_WEST",
+	    "text": "You follow the passage west to the junction."
+	  }, {
+		    "name": "orc_sentry_ouch_strong",
+		    "text": "The orc screams at you in desperation. '~MUGH AGDUM~'"
+		  }, {
+			    "name": "orc_sentry_ouch_medium",
+			    "text": "TThe orc eyes you defiantly. '~tum brakat... mugh~'"
+			  }, {
+				    "name": "orc_sentry_ouch",
+				    "text": "'~azgdrar mugh~' the orc declares."
+				  }]
