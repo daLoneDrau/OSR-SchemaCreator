@@ -12,5 +12,5 @@
 	"internalScript": "OrcSentry",
 	"name": "ORC_SENTRY",
 	"title": "ORC",
-	"weapon": "Orc Cleaver"
+	"weapon": "ORC CLEAVER"
 }]

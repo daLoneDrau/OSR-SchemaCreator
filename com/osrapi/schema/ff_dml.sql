@@ -84,26 +84,26 @@ INSERT INTO ff.object_type(code, flag) VALUES(
 
 -- ADD IO_ITEM_DATAS
 INSERT INTO ff.io_item_data(count, description, food_value, internal_script, left_ring, light_value, max_owned, name, price, ring_type, stack_size, steal_value, title, weight) VALUES(
-  0, 'Your trusty iron sword.', 0, 'IronSword', false, 0, 1, 'Iron Sword', 0.0, 0, 1, 0, 'Iron Sword', 1.0), (
-  0, 'A wicked Orc cleaver.', 0, 'OrcCleaver', false, 0, 1, 'Orc Cleaver', 0.0, 0, 1, 0, 'Orc Cleaver', 1.0);
+  0, 'Your trusty iron sword.', 0, 'IronSword', false, 0, 1, 'IRON SWORD', 0.0, 0, 1, 0, 'IRON SWORD', 1.0), (
+  0, 'A wicked Orc cleaver.', 0, 'OrcCleaver', false, 0, 1, 'ORC CLEAVER', 0.0, 0, 1, 0, 'ORC CLEAVER', 1.0);
 
 -- ADD io_item_data's RELATED groupss
 
 -- ADD io_item_data's RELATED typess
 INSERT INTO ff.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ff.io_item_data WHERE name='Iron Sword'),
+  (SELECT io_item_data_id FROM ff.io_item_data WHERE name='IRON SWORD'),
   (SELECT object_type_id FROM ff.object_type WHERE code='OBJECT_TYPE_1H'));
 INSERT INTO ff.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ff.io_item_data WHERE name='Orc Cleaver'),
+  (SELECT io_item_data_id FROM ff.io_item_data WHERE name='ORC CLEAVER'),
   (SELECT object_type_id FROM ff.object_type WHERE code='OBJECT_TYPE_1H'));
 
 -- ADD io_item_data's RELATED modifierss
 INSERT INTO ff.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES (
-  (SELECT io_item_data_id FROM ff.io_item_data WHERE name='Iron Sword'),
+  (SELECT io_item_data_id FROM ff.io_item_data WHERE name='IRON SWORD'),
   'ELEMENT_DAMAGE',
   'PLUS_2');
 INSERT INTO ff.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES (
-  (SELECT io_item_data_id FROM ff.io_item_data WHERE name='Orc Cleaver'),
+  (SELECT io_item_data_id FROM ff.io_item_data WHERE name='ORC CLEAVER'),
   'ELEMENT_DAMAGE',
   'PLUS_2');
 
@@ -164,13 +164,15 @@ You peer into the gloom to see dark, slimy walls with pools of water on the ston
   '278', 'The passageway soon comes to an end at a locked wooden door. You listen at the door but hear nothing.
 '), (
   '278_WEST', 'You follow the passage west to the junction.'), (
-  'orc_sentry_dying', '''~burz~'''), (
+  'orc_sentry_aggression', 'The ORC scrambles to his feet and turns to grasp at a rope which is probably the alarm bell. You must attack him quickly.'), (
+  'orc_sentry_dying', 'The ORC gurgles as it collapses. ''~burz~'''), (
   'orc_sentry_ouch', '''~azgdrar mugh~'' the orc declares.'), (
   'orc_sentry_ouch_medium', 'The orc eyes you defiantly. ''~mugh... tum brakat~'''), (
   'orc_sentry_ouch_strong', 'The orc screams at you in desperation. ''~MUGH AGDUM~'''), (
   'orc_sentry_search', '''~tugh gimbat~''.  The orc scans the room.'), (
   'orc_sentry_thief', '''~gulBIL~'''), (
-  'orc_sentry_threat', '''~tugh damad~''');
+  'orc_sentry_threat', '''~tugh damad~'''), (
+  'orc_sentry_victory', '''~skai~'', the ORC sneers.');
 
 
 -- ADD SCRIPT_ACTIONS
@@ -214,7 +216,7 @@ INSERT INTO ff.door(attribute_test, direction, leads_to, locked, name, num_dice_
 
 -- ADD IO_NPC_DATAS
 INSERT INTO ff.io_npc_data(behavior, behavior_param, climb_count, collid_state, collid_time, critical, cut, cuts, damages, gender, internal_script, life, mana, maxlife, maxmana, name, npc_flags, title, weapon, xpvalue) VALUES(
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'OrcSentry', 0.0, 0.0, 0.0, 0.0, 'ORC_SENTRY', 0, 'ORC', 'Orc Cleaver', 0);
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'OrcSentry', 0.0, 0.0, 0.0, 0.0, 'ORC_SENTRY', 0, 'ORC', 'ORC CLEAVER', 0);
 
 -- ADD io_npc_data's RELATED attributess
 INSERT INTO ff.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (

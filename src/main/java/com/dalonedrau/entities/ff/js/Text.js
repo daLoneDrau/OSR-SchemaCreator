@@ -53,8 +53,11 @@
   	"name": "278_WEST",
   	"text": "You follow the passage west to the junction."
   }, {
+  	"name": "orc_sentry_aggression",
+  	"text": "The ORC scrambles to his feet and turns to grasp at a rope which is probably the alarm bell. You must attack him quickly."
+  }, {
   	"name": "orc_sentry_dying",
-  	"text": "'~burz~'"
+  	"text": "The ORC gurgles as it collapses. '~burz~'"
   }, {
   	"name": "orc_sentry_ouch",
   	"text": "'~azgdrar mugh~' the orc declares."
@@ -73,4 +76,7 @@
   }, {
   	"name": "orc_sentry_threat",
   	"text": "'~tugh damad~'"
+  }, {
+  	"name": "orc_sentry_victory",
+  	"text": "'~skai~', the ORC sneers."
   }]
