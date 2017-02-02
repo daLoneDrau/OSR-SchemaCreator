@@ -115,6 +115,23 @@ INSERT INTO ff.io_pc_data(bags, gender, gold, interface_flags, level, name, xp) 
 -- ADD io_pc_data's RELATED equipped_itemss
 
 
+-- ADD ROOMS
+INSERT INTO ff.room(code) VALUES(
+  '1'), (
+  '12'), (
+  '71');
+
+-- ADD room's RELATED exitss
+INSERT INTO ff.room_exits_lookup(room_id, key, value) VALUES (
+  (SELECT room_id FROM ff.room WHERE code='1'),
+  'EAST',
+  '12');
+INSERT INTO ff.room_exits_lookup(room_id, key, value) VALUES (
+  (SELECT room_id FROM ff.room WHERE code='1'),
+  'WEST',
+  '71');
+
+
 -- ADD SCRIPT_ACTION_TYPES
 INSERT INTO ff.script_action_type(code) VALUES(
   'CREATE_EXIT'), (
@@ -125,6 +142,63 @@ INSERT INTO ff.script_action_type(code) VALUES(
   'SHOW_TEXT'), (
   'SPAWN_MOB'), (
   'TEST_YOUR_LUCK');
+
+
+-- ADD TERRAINS
+INSERT INTO ff.terrain(name) VALUES(
+  'CAVE_FLOOR'), (
+  'CAVE_WALL'), (
+  'DUNGEON_FLOOR'), (
+  'DUNGEON_WALL');
+
+
+-- ADD PHYSICAL_GRAPH_NODES
+INSERT INTO ff.physical_graph_node(is_main_node, room_number, terrain, x, y) VALUES(
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 639, 1340), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 640, 1340), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 641, 1340), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 642, 1340), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 643, 1340), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 639, 1339), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 640, 1339), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 641, 1339), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 642, 1339), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 643, 1339), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 639, 1338), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 640, 1338), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 641, 1338), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 642, 1338), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 643, 1338), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 639, 1337), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 640, 1337), (
+  true, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 641, 1337), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 642, 1337), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 643, 1337), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 639, 1336), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 640, 1336), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 641, 1336), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 642, 1336), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 643, 1336), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 639, 1335), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 640, 1335), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 641, 1335), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 642, 1335), (
+  false, 1, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 643, 1335), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 644, 1336), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 645, 1336), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 646, 1336), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 647, 1336), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 648, 1336), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 644, 1337), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 645, 1337), (
+  true, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 646, 1337), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 647, 1337), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_FLOOR'), 648, 1337), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 644, 1338), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 645, 1338), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 646, 1338), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 647, 1338), (
+  false, 12, (SELECT terrain_id FROM ff.terrain WHERE name='CAVE_WALL'), 648, 1338);
 
 
 -- ADD TEXTS
@@ -239,29 +313,29 @@ INSERT INTO ff.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES 
 -- ADD io_npc_data's RELATED scripted_eventss
 
 
--- ADD ROOMS
-INSERT INTO ff.room(code, text) VALUES(
+-- ADD ROOM_BKUPS
+INSERT INTO ff.room_bkup(code, text) VALUES(
   '1', (SELECT text_id FROM ff.text WHERE name='1')), (
   '71', (SELECT text_id FROM ff.text WHERE name='71')), (
   '278', (SELECT text_id FROM ff.text WHERE name='278'));
 
--- ADD room's RELATED doorss
+-- ADD room_bkup's RELATED doorss
 
--- ADD room's RELATED exitss
-INSERT INTO ff.room_exits_lookup(room_id, key, value) VALUES (
-  (SELECT room_id FROM ff.room WHERE code='1'),
+-- ADD room_bkup's RELATED exitss
+INSERT INTO ff.room_bkup_exits_lookup(room_bkup_id, key, value) VALUES (
+  (SELECT room_bkup_id FROM ff.room_bkup WHERE code='1'),
   'EAST',
   '278');
-INSERT INTO ff.room_exits_lookup(room_id, key, value) VALUES (
-  (SELECT room_id FROM ff.room WHERE code='1'),
+INSERT INTO ff.room_bkup_exits_lookup(room_bkup_id, key, value) VALUES (
+  (SELECT room_bkup_id FROM ff.room_bkup WHERE code='1'),
   'WEST',
   '71');
-INSERT INTO ff.room_exits_lookup(room_id, key, value) VALUES (
-  (SELECT room_id FROM ff.room WHERE code='278'),
+INSERT INTO ff.room_bkup_exits_lookup(room_bkup_id, key, value) VALUES (
+  (SELECT room_bkup_id FROM ff.room_bkup WHERE code='278'),
   'WEST',
   '1');
 
--- ADD room's RELATED scripted_eventss
+-- ADD room_bkup's RELATED scripted_eventss
 
 
 -- ADD SET_ROOM_TEXT_ACTIONS

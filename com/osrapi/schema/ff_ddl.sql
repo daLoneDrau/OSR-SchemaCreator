@@ -329,6 +329,40 @@ CREATE TABLE ff.io_pc_data_equipped_items_lookup
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
+-- Table: ff.room
+-- TODO add table description
+
+DROP TABLE IF EXISTS ff.room CASCADE;
+
+CREATE SEQUENCE ff.room_id_seq MINVALUE 0;
+
+CREATE TABLE ff.room
+(
+  room_id smallint DEFAULT nextval('ff.room_id_seq') NOT NULL,
+  code character varying(3) NOT NULL,
+  CONSTRAINT room_room_id_pk PRIMARY KEY (room_id),
+  CONSTRAINT room_code_un UNIQUE (code)
+);
+
+-- Table: ff.room_exits_lookup
+-- lookup table for rooms and their associated exitss.
+
+DROP TABLE IF EXISTS ff.room_exits_lookup CASCADE;
+
+CREATE TABLE ff.room_exits_lookup
+(
+  room_id smallint NOT NULL,
+  key character varying(5) NOT NULL,
+  value character varying(3) NOT NULL,
+  CONSTRAINT room_exits_lookup_room_id_key_pk PRIMARY KEY (room_id, key),
+  CONSTRAINT room_exits_lookup_key_fk FOREIGN KEY (key)
+    REFERENCES ff.direction (code) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT room_exits_lookup_value_fk FOREIGN KEY (value)
+    REFERENCES ff.room (code) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
 -- Table: ff.script_action_type
 -- TODO add table description
 
@@ -342,6 +376,42 @@ CREATE TABLE ff.script_action_type
   code character varying(40) NOT NULL,
   CONSTRAINT script_action_type_script_action_type_id_pk PRIMARY KEY (script_action_type_id),
   CONSTRAINT script_action_type_code_un UNIQUE (code)
+);
+
+-- Table: ff.terrain
+-- TODO add table description
+
+DROP TABLE IF EXISTS ff.terrain CASCADE;
+
+CREATE SEQUENCE ff.terrain_id_seq MINVALUE 0;
+
+CREATE TABLE ff.terrain
+(
+  terrain_id smallint DEFAULT nextval('ff.terrain_id_seq') NOT NULL,
+  name character varying(30) NOT NULL,
+  CONSTRAINT terrain_terrain_id_pk PRIMARY KEY (terrain_id),
+  CONSTRAINT terrain_name_un UNIQUE (name)
+);
+
+-- Table: ff.physical_graph_node
+-- TODO add table description
+
+DROP TABLE IF EXISTS ff.physical_graph_node CASCADE;
+
+CREATE SEQUENCE ff.physical_graph_node_id_seq MINVALUE 0;
+
+CREATE TABLE ff.physical_graph_node
+(
+  physical_graph_node_id smallint DEFAULT nextval('ff.physical_graph_node_id_seq') NOT NULL,
+  is_main_node boolean,
+  room_number smallint NOT NULL,
+  terrain smallint NOT NULL,
+  x smallint NOT NULL,
+  y smallint NOT NULL,
+  CONSTRAINT physical_graph_node_physical_graph_node_id_pk PRIMARY KEY (physical_graph_node_id),
+  CONSTRAINT physical_graph_node_terrain_fk FOREIGN KEY (terrain)
+    REFERENCES ff.terrain (terrain_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 -- Table: ff.text
@@ -565,77 +635,77 @@ CREATE TABLE ff.io_npc_data_scripted_events_lookup
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
--- Table: ff.room
+-- Table: ff.room_bkup
 -- TODO add table description
 
-DROP TABLE IF EXISTS ff.room CASCADE;
+DROP TABLE IF EXISTS ff.room_bkup CASCADE;
 
-CREATE SEQUENCE ff.room_id_seq MINVALUE 0;
+CREATE SEQUENCE ff.room_bkup_id_seq MINVALUE 0;
 
-CREATE TABLE ff.room
+CREATE TABLE ff.room_bkup
 (
-  room_id smallint DEFAULT nextval('ff.room_id_seq') NOT NULL,
+  room_bkup_id smallint DEFAULT nextval('ff.room_bkup_id_seq') NOT NULL,
   code character varying(3) NOT NULL,
   text smallint NOT NULL,
-  CONSTRAINT room_room_id_pk PRIMARY KEY (room_id),
-  CONSTRAINT room_code_un UNIQUE (code),
-  CONSTRAINT room_text_fk FOREIGN KEY (text)
+  CONSTRAINT room_bkup_room_bkup_id_pk PRIMARY KEY (room_bkup_id),
+  CONSTRAINT room_bkup_code_un UNIQUE (code),
+  CONSTRAINT room_bkup_text_fk FOREIGN KEY (text)
     REFERENCES ff.text (text_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
--- Table: ff.room_doors_lookup
--- lookup table for rooms and their associated doorss.
+-- Table: ff.room_bkup_doors_lookup
+-- lookup table for room_bkups and their associated doorss.
 
-DROP TABLE IF EXISTS ff.room_doors_lookup CASCADE;
+DROP TABLE IF EXISTS ff.room_bkup_doors_lookup CASCADE;
 
-CREATE TABLE ff.room_doors_lookup
+CREATE TABLE ff.room_bkup_doors_lookup
 (
-  room_id smallint NOT NULL,
+  room_bkup_id smallint NOT NULL,
   door_id smallint NOT NULL,
-  CONSTRAINT room_doors_lookup_room_id_door_id_pk PRIMARY KEY (room_id, door_id),
-  CONSTRAINT room_doors_lookup_room_id_fk FOREIGN KEY (room_id)
-    REFERENCES ff.room (room_id) MATCH SIMPLE
+  CONSTRAINT room_bkup_doors_lookup_room_bkup_id_door_id_pk PRIMARY KEY (room_bkup_id, door_id),
+  CONSTRAINT room_bkup_doors_lookup_room_bkup_id_fk FOREIGN KEY (room_bkup_id)
+    REFERENCES ff.room_bkup (room_bkup_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT room_doors_lookup_door_id_fk FOREIGN KEY (door_id)
+  CONSTRAINT room_bkup_doors_lookup_door_id_fk FOREIGN KEY (door_id)
     REFERENCES ff.door (door_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
--- Table: ff.room_exits_lookup
--- lookup table for rooms and their associated exitss.
+-- Table: ff.room_bkup_exits_lookup
+-- lookup table for room_bkups and their associated exitss.
 
-DROP TABLE IF EXISTS ff.room_exits_lookup CASCADE;
+DROP TABLE IF EXISTS ff.room_bkup_exits_lookup CASCADE;
 
-CREATE TABLE ff.room_exits_lookup
+CREATE TABLE ff.room_bkup_exits_lookup
 (
-  room_id smallint NOT NULL,
+  room_bkup_id smallint NOT NULL,
   key character varying(5) NOT NULL,
   value character varying(3) NOT NULL,
-  CONSTRAINT room_exits_lookup_room_id_key_pk PRIMARY KEY (room_id, key),
-  CONSTRAINT room_exits_lookup_key_fk FOREIGN KEY (key)
+  CONSTRAINT room_bkup_exits_lookup_room_bkup_id_key_pk PRIMARY KEY (room_bkup_id, key),
+  CONSTRAINT room_bkup_exits_lookup_key_fk FOREIGN KEY (key)
     REFERENCES ff.direction (code) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT room_exits_lookup_value_fk FOREIGN KEY (value)
+  CONSTRAINT room_bkup_exits_lookup_value_fk FOREIGN KEY (value)
     REFERENCES ff.room (code) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
--- Table: ff.room_scripted_events_lookup
--- lookup table for rooms and their associated scripted_eventss.
+-- Table: ff.room_bkup_scripted_events_lookup
+-- lookup table for room_bkups and their associated scripted_eventss.
 
-DROP TABLE IF EXISTS ff.room_scripted_events_lookup CASCADE;
+DROP TABLE IF EXISTS ff.room_bkup_scripted_events_lookup CASCADE;
 
-CREATE TABLE ff.room_scripted_events_lookup
+CREATE TABLE ff.room_bkup_scripted_events_lookup
 (
-  room_id smallint NOT NULL,
+  room_bkup_id smallint NOT NULL,
   key character varying(20) NOT NULL,
   value character varying(50) NOT NULL,
-  CONSTRAINT room_scripted_events_lookup_room_id_key_pk PRIMARY KEY (room_id, key),
-  CONSTRAINT room_scripted_events_lookup_key_fk FOREIGN KEY (key)
+  CONSTRAINT room_bkup_scripted_events_lookup_room_bkup_id_key_pk PRIMARY KEY (room_bkup_id, key),
+  CONSTRAINT room_bkup_scripted_events_lookup_key_fk FOREIGN KEY (key)
     REFERENCES ff.event (code) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT room_scripted_events_lookup_value_fk FOREIGN KEY (value)
+  CONSTRAINT room_bkup_scripted_events_lookup_value_fk FOREIGN KEY (value)
     REFERENCES ff.script_bundle (name) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
