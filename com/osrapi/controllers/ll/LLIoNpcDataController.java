@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.osrapi.models.ll.LLIoNpcDataEntity;
 import com.osrapi.models.ll.LLGenderEntity;
+import com.osrapi.models.ll.LLIoItemDataEntity;
 
 import com.osrapi.repositories.ll.LLIoNpcDataRepository;
 
@@ -123,7 +124,84 @@ public class LLIoNpcDataController {
     @RequestMapping(method = RequestMethod.POST)
     public List<Resource<LLIoNpcDataEntity>> save(
             @RequestBody final LLIoNpcDataEntity entity) {
-            if (entity.getGender() != null
+        if (entity.getInventoryItems() != null
+                && !entity.getInventoryItems().isEmpty()) {
+            for (int i = entity.getInventoryItems().size() - 1; i >= 0; i--) {
+                LLIoItemDataEntity inventoryItems = null;
+                List<Resource<LLIoItemDataEntity>> list = null;
+                try {
+                    Method method = null;
+          try {
+            method = LLIoItemDataController.class.getDeclaredMethod(
+                "getByName", new Class[] { String.class });
+          } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    }
+                    Field field = null;
+          try {
+            field = LLIoItemDataEntity.class
+                .getDeclaredField("name");
+          } catch (NoSuchFieldException e) {
+                        e.printStackTrace();
+                    }
+                    if (method != null
+                            && field != null) {
+                        field.setAccessible(true);
+                        if (field.get(entity.getInventoryItems().get(i)) != null) {
+                            list = (List<Resource<LLIoItemDataEntity>>) method
+                                    .invoke(
+                                            LLIoItemDataController.getInstance(),
+                                            (String) field.get(entity.getInventoryItems().get(i)));
+                        }
+                    }
+                    if (list == null) {
+            try {
+              method = LLIoItemDataController.class.getDeclaredMethod(
+                  "getByCode", new Class[] { String.class });
+            } catch (NoSuchMethodException e) {
+              e.printStackTrace();
+            }
+            try {
+              field = LLIoItemDataEntity.class.getDeclaredField(
+                  "code");
+            } catch (NoSuchFieldException e) {
+              e.printStackTrace();
+            }
+                        if (method != null
+                                && field != null) {
+                            field.setAccessible(true);
+                            if (field.get(entity.getInventoryItems().get(i)) != null) {
+                                list = (List<Resource<LLIoItemDataEntity>>) method
+                                        .invoke(
+                                                LLIoItemDataController
+                                                        .getInstance(),
+                                                (String) field
+                                                        .get(entity.getInventoryItems().get(i)));
+                            }
+                        }
+                    }
+                    method = null;
+                    field = null;
+                } catch (SecurityException | IllegalArgumentException
+                        | IllegalAccessException
+                        | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                if (list != null
+                        && !list.isEmpty()) {
+                    inventoryItems = list.get(0).getContent();
+                }
+                if (inventoryItems == null) {
+                    inventoryItems = (LLIoItemDataEntity) ((Resource) LLIoItemDataController
+                            .getInstance()
+                            .save(entity.getInventoryItems().get(i)).get(0)).getContent();
+                }
+                entity.getInventoryItems().set(i, inventoryItems);
+                list = null;
+            }
+        }
+
+        if (entity.getGender() != null
         && entity.getGender().getId() == null) {
       setGenderIdFromRepository(entity);
         }
@@ -223,7 +301,84 @@ public class LLIoNpcDataController {
         if (entity.getId() == null) {
             setIdFromRepository(entity);
         }
-            if (entity.getGender() != null
+        if (entity.getInventoryItems() != null
+                && !entity.getInventoryItems().isEmpty()) {
+            for (int i = entity.getInventoryItems().size() - 1; i >= 0; i--) {
+                LLIoItemDataEntity inventoryItems = null;
+                List<Resource<LLIoItemDataEntity>> list = null;
+                try {
+                    Method method = null;
+          try {
+            method = LLIoItemDataController.class.getDeclaredMethod(
+                "getByName", new Class[] { String.class });
+          } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    }
+                    Field field = null;
+          try {
+            field = LLIoItemDataEntity.class
+                .getDeclaredField("name");
+          } catch (NoSuchFieldException e) {
+                        e.printStackTrace();
+                    }
+                    if (method != null
+                            && field != null) {
+                        field.setAccessible(true);
+                        if (field.get(entity.getInventoryItems().get(i)) != null) {
+                            list = (List<Resource<LLIoItemDataEntity>>) method
+                                    .invoke(
+                                            LLIoItemDataController.getInstance(),
+                                            (String) field.get(entity.getInventoryItems().get(i)));
+                        }
+                    }
+                    if (list == null) {
+            try {
+              method = LLIoItemDataController.class.getDeclaredMethod(
+                  "getByCode", new Class[] { String.class });
+            } catch (NoSuchMethodException e) {
+              e.printStackTrace();
+            }
+            try {
+              field = LLIoItemDataEntity.class.getDeclaredField(
+                  "code");
+            } catch (NoSuchFieldException e) {
+              e.printStackTrace();
+            }
+                        if (method != null
+                                && field != null) {
+                            field.setAccessible(true);
+                            if (field.get(entity.getInventoryItems().get(i)) != null) {
+                                list = (List<Resource<LLIoItemDataEntity>>) method
+                                        .invoke(
+                                                LLIoItemDataController
+                                                        .getInstance(),
+                                                (String) field
+                                                        .get(entity.getInventoryItems().get(i)));
+                            }
+                        }
+                    }
+                    method = null;
+                    field = null;
+                } catch (SecurityException | IllegalArgumentException
+                        | IllegalAccessException
+                        | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                if (list != null
+                        && !list.isEmpty()) {
+                    inventoryItems = list.get(0).getContent();
+                }
+                if (inventoryItems == null) {
+                    inventoryItems = (LLIoItemDataEntity) ((Resource) LLIoItemDataController
+                            .getInstance()
+                            .save(entity.getInventoryItems().get(i)).get(0)).getContent();
+                }
+                entity.getInventoryItems().set(i, inventoryItems);
+                list = null;
+            }
+        }
+
+        if (entity.getGender() != null
         && entity.getGender().getId() == null) {
       setGenderIdFromRepository(entity);
         }

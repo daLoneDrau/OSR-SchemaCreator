@@ -132,6 +132,23 @@ CREATE TABLE ll.equipment_item_modifier
   CONSTRAINT equipment_item_modifier_code_un UNIQUE (code)
 );
 
+-- Table: ll.equipment_slot
+-- TODO add table description
+
+DROP TABLE IF EXISTS ll.equipment_slot CASCADE;
+
+CREATE SEQUENCE ll.equipment_slot_id_seq MINVALUE 0;
+
+CREATE TABLE ll.equipment_slot
+(
+  equipment_slot_id smallint DEFAULT nextval('ll.equipment_slot_id_seq') NOT NULL,
+  code character varying(40) NOT NULL,
+  value smallint NOT NULL,
+  CONSTRAINT equipment_slot_equipment_slot_id_pk PRIMARY KEY (equipment_slot_id),
+  CONSTRAINT equipment_slot_code_un UNIQUE (code),
+  CONSTRAINT equipment_slot_value_un UNIQUE (value)
+);
+
 -- Table: ll.event
 -- TODO add table description
 
@@ -389,6 +406,24 @@ CREATE TABLE ll.io_npc_data
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
+-- Table: ll.io_npc_data_inventory_items_lookup
+-- lookup table for io_npc_datas and their associated inventory_itemss.
+
+DROP TABLE IF EXISTS ll.io_npc_data_inventory_items_lookup CASCADE;
+
+CREATE TABLE ll.io_npc_data_inventory_items_lookup
+(
+  io_npc_data_id smallint NOT NULL,
+  io_item_data_id smallint NOT NULL,
+  CONSTRAINT io_npc_data_inventory_items_lookup_io_npc_data_id_io_item_data_id_pk PRIMARY KEY (io_npc_data_id, io_item_data_id),
+  CONSTRAINT io_npc_data_inventory_items_lookup_io_npc_data_id_fk FOREIGN KEY (io_npc_data_id)
+    REFERENCES ll.io_npc_data (io_npc_data_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_inventory_items_lookup_io_item_data_id_fk FOREIGN KEY (io_item_data_id)
+    REFERENCES ll.io_item_data (io_item_data_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
 -- Table: ll.io_npc_data_attributes_lookup
 -- lookup table for io_npc_datas and their associated attributess.
 
@@ -402,6 +437,25 @@ CREATE TABLE ll.io_npc_data_attributes_lookup
   CONSTRAINT io_npc_data_attributes_lookup_io_npc_data_id_key_pk PRIMARY KEY (io_npc_data_id, key),
   CONSTRAINT io_npc_data_attributes_lookup_key_fk FOREIGN KEY (key)
     REFERENCES ll.attribute (code) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+-- Table: ll.io_npc_data_equipped_items_lookup
+-- lookup table for io_npc_datas and their associated equipped_itemss.
+
+DROP TABLE IF EXISTS ll.io_npc_data_equipped_items_lookup CASCADE;
+
+CREATE TABLE ll.io_npc_data_equipped_items_lookup
+(
+  io_npc_data_id smallint NOT NULL,
+  key character varying(40) NOT NULL,
+  value character varying(40) NOT NULL,
+  CONSTRAINT io_npc_data_equipped_items_lookup_io_npc_data_id_key_pk PRIMARY KEY (io_npc_data_id, key),
+  CONSTRAINT io_npc_data_equipped_items_lookup_key_fk FOREIGN KEY (key)
+    REFERENCES ll.equipment_slot (code) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_equipped_items_lookup_value_fk FOREIGN KEY (value)
+    REFERENCES ll.io_item_data (name) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 

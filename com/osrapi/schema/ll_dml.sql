@@ -118,6 +118,20 @@ INSERT INTO ll.equipment_item_modifier(code, percent, special, value) VALUES(
   'MINUS_6', false, 0, -6.0);
 
 
+-- ADD EQUIPMENT_SLOTS
+INSERT INTO ll.equipment_slot(code, value) VALUES(
+  'EQUIP_SLOT_TORSO', 5), (
+  'EQUIP_SLOT_HELMET', 6), (
+  'EQUIP_SLOT_LEGGINGS', 7), (
+  'EQUIP_SLOT_GLOVES', 8), (
+  'EQUIP_SLOT_BOOTS', 9), (
+  'EQUIP_SLOT_RING_LEFT', 0), (
+  'EQUIP_SLOT_RING_RIGHT', 1), (
+  'EQUIP_SLOT_SHIELD', 3), (
+  'EQUIP_SLOT_TORCH', 4), (
+  'EQUIP_SLOT_WEAPON', 2);
+
+
 -- ADD EVENTS
 INSERT INTO ll.event(code) VALUES(
 
@@ -417,7 +431,10 @@ INSERT INTO ll.script_bundle(name) VALUES(
 
 -- ADD IO_NPC_DATAS
 INSERT INTO ll.io_npc_data(behavior, behavior_param, climb_count, collid_state, collid_time, critical, cut, cuts, damages, gender, internal_script, level, life, mana, maxlife, maxmana, module, name, npc_flags, title, weapon, xpvalue) VALUES(
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ll.gender WHERE name='Male'), NULL, 1, 0.0, 0.0, 0.0, 0.0, 'AC1 - The Shady Dragon Inn', 'Abel Artone', 0, NULL, NULL, 0), (
   0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ll.gender WHERE name='Male'), NULL, 1, 0.0, 0.0, 0.0, 0.0, 'AC1 - The Shady Dragon Inn', 'Abel Artone', 0, NULL, NULL, 0);
+
+-- ADD io_npc_data's RELATED inventory_itemss
 
 -- ADD io_npc_data's RELATED attributess
 INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
@@ -444,6 +461,32 @@ INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES 
   (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
   'CHA',
   '12');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'STR',
+  '10');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'INT',
+  '5');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'WIS',
+  '15');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'CON',
+  '9');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'DEX',
+  '8');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'CHA',
+  '12');
+
+-- ADD io_npc_data's RELATED equipped_itemss
 
 -- ADD io_npc_data's RELATED scripted_eventss
 

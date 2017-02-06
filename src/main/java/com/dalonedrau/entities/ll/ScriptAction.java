@@ -8,10 +8,10 @@ import com.dalonedrau.schemacreator.Annotations.VarChar;
 
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class ScriptAction {
-    @Unique
-    @VarChar(length = 40)
-    private String name;
-    @ForeignKey(clazz = ScriptActionType.class, fieldName = "code")
-    @VarChar(length = 40)
-    private String type;
+	@Unique
+	@VarChar(length = 40)
+	private String	name;
+	@ForeignKey(clazz = ScriptActionType.class, fieldName = "code")
+	@VarChar(length = 40)
+	private String	type;
 }

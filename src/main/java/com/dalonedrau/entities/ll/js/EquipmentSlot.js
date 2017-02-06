@@ -1,0 +1,31 @@
+[{
+	"code": "EQUIP_SLOT_TORSO",
+	"value": 5
+}, {
+	"code": "EQUIP_SLOT_HELMET",
+	"value": 6
+}, {
+	"code": "EQUIP_SLOT_LEGGINGS",
+	"value": 7
+}, {
+	"code": "EQUIP_SLOT_GLOVES",
+	"value": 8
+}, {
+	"code": "EQUIP_SLOT_BOOTS",
+	"value": 9
+}, {
+	"code": "EQUIP_SLOT_RING_LEFT",
+	"value": 0
+}, {
+	"code": "EQUIP_SLOT_RING_RIGHT",
+	"value": 1
+}, {
+	"code": "EQUIP_SLOT_SHIELD",
+	"value": 3
+}, {
+	"code": "EQUIP_SLOT_TORCH",
+	"value": 4
+}, {
+	"code": "EQUIP_SLOT_WEAPON",
+	"value": 2
+}]

@@ -1,6 +1,5 @@
 package com.dalonedrau.entities.ff;
 
-import java.util.List;
 import java.util.Map;
 
 import com.dalonedrau.schemacreator.Annotations.MapForeignKey;

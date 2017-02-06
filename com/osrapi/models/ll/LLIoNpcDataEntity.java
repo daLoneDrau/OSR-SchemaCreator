@@ -515,6 +515,35 @@ public final class LLIoNpcDataEntity {
         behavior = val;
     }
 
+    /**
+     * the list of {@link LLIoItemDataEntity}s associated with this
+     * {@link LLIoNpcDataEntity}.
+     */
+    @OneToMany(targetEntity = LLIoItemDataEntity.class,
+      fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
+    @JoinTable(name = "io_npc_data_inventory_items_lookup", schema = "ll",
+  joinColumns = @JoinColumn(name = "io_npc_data_id",
+  referencedColumnName = "io_npc_data_id"),
+  inverseJoinColumns = @JoinColumn(name = "io_item_data_id",
+  referencedColumnName = "io_item_data_id"))
+    @JsonProperty("inventory_items")
+    private List<LLIoItemDataEntity>    inventoryItems;
+    /**
+     * Gets the list of inventoryItemss.
+     * @return {@link List}<{@link LLIoItemDataEntity}>
+     */
+    public List<LLIoItemDataEntity> getInventoryItems() {
+        return inventoryItems;
+    }
+    /**
+     * Sets the list of inventoryItemss.
+     * @param val the new value
+     */
+    public void setInventoryItems(final List<LLIoItemDataEntity> val) {
+        inventoryItems = val;
+    }
+
     @ElementCollection
     @CollectionTable(name = "io_npc_data_scripted_events_lookup",
   schema = "ll", joinColumns = @JoinColumn(name = "io_npc_data_id"))
@@ -535,6 +564,28 @@ public final class LLIoNpcDataEntity {
      */
     public void setScriptedEvents(Map<String, String> val) {
         scriptedEvents = val;
+    }
+
+    @ElementCollection
+    @CollectionTable(name = "io_npc_data_equipped_items_lookup",
+  schema = "ll", joinColumns = @JoinColumn(name = "io_npc_data_id"))
+    @MapKeyColumn(name = "key")
+    @Column(name = "value")
+    @JsonProperty("equipped_items")
+    private Map<String, String> equippedItems;
+    /**
+     * Gets the map of equippedItemss.
+     * @return {@link Map}<{@link String}, {@link String}>
+     */
+    public Map<String, String> getEquippedItems() {
+        return equippedItems;
+    }
+    /**
+     * Sets the mapping for equippedItemss.
+     * @param val the new value
+     */
+    public void setEquippedItems(Map<String, String> val) {
+        equippedItems = val;
     }
 
     @ElementCollection

@@ -276,6 +276,58 @@
 	}],
 	"weight": 10
 }, {
+	"damages": {
+		"code": "ONE_D8"
+	},
+	"weight": 3.0,
+	"stack_size": 5,
+	"price": 40.0,
+	"max_owned": 99,
+	"left_ring": false,
+	"name": "Longbow",
+	"internal_script": "Longbow",
+	"description": "A bow that is roughly the height of the user allowing the archer a long draw.",
+	"types": [{
+		"code": "OBJECT_TYPE_BOW"
+	}],
+	"groups": [{
+		"name": "PIERCING_WEAPON"
+	}, {
+		"name": "PROJECTILE_WEAPON"
+	}]
+}, {
+	"damages": {
+		"code": "ONE_D8"
+	},
+	"weight": 4.0,
+	"price": 10.0,
+	"left_ring": false,
+	"name": "Arming Sword",
+	"internal_script": "Longsword",
+	"description": "A straight, double-edged weapon with a single-handed cruciform hilt and a blade 2 1/2' long. This weapon is not considered a suitable main weapon for troops, but rather a sidearm.",
+	"types": [{
+		"code": "OBJECT_TYPE_1H"
+	}],
+	"groups": [{
+		"name": "EDGED_WEAPON"
+	}]
+}, {
+	"damages": {
+		"code": "ONE_D6"
+	},
+	"weight": 3.0,
+	"price": 5.0,
+	"left_ring": false,
+	"name": "Mace",
+	"internal_script": "Mace",
+	"description": "A type of club that uses a heavy head on the end of a handle to deliver powerful blows.",
+	"types": [{
+		"code": "OBJECT_TYPE_1H"
+	}],
+	"groups": [{
+		"name": "BLUNT_WEAPON"
+	}]
+}, {
 	"description": "An armour made from horizontal overlapping rows or bands of solid armour plates.",
 	"groups": [{
 		"name": "HEAVY_ARMOUR"
