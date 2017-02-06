@@ -14,6 +14,7 @@ import com.dalonedrow.pooled.PooledException;
 public final class DDLUniqueConstraint extends DDLConstraint {
     /** the list of fields in the unique constraint. */
     private final String[] fields;
+
     /**
      * Creates a new instance of {@link DDLUniqueConstraint}.
      * @param list the list of fields in the unique constraint
@@ -21,6 +22,7 @@ public final class DDLUniqueConstraint extends DDLConstraint {
     public DDLUniqueConstraint(final String... list) {
         fields = list;
     }
+
     /*
      * (non-Javadoc)
      * @see
@@ -31,7 +33,7 @@ public final class DDLUniqueConstraint extends DDLConstraint {
     public void write(final PrintWriter writer, final String schema,
             final String table, final String seperator) {
         try {
-            StringBuilder fieldNames = new StringBuilder();
+            final StringBuilder fieldNames = new StringBuilder();
             StringBuilder fieldList = new StringBuilder();
             for (int i = 0, len = fields.length; i < len; i++) {
                 fieldNames.append(

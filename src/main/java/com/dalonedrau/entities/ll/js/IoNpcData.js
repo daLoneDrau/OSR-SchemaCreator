@@ -9,7 +9,7 @@
 		"HP": 7
 	},
 	"bags": 1,
-	"equippedItems": {
+	"equipped_items": {
 		"EQUIP_SLOT_TORSO": "Hauberk",
 		"EQUIP_SLOT_SHIELD": "Shield"
 	},
@@ -24,10 +24,10 @@
 	}, {
 		"name": "LAWFUL"
 	}],
-	"inventoryItems": [{
+	"inventory_items": [{
 		"name": "Dagger"
 	}, {
-		"name": "Arming Sword"
+		"name": "Broadsword"
 	}],
 	"level": 1,
 	"module": "AC1 - The Shady Dragon Inn",
@@ -44,7 +44,7 @@
 		"HP": 14
 	},
 	"bags": 1,
-	"equippedItems": {
+	"equipped_items": {
 		"EQUIP_SLOT_TORSO": "Hauberk"
 	},
 	"gender": {
@@ -58,7 +58,7 @@
 	}, {
 		"name": "NEUTRAL"
 	}],
-	"inventoryItems": [{
+	"inventory_items": [{
 		"name": "Dagger"
 	}, {
 		"name": "Arming Sword"

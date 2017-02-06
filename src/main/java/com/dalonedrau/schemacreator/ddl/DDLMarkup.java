@@ -24,13 +24,15 @@ public final class DDLMarkup {
     private final List<DDLMap> maps;
     /** the table name. */
     private String table;
+
     /** Creates a new instance of {@link DDLMarkup}. */
     public DDLMarkup() {
-        constraints = new ArrayList<DDLConstraint>();
-        fields = new ArrayList<DDLField>();
-        lookups = new ArrayList<DDLLookup>();
-        maps = new ArrayList<DDLMap>();
+        constraints = new ArrayList<>();
+        fields = new ArrayList<>();
+        lookups = new ArrayList<>();
+        maps = new ArrayList<>();
     }
+
     /**
      * Adds a constraint.
      * @param constraint the constraint
@@ -38,6 +40,7 @@ public final class DDLMarkup {
     public void addConstraint(final DDLConstraint constraint) {
         constraints.add(constraint);
     }
+
     /**
      * Adds a list of constraints.
      * @param newConstraints the constraints
@@ -55,9 +58,9 @@ public final class DDLMarkup {
                     DDLConstraint oldC = constraints.get(i);
                     if (newC.getClass().equals(oldC.getClass())) {
                         if (newC instanceof DDLForeignKeyConstraint) {
-                            String nfn = ((DDLForeignKeyConstraint) newC)
+                            final String nfn = ((DDLForeignKeyConstraint) newC)
                                     .getFieldName();
-                            String ofn = ((DDLForeignKeyConstraint) oldC)
+                            final String ofn = ((DDLForeignKeyConstraint) oldC)
                                     .getFieldName();
                             if (nfn.equalsIgnoreCase(ofn)) {
                                 found = true;
@@ -74,6 +77,7 @@ public final class DDLMarkup {
             }
         }
     }
+
     /**
      * Adds a field.
      * @param field the field
@@ -82,6 +86,7 @@ public final class DDLMarkup {
     public void addField(final DDLField field) throws Exception {
         fields.add(field);
     }
+
     /**
      * Adds a field.
      * @param field the field
@@ -90,6 +95,7 @@ public final class DDLMarkup {
     public void addField(final Field field) throws Exception {
         fields.add(new DDLField(field));
     }
+
     /**
      * Adds a list of fields.
      * @param newFields the fields
@@ -125,6 +131,7 @@ public final class DDLMarkup {
             }
         }
     }
+
     /**
      * Adds a ddl lookup.
      * @param ddlLookup the ddl lookup
@@ -132,6 +139,7 @@ public final class DDLMarkup {
     public void addLookup(final DDLLookup ddlLookup) {
         lookups.add(ddlLookup);
     }
+
     public void addLookups(final List<DDLLookup> lookups2) {
         if (lookups.isEmpty()) {
             lookups.addAll(lookups2);
@@ -156,6 +164,7 @@ public final class DDLMarkup {
             }
         }
     }
+
     /**
      * Adds a map.
      * @param map the map
@@ -164,6 +173,7 @@ public final class DDLMarkup {
     public void addMap(final DDLMap map) throws Exception {
         maps.add(map);
     }
+
     /**
      * Gets the value for the constraints.
      * @return {@link List<Constraint>}
@@ -171,6 +181,7 @@ public final class DDLMarkup {
     public List<DDLConstraint> getConstraints() {
         return constraints;
     }
+
     /**
      * Gets the value for the fields.
      * @return {@link List<DDLField>}
@@ -178,6 +189,7 @@ public final class DDLMarkup {
     public List<DDLField> getFields() {
         return fields;
     }
+
     /**
      * Gets the value for the lookups.
      * @return {@link List<DDLLookup>}
@@ -185,6 +197,7 @@ public final class DDLMarkup {
     public List<DDLLookup> getLookups() {
         return lookups;
     }
+
     /**
      * Gets the table name.
      * @return {@link String}
@@ -192,6 +205,7 @@ public final class DDLMarkup {
     public String getTable() {
         return table;
     }
+
     /**
      * Sets the table name.
      * @param val the new value to set
@@ -199,6 +213,7 @@ public final class DDLMarkup {
     public void setTable(final String val) {
         table = val;
     }
+
     /**
      * Writes the ddl markup.
      * @param writer the {@link PrintWriter} instance

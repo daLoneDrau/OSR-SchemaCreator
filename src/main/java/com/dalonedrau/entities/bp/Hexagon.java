@@ -18,6 +18,7 @@ public class Hexagon {
     private float width;
     /** cube coordinates. */
     private int x, y, z;
+
     /**
      * Creates a new instance of {@link Hexagon}.
      * @param isFlat flag indicating whether the hexagon is flat on top or

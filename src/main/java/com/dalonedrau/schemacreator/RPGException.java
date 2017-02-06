@@ -12,6 +12,7 @@ public final class RPGException extends Exception {
      *
      */
     private static final long serialVersionUID = 1L;
+
     /**
      * Gets the formatted message string.
      * @param message the error message
@@ -20,8 +21,8 @@ public final class RPGException extends Exception {
      */
     private static String getMessageString(final ErrorMessage message,
             final String devMsg) {
-        PooledStringBuilder sb =
-                StringBuilderPool.getInstance().getStringBuilder();
+        final PooledStringBuilder sb = StringBuilderPool.getInstance()
+                .getStringBuilder();
         try {
             sb.append("ErrorMessage [");
             sb.append(message);
@@ -30,18 +31,20 @@ public final class RPGException extends Exception {
             sb.append(", developer_message = ");
             sb.append(devMsg);
             sb.append("]");
-        } catch (PooledException e) {
+        } catch (final PooledException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb.returnToPool();
         return s;
     }
+
     /** the developer message. */
     private final String developerMessage;
     /** the error message. */
     private final ErrorMessage errorMessage;
+
     /**
      * Creates a new instance of {@link RPGException}.
      * @param message the {@link ErrorMessage}
@@ -55,6 +58,7 @@ public final class RPGException extends Exception {
         errorMessage = message;
         developerMessage = ex.getMessage();
     }
+
     /**
      * Creates a new instance of {@link RPGException}.
      * @param message the {@link ErrorMessage}
@@ -65,6 +69,7 @@ public final class RPGException extends Exception {
         errorMessage = message;
         developerMessage = devMsg;
     }
+
     /**
      * Creates a new instance of {@link RPGException}.
      * @param message the {@link ErrorMessage}
@@ -76,6 +81,7 @@ public final class RPGException extends Exception {
         errorMessage = message;
         developerMessage = ex.getMessage();
     }
+
     /**
      * Gets the message from the developer.
      * @return {@link String}
@@ -83,6 +89,7 @@ public final class RPGException extends Exception {
     public String getDeveloperMessage() {
         return developerMessage;
     }
+
     /**
      * Gets the value for the message.
      * @return {@link ErrorMessage}

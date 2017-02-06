@@ -18,6 +18,7 @@ public final class EntityLookupField {
     private final String lookupEntityClazz;
     /** the field's primitive class. */
     private final String primitiveClazz;
+
     /**
      * Creates a new instance of {@link EntityLookupField}.
      * @param fn the field name
@@ -29,6 +30,7 @@ public final class EntityLookupField {
         lookupEntityClazz = lc;
         primitiveClazz = pc;
     }
+
     /**
      * Gets the value for the fieldName.
      * @return {@link String}
@@ -36,6 +38,7 @@ public final class EntityLookupField {
     public String getFieldName() {
         return fieldName;
     }
+
     /**
      * Gets the value for the lookupClazz.
      * @return {@link String}
@@ -43,6 +46,7 @@ public final class EntityLookupField {
     public String getLookupClazz() {
         return lookupEntityClazz;
     }
+
     /**
      * Writes the instance to file.
      * @param writer the {@link }

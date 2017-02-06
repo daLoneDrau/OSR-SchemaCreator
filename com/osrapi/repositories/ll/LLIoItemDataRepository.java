@@ -88,6 +88,12 @@ extends CrudRepository<LLIoItemDataEntity, Long> {
 	 */
 	List<LLIoItemDataEntity> findByStealValue(Long stealValue);
 	/**
+	 * Retrieves a list of io item datas by their title.
+	 * @param title the title
+	 * @return {@link List}<{@link LLIoItemDataEntity}>
+	 */
+	List<LLIoItemDataEntity> findByTitle(String title);
+	/**
 	 * Retrieves a list of io item datas by their weight.
 	 * @param weight the weight
 	 * @return {@link List}<{@link LLIoItemDataEntity}>

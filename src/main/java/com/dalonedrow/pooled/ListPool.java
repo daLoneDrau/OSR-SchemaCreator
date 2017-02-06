@@ -14,6 +14,7 @@ public class ListPool {
     private static final int INITIAL_CAPACITY = 5;
     /** the one and only instance of the <code>StringListPool</code> class. */
     private static ListPool instance;
+
     /**
      * Gives access to the singleton instance of {@link ListPool}.
      * @return {@link ListPool}
@@ -24,24 +25,27 @@ public class ListPool {
         }
         return ListPool.instance;
     }
+
     /** the flags for each pool item indicating whether it is locked or not. */
     private final List<Boolean> locked;
     /** the pool of {@link PooledStringBuilder}s. */
     private final List<PooledList> pool;
+
     /**
      * Creates the pool of {@link PooledList}s.
      * @param initialCapacity the initial pool capacity
      */
     private ListPool(final int initialCapacity) {
         // create an initial list
-        pool = new ArrayList<PooledList>(initialCapacity);
-        locked = new ArrayList<Boolean>(initialCapacity);
+        pool = new ArrayList<>(initialCapacity);
+        locked = new ArrayList<>(initialCapacity);
         // populate the list and set all items to unlocked
         for (int i = 0; i < initialCapacity; i++) {
             pool.add(new PooledList(i));
             locked.add(false);
         }
     }
+
     /**
      * Retrieves a {@link PooledList} from the pool and locks it for use.
      * @return {@link PooledList}
@@ -66,6 +70,7 @@ public class ListPool {
         // return the item at the free index
         return pool.get(freeIndex);
     }
+
     /**
      * Determines if an item is locked.
      * @param item the {@link PooledList} instance
@@ -75,6 +80,7 @@ public class ListPool {
     public boolean isItemLocked(final PooledList item) {
         return locked.get(item.getPoolIndex());
     }
+
     /**
      * Returns an item to the pool.
      * @param list the {@link PooledList} being returned
@@ -85,6 +91,7 @@ public class ListPool {
         // remove the lock
         locked.set(list.getPoolIndex(), false);
     }
+
     /**
      * Unlocks the assets, readying it for use again.
      * @param item the {@link PooledStringBuilder} asset

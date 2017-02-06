@@ -44,7 +44,7 @@ public class IoPcData {
     @VarChar(length = 40)
     private List<String> keyring;
     /** the {@link IoPcData}'s level. */
-    private int level = 0;
+    private final int level = 0;
     /** the list of groups the item belongs to. */
     private List<LifeEvent> lifeEvents;
     /** the {@link IoPcData}'s name. */

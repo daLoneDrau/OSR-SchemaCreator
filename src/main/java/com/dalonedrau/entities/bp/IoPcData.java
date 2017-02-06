@@ -24,10 +24,8 @@ public final class IoPcData {
      * by equipment slot.
      */
     @MapForeignKey(keyColumnType = "character varying(40)", keyField = "name",
-            keyTargetClass = "EquipmentSlot",
-            valueColumnType = "smallint",
-            valueTargetClass = "IoItemData",
-            valueField = "io_item_data_id")
+            keyTargetClass = "EquipmentSlot", valueColumnType = "smallint",
+            valueTargetClass = "IoItemData", valueField = "io_item_data_id")
     private Map<String, Integer> equippedItems;
     /** the {@link IoPcData}'s gender. */
     private Gender gender;
@@ -39,7 +37,7 @@ public final class IoPcData {
     @VarChar(length = 40)
     private List<String> keyring;
     /** the {@link IoPcData}'s level. */
-    private int level = 0;
+    private final int level = 0;
     /** the {@link IoPcData}'s name. */
     @VarChar(length = 40)
     private String name;

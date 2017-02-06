@@ -14,6 +14,7 @@ public final class PooledStringBuilder implements PoolableObject {
     private final int poolIndex;
     /** the internal {@link StringBuffer} instance. */
     private final StringBuffer stringBuilder = new StringBuffer(capacity);
+
     /**
      * Creates a new instance of {@link PooledStringBuilder}.
      * @param index the object's index
@@ -21,6 +22,7 @@ public final class PooledStringBuilder implements PoolableObject {
     public PooledStringBuilder(final int index) {
         poolIndex = index;
     }
+
     /**
      * Appends the string representation of the {@code char} argument to this
      * sequence.
@@ -42,6 +44,7 @@ public final class PooledStringBuilder implements PoolableObject {
             throw new PooledException("Item not locked for use!");
         }
     }
+
     /**
      * Appends the string representation of the {@code char} array argument to
      * this sequence.
@@ -64,6 +67,7 @@ public final class PooledStringBuilder implements PoolableObject {
             throw new PooledException("Item not locked for use!");
         }
     }
+
     /**
      * Appends the string representation of the {@code float} argument to this
      * sequence.
@@ -82,6 +86,7 @@ public final class PooledStringBuilder implements PoolableObject {
             throw new PooledException("Item not locked for use!");
         }
     }
+
     /**
      * Appends the string representation of the {@code int} argument to this
      * sequence.
@@ -100,6 +105,7 @@ public final class PooledStringBuilder implements PoolableObject {
             throw new PooledException("Item not locked for use!");
         }
     }
+
     /**
      * Appends the string representation of the {@code long} argument to this
      * sequence.
@@ -118,6 +124,7 @@ public final class PooledStringBuilder implements PoolableObject {
             throw new PooledException("Item not locked for use!");
         }
     }
+
     /**
      * Appends the string representation of the {@code Object} argument.
      * <p>
@@ -139,6 +146,7 @@ public final class PooledStringBuilder implements PoolableObject {
             throw new PooledException("Item not locked for use!");
         }
     }
+
     /**
      * Appends the specified string to this character sequence.
      * <p>
@@ -163,6 +171,7 @@ public final class PooledStringBuilder implements PoolableObject {
             throw new PooledException("Item not locked for use!");
         }
     }
+
     /**
      * Gets the value for the object's index.
      * @return {@link int}
@@ -170,6 +179,7 @@ public final class PooledStringBuilder implements PoolableObject {
     public int getPoolIndex() {
         return poolIndex;
     }
+
     /*
      * (non-Javadoc)
      * @see com.dalonedrow.pooled.PoolableObject#init()
@@ -178,6 +188,7 @@ public final class PooledStringBuilder implements PoolableObject {
     public void init() {
         // TODO Auto-generated method stub
     }
+
     /**
      * Returns the length (character count). *
      * @return the length of the sequence of characters currently represented by
@@ -186,6 +197,7 @@ public final class PooledStringBuilder implements PoolableObject {
     public int length() {
         return stringBuilder.length();
     }
+
     /*
      * (non-Javadoc)
      * @see com.dalonedrow.pooled.PoolableObject#returnToPool()
@@ -197,6 +209,7 @@ public final class PooledStringBuilder implements PoolableObject {
             StringBuilderPool.getInstance().unlockItem(this);
         }
     }
+
     /**
      * Sets the length of the character sequence. The sequence is changed to a
      * new character sequence whose length is specified by the argument. For
@@ -221,6 +234,7 @@ public final class PooledStringBuilder implements PoolableObject {
     public void setLength(final int newLength) {
         stringBuilder.setLength(newLength);
     }
+
     /**
      * Returns a string representing the data in this sequence. A new
      * {@code String} object is allocated and initialized to contain the

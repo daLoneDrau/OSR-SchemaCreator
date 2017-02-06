@@ -16,6 +16,7 @@ public final class PooledList implements PoolableObject {
     private List list;
     /** the pooled object's index. */
     private final int poolIndex;
+
     /**
      * Creates a new instance of {@link PooledList}.
      * @param index the object's index
@@ -24,6 +25,7 @@ public final class PooledList implements PoolableObject {
         super();
         poolIndex = index;
     }
+
     /**
      * Inserts the specified element at the specified position in this list.
      * Shifts the element currently at that position (if any) and any subsequent
@@ -45,6 +47,7 @@ public final class PooledList implements PoolableObject {
             throw new PooledException("Item not locked for use!");
         }
     }
+
     /**
      * Appends the specified element to the end of this list.
      * @param <T> the list type parameter
@@ -64,6 +67,7 @@ public final class PooledList implements PoolableObject {
         }
         return added;
     }
+
     /**
      * Returns the element at the specified position in this list.
      * @param <T> the list type parameter
@@ -87,6 +91,7 @@ public final class PooledList implements PoolableObject {
         }
         return t;
     }
+
     /**
      * Gets the value for the object's index.
      * @return {@link int}
@@ -94,6 +99,7 @@ public final class PooledList implements PoolableObject {
     public int getPoolIndex() {
         return poolIndex;
     }
+
     /**
      * {@inheritDoc}
      */
@@ -102,6 +108,7 @@ public final class PooledList implements PoolableObject {
         // TODO Auto-generated method stub
 
     }
+
     /**
      * {@inheritDoc}
      */
@@ -114,6 +121,7 @@ public final class PooledList implements PoolableObject {
             ListPool.getInstance().unlockItem(this);
         }
     }
+
     /**
      * Returns the number of elements in this list. If this list contains more
      * than <tt>Integer.MAX_VALUE</tt> elements, returns

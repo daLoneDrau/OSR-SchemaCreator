@@ -19,6 +19,7 @@ import com.dalonedrow.pooled.PooledException;
 public class EntityWriter {
     /** the schema.getSchema() being written. */
     private final SchemaCreator schema;
+
     /**
      * Creates a new instance of {@link ControllerWriter}.
      * @param s the schema.getSchema() being written
@@ -26,6 +27,7 @@ public class EntityWriter {
     public EntityWriter(final SchemaCreator s) {
         schema = s;
     }
+
     /**
      * Writes an entity class to file.
      * @param clazz the entity {@link Class} being written
@@ -35,9 +37,9 @@ public class EntityWriter {
             throws Exception {
         TextLoader.getInstance().setLibraryFolder(
                 "com/dalonedrau/schemacreator");
-        String entityClassName =
-                SchemaUtilities.getInstance().getEntityClassName(clazz);
-        StringBuffer sb = new StringBuffer();
+        final String entityClassName = SchemaUtilities.getInstance()
+                .getEntityClassName(clazz);
+        final StringBuffer sb = new StringBuffer();
         sb.append(".\\");
         sb.append(schema.getPkgPath());
         sb.append("\\models\\");
@@ -45,24 +47,24 @@ public class EntityWriter {
         sb.append("\\");
         sb.append(entityClassName);
         sb.append(".java");
-        File file = new File(sb.toString());
+        final File file = new File(sb.toString());
         file.getParentFile().mkdirs();
-        PrintWriter writer = new PrintWriter(file, "UTF-8");
+        final PrintWriter writer = new PrintWriter(file, "UTF-8");
 
         // write header
         writeEntityClassHeader(writer, clazz);
         // write Fields
-        Field[] fields = clazz.getDeclaredFields();
+        final Field[] fields = clazz.getDeclaredFields();
         for (int i = 0, len = fields.length; i < len; i++) {
-            Field field = fields[i];
-            Type type = field.getGenericType();
+            final Field field = fields[i];
+            final Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {
                 if (((ParameterizedType) type).getRawType().getTypeName()
                         .equalsIgnoreCase("java.util.List")) {
-                    Type[] types =
-                            ((ParameterizedType) type).getActualTypeArguments();
-                    String typeClassName =
-                            types[0].getTypeName().substring(
+                    final Type[] types = ((ParameterizedType) type)
+                            .getActualTypeArguments();
+                    final String typeClassName = types[0].getTypeName()
+                            .substring(
                                     types[0].getTypeName().lastIndexOf('.')
                                             + 1);
                     if (schema.hasTable(typeClassName)) {
@@ -77,14 +79,14 @@ public class EntityWriter {
                         .equalsIgnoreCase("java.util.Map")
                         || ((ParameterizedType) type).getRawType().getTypeName()
                                 .equalsIgnoreCase("java.util.HashMap")) {
-                    Type[] types =
-                            ((ParameterizedType) type).getActualTypeArguments();
-                    String typeClassName0 =
-                            types[0].getTypeName().substring(
+                    final Type[] types = ((ParameterizedType) type)
+                            .getActualTypeArguments();
+                    final String typeClassName0 = types[0].getTypeName()
+                            .substring(
                                     types[0].getTypeName().lastIndexOf('.')
                                             + 1);
-                    String typeClassName1 =
-                            types[1].getTypeName().substring(
+                    final String typeClassName1 = types[1].getTypeName()
+                            .substring(
                                     types[1].getTypeName().lastIndexOf('.')
                                             + 1);
                     if (schema.hasTable(typeClassName0)
@@ -98,7 +100,7 @@ public class EntityWriter {
                     }
                 }
             } else {
-                String fieldClass = field.getType().getSimpleName();
+                final String fieldClass = field.getType().getSimpleName();
                 if (schema.hasTable(fieldClass)) {
                     if (field.getType().equals(clazz)) {
                         writeEntitySelfReferenceMember(writer, field.getName(),
@@ -106,11 +108,11 @@ public class EntityWriter {
                                 field.getAnnotation(CanBeNull.class) == null);
                     } else {
                         boolean oneToOne = false;
-                        Class<?> memberClass = field.getType();
-                        Field[] memberClassFields =
-                                memberClass.getDeclaredFields();
-                        for (int j =
-                                memberClassFields.length - 1; j >= 0; j--) {
+                        final Class<?> memberClass = field.getType();
+                        final Field[] memberClassFields = memberClass
+                                .getDeclaredFields();
+                        for (int j = memberClassFields.length - 1; j >= 0;
+                                j--) {
                             if (memberClassFields[j].getType().getName()
                                     .equals(clazz.getName())) {
                                 oneToOne = true;
@@ -158,7 +160,7 @@ public class EntityWriter {
                     try {
                         String section = TextLoader.getInstance().loadText(
                                 "entity_template.txt", "entity_to_string");
-                        StringBuffer sb1 = new StringBuffer();
+                        final StringBuffer sb1 = new StringBuffer();
                         if (type.toString().equalsIgnoreCase("boolean")) {
                             sb1.append("Boolean.toString(");
                             sb1.append(field.getName());
@@ -188,6 +190,7 @@ public class EntityWriter {
         writer.println("}");
         writer.close();
     }
+
     /**
      * Writes the header for all java entity classes.
      * @param writer the {@link PrintWriter} used to write the file
@@ -228,6 +231,7 @@ public class EntityWriter {
             System.exit(1);
         }
     }
+
     /**
      * Writes the definition of a class member that is referenced in a lookup
      * table.
@@ -242,8 +246,8 @@ public class EntityWriter {
         try {
             String section = TextLoader.getInstance().loadText(
                     "entity_template.txt", "entity_lookup_member");
-            String colName =
-                    SchemaUtilities.getInstance().getTableName(typeClassName);
+            String colName = SchemaUtilities.getInstance()
+                    .getTableName(typeClassName);
             if (colName.equalsIgnoreCase(SchemaUtilities.getInstance()
                     .getTableName(clazz.getSimpleName()))) {
                 StringBuffer sb = new StringBuffer();
@@ -284,6 +288,7 @@ public class EntityWriter {
             System.exit(1);
         }
     }
+
     /**
      * Writes a many-to-one member to an entity class.
      * @param writer the {@link PrintWriter} used to write the file
@@ -321,22 +326,21 @@ public class EntityWriter {
             System.exit(1);
         }
     }
+
     private void writeEntityMapLookupMember(final PrintWriter writer,
             final Class<?> clazz,
             final Type[] types, final String name) {
-        String typeClassName0 =
-                types[0].getTypeName().substring(
-                        types[0].getTypeName().lastIndexOf('.')
-                                + 1);
-        String typeClassName1 =
-                types[1].getTypeName().substring(
-                        types[1].getTypeName().lastIndexOf('.')
-                                + 1);
+        final String typeClassName0 = types[0].getTypeName().substring(
+                types[0].getTypeName().lastIndexOf('.')
+                        + 1);
+        final String typeClassName1 = types[1].getTypeName().substring(
+                types[1].getTypeName().lastIndexOf('.')
+                        + 1);
         try {
             String section = TextLoader.getInstance().loadText(
                     "entity_template.txt", "entity_lookup_map_member");
-            String colName =
-                    SchemaUtilities.getInstance().getTableName(typeClassName1);
+            String colName = SchemaUtilities.getInstance()
+                    .getTableName(typeClassName1);
             if (colName.equalsIgnoreCase(SchemaUtilities.getInstance()
                     .getTableName(clazz.getSimpleName()))) {
                 StringBuffer sb = new StringBuffer();
@@ -372,22 +376,21 @@ public class EntityWriter {
             System.exit(1);
         }
     }
+
     private void writeEntityMapLookupNonMember(final PrintWriter writer,
             final Class<?> clazz,
             final Type[] types, final String name) {
-        String typeClassName0 =
-                types[0].getTypeName().substring(
-                        types[0].getTypeName().lastIndexOf('.')
-                                + 1);
-        String typeClassName1 =
-                types[1].getTypeName().substring(
-                        types[1].getTypeName().lastIndexOf('.')
-                                + 1);
+        final String typeClassName0 = types[0].getTypeName().substring(
+                types[0].getTypeName().lastIndexOf('.')
+                        + 1);
+        final String typeClassName1 = types[1].getTypeName().substring(
+                types[1].getTypeName().lastIndexOf('.')
+                        + 1);
         try {
             String section = TextLoader.getInstance().loadText(
                     "entity_template.txt", "entity_lookup_map_non_member");
-            String colName =
-                    SchemaUtilities.getInstance().getTableName(typeClassName0);
+            final String colName = SchemaUtilities.getInstance()
+                    .getTableName(typeClassName0);
             section = TextProcessor.getInstance().processText(
                     new String[] {
                             "<tableName>", "<fieldTableName>", "<schema>",
@@ -415,6 +418,7 @@ public class EntityWriter {
             System.exit(1);
         }
     }
+
     /**
      * Writes a member to an entity class.
      * @param writer the {@link PrintWriter} used to write the file
@@ -450,6 +454,7 @@ public class EntityWriter {
             System.exit(1);
         }
     }
+
     /**
      * Writes a one-to-one member to an entity class.
      * @param writer the {@link PrintWriter} used to write the file
@@ -463,8 +468,8 @@ public class EntityWriter {
         writer.print("\t/** the ");
         writer.print(fieldName);
         writer.println(". */");
-        String fieldEntityClass =
-                SchemaUtilities.getInstance().getEntityClassName(fieldClass);
+        final String fieldEntityClass = SchemaUtilities.getInstance()
+                .getEntityClassName(fieldClass);
         writer.print("\t@OneToOne(cascade = CascadeType.ALL, targetEntity = ");
         writer.print(fieldEntityClass);
         writer.println(".class, fetch = FetchType.EAGER)");
@@ -519,6 +524,7 @@ public class EntityWriter {
         writer.println(" = val;");
         writer.println("\t}");
     }
+
     /**
      * Writes a self-referencing member to an entity class.
      * @param writer the {@link PrintWriter} used to write the file

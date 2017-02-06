@@ -2,6 +2,7 @@ package com.dalonedrau.schemacreator;
 
 public class SchemaUtilities {
     private static SchemaUtilities instance;
+
     /**
      * Gets the value for the instance.
      * @return {@link SchemaUtilities}
@@ -12,6 +13,7 @@ public class SchemaUtilities {
         }
         return instance;
     }
+
     /**
      * Gets the value for the instance.
      * @return {@link SchemaUtilities}
@@ -20,8 +22,10 @@ public class SchemaUtilities {
         instance = new SchemaUtilities(schema);
         return instance;
     }
+
     /** the schema being written. */
     private final String schema;
+
     /**
      * Hidden constructor.
      * @param s the schema
@@ -29,6 +33,7 @@ public class SchemaUtilities {
     private SchemaUtilities(final String s) {
         schema = s;
     }
+
     /**
      * Capitalizes the first letter of a word.
      * @param string the word
@@ -38,10 +43,11 @@ public class SchemaUtilities {
         StringBuffer sb = new StringBuffer();
         sb.append(Character.toUpperCase(string.charAt(0)));
         sb.append(string.substring(1));
-        String s = sb.toString();
+        final String s = sb.toString();
         sb = null;
         return s;
     }
+
     /**
      * Gets the name of the entity class being written from the source class.
      * @param clazz the entity {@link Class} being written
@@ -52,10 +58,11 @@ public class SchemaUtilities {
         sb.append(getSchemaPrefix());
         sb.append(clazz.getSimpleName());
         sb.append("Entity");
-        String s = sb.toString();
+        final String s = sb.toString();
         sb = null;
         return s;
     }
+
     /**
      * Gets the name of the entity class being written from the source class.
      * @param clazz the entity {@link Class} being written
@@ -66,10 +73,11 @@ public class SchemaUtilities {
         sb.append(getSchemaPrefix());
         sb.append(clazz);
         sb.append("Entity");
-        String s = sb.toString();
+        final String s = sb.toString();
         sb = null;
         return s;
     }
+
     /**
      * Gets the name of the controller class being written from the source
      * class.
@@ -79,6 +87,7 @@ public class SchemaUtilities {
     public String getEntityControllerName(final String clazz) {
         return getEntityClassName(clazz).replace("Entity", "Controller");
     }
+
     /**
      * Gets the possessive form of a word.
      * @param word the word
@@ -92,10 +101,11 @@ public class SchemaUtilities {
         } else {
             sb.append("'s");
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb = null;
         return s;
     }
+
     /**
      * Gets the prefix for a schema.
      * @return {@link String}
@@ -105,10 +115,11 @@ public class SchemaUtilities {
         for (int i = 0, len = schema.length(); i < len; i++) {
             sb.append(Character.toUpperCase(schema.charAt(i)));
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb = null;
         return s;
     }
+
     /**
      * Gets a class name as it would be written in a schema.
      * @param className the class name
@@ -126,10 +137,11 @@ public class SchemaUtilities {
                 sb.append(className.charAt(i));
             }
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb = null;
         return s;
     }
+
     /**
      * Pluralizes a word.
      * @param string the word
@@ -154,7 +166,7 @@ public class SchemaUtilities {
             sb.append(string);
             sb.append("s");
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb = null;
         return s;
     }

@@ -20,6 +20,7 @@ public final class EntityMapField {
     private final String name;
     /** the map's value class. */
     private final String valueClass;
+
     /**
      * Creates a new instance of {@link EntityMapField}.
      * @param n the map's name
@@ -35,6 +36,7 @@ public final class EntityMapField {
         valueClass = vc;
         isEntity = e;
     }
+
     /**
      * Gets the value for the keyClass.
      * @return {@link String}
@@ -42,6 +44,7 @@ public final class EntityMapField {
     public String getKeyClass() {
         return keyClass;
     }
+
     /**
      * Gets the value for the name.
      * @return {@link String}
@@ -49,6 +52,7 @@ public final class EntityMapField {
     public String getName() {
         return name;
     }
+
     /**
      * Gets the value for the valueClass.
      * @return {@link String}
@@ -56,6 +60,7 @@ public final class EntityMapField {
     public String getValueClass() {
         return valueClass;
     }
+
     /**
      * Gets the value for the isEntity.
      * @return {@link boolean}
@@ -63,6 +68,7 @@ public final class EntityMapField {
     public boolean isEntity() {
         return isEntity;
     }
+
     /**
      * Writes the entity class markup.
      * @param writer the {@link PrintWriter} instance

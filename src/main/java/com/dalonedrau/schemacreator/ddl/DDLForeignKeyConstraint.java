@@ -14,6 +14,7 @@ public class DDLForeignKeyConstraint extends DDLConstraint {
     private final String foreignKey;
     /** the foreign key table. */
     private final String foreignTable;
+
     /**
      * Creates a new instance of {@link DDLForeignKeyConstraint}.
      * @param fk the foreign key
@@ -26,6 +27,7 @@ public class DDLForeignKeyConstraint extends DDLConstraint {
         foreignKey = fk;
         foreignTable = fkTable;
     }
+
     /**
      * Gets the value for the fieldName.
      * @return {@link String}
@@ -33,6 +35,7 @@ public class DDLForeignKeyConstraint extends DDLConstraint {
     public String getFieldName() {
         return fieldName;
     }
+
     /**
      * Gets the value for the foreignKey.
      * @return {@link String}
@@ -40,6 +43,7 @@ public class DDLForeignKeyConstraint extends DDLConstraint {
     public String getForeignKey() {
         return foreignKey;
     }
+
     /**
      * Gets the value for the foreignTable.
      * @return {@link String}
@@ -47,6 +51,7 @@ public class DDLForeignKeyConstraint extends DDLConstraint {
     public String getForeignTable() {
         return foreignTable;
     }
+
     @Override
     public void write(final PrintWriter writer, final String schema,
             final String table,

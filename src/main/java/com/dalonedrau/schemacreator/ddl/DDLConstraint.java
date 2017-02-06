@@ -8,10 +8,12 @@ import java.io.PrintWriter;
 public abstract class DDLConstraint {
     /** unique composite key constraint. */
     public static final int UNIQUE_COMPOSITE_KEY = 0;
+
     /** Class constructor. */
     protected DDLConstraint() {
         super();
     }
+
     /**
      * Writes the constraint.
      * @param writer the {@link PrintWriter} instance

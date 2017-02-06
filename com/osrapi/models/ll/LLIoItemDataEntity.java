@@ -93,6 +93,26 @@ public final class LLIoItemDataEntity {
         weight = val;
     }
 
+    /** the title. */
+    @Column(name = "title")
+    @JsonProperty("title")
+    @NotNull
+    private String                    title;
+    /**
+     * Gets the title.
+     * @return {@link String}
+     */
+    public String getTitle() {
+        return title;
+    }
+    /**
+     * Sets the title.
+     * @param val the new value
+     */
+    public void setTitle(final String val) {
+        title = val;
+    }
+
     /** the stealValue. */
     @Column(name = "steal_value")
     @JsonProperty("steal_value")
@@ -317,7 +337,7 @@ public final class LLIoItemDataEntity {
     @ManyToOne(targetEntity = LLDiceEntity.class, fetch = FetchType.EAGER)
     @Fetch(FetchMode.SELECT)
     @JoinColumn(name = "damages")
-    @JsonProperty("dice")
+    @JsonProperty("damages")
   
     private LLDiceEntity    damages;
     /**

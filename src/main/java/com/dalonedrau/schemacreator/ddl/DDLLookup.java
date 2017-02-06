@@ -19,6 +19,7 @@ public class DDLLookup {
     private final String fieldType;
     private String table1;
     private final String table2;
+
     /**
      * Creates a new instance of {@link DDLLookup}.
      * @param t1
@@ -33,6 +34,7 @@ public class DDLLookup {
         fieldType = type;
         fieldLimit = lim;
     }
+
     /**
      * Gets the value for the field.
      * @return {@link String}
@@ -40,6 +42,7 @@ public class DDLLookup {
     public String getField() {
         return field;
     }
+
     /**
      * Gets the value for the fieldType.
      * @return {@link String}
@@ -47,6 +50,7 @@ public class DDLLookup {
     public String getFieldType() {
         return fieldType;
     }
+
     /**
      * Gets the value for the table1.
      * @return {@link String}
@@ -54,6 +58,7 @@ public class DDLLookup {
     public String getTable1() {
         return table1;
     }
+
     /**
      * Sets the value of the table1.
      * @param table1 the new value to set
@@ -61,11 +66,12 @@ public class DDLLookup {
     public void setTable1(final String table1) {
         this.table1 = table1;
     }
+
     public void write(final PrintWriter writer, final String schema,
             final String table) {
         try {
-            PooledStringBuilder sb =
-                    StringBuilderPool.getInstance().getStringBuilder();
+            PooledStringBuilder sb = StringBuilderPool.getInstance()
+                    .getStringBuilder();
             String section = null;
             if (table2 != null) {
                 sb.append(table2);

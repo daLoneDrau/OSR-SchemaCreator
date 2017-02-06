@@ -33,6 +33,7 @@ public class TextProcessor {
     public static final String TABLE_TITLE_CLOSE = "</title>";
     /** the opening tag for a table title block. */
     public static final String TABLE_TITLE_OPEN = "<title>";
+
     /**
      * Gets the one and only instance of {@link TextProcessor}.
      * @return {@link TextProcessor}
@@ -43,15 +44,18 @@ public class TextProcessor {
         }
         return TextProcessor.instance;
     }
+
     /** flag to display debugging. */
     private boolean debug = false;
     /** the default dialog width - 50 characters. */
     private final int defaultDlgWidth = 50;
     private String[] stringArr;
+
     /** Hidden constructor. */
     private TextProcessor() {
         super();
     }
+
     /**
      * Gets
      * @param columns
@@ -65,17 +69,19 @@ public class TextProcessor {
             throws RPGException {
         return columnsToString(columns, headers, " ", isNumbered);
     }
+
     public final String columnsToString(final String[][] columns,
             final String[] headers, final char seperator,
             final boolean isNumbered) throws RPGException {
         return columnsToString(columns, headers, new String(
                 new char[] { seperator }), isNumbered);
     }
+
     public final String columnsToString(final String[][] columns,
             final String[] headers, final String seperator,
             final boolean isNumbered) throws RPGException {
-        PooledStringBuilder sb =
-                StringBuilderPool.getInstance().getStringBuilder();
+        PooledStringBuilder sb = StringBuilderPool.getInstance()
+                .getStringBuilder();
         if (columns == null && headers == null) {
             throw new RPGException(ErrorMessage.BAD_PARAMETERS,
                     "All data is null");
@@ -96,7 +102,7 @@ public class TextProcessor {
                     "Data is empty");
         }
         // determine widths of each column
-        int[] colWidths = new int[len];
+        final int[] colWidths = new int[len];
         for (int i = len - 1; i >= 0; i--) {
             if (headers != null && headers.length > 0) {
                 colWidths[i] = Math.max(colWidths[i], headers[i].length());
@@ -104,8 +110,8 @@ public class TextProcessor {
             if (columns != null && columns.length > 0) {
                 numRows = Math.max(numRows, columns[i].length);
                 for (int j = columns[i].length - 1; j >= 0; j--) {
-                    colWidths[i] =
-                            Math.max(colWidths[i], columns[i][j].length());
+                    colWidths[i] = Math.max(colWidths[i],
+                            columns[i][j].length());
                 }
             }
         }
@@ -123,7 +129,7 @@ public class TextProcessor {
                 }
                 for (int i = 0; i < len; i++) {
                     // center the header
-                    int pre = (colWidths[i] - headers[i].length()) / 2;
+                    final int pre = (colWidths[i] - headers[i].length()) / 2;
                     for (int j = pre; j > 0; j--) {
                         sb.append(' ');
                     }
@@ -174,15 +180,16 @@ public class TextProcessor {
                     }
                 }
             }
-        } catch (PooledException e) {
+        } catch (final PooledException e) {
             throw new RPGException(
                     ErrorMessage.INTERNAL_BAD_ARGUMENT, e);
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb.returnToPool();
         sb = null;
         return s;
     }
+
     /**
      * Finds the beginning and ending index of a tag block inside some text.
      * @param tagOpen the opening tag
@@ -192,13 +199,13 @@ public class TextProcessor {
      */
     private int[] findTagBlock(final String tagOpen, final String tagClose,
             final String text) {
-        int lastIndex = text.indexOf(tagClose);
+        final int lastIndex = text.indexOf(tagClose);
         int firstIndex = text.indexOf(tagOpen);
         if (lastIndex >= 0 && firstIndex >= 0) {
             while (true) {
-                String s = text.substring(
+                final String s = text.substring(
                         firstIndex + tagOpen.length(), lastIndex);
-                int blockStart = findTagBlock(tagOpen, tagClose, s)[0];
+                final int blockStart = findTagBlock(tagOpen, tagClose, s)[0];
                 if (blockStart >= 0) {
                     firstIndex = blockStart;
                 } else {
@@ -208,19 +215,21 @@ public class TextProcessor {
         }
         return new int[] { firstIndex, lastIndex };
     }
+
     private String getBlockValue(final String text, final String openTag,
             final int blockStart, final int blockEnd) {
         return text.substring(blockStart + openTag.length(), blockEnd);
     }
+
     public final String getCenteredText(final String string, final int width)
             throws RPGException {
-        PooledStringBuilder sb =
-                StringBuilderPool.getInstance().getStringBuilder();
+        PooledStringBuilder sb = StringBuilderPool.getInstance()
+                .getStringBuilder();
         try {
             if (string.length() > width) {
-                String[] split = wrapText(string, width).split("\n");
+                final String[] split = wrapText(string, width).split("\n");
                 for (int i = 0, len = split.length; i < len; i++) {
-                    int left = (width - split[i].length()) / 2;
+                    final int left = (width - split[i].length()) / 2;
                     for (int j = left; j > 0; j--) {
                         sb.append(' ');
                     }
@@ -233,7 +242,7 @@ public class TextProcessor {
                     }
                 }
             } else {
-                int left = (width - string.length()) / 2;
+                final int left = (width - string.length()) / 2;
                 for (int j = left; j > 0; j--) {
                     sb.append(' ');
                 }
@@ -242,14 +251,15 @@ public class TextProcessor {
                     sb.append(' ');
                 }
             }
-        } catch (PooledException e) {
+        } catch (final PooledException e) {
             throw new RPGException(ErrorMessage.INTERNAL_ERROR, e);
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb.returnToPool();
         sb = null;
         return s;
     }
+
     /**
      * Gets a list of {@link String}s and sorts them as columns.
      * @param numberOfColumns the number of columns
@@ -260,14 +270,14 @@ public class TextProcessor {
      */
     public String getSelectionsAsColumns(final int numberOfColumns,
             final String[] list, final String separator) throws RPGException {
-        PooledStringBuilder sb =
-                StringBuilderPool.getInstance().getStringBuilder();
+        PooledStringBuilder sb = StringBuilderPool.getInstance()
+                .getStringBuilder();
         String text = null;
-        int[] columnLengths = new int[numberOfColumns];
+        final int[] columnLengths = new int[numberOfColumns];
         for (int i = 0, currentColumn = 0, len = list.length; i < len; i++) {
             list[i] = list[i].replaceAll("\t", TextProcessor.TAB);
-            columnLengths[currentColumn] =
-                    Math.max(columnLengths[currentColumn], list[i].length());
+            columnLengths[currentColumn] = Math
+                    .max(columnLengths[currentColumn], list[i].length());
             currentColumn++;
             if (currentColumn >= columnLengths.length) {
                 currentColumn = 0;
@@ -275,15 +285,14 @@ public class TextProcessor {
         }
         try {
             boolean prependSeperator = false;
-            for (int i = 0, currentColumn = 0, len =
-                    list.length; i < len; i++) {
+            for (int i = 0, currentColumn = 0, len = list.length; i < len;
+                    i++) {
                 if (prependSeperator) {
                     sb.append(separator);
                 }
                 sb.append(list[i]);
-                for (int j =
-                        columnLengths[currentColumn]
-                                - list[i].length();
+                for (int j = columnLengths[currentColumn]
+                        - list[i].length();
                         j > 0; j--) {
                     sb.append(' ');
                 }
@@ -296,7 +305,7 @@ public class TextProcessor {
                     prependSeperator = true;
                 }
             }
-        } catch (PooledException e) {
+        } catch (final PooledException e) {
             throw new RPGException(ErrorMessage.INTERNAL_ERROR, e);
         }
         text = sb.toString();
@@ -304,6 +313,7 @@ public class TextProcessor {
         sb = null;
         return text;
     }
+
     /**
      * Gets a list of {@link String}s and sorts them as columns separated by a
      * space.
@@ -317,6 +327,7 @@ public class TextProcessor {
             final boolean bordered) throws RPGException {
         return getSelectionsAsColumns(cols, " ", bordered, '|');
     }
+
     /**
      * Gets a list of {@link String}s and sorts them as columns.
      * @param cols the list of {@link String}s
@@ -331,6 +342,7 @@ public class TextProcessor {
         return getSelectionsAsColumns(cols,
                 new String(new char[] { seperator }), bordered, '|');
     }
+
     /**
      * Gets a list of {@link String}s and sorts them as columns.
      * @param cols the list of {@link String}s
@@ -345,6 +357,7 @@ public class TextProcessor {
             throws RPGException {
         return getSelectionsAsColumns(cols, seperator, bordered, '|');
     }
+
     /**
      * Gets a list of {@link String}s and sorts them as columns.
      * @param cols the list of {@link String}s
@@ -357,8 +370,8 @@ public class TextProcessor {
     public String getSelectionsAsColumns(final String[] cols,
             final String seperator, final boolean bordered,
             final char borderCharacter) throws RPGException {
-        PooledStringBuilder sb =
-                StringBuilderPool.getInstance().getStringBuilder();
+        PooledStringBuilder sb = StringBuilderPool.getInstance()
+                .getStringBuilder();
         String text = null;
         int maxLen1 = 0, maxLen2 = 0;
         for (int i = 0, len = cols.length; i < len; i += 2) {
@@ -395,7 +408,7 @@ public class TextProcessor {
                 }
                 sb.append('\n');
             }
-        } catch (PooledException e) {
+        } catch (final PooledException e) {
             throw new RPGException(ErrorMessage.INTERNAL_ERROR, e);
         }
         text = sb.toString();
@@ -403,6 +416,7 @@ public class TextProcessor {
         sb = null;
         return text;
     }
+
     /**
      * Creates the markup for a table block.
      * @param border the table border
@@ -414,8 +428,8 @@ public class TextProcessor {
      */
     private String getTableMarkup(final char border, final String title,
             final Integer tableWidth, final String[] body) throws RPGException {
-        PooledStringBuilder sb =
-                StringBuilderPool.getInstance().getStringBuilder();
+        PooledStringBuilder sb = StringBuilderPool.getInstance()
+                .getStringBuilder();
         try {
             if (border == '|') {
                 sb.append("|-");
@@ -512,14 +526,15 @@ public class TextProcessor {
                 sb.append(border);
                 sb.append('\n');
             }
-        } catch (PooledException e) {
+        } catch (final PooledException e) {
             throw new RPGException(ErrorMessage.INTERNAL_ERROR, e);
         }
-        String table = sb.toString();
+        final String table = sb.toString();
         sb.returnToPool();
         sb = null;
         return table;
     }
+
     /**
      * Processes a group of text, replacing all tokens.
      * @param playerIO the player IO. can be null
@@ -536,6 +551,7 @@ public class TextProcessor {
         return processText(new String[] { generalText },
                 conditions, text);
     }
+
     /**
      * Processes a group of text, replacing all tokens.
      * @param playerIO the player IO. can be null
@@ -550,6 +566,7 @@ public class TextProcessor {
         return processText(new String[] { generalText },
                 (boolean[]) null, text);
     }
+
     /**
      * Processes a group of text, replacing all tokens.
      * @param playerIO the player IO. can be null
@@ -635,7 +652,7 @@ public class TextProcessor {
         Pattern r = Pattern.compile("<genText>");
         if (generalText != null && generalText.length > 0) {
             for (int i = 0, len = generalText.length; i < len; i++) {
-                Matcher match = r.matcher(tokenized);
+                final Matcher match = r.matcher(tokenized);
                 if (match.find()) {
                     tokenized = match.replaceFirst(match.group().replaceAll(
                             "<genText>",
@@ -647,13 +664,12 @@ public class TextProcessor {
         r = Pattern.compile("\n<ifCond>[^>]+</ifCond>");
         if (conditions != null && conditions.length > 0) {
             for (int i = 0, len = conditions.length; i < len; i++) {
-                Matcher match = r.matcher(tokenized);
+                final Matcher match = r.matcher(tokenized);
                 if (match.find()) {
                     if (conditions[i]) {
-                        tokenized =
-                                match.replaceFirst(match.group().replaceAll(
-                                        "<ifCond>", "").replaceAll("</ifCond>",
-                                                ""));
+                        tokenized = match.replaceFirst(match.group().replaceAll(
+                                "<ifCond>", "").replaceAll("</ifCond>",
+                                        ""));
                     } else {
                         tokenized = match.replaceFirst("");
                     }
@@ -663,13 +679,12 @@ public class TextProcessor {
         r = Pattern.compile("<ifCond>[^>]+</ifCond>");
         if (conditions != null && conditions.length > 0) {
             for (int i = 0, len = conditions.length; i < len; i++) {
-                Matcher match = r.matcher(tokenized);
+                final Matcher match = r.matcher(tokenized);
                 if (match.find()) {
                     if (conditions[i]) {
-                        tokenized =
-                                match.replaceFirst(match.group().replaceAll(
-                                        "<ifCond>", "").replaceAll("</ifCond>",
-                                                ""));
+                        tokenized = match.replaceFirst(match.group().replaceAll(
+                                "<ifCond>", "").replaceAll("</ifCond>",
+                                        ""));
                     } else {
                         tokenized = match.replaceFirst("");
                     }
@@ -679,10 +694,10 @@ public class TextProcessor {
         // use this pattern to match with line breaks
         r = Pattern.compile("<table>(.\n*)*</table>");
 
-        Matcher match = r.matcher(tokenized);
+        final Matcher match = r.matcher(tokenized);
         try {
             while (match.find()) {
-                String original = match.group();
+                final String original = match.group();
                 Pattern p = Pattern.compile("<title>(.|\n)*?</title>");
                 Matcher m2 = p.matcher(original);
                 String table = original.substring("<table>".length());
@@ -691,9 +706,8 @@ public class TextProcessor {
                 String title = "";
                 if (m2.find()) {
                     title = m2.group().substring("<title>".length());
-                    title =
-                            title.substring(0, title.length()
-                                    - "</title>".length());
+                    title = title.substring(0, title.length()
+                            - "</title>".length());
                     table = table.replace(m2.group(), "");
                 }
                 // set border character
@@ -706,7 +720,7 @@ public class TextProcessor {
                     border = b.charAt(0);
                     table = table.replace(m2.group(), "");
                 }
-                String[] lines = table.split("\n");
+                final String[] lines = table.split("\n");
                 int maxLen = 0;
                 for (int i = lines.length - 1; i >= 0; i--) {
                     if (lines[i].length() > 0 && lines[i].charAt(0) == '|'
@@ -716,8 +730,8 @@ public class TextProcessor {
                         maxLen = Math.max(maxLen, lines[i].length());
                     }
                 }
-                PooledStringBuilder sb =
-                        StringBuilderPool.getInstance().getStringBuilder();
+                PooledStringBuilder sb = StringBuilderPool.getInstance()
+                        .getStringBuilder();
                 if (border == '|') {
                     sb.append("|-");
                 } else {
@@ -805,63 +819,58 @@ public class TextProcessor {
                 sb = null;
                 tokenized = tokenized.replace(original, table);
             }
-        } catch (StackOverflowError soe) {
+        } catch (final StackOverflowError soe) {
             while (true) {
                 // get table block
-                int[] block =
-                        findTagBlock(TextProcessor.TABLE_OPEN,
-                                TextProcessor.TABLE_CLOSE, tokenized);
+                final int[] block = findTagBlock(TextProcessor.TABLE_OPEN,
+                        TextProcessor.TABLE_CLOSE, tokenized);
                 if (block[0] >= 0 && block[1] >= 0) {
-                    String tableBlock =
-                            getBlockValue(tokenized, TextProcessor.TABLE_OPEN,
-                                    block[0], block[1]);
+                    String tableBlock = getBlockValue(tokenized,
+                            TextProcessor.TABLE_OPEN,
+                            block[0], block[1]);
                     String title = null;
-                    int[] titleBlock =
-                            findTagBlock(TextProcessor.TABLE_TITLE_OPEN,
-                                    TextProcessor.TABLE_TITLE_CLOSE,
-                                    tableBlock);
+                    final int[] titleBlock = findTagBlock(
+                            TextProcessor.TABLE_TITLE_OPEN,
+                            TextProcessor.TABLE_TITLE_CLOSE,
+                            tableBlock);
                     if (titleBlock[0] >= 0 && titleBlock[1] >= 0) {
-                        title =
-                                getBlockValue(tableBlock,
-                                        TextProcessor.TABLE_TITLE_OPEN,
-                                        titleBlock[0], titleBlock[1]);
-                        tableBlock =
-                                removeBlock(tableBlock,
-                                        TextProcessor.TABLE_TITLE_CLOSE,
-                                        titleBlock[0], titleBlock[1]);
+                        title = getBlockValue(tableBlock,
+                                TextProcessor.TABLE_TITLE_OPEN,
+                                titleBlock[0], titleBlock[1]);
+                        tableBlock = removeBlock(tableBlock,
+                                TextProcessor.TABLE_TITLE_CLOSE,
+                                titleBlock[0], titleBlock[1]);
                     }
                     char border = '|';
-                    int[] borderBlock =
-                            findTagBlock(TextProcessor.TABLE_BORDER_OPEN,
-                                    TextProcessor.TABLE_BORDER_CLOSE,
-                                    tableBlock);
+                    final int[] borderBlock = findTagBlock(
+                            TextProcessor.TABLE_BORDER_OPEN,
+                            TextProcessor.TABLE_BORDER_CLOSE,
+                            tableBlock);
                     if (borderBlock[0] >= 0 && borderBlock[1] >= 0) {
-                        border =
-                                getBlockValue(tableBlock,
-                                        TextProcessor.TABLE_BORDER_OPEN,
-                                        borderBlock[0], borderBlock[1]).charAt(
-                                                0);
-                        tableBlock =
-                                removeBlock(tableBlock,
-                                        TextProcessor.TABLE_BORDER_CLOSE,
-                                        borderBlock[0], borderBlock[1]);
+                        border = getBlockValue(tableBlock,
+                                TextProcessor.TABLE_BORDER_OPEN,
+                                borderBlock[0], borderBlock[1]).charAt(
+                                        0);
+                        tableBlock = removeBlock(tableBlock,
+                                TextProcessor.TABLE_BORDER_CLOSE,
+                                borderBlock[0], borderBlock[1]);
                     }
-                    tokenized =
-                            replaceBlock(tokenized, getTableMarkup(border,
-                                    title, null, tableBlock.split("\n")),
-                                    TextProcessor.TABLE_CLOSE, block[0],
-                                    block[1]);
+                    tokenized = replaceBlock(tokenized, getTableMarkup(border,
+                            title, null, tableBlock.split("\n")),
+                            TextProcessor.TABLE_CLOSE, block[0],
+                            block[1]);
                 } else {
                     break;
                 }
             }
             soe.printStackTrace();
             throw soe;
-        } catch (PooledException e) {
+        } catch (final PooledException e) {
             throw new RPGException(ErrorMessage.INTERNAL_ERROR, e);
         }
         return tokenized;
     }
+
     /**
      * Processes a group of text, replacing all tokens.
      * @param playerIO the player IO. can be null
@@ -875,6 +884,7 @@ public class TextProcessor {
             final String text) throws RPGException {
         return processText(generalText, (boolean[]) null, text);
     }
+
     /**
      * Processes a group of text, replacing all tokens.
      * @param playerIO the player IO. can be null
@@ -899,8 +909,8 @@ public class TextProcessor {
                             + "do not match up.");
         }
         for (int i = patterns.length - 1; i >= 0; i--) {
-            Pattern r = Pattern.compile(patterns[i]);
-            Matcher match = r.matcher(tokenized);
+            final Pattern r = Pattern.compile(patterns[i]);
+            final Matcher match = r.matcher(tokenized);
             if (match.find()) {
                 tokenized = match.replaceAll(match.group().replaceAll(
                         patterns[i], generalText[i].replaceAll("\t",
@@ -909,6 +919,7 @@ public class TextProcessor {
         }
         return tokenized;
     }
+
     /**
      * Removes a block element from a text string.
      * @param text the text
@@ -920,21 +931,22 @@ public class TextProcessor {
      */
     private String removeBlock(final String text, final String closeTag,
             final int blockStart, final int blockEnd) throws RPGException {
-        PooledStringBuilder sb =
-                StringBuilderPool.getInstance().getStringBuilder();
+        PooledStringBuilder sb = StringBuilderPool.getInstance()
+                .getStringBuilder();
         try {
             // add all text before the tag block
             sb.append(text.substring(0, blockStart));
             // add all text after the tag block
             sb.append(text.substring(blockEnd + closeTag.length()));
-        } catch (PooledException e) {
+        } catch (final PooledException e) {
             throw new RPGException(ErrorMessage.INTERNAL_BAD_ARGUMENT, e);
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb.returnToPool();
         sb = null;
         return s;
     }
+
     /**
      * Replaces a block element in a text string.
      * @param text the text
@@ -948,8 +960,8 @@ public class TextProcessor {
     private String replaceBlock(final String text, final String replacement,
             final String closeTag, final int blockStart, final int blockEnd)
             throws RPGException {
-        PooledStringBuilder sb =
-                StringBuilderPool.getInstance().getStringBuilder();
+        PooledStringBuilder sb = StringBuilderPool.getInstance()
+                .getStringBuilder();
         // add all text before the tag block
         try {
             sb.append(text.substring(0, blockStart));
@@ -957,14 +969,15 @@ public class TextProcessor {
             sb.append(replacement);
             // add all text after the tag block
             sb.append(text.substring(blockEnd + closeTag.length()));
-        } catch (PooledException e) {
+        } catch (final PooledException e) {
             throw new RPGException(ErrorMessage.INTERNAL_BAD_ARGUMENT, e);
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb.returnToPool();
         sb = null;
         return s;
     }
+
     /**
      * Sets the value of the debug.
      * @param debug the new value to set
@@ -972,6 +985,7 @@ public class TextProcessor {
     public void setDebug(final boolean debug) {
         this.debug = debug;
     }
+
     /**
      * Wraps the text for display in the console UI.
      * @param text the text
@@ -983,6 +997,7 @@ public class TextProcessor {
             throws RPGException {
         return wrapText(text, lineLength, false, false);
     }
+
     /**
      * Wraps the text for display in the console UI.
      * @param text the text
@@ -1006,23 +1021,22 @@ public class TextProcessor {
                 innerWidth -= four;
             }
             // all tabs replaced with spaces
-            StringTokenizer tokenizer =
-                    new StringTokenizer(new String(text), " \t\n\r\f", true);
-            PooledList words =
-                    ListPool.getInstance().getList();
+            StringTokenizer tokenizer = new StringTokenizer(new String(text),
+                    " \t\n\r\f", true);
+            PooledList words = ListPool.getInstance().getList();
             try {
                 while (tokenizer.hasMoreTokens()) {
-                    String token = tokenizer.nextToken();
+                    final String token = tokenizer.nextToken();
                     words.add(token);
                 }
                 // start a line of text
-                PooledStringBuilder sb =
-                        StringBuilderPool.getInstance().getStringBuilder();
+                PooledStringBuilder sb = StringBuilderPool.getInstance()
+                        .getStringBuilder();
                 // init measurements
                 double currentWidth = 0d;
                 String nextWord = "";
                 int nextWordLength = 0;
-                int spaceWidth = 1;
+                final int spaceWidth = 1;
                 if (bordered) {
                     sb.append("| ");
                 } else if (starred) {
@@ -1036,30 +1050,28 @@ public class TextProcessor {
                     if (((String) words.get(i)).charAt(0) == ' ') {
                         nextWord = words.get(i);
                         nextWordLength = spaceWidth;
-                        int newWidth = (int) currentWidth + nextWordLength;
+                        final int newWidth = (int) currentWidth
+                                + nextWordLength;
                         if (newWidth > innerWidth) {
                             // end current line
                             if (bordered) {
-                                for (int j =
-                                        (int) (innerWidth
-                                                - currentWidth);
+                                for (int j = (int) (innerWidth
+                                        - currentWidth);
                                         j > 0; j--) {
                                     sb.append(' ');
                                 }
                                 sb.append(" |");
                             } else if (starred) {
-                                for (int j =
-                                        (int) (innerWidth
-                                                - currentWidth);
+                                for (int j = (int) (innerWidth
+                                        - currentWidth);
                                         j > 0; j--) {
                                     sb.append(' ');
                                 }
                                 sb.append(" *");
                             }
-                            stringArr =
-                                    ArrayUtilities.getInstance()
-                                            .extendArray(sb.toString(),
-                                                    stringArr);
+                            stringArr = ArrayUtilities.getInstance()
+                                    .extendArray(sb.toString(),
+                                            stringArr);
                             sb.setLength(0);
                             if (bordered) {
                                 sb.append("| ");
@@ -1076,32 +1088,30 @@ public class TextProcessor {
                     } else if (((String) words.get(i)).charAt(0) == '\t') {
                         // TAB
                         nextWord = TextProcessor.TAB;
-                        nextWordLength =
-                                spaceWidth * TextProcessor.TAB.length();
-                        int newWidth = (int) currentWidth + nextWordLength;
+                        nextWordLength = spaceWidth
+                                * TextProcessor.TAB.length();
+                        final int newWidth = (int) currentWidth
+                                + nextWordLength;
                         if (newWidth > innerWidth) {
                             // end current line
                             if (bordered) {
-                                for (int j =
-                                        (int) (innerWidth
-                                                - currentWidth);
+                                for (int j = (int) (innerWidth
+                                        - currentWidth);
                                         j > 0; j--) {
                                     sb.append(' ');
                                 }
                                 sb.append(" |");
                             } else if (starred) {
-                                for (int j =
-                                        (int) (innerWidth
-                                                - currentWidth);
+                                for (int j = (int) (innerWidth
+                                        - currentWidth);
                                         j > 0; j--) {
                                     sb.append(' ');
                                 }
                                 sb.append(" *");
                             }
-                            stringArr =
-                                    ArrayUtilities.getInstance()
-                                            .extendArray(sb.toString(),
-                                                    stringArr);
+                            stringArr = ArrayUtilities.getInstance()
+                                    .extendArray(sb.toString(),
+                                            stringArr);
                             sb.setLength(0);
                             if (bordered) {
                                 sb.append("| ");
@@ -1120,25 +1130,22 @@ public class TextProcessor {
                             sb.append(" ");
                         }
                         if (bordered) {
-                            for (int j =
-                                    (int) (innerWidth
-                                            - currentWidth);
+                            for (int j = (int) (innerWidth
+                                    - currentWidth);
                                     j > 0; j--) {
                                 sb.append(' ');
                             }
                             sb.append(" |");
                         } else if (starred) {
-                            for (int j =
-                                    (int) (innerWidth
-                                            - currentWidth);
+                            for (int j = (int) (innerWidth
+                                    - currentWidth);
                                     j > 0; j--) {
                                 sb.append(' ');
                             }
                             sb.append(" *");
                         }
-                        stringArr =
-                                ArrayUtilities.getInstance()
-                                        .extendArray(sb.toString(), stringArr);
+                        stringArr = ArrayUtilities.getInstance()
+                                .extendArray(sb.toString(), stringArr);
                         sb.setLength(0);
                         if (bordered) {
                             sb.append("| ");
@@ -1151,30 +1158,28 @@ public class TextProcessor {
                     } else {
                         nextWord = words.get(i);
                         nextWordLength = nextWord.length();
-                        int newWidth = (int) currentWidth + nextWordLength;
+                        final int newWidth = (int) currentWidth
+                                + nextWordLength;
                         if (newWidth > innerWidth) {
                             // end current line
                             if (bordered) {
-                                for (int j =
-                                        (int) (innerWidth
-                                                - currentWidth);
+                                for (int j = (int) (innerWidth
+                                        - currentWidth);
                                         j > 0; j--) {
                                     sb.append(' ');
                                 }
                                 sb.append(" |");
                             } else if (starred) {
-                                for (int j =
-                                        (int) (innerWidth
-                                                - currentWidth);
+                                for (int j = (int) (innerWidth
+                                        - currentWidth);
                                         j > 0; j--) {
                                     sb.append(' ');
                                 }
                                 sb.append(" *");
                             }
-                            stringArr =
-                                    ArrayUtilities.getInstance()
-                                            .extendArray(sb.toString(),
-                                                    stringArr);
+                            stringArr = ArrayUtilities.getInstance()
+                                    .extendArray(sb.toString(),
+                                            stringArr);
                             sb.setLength(0);
                             if (bordered) {
                                 sb.append("| ");
@@ -1191,42 +1196,41 @@ public class TextProcessor {
                 } // end for
                 if (sb.length() > 0) { // add the last line
                     if (bordered) {
-                        for (int j =
-                                (int) (innerWidth - currentWidth); j > 0; j--) {
+                        for (int j = (int) (innerWidth - currentWidth); j > 0;
+                                j--) {
                             sb.append(' ');
                         }
                         sb.append(" |");
                     } else if (starred) {
-                        for (int j =
-                                (int) (innerWidth - currentWidth); j > 0; j--) {
+                        for (int j = (int) (innerWidth - currentWidth); j > 0;
+                                j--) {
                             sb.append(' ');
                         }
                         sb.append(" *");
                     }
-                    stringArr =
-                            ArrayUtilities.getInstance().extendArray(
-                                    sb.toString(), stringArr);
+                    stringArr = ArrayUtilities.getInstance().extendArray(
+                            sb.toString(), stringArr);
                 }
                 ListPool.getInstance().returnObject(words);
                 StringBuilderPool.getInstance().returnObject(sb);
                 sb = null;
                 words = null;
                 tokenizer = null;
-            } catch (PooledException e) {
+            } catch (final PooledException e) {
                 throw new RPGException(ErrorMessage.INTERNAL_ERROR, e);
             }
         }
-        PooledStringBuilder sb =
-                StringBuilderPool.getInstance().getStringBuilder();
+        PooledStringBuilder sb = StringBuilderPool.getInstance()
+                .getStringBuilder();
         for (int i = 0, len = stringArr.length; i < len; i++) {
             try {
                 sb.append(stringArr[i]);
                 sb.append('\n');
-            } catch (PooledException e) {
+            } catch (final PooledException e) {
                 throw new RPGException(ErrorMessage.INTERNAL_ERROR, e);
             }
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb.returnToPool();
         sb = null;
         return s;

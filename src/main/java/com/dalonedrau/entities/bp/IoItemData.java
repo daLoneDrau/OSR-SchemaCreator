@@ -40,8 +40,7 @@ public class IoItemData {
     @MapForeignKey(keyColumnType = "character varying(40)", keyField = "code",
             keyTargetClass = "EquipmentElementType",
             valueColumnType = "character varying(40)",
-            valueTargetClass = "EquipmentItemModifier",
-            valueField = "code")
+            valueTargetClass = "EquipmentItemModifier", valueField = "code")
     private Map<String, String> modifiers;
     /** the item's name. */
     @VarChar(length = 40)

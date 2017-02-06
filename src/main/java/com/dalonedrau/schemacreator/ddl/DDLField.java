@@ -24,6 +24,7 @@ public final class DDLField {
     private String fieldType;
     /** the flag indicating whether the field can be null or not. */
     private String nullFlag;
+
     /**
      * Creates a new instance of {@link DDLField}.
      * @param field the {@link Field} the ddl field is mimicking
@@ -49,8 +50,8 @@ public final class DDLField {
         } else if (field.getGenericType().toString()
                 .equalsIgnoreCase("class java.lang.String")) {
             if (field.getAnnotation(VarChar.class) != null) {
-                PooledStringBuilder sb =
-                        StringBuilderPool.getInstance().getStringBuilder();
+                PooledStringBuilder sb = StringBuilderPool.getInstance()
+                        .getStringBuilder();
                 sb.append("character varying(");
                 sb.append(field.getAnnotation(VarChar.class).length());
                 sb.append(")");
@@ -73,6 +74,7 @@ public final class DDLField {
             nullFlag = "";
         }
     }
+
     /**
      * Gets the value for the fieldName.
      * @return {@link String}
@@ -80,6 +82,7 @@ public final class DDLField {
     public String getFieldName() {
         return fieldName;
     }
+
     /**
      * Gets the value for the fieldType.
      * @return {@link String}
@@ -87,6 +90,7 @@ public final class DDLField {
     public String getFieldType() {
         return fieldType;
     }
+
     /**
      * Sets the flag indicating whether the field can be null or not.
      * @param newFlag the new value to set
@@ -94,6 +98,7 @@ public final class DDLField {
     public void setNullFlag(final String newFlag) {
         nullFlag = newFlag;
     }
+
     /**
      * Writes the DDL field.
      * @param writer the {@link PrintWriter} instance

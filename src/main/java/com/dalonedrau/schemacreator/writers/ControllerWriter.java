@@ -22,6 +22,7 @@ import com.dalonedrau.schemacreator.entity.EntityMarkup;
 public final class ControllerWriter {
     /** the schema being written. */
     private final SchemaCreator schema;
+
     /**
      * Creates a new instance of {@link ControllerWriter}.
      * @param s the schema being written
@@ -29,6 +30,7 @@ public final class ControllerWriter {
     public ControllerWriter(final SchemaCreator s) {
         schema = s;
     }
+
     /**
      * Gets the list of entity lookup save routines needed to write the
      * Controller class.
@@ -39,30 +41,30 @@ public final class ControllerWriter {
     private String getControllerEmbeddedEntitiesSaveRoutines(
             final Class<?> clazz) throws Exception {
         StringBuffer full = new StringBuffer();
-        Field[] fields = clazz.getDeclaredFields();
+        final Field[] fields = clazz.getDeclaredFields();
         for (int i = 0, len = fields.length; i < len; i++) {
-            Field field = fields[i];
-            Type type = field.getGenericType();
+            final Field field = fields[i];
+            final Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {
                 continue;
             } else {
                 String section = TextLoader.getInstance().loadText(
                         "controller_template.txt",
                         "controller_save_embedded_member");
-                String fieldName = field.getName();
-                String fieldClass = field.getType().getSimpleName();
+                final String fieldName = field.getName();
+                final String fieldClass = field.getType().getSimpleName();
                 if (schema.hasTable(fieldClass)) {
                     StringBuffer temp = new StringBuffer();
                     temp.append("get");
                     temp.append(fieldName.substring(0, 1).toUpperCase());
                     temp.append(fieldName.substring(1));
-                    String fieldGetter = temp.toString();
+                    final String fieldGetter = temp.toString();
                     temp.setLength(0);
 
                     temp.append("set");
                     temp.append(fieldName.substring(0, 1).toUpperCase());
                     temp.append(fieldName.substring(1));
-                    String fieldSetter = temp.toString();
+                    final String fieldSetter = temp.toString();
                     temp.setLength(0);
                     temp = null;
                     section = TextProcessor.getInstance().processText(
@@ -91,10 +93,11 @@ public final class ControllerWriter {
                 }
             }
         }
-        String s = full.toString();
+        final String s = full.toString();
         full = null;
         return s;
     }
+
     /**
      * Gets the list of entity lookup save routines needed to write the
      * Controller class.
@@ -105,26 +108,26 @@ public final class ControllerWriter {
     private String getControllerEmbeddedEntitiesSaveRoutines(
             final EntityMarkup clazz) throws Exception {
         StringBuffer full = new StringBuffer();
-        List<EntityField> fields = clazz.getFields();
+        final List<EntityField> fields = clazz.getFields();
         for (int i = 0, len = fields.size(); i < len; i++) {
-            EntityField field = fields.get(i);
+            final EntityField field = fields.get(i);
             if (field.getEntityClazz() != null) {
                 String section = TextLoader.getInstance().loadText(
                         "controller_template.txt",
                         "controller_save_embedded_member");
-                String fieldName = field.getName();
-                String fieldClass = field.getEntityClazz();
+                final String fieldName = field.getName();
+                final String fieldClass = field.getEntityClazz();
                 StringBuffer temp = new StringBuffer();
                 temp.append("get");
                 temp.append(fieldName.substring(0, 1).toUpperCase());
                 temp.append(fieldName.substring(1));
-                String fieldGetter = temp.toString();
+                final String fieldGetter = temp.toString();
                 temp.setLength(0);
 
                 temp.append("set");
                 temp.append(fieldName.substring(0, 1).toUpperCase());
                 temp.append(fieldName.substring(1));
-                String fieldSetter = temp.toString();
+                final String fieldSetter = temp.toString();
                 temp.setLength(0);
                 temp = null;
                 section = TextProcessor.getInstance().processText(
@@ -152,10 +155,11 @@ public final class ControllerWriter {
                 full.append("\n");
             }
         }
-        String s = full.toString();
+        final String s = full.toString();
         full = null;
         return s;
     }
+
     /**
      * Gets the list of entity lookup save routines needed to write the
      * Controller class.
@@ -173,12 +177,12 @@ public final class ControllerWriter {
                 String section = TextLoader.getInstance().loadText(
                         "controller_template.txt",
                         "controller_save_embedded_lookup");
-                String fieldName = field.getFieldName();
+                final String fieldName = field.getFieldName();
                 StringBuffer temp = new StringBuffer();
                 temp.append("get");
                 temp.append(SchemaUtilities.getInstance()
                         .capitalizeFirst(fieldName));
-                String fieldGetter = temp.toString();
+                final String fieldGetter = temp.toString();
                 temp = null;
                 section = TextProcessor.getInstance().processText(
                         new String[] {
@@ -218,7 +222,7 @@ public final class ControllerWriter {
                     temp.append("get");
                     temp.append(fieldName.substring(0, 1).toUpperCase());
                     temp.append(fieldName.substring(1));
-                    String fieldGetter = temp.toString();
+                    final String fieldGetter = temp.toString();
                     temp.setLength(0);
                     temp = null;
                     section = TextProcessor.getInstance().processText(
@@ -240,10 +244,11 @@ public final class ControllerWriter {
             field = null;
         }
         fields = null;
-        String s = full.toString();
+        final String s = full.toString();
         full = null;
         return s;
     }
+
     /**
      * Gets the list of entity lookup save routines needed to write the
      * Controller class.
@@ -254,10 +259,10 @@ public final class ControllerWriter {
     private String getControllerEmbeddedMapSaveRoutines(final Class<?> clazz)
             throws Exception {
         StringBuffer full = new StringBuffer();
-        Field[] fields = clazz.getDeclaredFields();
+        final Field[] fields = clazz.getDeclaredFields();
         for (int i = 0, len = fields.length; i < len; i++) {
-            Field field = fields[i];
-            Type type = field.getGenericType();
+            final Field field = fields[i];
+            final Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {
                 if (((ParameterizedType) type).getRawType().getTypeName()
                         .equalsIgnoreCase("java.util.List")) {
@@ -268,15 +273,14 @@ public final class ControllerWriter {
                         || ((ParameterizedType) type).getRawType()
                                 .getTypeName()
                                 .equalsIgnoreCase("java.util.HashMap")) {
-                    Type[] types =
-                            ((ParameterizedType) type)
-                                    .getActualTypeArguments();
-                    String typeClassName0 =
-                            types[0].getTypeName().substring(
+                    final Type[] types = ((ParameterizedType) type)
+                            .getActualTypeArguments();
+                    final String typeClassName0 = types[0].getTypeName()
+                            .substring(
                                     types[0].getTypeName().lastIndexOf('.')
                                             + 1);
-                    String typeClassName1 =
-                            types[1].getTypeName().substring(
+                    final String typeClassName1 = types[1].getTypeName()
+                            .substring(
                                     types[1].getTypeName().lastIndexOf('.')
                                             + 1);
                     if (schema.hasTable(typeClassName0)
@@ -284,11 +288,11 @@ public final class ControllerWriter {
                         String section1 = TextLoader.getInstance().loadText(
                                 "controller_template.txt",
                                 "controller_save_embedded_map_condition");
-                        StringBuffer temp = new StringBuffer();
+                        final StringBuffer temp = new StringBuffer();
                         temp.append("get");
                         temp.append(SchemaUtilities.getInstance()
                                 .capitalizeFirst(field.getName()));
-                        String fieldGetter = temp.toString();
+                        final String fieldGetter = temp.toString();
                         temp.setLength(0);
                         section1 = TextProcessor.getInstance().processText(
                                 new String[] {
@@ -310,10 +314,11 @@ public final class ControllerWriter {
                 }
             }
         }
-        String s = full.toString();
+        final String s = full.toString();
         full = null;
         return s;
     }
+
     /**
      * Gets the list of entity lookup save routines needed to write the
      * Controller class.
@@ -325,18 +330,18 @@ public final class ControllerWriter {
             final EntityMarkup clazz)
             throws Exception {
         StringBuffer full = new StringBuffer();
-        List<EntityMapField> fields = clazz.getMapFields();
+        final List<EntityMapField> fields = clazz.getMapFields();
         for (int i = 0, len = fields.size(); i < len; i++) {
-            EntityMapField field = fields.get(i);
+            final EntityMapField field = fields.get(i);
             if (field.isEntity()) {
                 String section1 = TextLoader.getInstance().loadText(
                         "controller_template.txt",
                         "controller_save_embedded_map_condition");
-                StringBuffer temp = new StringBuffer();
+                final StringBuffer temp = new StringBuffer();
                 temp.append("get");
                 temp.append(SchemaUtilities.getInstance()
                         .capitalizeFirst(field.getName()));
-                String fieldGetter = temp.toString();
+                final String fieldGetter = temp.toString();
                 temp.setLength(0);
                 section1 = TextProcessor.getInstance().processText(
                         new String[] {
@@ -355,10 +360,11 @@ public final class ControllerWriter {
                 full.append("\n");
             }
         }
-        String s = full.toString();
+        final String s = full.toString();
         full = null;
         return s;
     }
+
     /**
      * Gets the list of entity lookup save routines needed to write the
      * Controller class.
@@ -369,10 +375,10 @@ public final class ControllerWriter {
     private String getControllerEmbeddedMapSaves(final Class<?> clazz)
             throws Exception {
         StringBuffer full = new StringBuffer();
-        Field[] fields = clazz.getDeclaredFields();
+        final Field[] fields = clazz.getDeclaredFields();
         for (int i = 0, len = fields.length; i < len; i++) {
-            Field field = fields[i];
-            Type type = field.getGenericType();
+            final Field field = fields[i];
+            final Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {
                 if (((ParameterizedType) type).getRawType().getTypeName()
                         .equalsIgnoreCase("java.util.List")) {
@@ -383,15 +389,14 @@ public final class ControllerWriter {
                         || ((ParameterizedType) type).getRawType()
                                 .getTypeName()
                                 .equalsIgnoreCase("java.util.HashMap")) {
-                    Type[] types =
-                            ((ParameterizedType) type)
-                                    .getActualTypeArguments();
-                    String typeClassName0 =
-                            types[0].getTypeName().substring(
+                    final Type[] types = ((ParameterizedType) type)
+                            .getActualTypeArguments();
+                    final String typeClassName0 = types[0].getTypeName()
+                            .substring(
                                     types[0].getTypeName().lastIndexOf('.')
                                             + 1);
-                    String typeClassName1 =
-                            types[1].getTypeName().substring(
+                    final String typeClassName1 = types[1].getTypeName()
+                            .substring(
                                     types[1].getTypeName().lastIndexOf('.')
                                             + 1);
                     if (schema.hasTable(typeClassName0)
@@ -426,10 +431,11 @@ public final class ControllerWriter {
                 }
             }
         }
-        String s = full.toString();
+        final String s = full.toString();
         full = null;
         return s;
     }
+
     /**
      * Gets the list of entity lookup save routines needed to write the
      * Controller class.
@@ -440,9 +446,9 @@ public final class ControllerWriter {
     private String getControllerEmbeddedMapSaves(final EntityMarkup clazz)
             throws Exception {
         StringBuffer full = new StringBuffer();
-        List<EntityMapField> fields = clazz.getMapFields();
+        final List<EntityMapField> fields = clazz.getMapFields();
         for (int i = 0, len = fields.size(); i < len; i++) {
-            EntityMapField field = fields.get(i);
+            final EntityMapField field = fields.get(i);
             if (field.isEntity()) {
                 String section1 = TextLoader.getInstance().loadText(
                         "controller_template.txt",
@@ -470,10 +476,11 @@ public final class ControllerWriter {
                 full.append("\n");
             }
         }
-        String s = full.toString();
+        final String s = full.toString();
         full = null;
         return s;
     }
+
     /**
      * Gets the list of entity class imports needed to write the Controller
      * class.
@@ -483,17 +490,17 @@ public final class ControllerWriter {
      */
     private String getControllerImports(final Class<?> clazz) throws Exception {
         StringBuffer sb = new StringBuffer();
-        Field[] fields = clazz.getDeclaredFields();
+        final Field[] fields = clazz.getDeclaredFields();
         for (int i = 0, len = fields.length; i < len; i++) {
-            Field field = fields[i];
-            Type type = field.getGenericType();
+            final Field field = fields[i];
+            final Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {
                 if (((ParameterizedType) type).getRawType().getTypeName()
                         .equalsIgnoreCase("java.util.List")) {
-                    Type[] types =
-                            ((ParameterizedType) type).getActualTypeArguments();
-                    String typeClassName =
-                            types[0].getTypeName().substring(
+                    final Type[] types = ((ParameterizedType) type)
+                            .getActualTypeArguments();
+                    final String typeClassName = types[0].getTypeName()
+                            .substring(
                                     types[0].getTypeName().lastIndexOf('.')
                                             + 1);
                     if (schema.hasTable(typeClassName)) {
@@ -513,15 +520,14 @@ public final class ControllerWriter {
                         || ((ParameterizedType) type).getRawType()
                                 .getTypeName()
                                 .equalsIgnoreCase("java.util.HashMap")) {
-                    Type[] types =
-                            ((ParameterizedType) type)
-                                    .getActualTypeArguments();
-                    String typeClassName0 =
-                            types[0].getTypeName().substring(
+                    final Type[] types = ((ParameterizedType) type)
+                            .getActualTypeArguments();
+                    final String typeClassName0 = types[0].getTypeName()
+                            .substring(
                                     types[0].getTypeName().lastIndexOf('.')
                                             + 1);
-                    String typeClassName1 =
-                            types[1].getTypeName().substring(
+                    final String typeClassName1 = types[1].getTypeName()
+                            .substring(
                                     types[1].getTypeName().lastIndexOf('.')
                                             + 1);
                     if (schema.hasTable(typeClassName0)) {
@@ -542,7 +548,7 @@ public final class ControllerWriter {
                     }
                 }
             } else {
-                String fieldClass = field.getType().getSimpleName();
+                final String fieldClass = field.getType().getSimpleName();
                 if (schema.hasTable(fieldClass)) {
                     sb.append("import com.osrapi.models.");
                     sb.append(schema.getSchema());
@@ -553,10 +559,11 @@ public final class ControllerWriter {
                 }
             }
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb = null;
         return s;
     }
+
     /**
      * Gets the list of entity class imports needed to write the Controller
      * class.
@@ -568,7 +575,7 @@ public final class ControllerWriter {
             throws Exception {
         StringBuffer sb = new StringBuffer();
         for (int i = 0, len = clazz.getFields().size(); i < len; i++) {
-            EntityField field = clazz.getFields().get(i);
+            final EntityField field = clazz.getFields().get(i);
             if (field.getEntityClazz() != null) {
                 sb.append("import com.osrapi.models.");
                 sb.append(schema.getSchema());
@@ -579,7 +586,7 @@ public final class ControllerWriter {
             }
         }
         for (int i = 0, len = clazz.getLookupFields().size(); i < len; i++) {
-            EntityLookupField field = clazz.getLookupFields().get(i);
+            final EntityLookupField field = clazz.getLookupFields().get(i);
             if (field.getLookupClazz() != null
                     && !sb.toString().contains(field.getLookupClazz())) {
                 sb.append("import com.osrapi.models.");
@@ -591,7 +598,7 @@ public final class ControllerWriter {
             }
         }
         for (int i = 0, len = clazz.getMapFields().size(); i < len; i++) {
-            EntityMapField field = clazz.getMapFields().get(i);
+            final EntityMapField field = clazz.getMapFields().get(i);
             if (field.isEntity()
                     && !sb.toString().contains(field.getValueClass())) {
                 sb.append("import com.osrapi.models.");
@@ -602,10 +609,11 @@ public final class ControllerWriter {
                 sb.append(";\n");
             }
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb = null;
         return s;
     }
+
     /**
      * Writes a controller class to file.
      * @param clazz the entity {@link Class} the controller is being written for
@@ -614,26 +622,29 @@ public final class ControllerWriter {
     public void write(final EntityMarkup clazz) throws Exception {
         TextLoader.getInstance().setLibraryFolder(
                 "com/dalonedrau/schemacreator");
-        StringBuffer sb = new StringBuffer();
+        final StringBuffer sb = new StringBuffer();
         sb.append("get");
         sb.append(clazz.getClassName());
         sb.append("Resource");
-        String resourceMethod = sb.toString();
+        final String resourceMethod = sb.toString();
         sb.setLength(0);
 
-        String embeddedClasses = getControllerImports(clazz);
+        final String embeddedClasses = getControllerImports(clazz);
 
-        String saveEmbeddedEntities =
-                getControllerEmbeddedEntitiesSaveRoutines(clazz);
+        final String saveEmbeddedEntities =
+                getControllerEmbeddedEntitiesSaveRoutines(
+                        clazz);
 
-        String saveEmbeddedLookup =
-                getControllerEmbeddedLookupSaveRoutines(clazz);
+        final String saveEmbeddedLookup =
+                getControllerEmbeddedLookupSaveRoutines(
+                        clazz);
 
-        String saveEmbeddedMapConditions =
-                getControllerEmbeddedMapSaveRoutines(clazz);
+        final String saveEmbeddedMapConditions =
+                getControllerEmbeddedMapSaveRoutines(
+                        clazz);
 
-        String saveEmbeddedMapMethods =
-                getControllerEmbeddedMapSaves(clazz);
+        final String saveEmbeddedMapMethods = getControllerEmbeddedMapSaves(
+                clazz);
 
         String section = TextLoader.getInstance().loadText(
                 "controller_template.txt", "controller_header");
@@ -671,10 +682,10 @@ public final class ControllerWriter {
                 .getEntityClassName(clazz.getClassName())
                 .replace("Entity", "Controller"));
         sb.append(".java");
-        File file = new File(sb.toString());
+        final File file = new File(sb.toString());
         sb.setLength(0);
         file.getParentFile().mkdirs();
-        PrintWriter writer = new PrintWriter(file, "UTF-8");
+        final PrintWriter writer = new PrintWriter(file, "UTF-8");
         writer.println(section);
         if (saveEmbeddedEntities.length() > 0) {
             writer.println(saveEmbeddedEntities);
@@ -682,9 +693,9 @@ public final class ControllerWriter {
         if (saveEmbeddedMapMethods.length() > 0) {
             writer.println(saveEmbeddedMapMethods);
         }
-        List<EntityField> fields = clazz.getFields();
+        final List<EntityField> fields = clazz.getFields();
         for (int i = 0, len = fields.size(); i < len; i++) {
-            EntityField field = fields.get(i);
+            final EntityField field = fields.get(i);
             if (field.getEntityClazz() != null) {
                 continue;
             }
@@ -696,10 +707,10 @@ public final class ControllerWriter {
             } else if (fieldClass.equalsIgnoreCase("boolean")) {
                 fieldClass = "Boolean";
             }
-            String fieldName = field.getName();
+            final String fieldName = field.getName();
             sb.append(fieldName.substring(0, 1).toUpperCase());
             sb.append(fieldName.substring(1));
-            String fieldName1stCap = sb.toString();
+            final String fieldName1stCap = sb.toString();
             sb.setLength(0);
             section = TextLoader.getInstance().loadText(
                     "controller_template.txt", "controller_get_by_field");

@@ -14,6 +14,7 @@ public final class StringBuilderPool {
      * the one and only instance of the <code>StringBuilderPool</code> class.
      */
     private static StringBuilderPool instance;
+
     /**
      * Gives access to the singleton instance of {@link StringBuilderPool}.
      * @return {@link StringBuilderPool}
@@ -25,24 +26,27 @@ public final class StringBuilderPool {
         }
         return StringBuilderPool.instance;
     }
+
     /** the flags for each pool item indicating whether it is locked or not. */
     private final ArrayList<Boolean> locked;
     /** the pool of {@link PooledStringBuilder}s. */
     private final ArrayList<PooledStringBuilder> pool;
+
     /**
      * Creates the pool of {@link PooledStringBuilder}s.
      * @param initialCapacity the initial pool capacity
      */
     private StringBuilderPool(final int initialCapacity) {
         // create an initial list
-        pool = new ArrayList<PooledStringBuilder>(initialCapacity);
-        locked = new ArrayList<Boolean>(initialCapacity);
+        pool = new ArrayList<>(initialCapacity);
+        locked = new ArrayList<>(initialCapacity);
         // populate the list and set all items to unlocked
         for (int i = 0; i < initialCapacity; i++) {
             pool.add(new PooledStringBuilder(i));
             locked.add(false);
         }
     }
+
     /**
      * Retrieves a {@link PooledStringBuilder} from the pool and locks it for
      * use.
@@ -68,6 +72,7 @@ public final class StringBuilderPool {
         // return the item at the free index
         return pool.get(freeIndex);
     }
+
     /**
      * Determines if an item is locked.
      * @param item the {@link PooledStringBuilder} instance
@@ -77,6 +82,7 @@ public final class StringBuilderPool {
     public boolean isItemLocked(final PooledStringBuilder item) {
         return locked.get(item.getPoolIndex());
     }
+
     /**
      * Returns an item to the pool.
      * @param item the {@link PooledStringBuilder} being returned
@@ -87,6 +93,7 @@ public final class StringBuilderPool {
         // tell the item it's been returned to the pool
         item.returnToPool();
     }
+
     /**
      * Unlocks the assets, readying it for use again.
      * @param item the {@link PooledStringBuilder} asset

@@ -28,6 +28,7 @@ public class DDLMap {
         }
         return ct;
     }
+
     /** the name of the field being mapped by the lookup map. */
     private final String fieldName;
     /** the name of the value field being mapped by the lookup map. */
@@ -42,6 +43,7 @@ public class DDLMap {
     private final String valueTableName;
     /** the column type of the key column. */
     private final String valueType;
+
     public DDLMap(final String fieldName, final String keyFieldName,
             final String keyTableName,
             final String keyType, final String valueFieldName,
@@ -56,6 +58,7 @@ public class DDLMap {
         this.valueTableName = valueTableName;
         this.valueType = valueType;
     }
+
     /**
      * Writes the map markup to output stream.
      * @param writer
@@ -94,8 +97,8 @@ public class DDLMap {
             if (fk == null
                     || fk != null
                             && fk.length() == 0) {
-                PooledStringBuilder sb =
-                        StringBuilderPool.getInstance().getStringBuilder();
+                PooledStringBuilder sb = StringBuilderPool.getInstance()
+                        .getStringBuilder();
                 sb.append(keyTableName);
                 sb.append("_id");
                 fk = sb.toString();
@@ -128,8 +131,8 @@ public class DDLMap {
             if (fk == null
                     || fk != null
                             && fk.length() == 0) {
-                PooledStringBuilder sb =
-                        StringBuilderPool.getInstance().getStringBuilder();
+                PooledStringBuilder sb = StringBuilderPool.getInstance()
+                        .getStringBuilder();
                 sb.append(valueTableName);
                 sb.append("_id");
                 fk = sb.toString();

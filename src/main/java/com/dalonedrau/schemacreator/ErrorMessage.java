@@ -46,6 +46,7 @@ public enum ErrorMessage {
     POST_INDATA("POST Operations Requires Data");
     /** the user message. */
     private final String userMessage;
+
     /**
      * Creates a new instance of {@link ErrorMessage}.
      * @param usrMsg the user message
@@ -53,6 +54,7 @@ public enum ErrorMessage {
     ErrorMessage(final String usrMsg) {
         userMessage = usrMsg;
     }
+
     /**
      * Gets the user message.
      * @return {@link String}

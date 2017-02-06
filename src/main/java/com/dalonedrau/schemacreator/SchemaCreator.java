@@ -37,6 +37,7 @@ import com.dalonedrow.pooled.PooledException;
 import com.dalonedrow.pooled.PooledStringBuilder;
 import com.dalonedrow.pooled.StringBuilderPool;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
@@ -50,35 +51,36 @@ public final class SchemaCreator {
      * @param args not used
      */
     public static void main(final String[] args) {
-        String[] pkgs = new String[] {
+        final String[] pkgs = new String[] {
                 // "com.dalonedrau.entities.ll",
                 // "com.dalonedrau.entities.sw_ct",
                 // "com.dalonedrau.entities.arkania",
                 // "com.dalonedrau.entities.avalon",
                 // "com.dalonedrau.entities.bp",
-                "com.dalonedrau.entities.ff",
+                // "com.dalonedrau.entities.ff",
                 "com.dalonedrau.entities.ll",
                 // "com.dalonedrau.entities.lablord",
                 // "com.dalonedrau.entities.wfrp"
         };
-        SchemaCreator[] creators = new SchemaCreator[pkgs.length];
+        final SchemaCreator[] creators = new SchemaCreator[pkgs.length];
         for (int j = pkgs.length - 1; j >= 0; j--) {
             creators[j] = new SchemaCreator();
-            String pkg = pkgs[j];
+            final String pkg = pkgs[j];
             System.out.println("processing package " + pkg);
             creators[j].schema = pkg.substring(pkg.lastIndexOf('.') + 1);
             SchemaUtilities.getInstance(creators[j].schema);
             System.out.println("schema " + creators[j].schema);
-            List<Class<?>> list = ClassFinder.find(pkg);
+            final List<Class<?>> list = ClassFinder.find(pkg);
             // add all classes first
             for (int i = 0, len = list.size(); i < len; i++) {
                 Class<?> clazz = list.get(i);
                 if (!clazz.getSuperclass().equals(Object.class)
                         && clazz.getSuperclass().getAnnotation(
                                 Inheritance.class) != null) {
-                    InheritanceType inheritanceType =
-                            clazz.getSuperclass().getAnnotation(
-                                    Inheritance.class).strategy();
+                    final InheritanceType inheritanceType = clazz
+                            .getSuperclass().getAnnotation(
+                                    Inheritance.class)
+                            .strategy();
                     switch (inheritanceType) {
                     case JOINED:
                         creators[j].addTable(clazz.getSimpleName());
@@ -98,19 +100,20 @@ public final class SchemaCreator {
             }
             // add dependencies next
             for (int i = 0, len = list.size(); i < len; i++) {
-                Class<?> clazz = list.get(i);
+                final Class<?> clazz = list.get(i);
                 creators[j].readFields(clazz);
             }
             try {
                 creators[j].writeEntityClasses(pkg);
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
     }
+
     /** the list of entity classes. */
-    private final List<SchemaClass> classes = new ArrayList<SchemaClass>();
+    private final List<SchemaClass> classes = new ArrayList<>();
     private List<DDLMarkup> ddls;
     private List<EntityMarkup> entities;
     /** the path to the packages to be exported. */
@@ -118,7 +121,8 @@ public final class SchemaCreator {
     /** the name of the schema being worked on. */
     private String schema;
     /** the list of tables in the schema. */
-    private final List<String> tables = new ArrayList<String>();
+    private final List<String> tables = new ArrayList<>();
+
     /**
      * Adds a schema class to the list.
      * @param clazz the {@link SchemaClass} of the table to be added
@@ -126,6 +130,7 @@ public final class SchemaCreator {
     public void addSchemaClass(final SchemaClass clazz) {
         classes.add(clazz);
     }
+
     /**
      * Adds a table to the list.
      * @param tableName the name of the table to be added
@@ -133,6 +138,7 @@ public final class SchemaCreator {
     public void addTable(final String tableName) {
         tables.add(tableName);
     }
+
     /**
      * Writes an entity class to the DDL file.
      * @param writer the {@link PrintWriter} used to write the file
@@ -143,16 +149,15 @@ public final class SchemaCreator {
     private DDLMarkup createDDL(final PrintWriter writer,
             final Class<?> clazz) throws Exception {
         DDLMarkup ddl = new DDLMarkup();
-        String table =
-                SchemaUtilities.getInstance()
-                        .getTableName(clazz.getSimpleName());
+        final String table = SchemaUtilities.getInstance()
+                .getTableName(clazz.getSimpleName());
         System.out.println("write ddl markup for " + table);
         ddl.setTable(table);
         if (clazz.getAnnotation(UniqueCompositeKey.class) != null) {
-            String col0 =
-                    clazz.getAnnotation(UniqueCompositeKey.class).column0();
-            String col1 =
-                    clazz.getAnnotation(UniqueCompositeKey.class).column1();
+            final String col0 = clazz.getAnnotation(UniqueCompositeKey.class)
+                    .column0();
+            final String col1 = clazz.getAnnotation(UniqueCompositeKey.class)
+                    .column1();
             if (col0 != null
                     && col0.length() > 0
                     && col1 != null
@@ -160,17 +165,17 @@ public final class SchemaCreator {
                 ddl.addConstraint(new DDLUniqueConstraint(col0, col1));
             }
         }
-        Field[] fields = clazz.getDeclaredFields();
+        final Field[] fields = clazz.getDeclaredFields();
         for (int i = 0, len = fields.length; i < len; i++) {
-            Field field = fields[i];
-            Type type = field.getGenericType();
+            final Field field = fields[i];
+            final Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {
                 if (((ParameterizedType) type).getRawType().getTypeName()
                         .equalsIgnoreCase("java.util.List")) {
-                    Type[] types =
-                            ((ParameterizedType) type).getActualTypeArguments();
-                    String typeClassName =
-                            types[0].getTypeName().substring(
+                    final Type[] types = ((ParameterizedType) type)
+                            .getActualTypeArguments();
+                    final String typeClassName = types[0].getTypeName()
+                            .substring(
                                     types[0].getTypeName().lastIndexOf('.')
                                             + 1);
                     if (tables.contains(typeClassName)) {
@@ -191,14 +196,14 @@ public final class SchemaCreator {
                         || ((ParameterizedType) type).getRawType().getTypeName()
                                 .equalsIgnoreCase("java.util.HashMap")) {
                     System.out.println("field " + field.getName() + " is map");
-                    Type[] types =
-                            ((ParameterizedType) type).getActualTypeArguments();
-                    String typeClassName0 =
-                            types[0].getTypeName().substring(
+                    final Type[] types = ((ParameterizedType) type)
+                            .getActualTypeArguments();
+                    final String typeClassName0 = types[0].getTypeName()
+                            .substring(
                                     types[0].getTypeName().lastIndexOf('.')
                                             + 1);
-                    String typeClassName1 =
-                            types[1].getTypeName().substring(
+                    final String typeClassName1 = types[1].getTypeName()
+                            .substring(
                                     types[1].getTypeName().lastIndexOf('.')
                                             + 1);
                     if (tables.contains(typeClassName0)
@@ -219,8 +224,8 @@ public final class SchemaCreator {
                             ));
                         } else {
                             // mapping provided
-                            MapForeignKey anno =
-                                    field.getAnnotation(MapForeignKey.class);
+                            final MapForeignKey anno = field
+                                    .getAnnotation(MapForeignKey.class);
                             String kfn = null;
                             if (anno.keyField() != null) {
                                 kfn = anno.keyField();
@@ -265,8 +270,8 @@ public final class SchemaCreator {
                         }
                     } else {
                         if (field.getAnnotation(MapForeignKey.class) != null) {
-                            MapForeignKey anno =
-                                    field.getAnnotation(MapForeignKey.class);
+                            final MapForeignKey anno = field
+                                    .getAnnotation(MapForeignKey.class);
                             String kfn = null;
                             if (anno.keyField() != null) {
                                 kfn = anno.keyField();
@@ -309,7 +314,7 @@ public final class SchemaCreator {
                     }
                 }
             } else {
-                String fieldClass = field.getType().getSimpleName();
+                final String fieldClass = field.getType().getSimpleName();
                 if (tables.contains(fieldClass)) {
                     if (field.getType().equals(clazz)) {
                         ddl.addField(field);
@@ -353,24 +358,25 @@ public final class SchemaCreator {
         if (!clazz.getSuperclass().equals(Object.class)
                 && clazz.getSuperclass().getAnnotation(
                         Inheritance.class) != null) {
-            InheritanceType inheritanceType =
-                    clazz.getSuperclass().getAnnotation(
-                            Inheritance.class).strategy();
+            InheritanceType inheritanceType = clazz.getSuperclass()
+                    .getAnnotation(
+                            Inheritance.class)
+                    .strategy();
             switch (inheritanceType) {
             case JOINED:
                 break;
             case SINGLE_TABLE:
-                DDLMarkup parent = getDDL(
+                final DDLMarkup parent = getDDL(
                         SchemaUtilities.getInstance().getTableName(
                                 clazz.getSuperclass().getSimpleName()));
                 // move all fields to parent
-                List<DDLField> list = ddl.getFields();
+                final List<DDLField> list = ddl.getFields();
                 for (int i = list.size() - 1; i >= 0; i--) {
                     list.get(i).setNullFlag("");
                 }
                 parent.addFields(ddl.getFields());
                 // move all lookup fields to parent
-                List<DDLLookup> lookupList = ddl.getLookups();
+                final List<DDLLookup> lookupList = ddl.getLookups();
                 for (int i = lookupList.size() - 1; i >= 0; i--) {
                     lookupList.get(i).setTable1(parent.getTable());
                 }
@@ -386,6 +392,7 @@ public final class SchemaCreator {
         }
         return ddl;
     }
+
     /**
      * Creates the DML lookup statement.
      * @param o the first entity in the lookup table
@@ -404,10 +411,11 @@ public final class SchemaCreator {
         sb.append(createSelectIdByIdentifier(o));
         sb.append(",\n  ");
         sb.append(createSelectIdByIdentifier(obj));
-        String s = sb.toString();
+        final String s = sb.toString();
         sb = null;
         return s;
     }
+
     /**
      * Creates an update statement when writing DML.
      * @param table the table name
@@ -446,13 +454,13 @@ public final class SchemaCreator {
         sb.append(" WHERE ");
         if (useCode) {
             sb.append("code='");
-            Field f2 = o.getClass().getDeclaredField("code");
+            final Field f2 = o.getClass().getDeclaredField("code");
             f2.setAccessible(true);
             sb.append((String) f2.get(obj));
             sb.append("')");
         } else if (useName) {
             sb.append("name='");
-            Field f2 = o.getClass().getDeclaredField("name");
+            final Field f2 = o.getClass().getDeclaredField("name");
             f2.setAccessible(true);
             sb.append((String) f2.get(obj));
             sb.append("')");
@@ -460,21 +468,22 @@ public final class SchemaCreator {
         sb.append("\nWHERE ");
         if (useCode) {
             sb.append("code='");
-            Field f2 = o.getClass().getDeclaredField("code");
+            final Field f2 = o.getClass().getDeclaredField("code");
             f2.setAccessible(true);
             sb.append((String) f2.get(o));
             sb.append("';");
         } else if (useName) {
             sb.append("name='");
-            Field f2 = o.getClass().getDeclaredField("name");
+            final Field f2 = o.getClass().getDeclaredField("name");
             f2.setAccessible(true);
             sb.append((String) f2.get(o));
             sb.append("';");
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb = null;
         return s;
     }
+
     /**
      * Creates an entity markup instance.
      * @param clazz the class
@@ -484,17 +493,17 @@ public final class SchemaCreator {
     private EntityMarkup createEntityMarkup(final Class<?> clazz)
             throws Exception {
         EntityMarkup entity = new EntityMarkup(clazz);
-        Field[] fields = clazz.getDeclaredFields();
+        final Field[] fields = clazz.getDeclaredFields();
         for (int i = 0, len = fields.length; i < len; i++) {
-            Field field = fields[i];
-            Type type = field.getGenericType();
+            final Field field = fields[i];
+            final Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {
                 if (((ParameterizedType) type).getRawType().getTypeName()
                         .equalsIgnoreCase("java.util.List")) {
-                    Type[] types =
-                            ((ParameterizedType) type).getActualTypeArguments();
-                    String typeClassName =
-                            types[0].getTypeName().substring(
+                    final Type[] types = ((ParameterizedType) type)
+                            .getActualTypeArguments();
+                    final String typeClassName = types[0].getTypeName()
+                            .substring(
                                     types[0].getTypeName().lastIndexOf('.')
                                             + 1);
                     if (tables.contains(typeClassName)) {
@@ -508,14 +517,14 @@ public final class SchemaCreator {
                         .equalsIgnoreCase("java.util.Map")
                         || ((ParameterizedType) type).getRawType().getTypeName()
                                 .equalsIgnoreCase("java.util.HashMap")) {
-                    Type[] types =
-                            ((ParameterizedType) type).getActualTypeArguments();
-                    String typeClassName0 =
-                            types[0].getTypeName().substring(
+                    final Type[] types = ((ParameterizedType) type)
+                            .getActualTypeArguments();
+                    final String typeClassName0 = types[0].getTypeName()
+                            .substring(
                                     types[0].getTypeName().lastIndexOf('.')
                                             + 1);
-                    String typeClassName1 =
-                            types[1].getTypeName().substring(
+                    final String typeClassName1 = types[1].getTypeName()
+                            .substring(
                                     types[1].getTypeName().lastIndexOf('.')
                                             + 1);
                     if (tables.contains(typeClassName0)
@@ -530,12 +539,18 @@ public final class SchemaCreator {
                     }
                 }
             } else {
-                String fieldClass = field.getType().getSimpleName();
+                final String fieldClass = field.getType().getSimpleName();
                 if (tables.contains(fieldClass)) {
                     // add entity member
-                    entity.addField(new EntityField(field.getName(),
+                    EntityField ef = new EntityField(field.getName(),
                             field.getType().getSimpleName(), null,
-                            field.getAnnotation(CanBeNull.class) != null));
+                            field.getAnnotation(CanBeNull.class) != null);
+                    if (field.getAnnotation(JsonProperty.class) != null) {
+                        ef.setJsonProperty(field.getAnnotation(
+                                JsonProperty.class).value());
+                    }
+                    entity.addField(ef);
+                    ef = null;
                 } else {
                     // add primitive type member
                     String outClass = "";
@@ -558,26 +573,33 @@ public final class SchemaCreator {
                             .equalsIgnoreCase("class java.lang.String")) {
                         outClass = "String";
                     }
-                    entity.addField(new EntityField(field.getName(), null,
+                    EntityField ef = new EntityField(field.getName(), null,
                             outClass,
-                            field.getAnnotation(CanBeNull.class) != null));
+                            field.getAnnotation(CanBeNull.class) != null);
+                    if (field.getAnnotation(JsonProperty.class) != null) {
+                        ef.setJsonProperty(field.getAnnotation(
+                                JsonProperty.class).value());
+                    }
+                    entity.addField(ef);
+                    ef = null;
                 }
             }
         }
         if (!clazz.getSuperclass().equals(Object.class)
                 && clazz.getSuperclass().getAnnotation(
                         Inheritance.class) != null) {
-            InheritanceType inheritanceType =
-                    clazz.getSuperclass().getAnnotation(
-                            Inheritance.class).strategy();
+            InheritanceType inheritanceType = clazz.getSuperclass()
+                    .getAnnotation(
+                            Inheritance.class)
+                    .strategy();
             switch (inheritanceType) {
             case JOINED:
                 break;
             case SINGLE_TABLE:
-                EntityMarkup parent = getEntity(
+                final EntityMarkup parent = getEntity(
                         clazz.getSuperclass().getSimpleName());
                 // move all fields to parent
-                List<EntityField> list = entity.getFields();
+                final List<EntityField> list = entity.getFields();
                 for (int i = list.size() - 1; i >= 0; i--) {
                     list.get(i).setNullAllowed(true);
                 }
@@ -592,21 +614,21 @@ public final class SchemaCreator {
         }
         return entity;
     }
+
     private String createSelectIdByIdentifier(final Object o)
             throws IllegalArgumentException, IllegalAccessException,
             NoSuchFieldException, SecurityException {
         StringBuffer sb = new StringBuffer();
         sb.append("(SELECT ");
-        String table =
-                SchemaUtilities.getInstance()
-                        .getTableName(o.getClass().getSimpleName());
+        final String table = SchemaUtilities.getInstance()
+                .getTableName(o.getClass().getSimpleName());
         sb.append(table);
         sb.append("_id FROM ");
         sb.append(schema);
         sb.append(".");
         sb.append(table);
         sb.append(" WHERE ");
-        Field[] fields = o.getClass().getDeclaredFields();
+        final Field[] fields = o.getClass().getDeclaredFields();
         if (fieldsHaveMember(fields, "code")) {
             Field f2 = o.getClass().getDeclaredField("code");
             f2.setAccessible(true);
@@ -664,7 +686,7 @@ public final class SchemaCreator {
                 }
             }
         } else if (fieldsHaveMember(fields, "name")) {
-            Field f2 = o.getClass().getDeclaredField("name");
+            final Field f2 = o.getClass().getDeclaredField("name");
             f2.setAccessible(true);
             if (f2.get(o) == null) {
                 throw new NoSuchFieldException(
@@ -675,7 +697,7 @@ public final class SchemaCreator {
             sb.append(((String) f2.get(o)).replaceAll("'", "''"));
             sb.append("')");
         } else if (fieldsHaveMember(fields, "title")) {
-            Field f2 = o.getClass().getDeclaredField("title");
+            final Field f2 = o.getClass().getDeclaredField("title");
             f2.setAccessible(true);
             if (f2.get(o) == null) {
                 throw new NoSuchFieldException(
@@ -686,10 +708,11 @@ public final class SchemaCreator {
             sb.append(((String) f2.get(o)).replaceAll("'", "''"));
             sb.append("')");
         }
-        String s = sb.toString();
+        final String s = sb.toString();
         sb = null;
         return s;
     }
+
     /**
      * Determines if any fields have a specific name.
      * @param fields the list of fields
@@ -708,19 +731,20 @@ public final class SchemaCreator {
         }
         return has;
     }
+
     /**
      * Topographical sort to compare all items to each other for sorting.
      * @param list the list of entity classes
      */
     private void fullSort(final List<SchemaClass> list) {
-        List<SchemaClass> copy = new ArrayList<SchemaClass>();
+        final List<SchemaClass> copy = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             copy.add(list.get(i));
         }
         list.clear();
         while (copy.size() > 0) { // while indices remain,
             // get a vertex with no successors, or -1
-            SchemaClass currentVertex = getClassWithNoDependencies(copy);
+            final SchemaClass currentVertex = getClassWithNoDependencies(copy);
             if (currentVertex == null) { // must be a cycle
                 System.out.println(
                         "ERROR: how the hell did we get here");
@@ -732,6 +756,7 @@ public final class SchemaCreator {
             // + currentVertex.getClazz().getSimpleName());
         }
     }
+
     /**
      * Iterates through a list of {@link SchemaClass}es to find one that has no
      * dependencies. The list should have indices removed each iteration, so
@@ -769,6 +794,7 @@ public final class SchemaCreator {
         }
         return temp;
     }
+
     /**
      * Gets a specific DDL by its table name.
      * @param tableName the table
@@ -785,6 +811,7 @@ public final class SchemaCreator {
         }
         return ddl;
     }
+
     /**
      * Gets a specific Entity by its table name.
      * @param entityName the table
@@ -800,6 +827,7 @@ public final class SchemaCreator {
         }
         return entity;
     }
+
     /**
      * Gets the path for the export packages.
      * @return {@link String}
@@ -807,6 +835,7 @@ public final class SchemaCreator {
     public String getPkgPath() {
         return pkgPath;
     }
+
     /**
      * Gets the name of the schema.
      * @return {@link String}
@@ -814,6 +843,7 @@ public final class SchemaCreator {
     public String getSchema() {
         return schema;
     }
+
     /**
      * Determines if the schema contains a specific table.
      * @param table the table name
@@ -823,24 +853,24 @@ public final class SchemaCreator {
     public boolean hasTable(final String table) {
         return tables.contains(table);
     }
+
     /**
      * Reads all fields for a class.
      * @param clazz the class
      */
     private void readFields(final Class<?> clazz) {
-        Field[] fields = clazz.getDeclaredFields();
+        final Field[] fields = clazz.getDeclaredFields();
         for (int i = fields.length - 1; i >= 0; i--) {
-            Field field = fields[i];
+            final Field field = fields[i];
             try {
-                Type type = field.getGenericType();
+                final Type type = field.getGenericType();
                 if (type instanceof ParameterizedType) {
                     if (((ParameterizedType) type).getRawType().getTypeName()
                             .equalsIgnoreCase("java.util.List")) {
-                        Type[] types =
-                                ((ParameterizedType) type)
-                                        .getActualTypeArguments();
-                        String typeClassName =
-                                types[0].getTypeName().substring(
+                        final Type[] types = ((ParameterizedType) type)
+                                .getActualTypeArguments();
+                        final String typeClassName = types[0].getTypeName()
+                                .substring(
                                         types[0].getTypeName().lastIndexOf('.')
                                                 + 1);
                         if (tables.contains(typeClassName)) {
@@ -884,15 +914,14 @@ public final class SchemaCreator {
                                 }
                             }
                         }
-                        Type[] types =
-                                ((ParameterizedType) type)
-                                        .getActualTypeArguments();
-                        String typeClassName0 =
-                                types[0].getTypeName().substring(
+                        final Type[] types = ((ParameterizedType) type)
+                                .getActualTypeArguments();
+                        final String typeClassName0 = types[0].getTypeName()
+                                .substring(
                                         types[0].getTypeName().lastIndexOf('.')
                                                 + 1);
-                        String typeClassName1 =
-                                types[1].getTypeName().substring(
+                        final String typeClassName1 = types[1].getTypeName()
+                                .substring(
                                         types[1].getTypeName().lastIndexOf('.')
                                                 + 1);
                         if (tables.contains(typeClassName0)) {
@@ -913,7 +942,7 @@ public final class SchemaCreator {
                         }
                     }
                 } else {
-                    String fieldClass = field.getType().getSimpleName();
+                    final String fieldClass = field.getType().getSimpleName();
                     Class<?> searchClass = clazz;
                     if (!clazz.getSuperclass().equals(Object.class)) {
                         searchClass = clazz.getSuperclass();
@@ -941,10 +970,10 @@ public final class SchemaCreator {
                         }
                     }
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 System.out.println("error with " + field.getName());
                 ex.printStackTrace();
-                String fieldClass = field.getType().getSimpleName();
+                final String fieldClass = field.getType().getSimpleName();
                 if (tables.contains(fieldClass)) {
                     classes.get(classes.indexOf(clazz))
                             .addDependency(fieldClass);
@@ -954,7 +983,7 @@ public final class SchemaCreator {
         if (!clazz.getSuperclass().equals(Object.class)
                 && clazz.getSuperclass()
                         .getAnnotation(Inheritance.class) != null) {
-            String fieldClass = clazz.getSuperclass().getSimpleName();
+            final String fieldClass = clazz.getSuperclass().getSimpleName();
             if (tables.contains(fieldClass)) {
                 for (int i = classes.size() - 1; i >= 0; i--) {
                     if (classes.get(i).getClazz().equals(clazz)) {
@@ -965,6 +994,7 @@ public final class SchemaCreator {
             }
         }
     }
+
     /**
      * Writes the schema header for the DDL file.
      * @param writer the {@link PrintWriter} used to write the file
@@ -987,10 +1017,11 @@ public final class SchemaCreator {
             System.exit(1);
         }
     }
+
     @SuppressWarnings("rawtypes")
     private void writeDML(final PrintWriter writer,
             final Class<?> clazz, final String pkg) throws Exception {
-        String table = SchemaUtilities.getInstance()
+        final String table = SchemaUtilities.getInstance()
                 .getTableName(clazz.getSimpleName());
         writer.print("-- ADD ");
         writer.print(table.toUpperCase());
@@ -1001,24 +1032,24 @@ public final class SchemaCreator {
         writer.print(table);
         writer.print("(");
         int numFields = 0;
-        List<String[]> lookupTables = new ArrayList<String[]>();
-        List<String[]> lookupMapTables = new ArrayList<String[]>();
-        List<String[]> mapLookupTables = new ArrayList<String[]>();
-        Map<String, List<String>> lookups = new HashMap<String,
-                List<String>>();
-        Map<String, List<String>> mapLookups = new HashMap<String,
-                List<String>>();
-        Field[] fields = clazz.getDeclaredFields();
+        final List<String[]> lookupTables = new ArrayList<>();
+        final List<String[]> lookupMapTables = new ArrayList<>();
+        final List<String[]> mapLookupTables = new ArrayList<>();
+        final Map<String, List<String>> lookups = new HashMap<>();
+        final Map<String, List<String>> mapLookups = new HashMap<>();
+        final Field[] fields = clazz.getDeclaredFields();
         for (int i = 0, len = fields.length; i < len; i++) {
-            Field field = fields[i];
-            Type type = field.getGenericType();
+            final Field field = fields[i];
+            final Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {
                 if (((ParameterizedType) type).getRawType().getTypeName()
                         .equalsIgnoreCase("java.util.List")) {
-                    Type[] types =
-                            ((ParameterizedType) type).getActualTypeArguments();
-                    String typeClassName = types[0].getTypeName().substring(
-                            types[0].getTypeName().lastIndexOf('.') + 1);
+                    final Type[] types = ((ParameterizedType) type)
+                            .getActualTypeArguments();
+                    final String typeClassName = types[0].getTypeName()
+                            .substring(
+                                    types[0].getTypeName().lastIndexOf('.')
+                                            + 1);
                     if (tables.contains(typeClassName)) {
                         lookupTables.add(new String[] { clazz.getSimpleName(),
                                 typeClassName, field.getName() });
@@ -1028,12 +1059,12 @@ public final class SchemaCreator {
                             || ((ParameterizedType) type).getRawType()
                                     .getTypeName()
                                     .equalsIgnoreCase("java.util.HashMap")) {
-                        String typeClassName0 =
-                                types[0].getTypeName().substring(
+                        final String typeClassName0 = types[0].getTypeName()
+                                .substring(
                                         types[0].getTypeName().lastIndexOf('.')
                                                 + 1);
-                        String typeClassName1 =
-                                types[1].getTypeName().substring(
+                        final String typeClassName1 = types[1].getTypeName()
+                                .substring(
                                         types[1].getTypeName().lastIndexOf('.')
                                                 + 1);
                         if (tables.contains(typeClassName0)
@@ -1057,14 +1088,14 @@ public final class SchemaCreator {
                         || ((ParameterizedType) type).getRawType()
                                 .getTypeName()
                                 .equalsIgnoreCase("java.util.HashMap")) {
-                    Type[] types =
-                            ((ParameterizedType) type).getActualTypeArguments();
-                    String typeClassName0 =
-                            types[0].getTypeName().substring(
+                    final Type[] types = ((ParameterizedType) type)
+                            .getActualTypeArguments();
+                    final String typeClassName0 = types[0].getTypeName()
+                            .substring(
                                     types[0].getTypeName().lastIndexOf('.')
                                             + 1);
-                    String typeClassName1 =
-                            types[1].getTypeName().substring(
+                    final String typeClassName1 = types[1].getTypeName()
+                            .substring(
                                     types[1].getTypeName().lastIndexOf('.')
                                             + 1);
                     if (tables.contains(typeClassName0)
@@ -1088,11 +1119,10 @@ public final class SchemaCreator {
         }
         int writtenFields = 0;
         for (int i = 0, len = fields.length; i < len; i++) {
-            Field field = fields[i];
-            Type type = field.getGenericType();
+            final Field field = fields[i];
+            final Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {} else {
-                String fieldClass =
-                        field.getType().getSimpleName();
+                final String fieldClass = field.getType().getSimpleName();
                 if (tables.contains(fieldClass)) {
                     if (!field.getType().equals(clazz)) {
                         writer.print(SchemaUtilities.getInstance()
@@ -1109,12 +1139,12 @@ public final class SchemaCreator {
             }
         }
         writer.println(") VALUES("); // try to open js file
-        StringBuffer sb = new StringBuffer();
+        final StringBuffer sb = new StringBuffer();
         sb.append(pkg);
         sb.append(".js");
-        String scannedPath = sb.toString().replace('.', '/');
-        URL scannedUrl =
-                Thread.currentThread().getContextClassLoader().getResource(
+        final String scannedPath = sb.toString().replace('.', '/');
+        final URL scannedUrl = Thread.currentThread().getContextClassLoader()
+                .getResource(
                         scannedPath);
         if (scannedUrl == null) {
             throw new IllegalArgumentException(String.format(
@@ -1123,18 +1153,18 @@ public final class SchemaCreator {
                     scannedPath,
                     sb.toString()));
         }
-        File scannedDir = new File(scannedUrl.getFile());
-        for (File file : scannedDir.listFiles()) {
+        final File scannedDir = new File(scannedUrl.getFile());
+        for (final File file : scannedDir.listFiles()) {
             if (file.getName().substring(0, file.getName().length() - 3)
                     .equalsIgnoreCase(clazz.getSimpleName())) {
-                ObjectMapper mapper = new ObjectMapper();
+                final ObjectMapper mapper = new ObjectMapper();
                 mapper.disable(
                         DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
                 mapper.setVisibility(VisibilityChecker.Std.defaultInstance()
                         .withFieldVisibility(Visibility.ANY));
-                List<String> updates = new ArrayList<String>();
+                final List<String> updates = new ArrayList<>();
                 try {
-                    List list = (List) mapper.readValue(file,
+                    final List list = (List) mapper.readValue(file,
                             mapper.getTypeFactory().constructCollectionType(
                                     List.class, clazz));
                     for (int i = 0, len = list.size(); i < len; i++) {
@@ -1155,7 +1185,7 @@ public final class SchemaCreator {
                             writer.println(";");
                         }
                     }
-                } catch (IOException e) {
+                } catch (final IOException e) {
                     e.printStackTrace();
                     System.exit(1);
                 }
@@ -1165,16 +1195,14 @@ public final class SchemaCreator {
                 }
             }
         }
-        for (int i = 0, len =
-                lookupTables.size(); i < len; i++) {
+        for (int i = 0, len = lookupTables.size(); i < len; i++) {
             writeDMLLookupTable(writer,
                     lookupTables.get(i)[0], // entity 1 table
                     lookupTables.get(i)[1], // entity 2 table
                     lookupTables.get(i)[2], // field name
                     lookups.get(lookupTables.get(i)[2])); // field values
         }
-        for (int i = 0, len =
-                mapLookupTables.size(); i < len; i++) {
+        for (int i = 0, len = mapLookupTables.size(); i < len; i++) {
             writeDMLMapLookupTable(writer,
                     mapLookupTables.get(i)[0], // entity 1 table
                     mapLookupTables.get(i)[1], // field name
@@ -1201,6 +1229,7 @@ public final class SchemaCreator {
         }
 
     }
+
     /**
      * Writes the DML join table for two entities.
      * @param writer the {@link PrintWriter} used to write the file
@@ -1258,6 +1287,7 @@ public final class SchemaCreator {
         }
         writer.println();
     }
+
     /**
      * Writes the DML join table for two entities.
      * @param writer the {@link PrintWriter} used to write the file
@@ -1293,6 +1323,7 @@ public final class SchemaCreator {
         }
         writer.println();
     }
+
     @SuppressWarnings("rawtypes")
     private void writeDMLRecord(final PrintWriter writer, final Field[] fields,
             final Class<?> clazz, final String table, final Object o,
@@ -1304,9 +1335,9 @@ public final class SchemaCreator {
         int writtenFields = 0;
         writer.print("  ");
         for (int i = 0, len = fields.length; i < len; i++) {
-            Field field = fields[i];
+            final Field field = fields[i];
             field.setAccessible(true);
-            Type type = field.getGenericType();
+            final Type type = field.getGenericType();
             if (type instanceof ParameterizedType) {
                 if (((ParameterizedType) type).getRawType().getTypeName()
                         .equalsIgnoreCase("java.util.List")) {
@@ -1331,41 +1362,40 @@ public final class SchemaCreator {
                                 .equalsIgnoreCase("java.util.HashMap")) {
                     if (field.isAnnotationPresent(MapForeignKey.class)
                             && field.get(o) != null) {
-                        MapForeignKey mfk =
-                                field.getAnnotation(MapForeignKey.class);
-                        Map map = (Map) field.get(o);
+                        final MapForeignKey mfk = field
+                                .getAnnotation(MapForeignKey.class);
+                        final Map map = (Map) field.get(o);
                         try {
-                            Iterator iter = map.keySet().iterator();
+                            final Iterator iter = map.keySet().iterator();
                             while (iter.hasNext()) {
                                 // create 2 new objects for lookup values
-                                String key = (String) iter.next();
+                                final String key = (String) iter.next();
                                 PooledStringBuilder sb = StringBuilderPool
                                         .getInstance().getStringBuilder();
                                 sb.append(o.getClass().getPackage().getName());
                                 sb.append('.');
                                 sb.append(mfk.keyTargetClass());
-                                Object keyObj = Class.forName(
+                                final Object keyObj = Class.forName(
                                         sb.toString()).newInstance();
                                 sb.setLength(0);
-                                Field keyField =
-                                        keyObj.getClass().getDeclaredField(
+                                final Field keyField = keyObj.getClass()
+                                        .getDeclaredField(
                                                 mfk.keyField());
                                 keyField.setAccessible(true);
                                 keyField.set(keyObj, key);
                                 // create value object
                                 /*
-                                sb.append(o.getClass().getPackage().getName());
-                                sb.append('.');
-                                sb.append(mfk.valueTargetClass());
-                                Object valObj = Class.forName(
-                                        sb.toString()).newInstance();
-                                sb.setLength(0);
-                                Field valField =
-                                        valObj.getClass().getDeclaredField(
-                                                mfk.valueField());
-                                valField.setAccessible(true);
-                                valField.set(valObj, map.get(key));
-                                */
+                                 * sb.append(o.getClass().getPackage().getName()
+                                 * ); sb.append('.');
+                                 * sb.append(mfk.valueTargetClass()); Object
+                                 * valObj = Class.forName(
+                                 * sb.toString()).newInstance();
+                                 * sb.setLength(0); Field valField =
+                                 * valObj.getClass().getDeclaredField(
+                                 * mfk.valueField());
+                                 * valField.setAccessible(true);
+                                 * valField.set(valObj, map.get(key));
+                                 */
                                 if (mapLookups.get(field.getName()) == null) {
                                     mapLookups.put(field.getName(),
                                             new ArrayList<String>());
@@ -1407,7 +1437,7 @@ public final class SchemaCreator {
                      */
                 }
             } else {
-                String fieldClass = field.getType().getSimpleName();
+                final String fieldClass = field.getType().getSimpleName();
                 if (tables.contains(fieldClass)) {
                     Object obj = field.get(o);
                     if (field.getType().equals(clazz)) {
@@ -1451,7 +1481,7 @@ public final class SchemaCreator {
                         }
                     } else {
                         System.err.println("unknown type for field "
-                    + field.getName() + " - " + type.toString());
+                                + field.getName() + " - " + type.toString());
                         System.exit(1);
                     }
                     if (writtenFields + 1 < numFields) {
@@ -1462,6 +1492,7 @@ public final class SchemaCreator {
             }
         }
     }
+
     /**
      * Writes the entity classes - java, DDL, and DML.
      * @param pkg the current package
@@ -1469,26 +1500,26 @@ public final class SchemaCreator {
      */
     private void writeEntityClasses(final String pkg)
             throws Exception {
-        File ddlFile = new File(".\\" + pkgPath + "\\schema\\"
+        final File ddlFile = new File(".\\" + pkgPath + "\\schema\\"
                 + schema + "_ddl.sql");
         ddlFile.getParentFile().mkdirs();
 
-        PrintWriter ddlWriter = new PrintWriter(ddlFile, "UTF-8");
+        final PrintWriter ddlWriter = new PrintWriter(ddlFile, "UTF-8");
         writeDDLSchemaHeader(ddlWriter);
 
-        File dmlFile = new File(".\\" + pkgPath + "\\schema\\"
+        final File dmlFile = new File(".\\" + pkgPath + "\\schema\\"
                 + schema + "_dml.sql");
         dmlFile.getParentFile().mkdirs();
-        PrintWriter dmlWriter = new PrintWriter(dmlFile, "UTF-8");
+        final PrintWriter dmlWriter = new PrintWriter(dmlFile, "UTF-8");
         fullSort(classes);
-        entities = new ArrayList<EntityMarkup>();
-        ddls = new ArrayList<DDLMarkup>();
+        entities = new ArrayList<>();
+        ddls = new ArrayList<>();
         for (int i = 0, len = classes.size(); i < len; i++) {
-            SchemaClass schemaClass = classes.get(i);
-            Class<?> clazz = schemaClass.getClazz();
+            final SchemaClass schemaClass = classes.get(i);
+            final Class<?> clazz = schemaClass.getClazz();
             // 1. write Entity Class
             // new EntityWriter(this).write(clazz);
-            EntityMarkup entity = createEntityMarkup(clazz);
+            final EntityMarkup entity = createEntityMarkup(clazz);
             if (entity != null) {
                 entities.add(entity);
             }
@@ -1505,11 +1536,11 @@ public final class SchemaCreator {
             }
         }
         for (int i = 0, len = entities.size(); i < len; i++) {
-            String entityClassName =
-                    SchemaUtilities.getInstance().getEntityClassName(
+            String entityClassName = SchemaUtilities.getInstance()
+                    .getEntityClassName(
                             entities.get(i).getClassName());
-            PooledStringBuilder sb =
-                    StringBuilderPool.getInstance().getStringBuilder();
+            PooledStringBuilder sb = StringBuilderPool.getInstance()
+                    .getStringBuilder();
             sb.append(".\\");
             sb.append(getPkgPath());
             sb.append("\\models\\");
@@ -1536,6 +1567,7 @@ public final class SchemaCreator {
         ddlWriter.close();
         dmlWriter.close();
     }
+
     /**
      * Writes an repository class to file.
      * @param clazz the entity {@link Class} the repository is being written for
@@ -1543,10 +1575,10 @@ public final class SchemaCreator {
      */
     private void writeRepositoryClass(final EntityMarkup clazz)
             throws Exception {
-        String entityClassName =
-                SchemaUtilities.getInstance().getEntityClassName(
+        final String entityClassName = SchemaUtilities.getInstance()
+                .getEntityClassName(
                         clazz.getClassName());
-        StringBuffer sb = new StringBuffer();
+        final StringBuffer sb = new StringBuffer();
         sb.append(".\\");
         sb.append(pkgPath);
         sb.append("\\repositories\\");
@@ -1554,15 +1586,15 @@ public final class SchemaCreator {
         sb.append("\\");
         sb.append(entityClassName.replace("Entity", "Repository"));
         sb.append(".java");
-        File file = new File(sb.toString());
+        final File file = new File(sb.toString());
         file.getParentFile().mkdirs();
-        PrintWriter writer = new PrintWriter(file, "UTF-8");
+        final PrintWriter writer = new PrintWriter(file, "UTF-8");
         // write header
         writeRepositoryClassHeader(writer, clazz);
         // write Fields
-        List<EntityField> fields = clazz.getFields();
+        final List<EntityField> fields = clazz.getFields();
         for (int i = 0, len = fields.size(); i < len; i++) {
-            EntityField field = fields.get(i);
+            final EntityField field = fields.get(i);
             if (field.getEntityClazz() == null) {
                 writer.println("\t/**");
                 writer.print("\t * Retrieves a list of ");
@@ -1607,6 +1639,7 @@ public final class SchemaCreator {
         writer.println("}");
         writer.close();
     }
+
     /**
      * Writes the header for all java entity classes.
      * @param writer the {@link PrintWriter} used to write the file

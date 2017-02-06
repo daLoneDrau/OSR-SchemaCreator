@@ -36,12 +36,92 @@ INSERT INTO ll.attribute(code, description, name) VALUES(
 -- ADD CURRENCYS
 INSERT INTO ll.currency(code, name, sort_order) VALUES(
   'CP', 'Copper Piece', 0), (
-  'SP', 'Silver Piece', 0), (
-  'EP', 'Electrum Piece', 0), (
-  'GP', 'Gold Piece', 0), (
-  'PP', 'Platinum Piece', 0);
+  'SP', 'Silver Piece', 1), (
+  'EP', 'Electrum Piece', 2), (
+  'GP', 'Gold Piece', 3), (
+  'PP', 'Platinum Piece', 4);
 
 -- ADD currency's RELATED exchange_ratess
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='CP'),
+  'SP',
+  '0.1');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='CP'),
+  'EP',
+  '0.02');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='CP'),
+  'GP',
+  '0.01');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='CP'),
+  'PP',
+  '0.001');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='SP'),
+  'CP',
+  '10.0');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='SP'),
+  'EP',
+  '0.2');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='SP'),
+  'GP',
+  '0.1');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='SP'),
+  'PP',
+  '0.01');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='EP'),
+  'CP',
+  '50.0');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='EP'),
+  'SP',
+  '5.0');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='EP'),
+  'GP',
+  '0.5');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='EP'),
+  'PP',
+  '0.05');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='GP'),
+  'CP',
+  '100.0');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='GP'),
+  'SP',
+  '10.0');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='GP'),
+  'EP',
+  '2.0');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='GP'),
+  'PP',
+  '0.1');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='PP'),
+  'CP',
+  '1000.0');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='PP'),
+  'SP',
+  '100.0');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='PP'),
+  'EP',
+  '20.0');
+INSERT INTO ll.currency_exchange_rates_lookup(currency_id, key, value) VALUES (
+  (SELECT currency_id FROM ll.currency WHERE code='PP'),
+  'GP',
+  '10.0');
 
 
 -- ADD DIES
@@ -125,6 +205,7 @@ INSERT INTO ll.equipment_slot(code, value) VALUES(
   'EQUIP_SLOT_LEGGINGS', 7), (
   'EQUIP_SLOT_GLOVES', 8), (
   'EQUIP_SLOT_BOOTS', 9), (
+  'EQUIP_SLOT_NECKLACE', 10), (
   'EQUIP_SLOT_RING_LEFT', 0), (
   'EQUIP_SLOT_RING_RIGHT', 1), (
   'EQUIP_SLOT_SHIELD', 3), (
@@ -177,58 +258,95 @@ INSERT INTO ll.object_type(code, flag) VALUES(
   'OBJECT_TYPE_ARMOR', 256), (
   'OBJECT_TYPE_HELMET', 512), (
   'OBJECT_TYPE_RING', 1024), (
-  'OBJECT_TYPE_LEGGINGS', 2048);
+  'OBJECT_TYPE_LEGGINGS', 2048), (
+  'OBJECT_TYPE_NECKLACE', 4096);
 
 
 -- ADD IO_ITEM_DATAS
-INSERT INTO ll.io_item_data(count, damages, description, food_value, internal_script, left_ring, light_value, max_owned, name, price, ring_type, stack_size, steal_value, weight) VALUES(
-  0, (SELECT dice_id FROM ll.dice WHERE code='TWO_D4'), 'A straight, double-edged weapon with a long hilt and a blade 3'' long. A single- or two-hand grip is used when wielding.', 0, 'BastardSword', false, 0, 99, 'Longsword', 6.0, 0, 10, 0, 20.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D8'), 'An arm-length weapon borne in both hands.', 0, 'BattleAxe', false, 0, 99, 'Battle Axe', 6.0, 0, 10, 0, 6.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D4'), 'A short stick of fire-hardened oak.', 0, 'Club', false, 0, 99, 'Club', 3.0, 0, 10, 0, 3.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D4'), 'A knife with a very sharp point designed to be used as a thrusting or stabbing weapon.', 0, 'Dagger', false, 0, 99, 'Dagger', 3.0, 0, 15, 0, 1.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D4'), 'A missile weapon resembling a large arrow, with a weighted point.', 0, 'Dart', false, 0, 99, 'Dart', 0.5, 0, 20, 0, 0.5), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A wooden haft connected by a chain to a spherical striking end.', 0, 'Flail', false, 0, 99, 'Flail', 3.0, 0, 10, 0, 5.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D4'), 'A weapon of war intended for close combat action that resembles a hammer.', 0, 'Hammer', false, 0, 99, 'War Hammer', 1.0, 0, 10, 0, 2.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A small, light axe designed for use in one hand.', 0, 'HandAxe', false, 0, 99, 'Hand Axe', 1.0, 0, 10, 0, 3.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D8'), 'A heavy weapon consisting of a horizontal bow-like assembly mounted on a stock.', 0, 'HeavyCrossbow', false, 0, 99, 'Heavy Crossbow', 25.0, 0, 5, 0, 8.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D8'), 'A weapon based on the agricultural tool with a very long shaft attached to a hinged, roughly cylindrical striking end.', 0, 'HeavyFlail', false, 0, 99, 'Heavy Flail', 8.0, 0, 5, 0, 10.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A modified hammer''s head and spike mounted atop a long pole.', 0, 'HeavyHammer', false, 0, 99, 'Raven''s Beak', 7.0, 0, 10, 0, 5.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D8'), 'A type of war hammer that has a very long spike on the reverse of the hammer head. The horseman''s pick is used to penetrate thick plate armour or mail which a standard sword can not.', 0, 'HeavyPick', false, 0, 99, 'Horseman''s Pick', 8.0, 0, 5, 0, 6.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A light spear designed to be thrown as a ranged weapon.', 0, 'Javelin', false, 0, 99, 'Javelin', 1.0, 0, 15, 0, 2.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A thrusting spear popular for its extreme stopping power.', 0, 'Lance', false, 0, 99, 'Lance', 7.0, 0, 5, 0, 10.0), (
-  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A light weapon consisting of a horizontal bow-like assembly mounted on a stock.', 0, 'LightCrossbow', false, 0, 99, 'Light Crossbow', 7.0, 0, 5, 0, 10.0), (
-  0, NULL, 'An armour made from horizontal overlapping rows or bands of solid armour plates.', 0, 'BandedMail', false, 0, 99, 'Segmented Cuirass', 250.0, 0, 10, 0, 35.0), (
-  0, NULL, 'A sleeved shirt of metal rings, reaching down to the mid-thigh.', 0, 'ChainMail', false, 0, 99, 'Hauberk', 150.0, 0, 10, 0, 30.0), (
-  0, NULL, 'A jacket of boiled leather.', 0, 'LeatherArmor', false, 0, 99, 'Cuir Bouilli', 20.0, 0, 10, 0, 15.0), (
-  0, NULL, 'A long linen jacket stuffed with scraps of cloth for added thickness.', 0, 'PaddedArmor', false, 0, 99, 'Gambeson', 20.0, 0, 10, 0, 15.0), (
-  0, NULL, 'A full suit of personal body armour made from iron or steel plates.', 0, 'PlateMail', false, 0, 99, 'Plate Armour', 150.0, 0, 10, 0, 30.0), (
-  0, NULL, 'A long leather jacket covered with overlapping rows of armour scales.', 0, 'ScaleMail', false, 0, 99, 'Scale Armour', 65.0, 0, 10, 0, 40.0), (
-  0, NULL, 'A round wooden shield.', 0, 'Shield', false, 0, 99, 'Shield', 10.0, 0, 10, 0, 10.0), (
-  0, NULL, 'A jacket of riveted mail embedded with plates of armour.', 0, 'SplintMail', false, 0, 99, 'Plated Mail', 200.0, 0, 10, 0, 45.0), (
-  0, NULL, 'A canvas or leather jacket riveted with plates of armour.', 0, 'StuddedLeatherArmor', false, 0, 99, 'Brigandine', 30.0, 0, 10, 0, 20.0);
+INSERT INTO ll.io_item_data(count, damages, description, food_value, internal_script, left_ring, light_value, max_owned, name, price, ring_type, stack_size, steal_value, title, weight) VALUES(
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D8'), 'An arm-length weapon borne in both hands.', 0, 'BattleAxe', false, 0, 99, 'Battle Axe', 6.0, 0, 10, 0, 'Battle Axe', 6.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A simple machine consisting of a wedge attached to a lever; suitable for splitting wood or skulls.', 0, 'HandAxe', false, 0, 99, 'Hand Axe', 1.0, 0, 10, 0, 'Hand Axe', 3.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D4'), 'A short stick of fire-hardened oak.', 0, 'Club', false, 0, 99, 'Club', 3.0, 0, 10, 0, 'Club', 3.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D8'), 'A heavy weapon consisting of a horizontal bow-like assembly mounted on a stock.', 0, 'HeavyCrossbow', false, 0, 99, 'Heavy Crossbow', 25.0, 0, 5, 0, 'Heavy Crossbow', 8.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A light weapon consisting of a horizontal bow-like assembly mounted on a stock.', 0, 'LightCrossbow', false, 0, 99, 'Light Crossbow', 7.0, 0, 5, 0, 'Light Crossbow', 10.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D4'), 'A knife with a very sharp point designed to be used as a thrusting or stabbing weapon.', 0, 'Dagger', false, 0, 99, 'Dagger', 3.0, 0, 15, 0, 'Dagger', 1.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D4'), 'A knife with a blade crafted out of silver.', 0, 'SilverDagger', false, 0, 99, 'Silver Dagger', 30.0, 0, 15, 0, 'Silver Dagger', 1.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D4'), 'A missile weapon resembling a large arrow, with a weighted point.', 0, 'Dart', false, 0, 99, 'Dart', 0.5, 0, 20, 0, 'Dart', 0.5), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A wooden haft connected by a chain to a spherical striking end.', 0, 'Flail', false, 0, 99, 'Flail', 3.0, 0, 10, 0, 'Flail', 5.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D8'), 'A weapon based on the agricultural tool with a very long shaft attached to a hinged, roughly cylindrical striking end.', 0, 'HeavyFlail', false, 0, 99, 'Heavy Flail', 8.0, 0, 5, 0, 'Heavy Flail', 10.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D4'), 'A weapon of war intended for close combat action that resembles a hammer.', 0, 'Hammer', false, 0, 99, 'LightHammer', 1.0, 0, 10, 0, 'War Hammer', 2.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A modified hammer''s head and spike mounted atop a long pole.', 0, 'HeavyHammer', false, 0, 99, 'HeavyHammer', 7.0, 0, 10, 0, 'Raven''s Beak', 5.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A light spear designed to be thrown as a ranged weapon.', 0, 'Javelin', false, 0, 99, 'Javelin', 1.0, 0, 15, 0, 'Javelin', 2.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A thrusting spear popular for its extreme stopping power.', 0, 'Lance', false, 0, 99, 'Lance', 7.0, 0, 5, 0, 'Lance', 10.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D8'), 'A bow that is roughly the height of the user allowing the archer a long draw.', 0, 'Longbow', false, 0, 99, 'Longbow', 40.0, 0, 5, 0, 'Longbow', 3.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A type of club that uses a heavy head on the end of a handle to deliver powerful blows.', 0, 'Mace', false, 0, 0, 'Mace', 5.0, 0, 0, 0, 'Mace', 3.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A heavy spiked club, almost 5'' long.', 0, 'MorningStar', false, 0, 0, 'Morning Star', 5.0, 0, 0, 0, 'Morning Star', 6.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D8'), 'A type of war hammer that has a very long spike on the reverse of the hammer head. The horseman''s pick is used to penetrate thick plate armour or mail which a standard sword can not.', 0, 'HeavyPick', false, 0, 99, 'Heavy Pick', 8.0, 0, 5, 0, 'Horseman''s Pick', 6.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A light wooden hammer that has a long spike on the reverse side.', 0, 'LightPick', false, 0, 99, 'Light Pick', 8.0, 0, 5, 0, 'Shepherd''s Pick', 6.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D8'), 'An axe blade mounted on a long shaft.', 0, 'Polearm', false, 0, 99, 'Polearm', 7.0, 0, 5, 0, 'Polearm', 15.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A 7'' shaft of hardwood.', 0, 'Staff', false, 0, 99, 'Staff', 2.0, 0, 5, 0, 'Quarterstaff', 4.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D8'), 'A curved sabre designed for striking from horseback.', 0, 'Scimitar', false, 0, 99, 'Scimitar', 15.0, 0, 5, 0, 'Scimitar', 4.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A bow shaped from a single piece of yew.', 0, 'Shortbow', false, 0, 99, 'Shortbow', 25.0, 0, 5, 0, 'Shortbow', 3.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D4'), 'An ancient weapon used to throw a blunt projectile.', 0, 'Sling', false, 0, 99, 'Sling', 2.0, 0, 5, 0, 'Sling', 0.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'The most common weapon found on the battlefield.', 0, 'Spear', false, 0, 99, 'Spear', 3.0, 0, 5, 0, 'Spear', 6.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D8'), 'A straight, double-edged weapon with a single-handed cruciform hilt and a blade 2 1/2'' long. This weapon is not considered a suitable main weapon for troops, but rather a sidearm.', 0, 'Longsword', false, 0, 0, 'Longsword', 10.0, 0, 0, 0, 'Arming Sword', 4.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='TWO_D4'), 'A straight, double-edged weapon with a long hilt and a blade 3'' long. A single- or two-hand grip is used when wielding.', 0, 'BastardSword', false, 0, 99, 'BastardSword', 20.0, 0, 10, 0, 'Longsword', 6.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A straight, double-edged weapon with a 2'' long blade.', 0, 'ShortSword', false, 0, 99, 'Short Sword', 7.0, 0, 10, 0, 'Gladius', 2.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D10'), 'A large two-handed sword with a 4'' long blade.', 0, 'TwoHandedSword', false, 0, 99, 'Two-handed Sword', 7.0, 0, 10, 0, 'Zweihänder', 2.0), (
+  0, (SELECT dice_id FROM ll.dice WHERE code='ONE_D6'), 'A three-pronged spear.', 0, 'Trident', false, 0, 99, 'Trident', 4.0, 0, 10, 0, 'Trident', 4.0), (
+  0, NULL, 'An armour made from horizontal overlapping rows or bands of solid armour plates.', 0, 'BandedMail', false, 0, 99, 'Banded Mail', 250.0, 0, 10, 0, 'Segmented Cuirass', 35.0), (
+  0, NULL, 'A sleeved shirt of metal rings, reaching down to the mid-thigh.', 0, 'ChainMail', false, 0, 99, 'Chain Mail', 150.0, 0, 10, 0, 'Hauberk', 30.0), (
+  0, NULL, 'A jacket of boiled leather.', 0, 'LeatherArmor', false, 0, 99, 'Leather Armor', 20.0, 0, 10, 0, 'Cuir Bouilli', 15.0), (
+  0, NULL, 'A long linen jacket stuffed with scraps of cloth for added thickness.', 0, 'PaddedArmor', false, 0, 99, 'Padded Armor', 20.0, 0, 10, 0, 'Gambeson', 15.0), (
+  0, NULL, 'A full suit of personal body armour made from iron or steel plates.', 0, 'PlateMail', false, 0, 99, 'Plate Mail', 150.0, 0, 10, 0, 'Plate Armour', 30.0), (
+  0, NULL, 'A long leather jacket covered with overlapping rows of armour scales.', 0, 'ScaleMail', false, 0, 99, 'Scale Mail', 65.0, 0, 10, 0, 'Scale Armour', 40.0), (
+  0, NULL, 'A round wooden shield.', 0, 'Shield', false, 0, 99, 'Shield', 10.0, 0, 10, 0, 'Shield', 10.0), (
+  0, NULL, 'A jacket of riveted mail embedded with plates of armour.', 0, 'SplintMail', false, 0, 99, 'Splint Mail', 200.0, 0, 10, 0, 'Plated Mail', 45.0), (
+  0, NULL, 'A canvas or leather jacket riveted with plates of armour.', 0, 'StuddedLeatherArmor', false, 0, 99, 'StuddedLeatherArmor', 30.0, 0, 10, 0, 'Brigandine', 20.0);
 
 -- ADD io_item_data's RELATED groupss
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Longsword'),
-  (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
-INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Longsword'),
-  (SELECT group_id FROM ll.group WHERE name='HEAVY_WEAPON'));
-INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Battle Axe'),
   (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Battle Axe'),
   (SELECT group_id FROM ll.group WHERE name='HEAVY_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Hand Axe'),
+  (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Club'),
   (SELECT group_id FROM ll.group WHERE name='BLUNT_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Crossbow'),
+  (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Crossbow'),
+  (SELECT group_id FROM ll.group WHERE name='HEAVY_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Crossbow'),
+  (SELECT group_id FROM ll.group WHERE name='PROJECTILE_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Light Crossbow'),
+  (SELECT group_id FROM ll.group WHERE name='PIERCING_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Light Crossbow'),
+  (SELECT group_id FROM ll.group WHERE name='PROJECTILE_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Dagger'),
   (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Dagger'),
   (SELECT group_id FROM ll.group WHERE name='LIGHT_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Silver Dagger'),
+  (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Silver Dagger'),
+  (SELECT group_id FROM ll.group WHERE name='LIGHT_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Silver Dagger'),
+  (SELECT group_id FROM ll.group WHERE name='SILVER_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Dart'),
   (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
@@ -239,35 +357,17 @@ INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Flail'),
   (SELECT group_id FROM ll.group WHERE name='BLUNT_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='War Hammer'),
-  (SELECT group_id FROM ll.group WHERE name='BLUNT_WEAPON'));
-INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Hand Axe'),
-  (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
-INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Crossbow'),
-  (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
-INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Crossbow'),
-  (SELECT group_id FROM ll.group WHERE name='HEAVY_WEAPON'));
-INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Crossbow'),
-  (SELECT group_id FROM ll.group WHERE name='PROJECTILE_WEAPON'));
-INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Flail'),
   (SELECT group_id FROM ll.group WHERE name='BLUNT_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Flail'),
   (SELECT group_id FROM ll.group WHERE name='HEAVY_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Raven''s Beak'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='LightHammer'),
   (SELECT group_id FROM ll.group WHERE name='BLUNT_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Horseman''s Pick'),
-  (SELECT group_id FROM ll.group WHERE name='PIERCING_WEAPON'));
-INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Horseman''s Pick'),
-  (SELECT group_id FROM ll.group WHERE name='HEAVY_WEAPON'));
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='HeavyHammer'),
+  (SELECT group_id FROM ll.group WHERE name='BLUNT_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Javelin'),
   (SELECT group_id FROM ll.group WHERE name='PIERCING_WEAPON'));
@@ -281,42 +381,126 @@ INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Lance'),
   (SELECT group_id FROM ll.group WHERE name='HEAVY_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Light Crossbow'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Longbow'),
   (SELECT group_id FROM ll.group WHERE name='PIERCING_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Light Crossbow'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Longbow'),
   (SELECT group_id FROM ll.group WHERE name='PROJECTILE_WEAPON'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Segmented Cuirass'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Mace'),
+  (SELECT group_id FROM ll.group WHERE name='BLUNT_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Morning Star'),
+  (SELECT group_id FROM ll.group WHERE name='BLUNT_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Morning Star'),
+  (SELECT group_id FROM ll.group WHERE name='HEAVY_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Pick'),
+  (SELECT group_id FROM ll.group WHERE name='PIERCING_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Pick'),
+  (SELECT group_id FROM ll.group WHERE name='HEAVY_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Light Pick'),
+  (SELECT group_id FROM ll.group WHERE name='PIERCING_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Polearm'),
+  (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Polearm'),
+  (SELECT group_id FROM ll.group WHERE name='PIERCING_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Polearm'),
+  (SELECT group_id FROM ll.group WHERE name='HEAVY_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Staff'),
+  (SELECT group_id FROM ll.group WHERE name='BLUNT_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Scimitar'),
+  (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Shortbow'),
+  (SELECT group_id FROM ll.group WHERE name='PIERCING_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Shortbow'),
+  (SELECT group_id FROM ll.group WHERE name='PROJECTILE_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Sling'),
+  (SELECT group_id FROM ll.group WHERE name='BLUNT_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Sling'),
+  (SELECT group_id FROM ll.group WHERE name='LIGHT_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Sling'),
+  (SELECT group_id FROM ll.group WHERE name='PROJECTILE_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Spear'),
+  (SELECT group_id FROM ll.group WHERE name='PIERCING_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Longsword'),
+  (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='BastardSword'),
+  (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='BastardSword'),
+  (SELECT group_id FROM ll.group WHERE name='HEAVY_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Short Sword'),
+  (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Short Sword'),
+  (SELECT group_id FROM ll.group WHERE name='LIGHT_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Two-handed Sword'),
+  (SELECT group_id FROM ll.group WHERE name='EDGED_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Two-handed Sword'),
+  (SELECT group_id FROM ll.group WHERE name='HEAVY_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Trident'),
+  (SELECT group_id FROM ll.group WHERE name='PIERCING_WEAPON'));
+INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Banded Mail'),
   (SELECT group_id FROM ll.group WHERE name='HEAVY_ARMOUR'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Hauberk'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Chain Mail'),
   (SELECT group_id FROM ll.group WHERE name='HEAVY_ARMOUR'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Plate Armour'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Plate Mail'),
   (SELECT group_id FROM ll.group WHERE name='HEAVY_ARMOUR'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Scale Armour'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Scale Mail'),
   (SELECT group_id FROM ll.group WHERE name='HEAVY_ARMOUR'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Plated Mail'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Splint Mail'),
   (SELECT group_id FROM ll.group WHERE name='HEAVY_ARMOUR'));
 INSERT INTO ll.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Brigandine'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='StuddedLeatherArmor'),
   (SELECT group_id FROM ll.group WHERE name='HEAVY_ARMOUR'));
 
 -- ADD io_item_data's RELATED typess
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Longsword'),
-  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
-INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Battle Axe'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_2H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Hand Axe'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Club'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Crossbow'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_BOW'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Light Crossbow'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_2H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Dagger'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_DAGGER'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Silver Dagger'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_DAGGER'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Dart'),
@@ -325,23 +509,14 @@ INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Flail'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='War Hammer'),
-  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
-INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Hand Axe'),
-  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
-INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Crossbow'),
-  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_BOW'));
-INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Flail'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_2H'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Raven''s Beak'),
-  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_2H'));
-INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Horseman''s Pick'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='LightHammer'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='HeavyHammer'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_2H'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Javelin'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
@@ -349,59 +524,104 @@ INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Lance'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_2H'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Light Crossbow'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Longbow'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_BOW'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Mace'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Morning Star'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Heavy Pick'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Light Pick'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Polearm'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_2H'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Segmented Cuirass'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Staff'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_2H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Scimitar'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_2H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Shortbow'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_BOW'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Sling'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_BOW'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Spear'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Longsword'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='BastardSword'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Short Sword'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Two-handed Sword'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_2H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Trident'),
+  (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_1H'));
+INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Banded Mail'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_ARMOR'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Hauberk'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Chain Mail'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_ARMOR'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Cuir Bouilli'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Leather Armor'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_ARMOR'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Gambeson'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Padded Armor'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_ARMOR'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Plate Armour'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Plate Mail'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_ARMOR'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Scale Armour'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Scale Mail'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_ARMOR'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Shield'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_SHIELD'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Plated Mail'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Splint Mail'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_ARMOR'));
 INSERT INTO ll.io_item_data_types_lookup(io_item_data_id, object_type_id) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Brigandine'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='StuddedLeatherArmor'),
   (SELECT object_type_id FROM ll.object_type WHERE code='OBJECT_TYPE_ARMOR'));
 
 -- ADD io_item_data's RELATED modifierss
 INSERT INTO ll.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Segmented Cuirass'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Banded Mail'),
   'ELEMENT_ARMOR_CLASS',
   'MINUS_5');
 INSERT INTO ll.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Hauberk'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Chain Mail'),
   'ELEMENT_ARMOR_CLASS',
   'MINUS_4');
 INSERT INTO ll.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Cuir Bouilli'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Leather Armor'),
   'ELEMENT_ARMOR_CLASS',
   'MINUS_2');
 INSERT INTO ll.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Gambeson'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Padded Armor'),
   'ELEMENT_ARMOR_CLASS',
   'MINUS_1');
 INSERT INTO ll.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Plate Armour'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Plate Mail'),
   'ELEMENT_ARMOR_CLASS',
   'MINUS_6');
 INSERT INTO ll.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Scale Armour'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Scale Mail'),
   'ELEMENT_ARMOR_CLASS',
   'MINUS_3');
 INSERT INTO ll.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES (
@@ -409,11 +629,11 @@ INSERT INTO ll.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES
   'ELEMENT_ARMOR_CLASS',
   'MINUS_1');
 INSERT INTO ll.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Plated Mail'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Splint Mail'),
   'ELEMENT_ARMOR_CLASS',
   'MINUS_5');
 INSERT INTO ll.io_item_data_modifiers_lookup(io_item_data_id, key, value) VALUES (
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Brigandine'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='StuddedLeatherArmor'),
   'ELEMENT_ARMOR_CLASS',
   'MINUS_3');
 
@@ -432,9 +652,24 @@ INSERT INTO ll.script_bundle(name) VALUES(
 -- ADD IO_NPC_DATAS
 INSERT INTO ll.io_npc_data(behavior, behavior_param, climb_count, collid_state, collid_time, critical, cut, cuts, damages, gender, internal_script, level, life, mana, maxlife, maxmana, module, name, npc_flags, title, weapon, xpvalue) VALUES(
   0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ll.gender WHERE name='Male'), NULL, 1, 0.0, 0.0, 0.0, 0.0, 'AC1 - The Shady Dragon Inn', 'Abel Artone', 0, NULL, NULL, 0), (
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ll.gender WHERE name='Male'), NULL, 1, 0.0, 0.0, 0.0, 0.0, 'AC1 - The Shady Dragon Inn', 'Abel Artone', 0, NULL, NULL, 0);
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ll.gender WHERE name='Female'), NULL, 2, 0.0, 0.0, 0.0, 0.0, 'AC1 - The Shady Dragon Inn', 'Ariadne Beonrsdottir', 0, NULL, NULL, 0);
 
 -- ADD io_npc_data's RELATED inventory_itemss
+INSERT INTO ll.io_npc_data_inventory_items_lookup(io_npc_data_id, io_item_data_id) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Dagger'));
+INSERT INTO ll.io_npc_data_inventory_items_lookup(io_npc_data_id, io_item_data_id) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Broadsword'));
+INSERT INTO ll.io_npc_data_inventory_items_lookup(io_npc_data_id, io_item_data_id) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Dagger'));
+INSERT INTO ll.io_npc_data_inventory_items_lookup(io_npc_data_id, io_item_data_id) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Arming Sword'));
+INSERT INTO ll.io_npc_data_inventory_items_lookup(io_npc_data_id, io_item_data_id) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Spear'));
 
 -- ADD io_npc_data's RELATED attributess
 INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
@@ -463,30 +698,50 @@ INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES 
   '12');
 INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
   (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'HP',
+  '7');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
   'STR',
-  '10');
+  '9');
 INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
-  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
   'INT',
-  '5');
+  '8');
 INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
-  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
   'WIS',
-  '15');
+  '9');
 INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
-  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
   'CON',
   '9');
 INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
-  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
   'DEX',
   '8');
 INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
-  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
   'CHA',
-  '12');
+  '16');
+INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
+  'HP',
+  '14');
 
 -- ADD io_npc_data's RELATED equipped_itemss
+INSERT INTO ll.io_npc_data_equipped_items_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'EQUIP_SLOT_TORSO',
+  'Hauberk');
+INSERT INTO ll.io_npc_data_equipped_items_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
+  'EQUIP_SLOT_SHIELD',
+  'Shield');
+INSERT INTO ll.io_npc_data_equipped_items_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
+  'EQUIP_SLOT_TORSO',
+  'Hauberk');
 
 -- ADD io_npc_data's RELATED scripted_eventss
 

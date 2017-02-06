@@ -46,5 +46,9 @@
   {
     "flag": 2048,
     "code": "OBJECT_TYPE_LEGGINGS"
+  },
+  {
+    "flag": 4096,
+    "code": "OBJECT_TYPE_NECKLACE"
   }
 ]

@@ -22,16 +22,18 @@ public final class EntityMarkup {
     private final List<EntityLookupField> lookupFields;
     /** the list entity map members. */
     private final List<EntityMapField> mapFields;
+
     /**
      * Creates a new instance of {@link EntityMarkup}.
      * @param c the entity class name
      */
     public EntityMarkup(final Class<?> c) {
         clazz = c;
-        fields = new ArrayList<EntityField>();
-        lookupFields = new ArrayList<EntityLookupField>();
-        mapFields = new ArrayList<EntityMapField>();
+        fields = new ArrayList<>();
+        lookupFields = new ArrayList<>();
+        mapFields = new ArrayList<>();
     }
+
     /**
      * Adds a field.
      * @param field the field
@@ -39,6 +41,7 @@ public final class EntityMarkup {
     public void addField(final EntityField field) {
         fields.add(field);
     }
+
     /**
      * Adds all fields.
      * @param list the list of fields being added
@@ -100,6 +103,7 @@ public final class EntityMarkup {
             }
         }
     }
+
     /**
      * Adds a lookup field.
      * @param field the field
@@ -107,6 +111,7 @@ public final class EntityMarkup {
     public void addLookupField(final EntityLookupField field) {
         lookupFields.add(field);
     }
+
     public void addLookupFields(final List<EntityLookupField> list) {
         if (lookupFields.isEmpty()) {
             lookupFields.addAll(list);
@@ -131,6 +136,7 @@ public final class EntityMarkup {
             }
         }
     }
+
     /**
      * Adds a map field.
      * @param field the field
@@ -138,6 +144,7 @@ public final class EntityMarkup {
     public void addMapField(final EntityMapField field) {
         mapFields.add(field);
     }
+
     /**
      * Gets the value for the className.
      * @return {@link String}
@@ -145,9 +152,11 @@ public final class EntityMarkup {
     public String getClassName() {
         return clazz.getSimpleName();
     }
+
     public Class<?> getClazz() {
         return clazz;
     }
+
     /**
      * Gets the list of fields.
      * @return {@link List}<{@link EntityField}>
@@ -155,6 +164,7 @@ public final class EntityMarkup {
     public List<EntityField> getFields() {
         return fields;
     }
+
     /**
      * Gets the value for the lookupFields.
      * @return {@link List<EntityLookupField>}
@@ -162,6 +172,7 @@ public final class EntityMarkup {
     public List<EntityLookupField> getLookupFields() {
         return lookupFields;
     }
+
     /**
      * Gets the value for the mapFields.
      * @return {@link List<EntityMapField>}
@@ -169,6 +180,7 @@ public final class EntityMarkup {
     public List<EntityMapField> getMapFields() {
         return mapFields;
     }
+
     /**
      * Writes the entity class markup.
      * @param writer the {@link PrintWriter} instance
@@ -191,11 +203,12 @@ public final class EntityMarkup {
             }
             writer.println("}");
             writer.println();
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             ex.printStackTrace();
             System.exit(1);
         }
     }
+
     /**
      * Writes the entity class header.
      * @param writer the {@link PrintWriter} instance

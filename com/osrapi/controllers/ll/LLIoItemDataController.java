@@ -839,6 +839,25 @@ public class LLIoItemDataController {
         return resources;
     }
     /**
+     * Gets a list of {@link LLIoItemDataEntity}s that share a title.
+     * @param title the io_item_data' title
+     * @return {@link List}<{@link Resource}<{@link LLIoItemDataEntity}>>
+     */
+    @RequestMapping(path = "title/{title}",
+            method = RequestMethod.GET)
+    public List<Resource<LLIoItemDataEntity>> getByTitle(
+            @PathVariable final String title) {
+        Iterator<LLIoItemDataEntity> iter = repository.findByTitle(title)
+                .iterator();
+        List<Resource<LLIoItemDataEntity>> resources =
+                new ArrayList<Resource<LLIoItemDataEntity>>();
+        while (iter.hasNext()) {
+            resources.add(getIoItemDataResource(iter.next()));
+        }
+        iter = null;
+        return resources;
+    }
+    /**
      * Gets a list of {@link LLIoItemDataEntity}s that share a weight.
      * @param weight the io_item_data' weight
      * @return {@link List}<{@link Resource}<{@link LLIoItemDataEntity}>>

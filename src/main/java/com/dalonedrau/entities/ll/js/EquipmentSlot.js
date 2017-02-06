@@ -14,6 +14,9 @@
 	"code": "EQUIP_SLOT_BOOTS",
 	"value": 9
 }, {
+	"code": "EQUIP_SLOT_NECKLACE",
+	"value": 10
+}, {
 	"code": "EQUIP_SLOT_RING_LEFT",
 	"value": 0
 }, {

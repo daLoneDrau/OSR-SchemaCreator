@@ -236,11 +236,13 @@ CREATE TABLE ll.io_item_data
   ring_type smallint,
   stack_size smallint NOT NULL,
   steal_value smallint,
+  title character varying(50) NOT NULL,
   weight decimal NOT NULL,
   CONSTRAINT io_item_data_io_item_data_id_pk PRIMARY KEY (io_item_data_id),
   CONSTRAINT io_item_data_damages_fk FOREIGN KEY (damages)
     REFERENCES ll.dice (dice_id) MATCH SIMPLE
-    ON UPDATE NO ACTION ON DELETE NO ACTION
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_item_data_name_un UNIQUE (name)
 );
 
 -- Table: ll.io_item_data_groups_lookup

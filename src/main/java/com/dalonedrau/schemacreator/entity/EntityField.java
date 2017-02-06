@@ -20,6 +20,15 @@ public final class EntityField {
     private boolean nullAllowed;
     /** the field's primitive class. */
     private final String primitiveClazz;
+    /** the json property by which the field is named. */
+    private String jsonProperty;
+
+    /**
+     * @param jsonProperty the jsonProperty to set
+     */
+    public void setJsonProperty(String jsonProperty) {
+        this.jsonProperty = jsonProperty;
+    }
     /**
      * Creates a new instance of {@link EntityField}.
      * @param n the field's name
@@ -78,6 +87,21 @@ public final class EntityField {
         if (entityClazz != null) {
             section = TextLoader.getInstance().loadText(
                     "entity_template.txt", "entity_entity_member");
+            System.out.println("entity_entity_member for "+name+"::"+entityClazz);
+            if (this.jsonProperty != null) {
+                section = TextProcessor.getInstance().processText(
+                        new String[] {
+                                "<fieldName>", "<entityClass>", "<fieldTableName>",
+                                "<notNull>", "<fieldNameFirstCap>"
+                        }, new String[] {
+                                name,
+                                SchemaUtilities.getInstance().getEntityClassName(
+                                        entityClazz),
+                                this.jsonProperty,
+                                n,
+                                SchemaUtilities.getInstance().capitalizeFirst(name)
+                        }, section);
+            } else {
             section = TextProcessor.getInstance().processText(
                     new String[] {
                             "<fieldName>", "<entityClass>", "<fieldTableName>",
@@ -91,6 +115,7 @@ public final class EntityField {
                             n,
                             SchemaUtilities.getInstance().capitalizeFirst(name)
                     }, section);
+            }
         } else {
             section = TextLoader.getInstance().loadText(
                     "entity_template.txt", "entity_member");

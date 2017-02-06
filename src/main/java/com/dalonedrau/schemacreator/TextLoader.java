@@ -25,6 +25,7 @@ public final class TextLoader {
     private static TextLoader instance;
     /** the section delimiter. */
     private static final char SECTION_DELIMITER = '§';
+
     /**
      * Gives access to the singleton instance of {@link TextLoader}.
      * @return {@link TextLoader}
@@ -35,6 +36,7 @@ public final class TextLoader {
         }
         return TextLoader.instance;
     }
+
     /**
      * Gives access to the singleton instance of {@link TextLoader}.
      * @return {@link TextLoader}
@@ -46,8 +48,10 @@ public final class TextLoader {
         TextLoader.instance.setLibraryFolder(folder);
         return TextLoader.instance;
     }
+
     /** the folder containing the image library. */
     private String libraryFolder;
+
     /**
      * Finds a text section.
      * @param section the section name
@@ -89,12 +93,13 @@ public final class TextLoader {
                     }
                 }
             }
-        } catch (IOException e) {
+        } catch (final IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return text;
     }
+
     /**
      * Loads a text file and returns the text contained therein.
      * @param fileName the name of the file
@@ -105,30 +110,30 @@ public final class TextLoader {
     public String loadText(final String fileName)
             throws RPGException, PooledException {
         String text = null;
-        PooledStringBuilder sb =
-                StringBuilderPool.getInstance().getStringBuilder();
+        PooledStringBuilder sb = StringBuilderPool.getInstance()
+                .getStringBuilder();
         sb.append(libraryFolder);
         sb.append("/");
         sb.append(fileName);
         BufferedReader input;
         if (true) {
-            ClassLoader cl = ClassLoader.getSystemClassLoader();
+            final ClassLoader cl = ClassLoader.getSystemClassLoader();
             try {
                 input = new BufferedReader(new InputStreamReader(
                         cl.getResourceAsStream(sb.toString()), "UTF-8"));
-            } catch (UnsupportedEncodingException e) {
+            } catch (final UnsupportedEncodingException e) {
                 sb.returnToPool();
                 sb = null;
                 throw new RPGException(ErrorMessage.INVALID_DATA_FORMAT, e);
-            } catch (NullPointerException e) {
-                PooledStringBuilder sb1 =
-                        StringBuilderPool.getInstance().getStringBuilder();
+            } catch (final NullPointerException e) {
+                PooledStringBuilder sb1 = StringBuilderPool.getInstance()
+                        .getStringBuilder();
                 sb1.append("Cannot read file ");
                 sb1.append(sb.toString());
                 sb1.append(".");
-                RPGException ex =
-                        new RPGException(ErrorMessage.ILLEGAL_ACCESS,
-                                sb1.toString(), e);
+                final RPGException ex = new RPGException(
+                        ErrorMessage.ILLEGAL_ACCESS,
+                        sb1.toString(), e);
                 sb1.returnToPool();
                 sb.returnToPool();
                 sb1 = null;
@@ -160,7 +165,7 @@ public final class TextLoader {
             sb.setLength(0);
             sb = null;
             input.close();
-        } catch (IOException e) {
+        } catch (final IOException e) {
             sb.returnToPool();
             sb = null;
             throw new RPGException(ErrorMessage.INTERNAL_ERROR, e);
@@ -170,7 +175,8 @@ public final class TextLoader {
             sb.append("ERROR! TextLoader loadText() file ");
             sb.append(fileName);
             sb.append(" cannot be read.");
-            RPGException ex = new RPGException(ErrorMessage.ILLEGAL_OPERATION,
+            final RPGException ex = new RPGException(
+                    ErrorMessage.ILLEGAL_OPERATION,
                     sb.toString());
             sb.setLength(0);
             sb.returnToPool();
@@ -179,6 +185,7 @@ public final class TextLoader {
         }
         return text;
     }
+
     /**
      * Loads a text file and returns the text contained therein.
      * @param fileName the name of the file
@@ -190,14 +197,14 @@ public final class TextLoader {
             throws RPGException, PooledException {
         String text = null;
         try {
-            PooledStringBuilder sb =
-                    StringBuilderPool.getInstance().getStringBuilder();
+            PooledStringBuilder sb = StringBuilderPool.getInstance()
+                    .getStringBuilder();
             sb.append(libraryFolder);
             sb.append("/");
             sb.append(fileName);
             BufferedReader input;
             if (true) {
-                ClassLoader cl = this.getClass().getClassLoader();
+                final ClassLoader cl = this.getClass().getClassLoader();
                 input = new BufferedReader(new InputStreamReader(
                         cl.getResourceAsStream(sb.toString()), "UTF-8"));
             } else {
@@ -221,7 +228,7 @@ public final class TextLoader {
                     continue;
                 } else {
                     // read the line prefix character and convert to lower case
-                    char prefix = Character.toLowerCase(inText.charAt(0));
+                    final char prefix = Character.toLowerCase(inText.charAt(0));
                     switch (prefix) {
                     case SECTION_DELIMITER:
                         // logger.info("o line - " + inText);
@@ -235,43 +242,44 @@ public final class TextLoader {
                 }
             }
             input.close();
-        } catch (IOException ex) {
+        } catch (final IOException ex) {
             ex.printStackTrace();
-            PooledStringBuilder sb =
-                    StringBuilderPool.getInstance().getStringBuilder();
+            PooledStringBuilder sb = StringBuilderPool.getInstance()
+                    .getStringBuilder();
             sb.append("Error opening file ");
             sb.append(libraryFolder);
             sb.append("/");
             sb.append(fileName);
-            RPGException e =
-                    new RPGException(ErrorMessage.INTERNAL_ERROR, sb.toString(),
-                            ex);
+            final RPGException e = new RPGException(ErrorMessage.INTERNAL_ERROR,
+                    sb.toString(),
+                    ex);
             sb.setLength(0);
             sb.returnToPool();
             sb = null;
             throw e;
-        } catch (NullPointerException npe) {
-            PooledStringBuilder sb =
-                    StringBuilderPool.getInstance().getStringBuilder();
+        } catch (final NullPointerException npe) {
+            PooledStringBuilder sb = StringBuilderPool.getInstance()
+                    .getStringBuilder();
             sb.append("Error opening file ");
             sb.append(libraryFolder);
             sb.append("/");
             sb.append(fileName);
-            RPGException e =
-                    new RPGException(ErrorMessage.INTERNAL_ERROR, sb.toString(),
-                            npe);
+            final RPGException e = new RPGException(ErrorMessage.INTERNAL_ERROR,
+                    sb.toString(),
+                    npe);
             sb.setLength(0);
             sb.returnToPool();
             sb = null;
             throw e;
         }
         if (text == null) {
-            PooledStringBuilder sb =
-                    StringBuilderPool.getInstance().getStringBuilder();
+            PooledStringBuilder sb = StringBuilderPool.getInstance()
+                    .getStringBuilder();
             sb.append("ERROR! TextLoader loadText() file ");
             sb.append(fileName);
             sb.append(" cannot be read.");
-            RPGException ex = new RPGException(ErrorMessage.ILLEGAL_OPERATION,
+            final RPGException ex = new RPGException(
+                    ErrorMessage.ILLEGAL_OPERATION,
                     sb.toString());
             sb.setLength(0);
             sb.returnToPool();
@@ -281,11 +289,12 @@ public final class TextLoader {
         text = text.replaceAll("<removeLF>\n", "");
         return text;
     }
+
     private String readSection(final BufferedReader input) throws RPGException {
         String text = null;
         try {
-            PooledStringBuilder sb =
-                    StringBuilderPool.getInstance().getStringBuilder();
+            PooledStringBuilder sb = StringBuilderPool.getInstance()
+                    .getStringBuilder();
             String inText = input.readLine(); // priming read
             boolean sectionDone = false;
             while (inText != null && !sectionDone) {
@@ -297,7 +306,7 @@ public final class TextLoader {
                     inText = input.readLine(); // read next line
                     continue;
                 }
-                char prefix = Character.toLowerCase(inText.charAt(0));
+                final char prefix = Character.toLowerCase(inText.charAt(0));
                 switch (prefix) {
                 case SECTION_DELIMITER: // section done. stop reading
                     sectionDone = true;
@@ -313,13 +322,14 @@ public final class TextLoader {
             text = sb.toString();
             sb.returnToPool();
             sb = null;
-        } catch (IOException ioe) {
+        } catch (final IOException ioe) {
             throw new RPGException(ErrorMessage.INTERNAL_ERROR, ioe);
-        } catch (PooledException pe) {
+        } catch (final PooledException pe) {
             throw new RPGException(ErrorMessage.INTERNAL_ERROR, pe);
         }
         return text;
     }
+
     /**
      * Sets the location of the library folder.
      * @param folder the location to set
