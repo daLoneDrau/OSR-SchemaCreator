@@ -41,6 +41,8 @@ public class IoNpcData {
     private Map<String, String> equippedItems;
     /** the {@link IoNpcData}'s gender. */
     private Gender gender;
+    /** the list of groups the item belongs to. */
+    private List<Group> groups;
     /** the name of the internal script used. */
     @CanBeNull
     @JsonProperty("internal_script")

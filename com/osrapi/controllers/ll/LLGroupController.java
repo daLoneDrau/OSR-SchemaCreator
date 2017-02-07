@@ -146,7 +146,7 @@ public class LLGroupController {
                 field = LLGroupEntity.class.getDeclaredField("name");
             } catch (NoSuchMethodException | NoSuchFieldException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
+                System.out.println("Cannot get Entity LLGroupEntity from Repository by name");
             }
             if (method != null
                     && field != null) {
@@ -166,7 +166,7 @@ public class LLGroupController {
                             "code");
                 } catch (NoSuchMethodException | NoSuchFieldException e) {
                     // TODO Auto-generated catch block
-                    e.printStackTrace();
+          System.out.println("Cannot get Entity LLGroupEntity from Repository by code");
                 }
                 if (method != null
                         && field != null) {
@@ -182,7 +182,7 @@ public class LLGroupController {
         } catch (SecurityException | IllegalArgumentException
                 | IllegalAccessException
                 | InvocationTargetException e) {
-            e.printStackTrace();
+                System.out.println("Cannot get Entity LLGroupEntity from Repository by name or code");
         }
         if (old != null
                 && old.size() == 1) {

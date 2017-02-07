@@ -135,14 +135,14 @@ public class LLIoPcDataController {
             method = LLGroupController.class.getDeclaredMethod(
                 "getByName", new Class[] { String.class });
           } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
+            System.out.println("Cannot get embedded lookup Entity LLGroupEntity from Controller by name");
                     }
                     Field field = null;
           try {
             field = LLGroupEntity.class
                 .getDeclaredField("name");
           } catch (NoSuchFieldException e) {
-                        e.printStackTrace();
+            System.out.println("Cannot get embedded lookup Entity LLGroupEntity from class by name");
                     }
                     if (method != null
                             && field != null) {
@@ -159,13 +159,13 @@ public class LLIoPcDataController {
               method = LLGroupController.class.getDeclaredMethod(
                   "getByCode", new Class[] { String.class });
             } catch (NoSuchMethodException e) {
-              e.printStackTrace();
+              System.out.println("Cannot get embedded lookup Entity LLGroupEntity from Controller by code");
             }
             try {
               field = LLGroupEntity.class.getDeclaredField(
                   "code");
             } catch (NoSuchFieldException e) {
-              e.printStackTrace();
+              System.out.println("Cannot get embedded lookup Entity LLGroupEntity from class by code");
             }
                         if (method != null
                                 && field != null) {
@@ -185,7 +185,7 @@ public class LLIoPcDataController {
                 } catch (SecurityException | IllegalArgumentException
                         | IllegalAccessException
                         | InvocationTargetException e) {
-                    e.printStackTrace();
+              System.out.println("CANNOT get embedded lookup Entity LLGroupEntity by name or code");
                 }
                 if (list != null
                         && !list.isEmpty()) {
@@ -230,7 +230,7 @@ public class LLIoPcDataController {
                 field = LLIoPcDataEntity.class.getDeclaredField("name");
             } catch (NoSuchMethodException | NoSuchFieldException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
+                System.out.println("Cannot get Entity LLIoPcDataEntity from Repository by name");
             }
             if (method != null
                     && field != null) {
@@ -250,7 +250,7 @@ public class LLIoPcDataController {
                             "code");
                 } catch (NoSuchMethodException | NoSuchFieldException e) {
                     // TODO Auto-generated catch block
-                    e.printStackTrace();
+          System.out.println("Cannot get Entity LLIoPcDataEntity from Repository by code");
                 }
                 if (method != null
                         && field != null) {
@@ -266,7 +266,7 @@ public class LLIoPcDataController {
         } catch (SecurityException | IllegalArgumentException
                 | IllegalAccessException
                 | InvocationTargetException e) {
-            e.printStackTrace();
+                System.out.println("Cannot get Entity LLIoPcDataEntity from Repository by name or code");
         }
         if (old != null
                 && old.size() == 1) {
@@ -312,14 +312,14 @@ public class LLIoPcDataController {
             method = LLGroupController.class.getDeclaredMethod(
                 "getByName", new Class[] { String.class });
           } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
+            System.out.println("Cannot get embedded lookup Entity LLGroupEntity from Controller by name");
                     }
                     Field field = null;
           try {
             field = LLGroupEntity.class
                 .getDeclaredField("name");
           } catch (NoSuchFieldException e) {
-                        e.printStackTrace();
+            System.out.println("Cannot get embedded lookup Entity LLGroupEntity from class by name");
                     }
                     if (method != null
                             && field != null) {
@@ -336,13 +336,13 @@ public class LLIoPcDataController {
               method = LLGroupController.class.getDeclaredMethod(
                   "getByCode", new Class[] { String.class });
             } catch (NoSuchMethodException e) {
-              e.printStackTrace();
+              System.out.println("Cannot get embedded lookup Entity LLGroupEntity from Controller by code");
             }
             try {
               field = LLGroupEntity.class.getDeclaredField(
                   "code");
             } catch (NoSuchFieldException e) {
-              e.printStackTrace();
+              System.out.println("Cannot get embedded lookup Entity LLGroupEntity from class by code");
             }
                         if (method != null
                                 && field != null) {
@@ -362,7 +362,7 @@ public class LLIoPcDataController {
                 } catch (SecurityException | IllegalArgumentException
                         | IllegalAccessException
                         | InvocationTargetException e) {
-                    e.printStackTrace();
+              System.out.println("CANNOT get embedded lookup Entity LLGroupEntity by name or code");
                 }
                 if (list != null
                         && !list.isEmpty()) {

@@ -152,7 +152,7 @@ public class LLDiceController {
                 field = LLDiceEntity.class.getDeclaredField("name");
             } catch (NoSuchMethodException | NoSuchFieldException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
+                System.out.println("Cannot get Entity LLDiceEntity from Repository by name");
             }
             if (method != null
                     && field != null) {
@@ -172,7 +172,7 @@ public class LLDiceController {
                             "code");
                 } catch (NoSuchMethodException | NoSuchFieldException e) {
                     // TODO Auto-generated catch block
-                    e.printStackTrace();
+          System.out.println("Cannot get Entity LLDiceEntity from Repository by code");
                 }
                 if (method != null
                         && field != null) {
@@ -188,7 +188,7 @@ public class LLDiceController {
         } catch (SecurityException | IllegalArgumentException
                 | IllegalAccessException
                 | InvocationTargetException e) {
-            e.printStackTrace();
+                System.out.println("Cannot get Entity LLDiceEntity from Repository by name or code");
         }
         if (old != null
                 && old.size() == 1) {

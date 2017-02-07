@@ -544,6 +544,35 @@ public final class LLIoNpcDataEntity {
         inventoryItems = val;
     }
 
+    /**
+     * the list of {@link LLGroupEntity}s associated with this
+     * {@link LLIoNpcDataEntity}.
+     */
+    @OneToMany(targetEntity = LLGroupEntity.class,
+      fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
+    @JoinTable(name = "io_npc_data_groups_lookup", schema = "ll",
+  joinColumns = @JoinColumn(name = "io_npc_data_id",
+  referencedColumnName = "io_npc_data_id"),
+  inverseJoinColumns = @JoinColumn(name = "group_id",
+  referencedColumnName = "group_id"))
+    @JsonProperty("groups")
+    private List<LLGroupEntity>    groups;
+    /**
+     * Gets the list of groupss.
+     * @return {@link List}<{@link LLGroupEntity}>
+     */
+    public List<LLGroupEntity> getGroups() {
+        return groups;
+    }
+    /**
+     * Sets the list of groupss.
+     * @param val the new value
+     */
+    public void setGroups(final List<LLGroupEntity> val) {
+        groups = val;
+    }
+
     @ElementCollection
     @CollectionTable(name = "io_npc_data_scripted_events_lookup",
   schema = "ll", joinColumns = @JoinColumn(name = "io_npc_data_id"))

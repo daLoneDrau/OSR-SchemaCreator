@@ -1,7 +1,13 @@
 [{
 	"name": "BLUNT_WEAPON"
 }, {
+	"name": "CHAOTIC"
+}, {
 	"name": "CLERIC"
+}, {
+	"name": "HEAVY_CROSSBOW_AMMUNITION"
+}, {
+	"name": "LIGHT_CROSSBOW_AMMUNITION"
 }, {
 	"name": "DWARF"
 }, {
@@ -25,7 +31,11 @@
 }, {
 	"name": "LONGBOW"
 }, {
+	"name": "LONGBOW_AMMUNITION"
+}, {
 	"name": "MAGE"
+}, {
+	"name": "NEUTRAL"
 }, {
 	"name": "PIERCING_WEAPON"
 }, {
@@ -33,7 +43,13 @@
 }, {
 	"name": "SILVER_WEAPON"
 }, {
+	"name": "SHORTBOW_AMMUNITION"
+}, {
+	"name": "SLING_AMMUNITION"
+}, {
 	"name": "STAFF"
+}, {
+	"name": "THIEF"
 }, {
 	"name": "THROWN_WEAPON"
 }]

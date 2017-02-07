@@ -55,27 +55,17 @@
 	}],
 	"weight": 3
 }, {
-	"description": "A heavy weapon consisting of a horizontal bow-like assembly mounted on a stock.",
-	"damages": {
-		"code": "ONE_D8"
-	},
+	"description": "The arrow used in a heavy crossbow.",
 	"groups": [{
-		"name": "EDGED_WEAPON"
-	}, {
-		"name": "HEAVY_WEAPON"
-	}, {
-		"name": "PROJECTILE_WEAPON"
+		"name": "HEAVY_CROSSBOW_AMMUNITION"
 	}],
-	"internal_script": "HeavyCrossbow",
-	"name": "Heavy Crossbow",
-	"title": "Heavy Crossbow",
-	"max_owned": 99,
-	"price": 25,
-	"stack_size": 5,
-	"types": [{
-		"code": "OBJECT_TYPE_BOW"
-	}],
-	"weight": 8
+	"internal_script": "Quarrel",
+	"name": "Heavy Quarrel",
+	"title": "Heavy Quarrel",
+	"max_owned": 999,
+	"price": 0.3,
+	"stack_size": 50,
+	"weight": 0.1
 }, {
 	"description": "A light weapon consisting of a horizontal bow-like assembly mounted on a stock.",
 	"damages": {
@@ -96,6 +86,18 @@
 		"code": "OBJECT_TYPE_2H"
 	}],
 	"weight": 10
+}, {
+	"description": "The arrow used in a light crossbow.",
+	"groups": [{
+		"name": "LIGHT_CROSSBOW_AMMUNITION"
+	}],
+	"internal_script": "Quarrel",
+	"name": "Light Quarrel",
+	"title": "Light Quarrel",
+	"max_owned": 999,
+	"price": 0.15,
+	"stack_size": 50,
+	"weight": 0.1
 }, {
 	"description": "A knife with a very sharp point designed to be used as a thrusting or stabbing weapon.",
 	"damages": {
@@ -205,7 +207,7 @@
 		"name": "BLUNT_WEAPON"
 	}],
 	"internal_script": "Hammer",
-	"name": "LightHammer",
+	"name": "Light Hammer",
 	"title": "War Hammer",
 	"max_owned": 99,
 	"price": 1,
@@ -223,7 +225,7 @@
 		"name": "BLUNT_WEAPON"
 	}],
 	"internal_script": "HeavyHammer",
-	"name": "HeavyHammer",
+	"name": "Heavy Hammer",
 	"title": "Raven's Beak",
 	"max_owned": 99,
 	"price": 7,
@@ -293,6 +295,18 @@
 	}, {
 		"name": "PROJECTILE_WEAPON"
 	}]
+}, {
+	"description": "A shafted projectile that is shot with a longbow.",
+	"groups": [{
+		"name": "LONGBOW_AMMUNITION"
+	}],
+	"internal_script": "Arrow",
+	"name": "Long Arrow",
+	"title": "Long Arrow",
+	"max_owned": 999,
+	"price": 0.125,
+	"stack_size": 50,
+	"weight": 0.15
 }, {
 	"damages": {
 		"code": "ONE_D6"
@@ -447,6 +461,18 @@
 		"name": "PROJECTILE_WEAPON"
 	}]
 }, {
+	"description": "A shafted projectile that is shot with a shortbow.",
+	"groups": [{
+		"name": "SHORTBOW_AMMUNITION"
+	}],
+	"internal_script": "Arrow",
+	"name": "Arrow",
+	"title": "Arrow",
+	"max_owned": 999,
+	"price": 0.25,
+	"stack_size": 50,
+	"weight": 0.15
+}, {
 	"damages": {
 		"code": "ONE_D4"
 	},
@@ -469,6 +495,18 @@
 	}, {
 		"name": "PROJECTILE_WEAPON"
 	}]
+}, {
+	"description": "A well-rounded stone that is shot with a sling.",
+	"groups": [{
+		"name": "SLING_AMMUNITION"
+	}],
+	"internal_script": "Slingstone",
+	"name": "Sling-stone",
+	"title": "Sling-stone",
+	"max_owned": 999,
+	"price": 0.01,
+	"stack_size": 50,
+	"weight": 0.5
 }, {
 	"damages": {
 		"code": "ONE_D6"
@@ -517,7 +555,7 @@
 	}],
 	"internal_script": "BastardSword",
 	"title": "Longsword",
-	"name": "BastardSword",
+	"name": "Bastard Sword",
 	"max_owned": 99,
 	"price": 20,
 	"stack_size": 10,
@@ -724,7 +762,7 @@
 		"name": "HEAVY_ARMOUR"
 	}],
 	"internal_script": "StuddedLeatherArmor",
-	"name": "StuddedLeatherArmor",
+	"name": "Studded Leather Armor",
 	"title": "Brigandine",
 	"max_owned": 99,
 	"modifiers": {

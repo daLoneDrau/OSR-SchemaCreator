@@ -408,6 +408,24 @@ CREATE TABLE ll.io_npc_data
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
+-- Table: ll.io_npc_data_groups_lookup
+-- lookup table for io_npc_datas and their associated groupss.
+
+DROP TABLE IF EXISTS ll.io_npc_data_groups_lookup CASCADE;
+
+CREATE TABLE ll.io_npc_data_groups_lookup
+(
+  io_npc_data_id smallint NOT NULL,
+  group_id smallint NOT NULL,
+  CONSTRAINT io_npc_data_groups_lookup_io_npc_data_id_group_id_pk PRIMARY KEY (io_npc_data_id, group_id),
+  CONSTRAINT io_npc_data_groups_lookup_io_npc_data_id_fk FOREIGN KEY (io_npc_data_id)
+    REFERENCES ll.io_npc_data (io_npc_data_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_groups_lookup_group_id_fk FOREIGN KEY (group_id)
+    REFERENCES ll.group (group_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
 -- Table: ll.io_npc_data_inventory_items_lookup
 -- lookup table for io_npc_datas and their associated inventory_itemss.
 

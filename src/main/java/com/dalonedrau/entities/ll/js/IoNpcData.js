@@ -6,7 +6,8 @@
 		"CON": 9,
 		"DEX": 8,
 		"CHA": 12,
-		"HP": 7
+		"HP": 7,
+		"MHP": 7
 	},
 	"bags": 1,
 	"equipped_items": {
@@ -42,7 +43,8 @@
 		"CON": 9,
 		"DEX": 8,
 		"CHA": 16,
-		"HP": 14
+		"HP": 14,
+		"MHP": 14
 	},
 	"bags": 1,
 	"equipped_items": {
@@ -79,7 +81,8 @@
 		"CON": 11,
 		"DEX": 13,
 		"CHA": 10,
-		"HP": 21
+		"HP": 21,
+		"MHP": 21
 	},
 	"bags": 1,
 	"equipped_items": {
@@ -105,7 +108,7 @@
 	}, {
 		"name": "Light Crossbow"
 	}, {
-		"name": "Quarrel",
+		"name": "Light Quarrel",
 		"count": 10
 	}],
 	"level": 3,

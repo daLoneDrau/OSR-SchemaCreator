@@ -134,14 +134,14 @@ public class LLScriptBundleController {
             method = LLScriptActionController.class.getDeclaredMethod(
                 "getByName", new Class[] { String.class });
           } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
+            System.out.println("Cannot get embedded lookup Entity LLScriptActionEntity from Controller by name");
                     }
                     Field field = null;
           try {
             field = LLScriptActionEntity.class
                 .getDeclaredField("name");
           } catch (NoSuchFieldException e) {
-                        e.printStackTrace();
+            System.out.println("Cannot get embedded lookup Entity LLScriptActionEntity from class by name");
                     }
                     if (method != null
                             && field != null) {
@@ -158,13 +158,13 @@ public class LLScriptBundleController {
               method = LLScriptActionController.class.getDeclaredMethod(
                   "getByCode", new Class[] { String.class });
             } catch (NoSuchMethodException e) {
-              e.printStackTrace();
+              System.out.println("Cannot get embedded lookup Entity LLScriptActionEntity from Controller by code");
             }
             try {
               field = LLScriptActionEntity.class.getDeclaredField(
                   "code");
             } catch (NoSuchFieldException e) {
-              e.printStackTrace();
+              System.out.println("Cannot get embedded lookup Entity LLScriptActionEntity from class by code");
             }
                         if (method != null
                                 && field != null) {
@@ -184,7 +184,7 @@ public class LLScriptBundleController {
                 } catch (SecurityException | IllegalArgumentException
                         | IllegalAccessException
                         | InvocationTargetException e) {
-                    e.printStackTrace();
+              System.out.println("CANNOT get embedded lookup Entity LLScriptActionEntity by name or code");
                 }
                 if (list != null
                         && !list.isEmpty()) {
@@ -224,7 +224,7 @@ public class LLScriptBundleController {
                 field = LLScriptBundleEntity.class.getDeclaredField("name");
             } catch (NoSuchMethodException | NoSuchFieldException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
+                System.out.println("Cannot get Entity LLScriptBundleEntity from Repository by name");
             }
             if (method != null
                     && field != null) {
@@ -244,7 +244,7 @@ public class LLScriptBundleController {
                             "code");
                 } catch (NoSuchMethodException | NoSuchFieldException e) {
                     // TODO Auto-generated catch block
-                    e.printStackTrace();
+          System.out.println("Cannot get Entity LLScriptBundleEntity from Repository by code");
                 }
                 if (method != null
                         && field != null) {
@@ -260,7 +260,7 @@ public class LLScriptBundleController {
         } catch (SecurityException | IllegalArgumentException
                 | IllegalAccessException
                 | InvocationTargetException e) {
-            e.printStackTrace();
+                System.out.println("Cannot get Entity LLScriptBundleEntity from Repository by name or code");
         }
         if (old != null
                 && old.size() == 1) {
@@ -306,14 +306,14 @@ public class LLScriptBundleController {
             method = LLScriptActionController.class.getDeclaredMethod(
                 "getByName", new Class[] { String.class });
           } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
+            System.out.println("Cannot get embedded lookup Entity LLScriptActionEntity from Controller by name");
                     }
                     Field field = null;
           try {
             field = LLScriptActionEntity.class
                 .getDeclaredField("name");
           } catch (NoSuchFieldException e) {
-                        e.printStackTrace();
+            System.out.println("Cannot get embedded lookup Entity LLScriptActionEntity from class by name");
                     }
                     if (method != null
                             && field != null) {
@@ -330,13 +330,13 @@ public class LLScriptBundleController {
               method = LLScriptActionController.class.getDeclaredMethod(
                   "getByCode", new Class[] { String.class });
             } catch (NoSuchMethodException e) {
-              e.printStackTrace();
+              System.out.println("Cannot get embedded lookup Entity LLScriptActionEntity from Controller by code");
             }
             try {
               field = LLScriptActionEntity.class.getDeclaredField(
                   "code");
             } catch (NoSuchFieldException e) {
-              e.printStackTrace();
+              System.out.println("Cannot get embedded lookup Entity LLScriptActionEntity from class by code");
             }
                         if (method != null
                                 && field != null) {
@@ -356,7 +356,7 @@ public class LLScriptBundleController {
                 } catch (SecurityException | IllegalArgumentException
                         | IllegalAccessException
                         | InvocationTargetException e) {
-                    e.printStackTrace();
+              System.out.println("CANNOT get embedded lookup Entity LLScriptActionEntity by name or code");
                 }
                 if (list != null
                         && !list.isEmpty()) {
