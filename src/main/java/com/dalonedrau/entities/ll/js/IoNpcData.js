@@ -10,7 +10,7 @@
 	},
 	"bags": 1,
 	"equipped_items": {
-		"EQUIP_SLOT_TORSO": "Hauberk",
+		"EQUIP_SLOT_TORSO": "Chain Mail",
 		"EQUIP_SLOT_SHIELD": "Shield"
 	},
 	"gender": {
@@ -27,11 +27,12 @@
 	"inventory_items": [{
 		"name": "Dagger"
 	}, {
-		"name": "Broadsword"
+		"name": "Longsword"
 	}],
 	"level": 1,
 	"module": "AC1 - The Shady Dragon Inn",
 	"name": "Abel Artone",
+	"title": "Abel Artone",
 	"xp": 0
 }, {
 	"attributes": {
@@ -45,7 +46,7 @@
 	},
 	"bags": 1,
 	"equipped_items": {
-		"EQUIP_SLOT_TORSO": "Hauberk"
+		"EQUIP_SLOT_TORSO": "Chain Mail"
 	},
 	"gender": {
 		"name": "Female"
@@ -61,12 +62,55 @@
 	"inventory_items": [{
 		"name": "Dagger"
 	}, {
-		"name": "Arming Sword"
+		"name": "Longsword"
 	}, {
 		"name": "Spear"
 	}],
 	"level": 2,
 	"module": "AC1 - The Shady Dragon Inn",
 	"name": "Ariadne Beonrsdottir",
+	"title": "Ariadne Beonrsdottir",
+	"xp": 0
+}, {
+	"attributes": {
+		"STR": 16,
+		"INT": 9,
+		"WIS": 15,
+		"CON": 11,
+		"DEX": 13,
+		"CHA": 10,
+		"HP": 21
+	},
+	"bags": 1,
+	"equipped_items": {
+		"EQUIP_SLOT_TORSO": "Plate Mail"
+	},
+	"gender": {
+		"name": "Male"
+	},
+	"gold": 0,
+	"groups": [{
+		"name": "FIGHTER"
+	}, {
+		"name": "HUMAN"
+	}, {
+		"name": "CHAOTIC"
+	}],
+	"inventory_items": [{
+		"name": "Dagger"
+	}, {
+		"name": "Battle Axe"
+	}, {
+		"name": "Longsword"
+	}, {
+		"name": "Light Crossbow"
+	}, {
+		"name": "Quarrel",
+		"count": 10
+	}],
+	"level": 3,
+	"module": "AC1 - The Shady Dragon Inn",
+	"name": "Boris Bonesnapper",
+	"title": "Boris Bonesnapper",
 	"xp": 0
 }]

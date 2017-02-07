@@ -651,8 +651,8 @@ INSERT INTO ll.script_bundle(name) VALUES(
 
 -- ADD IO_NPC_DATAS
 INSERT INTO ll.io_npc_data(behavior, behavior_param, climb_count, collid_state, collid_time, critical, cut, cuts, damages, gender, internal_script, level, life, mana, maxlife, maxmana, module, name, npc_flags, title, weapon, xpvalue) VALUES(
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ll.gender WHERE name='Male'), NULL, 1, 0.0, 0.0, 0.0, 0.0, 'AC1 - The Shady Dragon Inn', 'Abel Artone', 0, NULL, NULL, 0), (
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ll.gender WHERE name='Female'), NULL, 2, 0.0, 0.0, 0.0, 0.0, 'AC1 - The Shady Dragon Inn', 'Ariadne Beonrsdottir', 0, NULL, NULL, 0);
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ll.gender WHERE name='Male'), NULL, 1, 0.0, 0.0, 0.0, 0.0, 'AC1 - The Shady Dragon Inn', 'Abel Artone', 0, 'Abel Artone', NULL, 0), (
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ll.gender WHERE name='Female'), NULL, 2, 0.0, 0.0, 0.0, 0.0, 'AC1 - The Shady Dragon Inn', 'Ariadne Beonrsdottir', 0, 'Ariadne Beonrsdottir', NULL, 0);
 
 -- ADD io_npc_data's RELATED inventory_itemss
 INSERT INTO ll.io_npc_data_inventory_items_lookup(io_npc_data_id, io_item_data_id) VALUES (
@@ -660,13 +660,13 @@ INSERT INTO ll.io_npc_data_inventory_items_lookup(io_npc_data_id, io_item_data_i
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Dagger'));
 INSERT INTO ll.io_npc_data_inventory_items_lookup(io_npc_data_id, io_item_data_id) VALUES (
   (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Broadsword'));
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Longsword'));
 INSERT INTO ll.io_npc_data_inventory_items_lookup(io_npc_data_id, io_item_data_id) VALUES (
   (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Dagger'));
 INSERT INTO ll.io_npc_data_inventory_items_lookup(io_npc_data_id, io_item_data_id) VALUES (
   (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
-  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Arming Sword'));
+  (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Longsword'));
 INSERT INTO ll.io_npc_data_inventory_items_lookup(io_npc_data_id, io_item_data_id) VALUES (
   (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
   (SELECT io_item_data_id FROM ll.io_item_data WHERE name='Spear'));
@@ -733,7 +733,7 @@ INSERT INTO ll.io_npc_data_attributes_lookup(io_npc_data_id, key, value) VALUES 
 INSERT INTO ll.io_npc_data_equipped_items_lookup(io_npc_data_id, key, value) VALUES (
   (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
   'EQUIP_SLOT_TORSO',
-  'Hauberk');
+  'Chain Mail');
 INSERT INTO ll.io_npc_data_equipped_items_lookup(io_npc_data_id, key, value) VALUES (
   (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Abel Artone'),
   'EQUIP_SLOT_SHIELD',
@@ -741,7 +741,7 @@ INSERT INTO ll.io_npc_data_equipped_items_lookup(io_npc_data_id, key, value) VAL
 INSERT INTO ll.io_npc_data_equipped_items_lookup(io_npc_data_id, key, value) VALUES (
   (SELECT io_npc_data_id FROM ll.io_npc_data WHERE name='Ariadne Beonrsdottir'),
   'EQUIP_SLOT_TORSO',
-  'Hauberk');
+  'Chain Mail');
 
 -- ADD io_npc_data's RELATED scripted_eventss
 

@@ -397,7 +397,7 @@ CREATE TABLE ll.io_npc_data
   name character varying(50) NOT NULL,
   npc_flags bigint,
   title character varying(50) NOT NULL,
-  weapon text NOT NULL,
+  weapon text,
   xpvalue smallint,
   CONSTRAINT io_npc_data_io_npc_data_id_pk PRIMARY KEY (io_npc_data_id),
   CONSTRAINT io_npc_data_gender_fk FOREIGN KEY (gender)

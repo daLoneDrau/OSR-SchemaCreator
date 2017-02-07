@@ -96,7 +96,7 @@ public final class LLIoNpcDataEntity {
     /** the weapon. */
     @Column(name = "weapon")
     @JsonProperty("weapon")
-    @NotNull
+    
     private String                    weapon;
     /**
      * Gets the weapon.

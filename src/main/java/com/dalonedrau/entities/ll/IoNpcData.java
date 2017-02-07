@@ -73,6 +73,7 @@ public class IoNpcData {
     /** the {@link IoNpcData}'s title. */
     @VarChar(length = 50)
     private String title;
+    @CanBeNull
     @ForeignKey(clazz = IoItemData.class, fieldName = "name")
     private String weapon;
     @CanBeNull
