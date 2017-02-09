@@ -10,6 +10,9 @@ import com.dalonedrau.schemacreator.Annotations.VarChar;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class IoNpcData {
+    @CanBeNull
+    @JsonProperty("attacks_per_round")
+    int attacksPerRound;
     /** the set of attributes defining the NPC. */
     @MapForeignKey(keyColumnType = "character varying(3)", keyField = "code",
             keyTargetClass = "Attribute", valueColumnType = "smallint")
@@ -31,7 +34,9 @@ public class IoNpcData {
     @CanBeNull
     int cuts;
     @CanBeNull
-    float damages;
+    Dice damages;
+    @CanBeNull
+    String description;
     /** the set of element modifiers. */
     @JsonProperty("equipped_items")
     @MapForeignKey(keyColumnType = "character varying(40)", keyField = "code",
@@ -58,6 +63,14 @@ public class IoNpcData {
     float maxlife;
     @CanBeNull
     float maxmana;
+    @CanBeNull
+    @JsonProperty("move_per_turn")
+    int movePerTurn;
+    @CanBeNull
+    int morale;
+    @CanBeNull
+    @JsonProperty("move_per_round")
+    int movePerRound;
     @CanBeNull
     String module;
     /** the {@link IoNpcData}'s name. */

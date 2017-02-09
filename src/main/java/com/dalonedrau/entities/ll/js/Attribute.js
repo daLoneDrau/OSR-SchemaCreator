@@ -55,6 +55,10 @@
 	"description": "Force Doors Bonus",
 	"code": "FDB"
 }, {
+	"name": "Hit Dice",
+	"description": "Hit Dice",
+	"code": "HD"
+}, {
 	"name": "Hit Points",
 	"description": "Hit Points",
 	"code": "HP"
