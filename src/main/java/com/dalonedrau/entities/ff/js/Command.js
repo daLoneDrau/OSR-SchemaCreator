@@ -1,0 +1,58 @@
+[{
+	"name": "NORTH",
+	"sort_order": 0
+}, {
+	"name": "SOUTH",
+	"sort_order": 1
+}, {
+	"name": "WEST",
+	"sort_order": 2
+}, {
+	"name": "EAST",
+	"sort_order": 3
+}, {
+	"name": "TALK",
+	"sort_order": 4
+}, {
+	"name": "GIVE",
+	"sort_order": 5
+}, {
+	"name": "ATTACK",
+	"sort_order": 6
+}, {
+	"name": "OPEN",
+	"sort_order": 7
+}, {
+	"name": "SMASH",
+	"sort_order": 8
+}, {
+	"name": "TAKE",
+	"sort_order": 9
+}, {
+	"name": "SIT",
+	"sort_order": 10
+}, {
+	"name": "STEP",
+	"sort_order": 11
+}, {
+	"name": "BRIBE",
+	"sort_order": 12
+}, {
+	"name": "INTIMIDATE",
+	"sort_order": 13
+}, {
+	"name": "THROW",
+	"sort_order": 14
+}, {
+	"name": "EAT",
+	"sort_order": 15
+}, {
+	"name": "SEARCH",
+	"sort_order": 16
+}, {
+	"name": "USE",
+	"sort_order": 17
+}, {
+	"name": "INVENTORY",
+	"sort_order": 18
+}]
