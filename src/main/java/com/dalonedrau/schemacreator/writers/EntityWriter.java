@@ -111,8 +111,8 @@ public class EntityWriter {
                         final Class<?> memberClass = field.getType();
                         final Field[] memberClassFields = memberClass
                                 .getDeclaredFields();
-                        for (int j = memberClassFields.length - 1; j >= 0;
-                                j--) {
+                        for (int j =
+                                memberClassFields.length - 1; j >= 0; j--) {
                             if (memberClassFields[j].getType().getName()
                                     .equals(clazz.getName())) {
                                 oneToOne = true;

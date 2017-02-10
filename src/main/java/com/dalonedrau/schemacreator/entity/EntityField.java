@@ -14,21 +14,15 @@ import com.dalonedrow.pooled.PooledException;
 public final class EntityField {
     /** the field's entity class. */
     private final String entityClazz;
+    /** the json property by which the field is named. */
+    private String jsonProperty;
     /** the field's name. */
     private final String name;
     /** the flag indicating if null values are allowed. */
     private boolean nullAllowed;
     /** the field's primitive class. */
     private final String primitiveClazz;
-    /** the json property by which the field is named. */
-    private String jsonProperty;
 
-    /**
-     * @param jsonProperty the jsonProperty to set
-     */
-    public void setJsonProperty(String jsonProperty) {
-        this.jsonProperty = jsonProperty;
-    }
     /**
      * Creates a new instance of {@link EntityField}.
      * @param n the field's name
@@ -65,6 +59,12 @@ public final class EntityField {
         return primitiveClazz;
     }
     /**
+     * @param jsonProperty the jsonProperty to set
+     */
+    public void setJsonProperty(String jsonProperty) {
+        this.jsonProperty = jsonProperty;
+    }
+    /**
      * Sets the flag indicating if null values are allowed.
      * @param flag the new value to set
      */
@@ -87,34 +87,41 @@ public final class EntityField {
         if (entityClazz != null) {
             section = TextLoader.getInstance().loadText(
                     "entity_template.txt", "entity_entity_member");
-            System.out.println("entity_entity_member for "+name+"::"+entityClazz);
-            if (this.jsonProperty != null) {
+            System.out.println(
+                    "entity_entity_member for " + name + "::" + entityClazz);
+            if (jsonProperty != null) {
                 section = TextProcessor.getInstance().processText(
                         new String[] {
-                                "<fieldName>", "<entityClass>", "<fieldTableName>",
+                                "<fieldName>", "<entityClass>",
+                                "<fieldTableName>",
                                 "<notNull>", "<fieldNameFirstCap>"
                         }, new String[] {
                                 name,
-                                SchemaUtilities.getInstance().getEntityClassName(
-                                        entityClazz),
-                                this.jsonProperty,
+                                SchemaUtilities.getInstance()
+                                        .getEntityClassName(
+                                                entityClazz),
+                                jsonProperty,
                                 n,
-                                SchemaUtilities.getInstance().capitalizeFirst(name)
+                                SchemaUtilities.getInstance()
+                                        .capitalizeFirst(name)
                         }, section);
             } else {
-            section = TextProcessor.getInstance().processText(
-                    new String[] {
-                            "<fieldName>", "<entityClass>", "<fieldTableName>",
-                            "<notNull>", "<fieldNameFirstCap>"
-                    }, new String[] {
-                            name,
-                            SchemaUtilities.getInstance().getEntityClassName(
-                                    entityClazz),
-                            SchemaUtilities.getInstance()
-                                    .getTableName(entityClazz),
-                            n,
-                            SchemaUtilities.getInstance().capitalizeFirst(name)
-                    }, section);
+                section = TextProcessor.getInstance().processText(
+                        new String[] {
+                                "<fieldName>", "<entityClass>",
+                                "<fieldTableName>",
+                                "<notNull>", "<fieldNameFirstCap>"
+                        }, new String[] {
+                                name,
+                                SchemaUtilities.getInstance()
+                                        .getEntityClassName(
+                                                entityClazz),
+                                SchemaUtilities.getInstance()
+                                        .getTableName(entityClazz),
+                                n,
+                                SchemaUtilities.getInstance()
+                                        .capitalizeFirst(name)
+                        }, section);
             }
         } else {
             section = TextLoader.getInstance().loadText(

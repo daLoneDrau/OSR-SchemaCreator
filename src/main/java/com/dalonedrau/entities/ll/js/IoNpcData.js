@@ -116,4 +116,27 @@
 	"name": "Boris Bonesnapper",
 	"title": "Boris Bonesnapper",
 	"xp": 0
+}, {
+	"name": "Giant Ant",
+	"title": "Giant Ant",
+	"groups": [{
+		"name": "NEUTRAL"
+	}],
+	"move_per_turn": 180,
+	"move_per_round": 60,
+	"attributes": {
+		"AC": 3,
+		"HD": 4
+	},
+	"attacks_per_round": 1,
+	"damages": {
+		"code": "TWO_D6"
+	},
+	"saving_throw": "F2",
+	"morale": 7,
+	"hoard_class": 6,
+	"gender": {
+		"name": "Female"
+	},
+	"module": "Labyrinth Lord Revised Edition"
 }]

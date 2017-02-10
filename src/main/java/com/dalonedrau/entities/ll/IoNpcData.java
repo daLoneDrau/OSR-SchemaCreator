@@ -48,6 +48,9 @@ public class IoNpcData {
     private Gender gender;
     /** the list of groups the item belongs to. */
     private List<Group> groups;
+    @CanBeNull
+    @JsonProperty("hoard_class")
+    int hoardClass;
     /** the name of the internal script used. */
     @CanBeNull
     @JsonProperty("internal_script")
@@ -64,27 +67,24 @@ public class IoNpcData {
     @CanBeNull
     float maxmana;
     @CanBeNull
-    @JsonProperty("move_per_turn")
-    int movePerTurn;
+    String module;
     @CanBeNull
     int morale;
     @CanBeNull
     @JsonProperty("move_per_round")
     int movePerRound;
     @CanBeNull
-    String module;
+    @JsonProperty("move_per_turn")
+    int movePerTurn;
     /** the {@link IoNpcData}'s name. */
     @VarChar(length = 50)
     private String name;
     /** all NPC flags. */
     @CanBeNull
     private long npcFlags;
-    /** the {@link IoNpcData}'s script. */
-    @JsonProperty("scripted_events")
-    @MapForeignKey(keyColumnType = "character varying(20)", keyField = "code",
-            keyTargetClass = "Event", valueColumnType = "character varying(50)",
-            valueTargetClass = "ScriptBundle", valueField = "name")
-    private Map<String, String> scriptedEvents;
+    @CanBeNull
+    @JsonProperty("saving_throw")
+    String savingThrow;
     /** the {@link IoNpcData}'s title. */
     @VarChar(length = 50)
     private String title;

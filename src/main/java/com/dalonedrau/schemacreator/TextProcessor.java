@@ -285,15 +285,14 @@ public class TextProcessor {
         }
         try {
             boolean prependSeperator = false;
-            for (int i = 0, currentColumn = 0, len = list.length; i < len;
-                    i++) {
+            for (int i = 0, currentColumn = 0, len =
+                    list.length; i < len; i++) {
                 if (prependSeperator) {
                     sb.append(separator);
                 }
                 sb.append(list[i]);
                 for (int j = columnLengths[currentColumn]
-                        - list[i].length();
-                        j > 0; j--) {
+                        - list[i].length(); j > 0; j--) {
                     sb.append(' ');
                 }
                 currentColumn++;
@@ -1056,15 +1055,13 @@ public class TextProcessor {
                             // end current line
                             if (bordered) {
                                 for (int j = (int) (innerWidth
-                                        - currentWidth);
-                                        j > 0; j--) {
+                                        - currentWidth); j > 0; j--) {
                                     sb.append(' ');
                                 }
                                 sb.append(" |");
                             } else if (starred) {
                                 for (int j = (int) (innerWidth
-                                        - currentWidth);
-                                        j > 0; j--) {
+                                        - currentWidth); j > 0; j--) {
                                     sb.append(' ');
                                 }
                                 sb.append(" *");
@@ -1096,15 +1093,13 @@ public class TextProcessor {
                             // end current line
                             if (bordered) {
                                 for (int j = (int) (innerWidth
-                                        - currentWidth);
-                                        j > 0; j--) {
+                                        - currentWidth); j > 0; j--) {
                                     sb.append(' ');
                                 }
                                 sb.append(" |");
                             } else if (starred) {
                                 for (int j = (int) (innerWidth
-                                        - currentWidth);
-                                        j > 0; j--) {
+                                        - currentWidth); j > 0; j--) {
                                     sb.append(' ');
                                 }
                                 sb.append(" *");
@@ -1131,15 +1126,13 @@ public class TextProcessor {
                         }
                         if (bordered) {
                             for (int j = (int) (innerWidth
-                                    - currentWidth);
-                                    j > 0; j--) {
+                                    - currentWidth); j > 0; j--) {
                                 sb.append(' ');
                             }
                             sb.append(" |");
                         } else if (starred) {
                             for (int j = (int) (innerWidth
-                                    - currentWidth);
-                                    j > 0; j--) {
+                                    - currentWidth); j > 0; j--) {
                                 sb.append(' ');
                             }
                             sb.append(" *");
@@ -1164,15 +1157,13 @@ public class TextProcessor {
                             // end current line
                             if (bordered) {
                                 for (int j = (int) (innerWidth
-                                        - currentWidth);
-                                        j > 0; j--) {
+                                        - currentWidth); j > 0; j--) {
                                     sb.append(' ');
                                 }
                                 sb.append(" |");
                             } else if (starred) {
                                 for (int j = (int) (innerWidth
-                                        - currentWidth);
-                                        j > 0; j--) {
+                                        - currentWidth); j > 0; j--) {
                                     sb.append(' ');
                                 }
                                 sb.append(" *");
@@ -1196,14 +1187,14 @@ public class TextProcessor {
                 } // end for
                 if (sb.length() > 0) { // add the last line
                     if (bordered) {
-                        for (int j = (int) (innerWidth - currentWidth); j > 0;
-                                j--) {
+                        for (int j =
+                                (int) (innerWidth - currentWidth); j > 0; j--) {
                             sb.append(' ');
                         }
                         sb.append(" |");
                     } else if (starred) {
-                        for (int j = (int) (innerWidth - currentWidth); j > 0;
-                                j--) {
+                        for (int j =
+                                (int) (innerWidth - currentWidth); j > 0; j--) {
                             sb.append(' ');
                         }
                         sb.append(" *");
