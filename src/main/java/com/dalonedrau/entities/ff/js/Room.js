@@ -1,11 +1,12 @@
   [{
-    "code": "1",
-    "exits": {
-        "EAST": "12",
-        "WEST": "71"
-    }
+  	"code": "1",
+  	"commands": [{
+  		"name": "WEST"
+  	}, {
+  		"name": "EAST"
+  	}]
   }, {
-    "code": "12"
+  	"code": "12"
   }, {
-    "code": "71"
+  	"code": "71"
   }]
