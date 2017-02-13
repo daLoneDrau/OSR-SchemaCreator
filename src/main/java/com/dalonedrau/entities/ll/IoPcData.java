@@ -54,12 +54,6 @@ public class IoPcData {
     /** the {@link IoPcData}'s name. */
     @VarChar(length = 40)
     private String name;
-    /** the {@link IoPcData}'s script. */
-    @JsonProperty("scripted_events")
-    @MapForeignKey(keyColumnType = "character varying(40)", keyField = "code",
-            keyTargetClass = "Event", valueColumnType = "character varying(50)",
-            valueTargetClass = "ScriptBundle", valueField = "name")
-    private Map<String, String> scriptedEvents;
     /** the {@link IoPcData}'s experience points. */
     private long xp;
 }
