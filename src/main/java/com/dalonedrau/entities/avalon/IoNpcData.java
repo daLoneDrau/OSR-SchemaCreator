@@ -48,11 +48,6 @@ public class IoNpcData {
     /** all NPC flags. */
     @CanBeNull
     private long npcFlags;
-    /** the {@link IoNpcData}'s script. */
-    @MapForeignKey(keyColumnType = "character varying(20)", keyField = "code",
-            keyTargetClass = "Event", valueColumnType = "character varying(50)",
-            valueTargetClass = "ScriptBundle", valueField = "name")
-    private Map<String, String> scriptedEvents;
     /** the {@link IoNpcData}'s title. */
     @VarChar(length = 50)
     private String title;

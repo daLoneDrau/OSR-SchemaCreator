@@ -23,7 +23,7 @@ public final class IoPcData {
      * the reference ids of all items equipped by the {@link IoPcData}, indexed
      * by equipment slot.
      */
-    @MapForeignKey(keyColumnType = "character varying(40)", keyField = "name",
+    @MapForeignKey(keyColumnType = "character varying(40)", keyField = "code",
             keyTargetClass = "EquipmentSlot", valueColumnType = "smallint",
             valueTargetClass = "IoItemData", valueField = "io_item_data_id")
     private Map<String, Integer> equippedItems;
