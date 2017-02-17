@@ -458,43 +458,21 @@ public final class AVALONIoNpcDataEntity {
     /** the behavior. */
     @Column(name = "behavior")
     @JsonProperty("behavior")
-    @NotNull
-    private long                    behavior;
+    
+    private Long                    behavior;
     /**
      * Gets the behavior.
-     * @return {@link long}
+     * @return {@link Long}
      */
-    public long getBehavior() {
+    public Long getBehavior() {
         return behavior;
     }
     /**
      * Sets the behavior.
      * @param val the new value
      */
-    public void setBehavior(final long val) {
+    public void setBehavior(final Long val) {
         behavior = val;
-    }
-
-    @ElementCollection
-    @CollectionTable(name = "io_npc_data_attributes_lookup",
-  schema = "avalon", joinColumns = @JoinColumn(name = "io_npc_data_id"))
-    @MapKeyColumn(name = "key")
-    @Column(name = "value")
-    @JsonProperty("attributes")
-    private Map<String, Integer> attributes;
-    /**
-     * Gets the map of attributes.
-     * @return {@link Map}<{@link String}, {@link Integer}>
-     */
-    public Map<String, Integer> getAttributes() {
-        return attributes;
-    }
-    /**
-     * Sets the mapping for attributes.
-     * @param val the new value
-     */
-    public void setAttributes(Map<String, Integer> val) {
-        attributes = val;
     }
 
 }

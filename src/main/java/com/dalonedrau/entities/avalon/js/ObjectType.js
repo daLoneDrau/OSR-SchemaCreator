@@ -9,59 +9,62 @@
 	"code": "OBJECT_TYPE_2H"
 }, {
 	"flag": 8,
-	"code": "OBJECT_TYPE_ARMOR"
+	"code": "OBJECT_TYPE_BOW"
 }, {
 	"flag": 16,
-	"code": "OBJECT_TYPE_SUIT_OF_ARMOR"
+	"code": "OBJECT_TYPE_ARMOR"
 }, {
 	"flag": 32,
-	"code": "OBJECT_TYPE_BREASTPLATE"
+	"code": "OBJECT_TYPE_SUIT_OF_ARMOR"
 }, {
 	"flag": 64,
-	"code": "OBJECT_TYPE_HELMET"
+	"code": "OBJECT_TYPE_BREASTPLATE"
 }, {
 	"flag": 128,
-	"code": "OBJECT_TYPE_SHIELD"
+	"code": "OBJECT_TYPE_HELMET"
 }, {
 	"flag": 256,
-	"code": "OBJECT_TYPE_BOOTS"
+	"code": "OBJECT_TYPE_SHIELD"
 }, {
 	"flag": 512,
-	"code": "OBJECT_TYPE_GLOVES"
+	"code": "OBJECT_TYPE_BOOTS"
 }, {
 	"flag": 1024,
-	"code": "OBJECT_TYPE_POTION"
+	"code": "OBJECT_TYPE_GLOVES"
 }, {
 	"flag": 2048,
-	"code": "OBJECT_TYPE_CLOAK"
+	"code": "OBJECT_TYPE_POTION"
 }, {
 	"flag": 4096,
-	"code": "OBJECT_TYPE_NECKLACE"
+	"code": "OBJECT_TYPE_CLOAK"
 }, {
 	"flag": 8192,
-	"code": "OBJECT_TYPE_BOOK"
+	"code": "OBJECT_TYPE_NECKLACE"
 }, {
 	"flag": 16384,
-	"code": "OBJECT_TYPE_BELT"
+	"code": "OBJECT_TYPE_BOOK"
 }, {
 	"flag": 32768,
-	"code": "OBJECT_TYPE_ARTIFACT"
+	"code": "OBJECT_TYPE_BELT"
 }, {
 	"flag": 65536,
-	"code": "OBJECT_TYPE_RING"
+	"code": "OBJECT_TYPE_ARTIFACT"
 }, {
 	"flag": 131072,
-	"code": "OBJECT_TYPE_FOCUS"
+	"code": "OBJECT_TYPE_RING"
 }, {
 	"flag": 262144,
-	"code": "OBJECT_TYPE_BRACERS"
+	"code": "OBJECT_TYPE_FOCUS"
 }, {
 	"flag": 524288,
-	"code": "OBJECT_TYPE_MAP"
+	"code": "OBJECT_TYPE_BRACERS"
 }, {
 	"flag": 1048576,
-	"code": "OBJECT_TYPE_MAGIC_ITEM"
+	"code": "OBJECT_TYPE_MAP"
 }, {
 	"flag": 2097152,
+	"code": "OBJECT_TYPE_MAGIC_ITEM"
+}, {
+	"flag": 4194304,
 	"code": "OBJECT_TYPE_MISC"
 }]

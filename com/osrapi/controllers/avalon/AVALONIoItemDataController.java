@@ -21,6 +21,8 @@ import com.osrapi.models.avalon.AVALONIoItemDataEntity;
 import com.osrapi.models.avalon.AVALONVulnerabilityEntity;
 import com.osrapi.models.avalon.AVALONAttackTypeEntity;
 import com.osrapi.models.avalon.AVALONArmorConditionEntity;
+import com.osrapi.models.avalon.AVALONHorseTypeEntity;
+import com.osrapi.models.avalon.AVALONVulnerabilityEntity;
 import com.osrapi.models.avalon.AVALONVulnerabilityEntity;
 import com.osrapi.models.avalon.AVALONGroupEntity;
 import com.osrapi.models.avalon.AVALONArmorProtectionEntity;
@@ -375,9 +377,19 @@ public class AVALONIoItemDataController {
       setConditionIdFromRepository(entity);
         }
 
+        if (entity.getHorseType() != null
+        && entity.getHorseType().getId() == null) {
+      setHorseTypeIdFromRepository(entity);
+        }
+
         if (entity.getUnalertedWeightClass() != null
         && entity.getUnalertedWeightClass().getId() == null) {
       setUnalertedWeightClassIdFromRepository(entity);
+        }
+
+        if (entity.getWeightClass() != null
+        && entity.getWeightClass().getId() == null) {
+      setWeightClassIdFromRepository(entity);
         }
 
 
@@ -721,9 +733,19 @@ public class AVALONIoItemDataController {
       setConditionIdFromRepository(entity);
         }
 
+        if (entity.getHorseType() != null
+        && entity.getHorseType().getId() == null) {
+      setHorseTypeIdFromRepository(entity);
+        }
+
         if (entity.getUnalertedWeightClass() != null
         && entity.getUnalertedWeightClass().getId() == null) {
       setUnalertedWeightClassIdFromRepository(entity);
+        }
+
+        if (entity.getWeightClass() != null
+        && entity.getWeightClass().getId() == null) {
+      setWeightClassIdFromRepository(entity);
         }
 
 
@@ -921,6 +943,68 @@ public class AVALONIoItemDataController {
     list = null;
     }
 
+  private void setHorseTypeIdFromRepository(
+      final AVALONIoItemDataEntity entity) {
+    AVALONHorseTypeEntity memberEntity = null;
+    List<Resource<AVALONHorseTypeEntity>> list = null;
+    try {
+      Method method = null;
+      Field field = null;
+      try {
+        method = AVALONHorseTypeController.class.getDeclaredMethod(
+            "getByName", new Class[] { String.class });
+        field = AVALONHorseTypeEntity.class.getDeclaredField("name");
+      } catch (NoSuchMethodException | NoSuchFieldException e) {
+      }
+      if (method != null
+          && field != null) {
+        field.setAccessible(true);
+        if (field.get(entity.getHorseType()) != null) {
+          list = (List<Resource<AVALONHorseTypeEntity>>) method
+              .invoke(
+                  AVALONHorseTypeController.getInstance(),
+                  (String) field
+                      .get(entity.getHorseType()));
+        }
+      }
+      if (list == null) {
+        try {
+          method = AVALONHorseTypeController.class.getDeclaredMethod(
+              "getByCode", new Class[] { String.class });
+          field = AVALONHorseTypeEntity.class
+              .getDeclaredField("code");
+        } catch (NoSuchMethodException | NoSuchFieldException e) {
+        }
+        if (method != null
+            && field != null) {
+          field.setAccessible(true);
+          if (field.get(entity.getHorseType()) != null) {
+            list = (List<Resource<AVALONHorseTypeEntity>>)
+                method.invoke(AVALONHorseTypeController
+                    .getInstance(),(String) field.get(
+                        entity.getHorseType()));
+          }
+        }
+      }
+      method = null;
+      field = null;
+    } catch (SecurityException | IllegalArgumentException
+        | IllegalAccessException
+        | InvocationTargetException e) {
+    }
+    if (list != null
+        && !list.isEmpty()) {
+      memberEntity = list.get(0).getContent();
+    }
+    if (memberEntity == null) {
+      memberEntity = (AVALONHorseTypeEntity)
+          ((Resource) AVALONHorseTypeController.getInstance().save(
+              entity.getHorseType()).get(0)).getContent();
+    }
+    entity.setHorseType(memberEntity);
+    list = null;
+    }
+
   private void setUnalertedWeightClassIdFromRepository(
       final AVALONIoItemDataEntity entity) {
     AVALONVulnerabilityEntity memberEntity = null;
@@ -983,17 +1067,79 @@ public class AVALONIoItemDataController {
     list = null;
     }
 
+  private void setWeightClassIdFromRepository(
+      final AVALONIoItemDataEntity entity) {
+    AVALONVulnerabilityEntity memberEntity = null;
+    List<Resource<AVALONVulnerabilityEntity>> list = null;
+    try {
+      Method method = null;
+      Field field = null;
+      try {
+        method = AVALONVulnerabilityController.class.getDeclaredMethod(
+            "getByName", new Class[] { String.class });
+        field = AVALONVulnerabilityEntity.class.getDeclaredField("name");
+      } catch (NoSuchMethodException | NoSuchFieldException e) {
+      }
+      if (method != null
+          && field != null) {
+        field.setAccessible(true);
+        if (field.get(entity.getWeightClass()) != null) {
+          list = (List<Resource<AVALONVulnerabilityEntity>>) method
+              .invoke(
+                  AVALONVulnerabilityController.getInstance(),
+                  (String) field
+                      .get(entity.getWeightClass()));
+        }
+      }
+      if (list == null) {
+        try {
+          method = AVALONVulnerabilityController.class.getDeclaredMethod(
+              "getByCode", new Class[] { String.class });
+          field = AVALONVulnerabilityEntity.class
+              .getDeclaredField("code");
+        } catch (NoSuchMethodException | NoSuchFieldException e) {
+        }
+        if (method != null
+            && field != null) {
+          field.setAccessible(true);
+          if (field.get(entity.getWeightClass()) != null) {
+            list = (List<Resource<AVALONVulnerabilityEntity>>)
+                method.invoke(AVALONVulnerabilityController
+                    .getInstance(),(String) field.get(
+                        entity.getWeightClass()));
+          }
+        }
+      }
+      method = null;
+      field = null;
+    } catch (SecurityException | IllegalArgumentException
+        | IllegalAccessException
+        | InvocationTargetException e) {
+    }
+    if (list != null
+        && !list.isEmpty()) {
+      memberEntity = list.get(0).getContent();
+    }
+    if (memberEntity == null) {
+      memberEntity = (AVALONVulnerabilityEntity)
+          ((Resource) AVALONVulnerabilityController.getInstance().save(
+              entity.getWeightClass()).get(0)).getContent();
+    }
+    entity.setWeightClass(memberEntity);
+    list = null;
+    }
+
 
     /**
-     * Gets a list of {@link AVALONIoItemDataEntity}s that share a alertedAttackSpeed.
-     * @param alertedAttackSpeed the io_item_data' alertedAttackSpeed
+     * Gets a list of {@link AVALONIoItemDataEntity}s that share a alertedSpeed.
+     * @param alertedSpeed the io_item_data' alertedSpeed
      * @return {@link List}<{@link Resource}<{@link AVALONIoItemDataEntity}>>
      */
-    @RequestMapping(path = "alerted_attack_speed/{alertedAttackSpeed}",
+    @RequestMapping(path = "alerted_speed/{alertedSpeed}",
             method = RequestMethod.GET)
-    public List<Resource<AVALONIoItemDataEntity>> getByAlertedAttackSpeed(
-            @PathVariable final Long alertedAttackSpeed) {
-        Iterator<AVALONIoItemDataEntity> iter = repository.findByAlertedAttackSpeed(alertedAttackSpeed)
+    public List<Resource<AVALONIoItemDataEntity>> getByAlertedSpeed(
+            @PathVariable final Long alertedSpeed) {
+        Iterator<AVALONIoItemDataEntity> iter = repository.findByAlertedSpeed(alertedSpeed)
                 .iterator();
         List<Resource<AVALONIoItemDataEntity>> resources =
                 new ArrayList<Resource<AVALONIoItemDataEntity>>();
@@ -1051,6 +1197,25 @@ public class AVALONIoItemDataController {
     public List<Resource<AVALONIoItemDataEntity>> getByDescription(
             @PathVariable final String description) {
         Iterator<AVALONIoItemDataEntity> iter = repository.findByDescription(description)
+                .iterator();
+        List<Resource<AVALONIoItemDataEntity>> resources =
+                new ArrayList<Resource<AVALONIoItemDataEntity>>();
+        while (iter.hasNext()) {
+            resources.add(getIoItemDataResource(iter.next()));
+        }
+        iter = null;
+        return resources;
+    }
+    /**
+     * Gets a list of {@link AVALONIoItemDataEntity}s that share a fame.
+     * @param fame the io_item_data' fame
+     * @return {@link List}<{@link Resource}<{@link AVALONIoItemDataEntity}>>
+     */
+    @RequestMapping(path = "fame/{fame}",
+            method = RequestMethod.GET)
+    public List<Resource<AVALONIoItemDataEntity>> getByFame(
+            @PathVariable final Long fame) {
+        Iterator<AVALONIoItemDataEntity> iter = repository.findByFame(fame)
                 .iterator();
         List<Resource<AVALONIoItemDataEntity>> resources =
                 new ArrayList<Resource<AVALONIoItemDataEntity>>();
@@ -1194,6 +1359,25 @@ public class AVALONIoItemDataController {
         return resources;
     }
     /**
+     * Gets a list of {@link AVALONIoItemDataEntity}s that share a notoriety.
+     * @param notoriety the io_item_data' notoriety
+     * @return {@link List}<{@link Resource}<{@link AVALONIoItemDataEntity}>>
+     */
+    @RequestMapping(path = "notoriety/{notoriety}",
+            method = RequestMethod.GET)
+    public List<Resource<AVALONIoItemDataEntity>> getByNotoriety(
+            @PathVariable final Long notoriety) {
+        Iterator<AVALONIoItemDataEntity> iter = repository.findByNotoriety(notoriety)
+                .iterator();
+        List<Resource<AVALONIoItemDataEntity>> resources =
+                new ArrayList<Resource<AVALONIoItemDataEntity>>();
+        while (iter.hasNext()) {
+            resources.add(getIoItemDataResource(iter.next()));
+        }
+        iter = null;
+        return resources;
+    }
+    /**
      * Gets a list of {@link AVALONIoItemDataEntity}s that share a price.
      * @param price the io_item_data' price
      * @return {@link List}<{@link Resource}<{@link AVALONIoItemDataEntity}>>
@@ -1203,6 +1387,44 @@ public class AVALONIoItemDataController {
     public List<Resource<AVALONIoItemDataEntity>> getByPrice(
             @PathVariable final float price) {
         Iterator<AVALONIoItemDataEntity> iter = repository.findByPrice(price)
+                .iterator();
+        List<Resource<AVALONIoItemDataEntity>> resources =
+                new ArrayList<Resource<AVALONIoItemDataEntity>>();
+        while (iter.hasNext()) {
+            resources.add(getIoItemDataResource(iter.next()));
+        }
+        iter = null;
+        return resources;
+    }
+    /**
+     * Gets a list of {@link AVALONIoItemDataEntity}s that share a priceDamaged.
+     * @param priceDamaged the io_item_data' priceDamaged
+     * @return {@link List}<{@link Resource}<{@link AVALONIoItemDataEntity}>>
+     */
+    @RequestMapping(path = "price_damaged/{priceDamaged}",
+            method = RequestMethod.GET)
+    public List<Resource<AVALONIoItemDataEntity>> getByPriceDamaged(
+            @PathVariable final Float priceDamaged) {
+        Iterator<AVALONIoItemDataEntity> iter = repository.findByPriceDamaged(priceDamaged)
+                .iterator();
+        List<Resource<AVALONIoItemDataEntity>> resources =
+                new ArrayList<Resource<AVALONIoItemDataEntity>>();
+        while (iter.hasNext()) {
+            resources.add(getIoItemDataResource(iter.next()));
+        }
+        iter = null;
+        return resources;
+    }
+    /**
+     * Gets a list of {@link AVALONIoItemDataEntity}s that share a priceDestroyed.
+     * @param priceDestroyed the io_item_data' priceDestroyed
+     * @return {@link List}<{@link Resource}<{@link AVALONIoItemDataEntity}>>
+     */
+    @RequestMapping(path = "price_destroyed/{priceDestroyed}",
+            method = RequestMethod.GET)
+    public List<Resource<AVALONIoItemDataEntity>> getByPriceDestroyed(
+            @PathVariable final Float priceDestroyed) {
+        Iterator<AVALONIoItemDataEntity> iter = repository.findByPriceDestroyed(priceDestroyed)
                 .iterator();
         List<Resource<AVALONIoItemDataEntity>> resources =
                 new ArrayList<Resource<AVALONIoItemDataEntity>>();
@@ -1270,15 +1492,34 @@ public class AVALONIoItemDataController {
         return resources;
     }
     /**
-     * Gets a list of {@link AVALONIoItemDataEntity}s that share a unalertedAttackSpeed.
-     * @param unalertedAttackSpeed the io_item_data' unalertedAttackSpeed
+     * Gets a list of {@link AVALONIoItemDataEntity}s that share a title.
+     * @param title the io_item_data' title
      * @return {@link List}<{@link Resource}<{@link AVALONIoItemDataEntity}>>
      */
-    @RequestMapping(path = "unalerted_attack_speed/{unalertedAttackSpeed}",
+    @RequestMapping(path = "title/{title}",
             method = RequestMethod.GET)
-    public List<Resource<AVALONIoItemDataEntity>> getByUnalertedAttackSpeed(
-            @PathVariable final Long unalertedAttackSpeed) {
-        Iterator<AVALONIoItemDataEntity> iter = repository.findByUnalertedAttackSpeed(unalertedAttackSpeed)
+    public List<Resource<AVALONIoItemDataEntity>> getByTitle(
+            @PathVariable final String title) {
+        Iterator<AVALONIoItemDataEntity> iter = repository.findByTitle(title)
+                .iterator();
+        List<Resource<AVALONIoItemDataEntity>> resources =
+                new ArrayList<Resource<AVALONIoItemDataEntity>>();
+        while (iter.hasNext()) {
+            resources.add(getIoItemDataResource(iter.next()));
+        }
+        iter = null;
+        return resources;
+    }
+    /**
+     * Gets a list of {@link AVALONIoItemDataEntity}s that share a unalertedSpeed.
+     * @param unalertedSpeed the io_item_data' unalertedSpeed
+     * @return {@link List}<{@link Resource}<{@link AVALONIoItemDataEntity}>>
+     */
+    @RequestMapping(path = "unalerted_speed/{unalertedSpeed}",
+            method = RequestMethod.GET)
+    public List<Resource<AVALONIoItemDataEntity>> getByUnalertedSpeed(
+            @PathVariable final Long unalertedSpeed) {
+        Iterator<AVALONIoItemDataEntity> iter = repository.findByUnalertedSpeed(unalertedSpeed)
                 .iterator();
         List<Resource<AVALONIoItemDataEntity>> resources =
                 new ArrayList<Resource<AVALONIoItemDataEntity>>();

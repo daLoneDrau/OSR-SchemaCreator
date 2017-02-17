@@ -93,12 +93,34 @@ public final class AVALONIoItemDataEntity {
         weaponLength = val;
     }
 
+    /** the weightClass. */
+    @ManyToOne(targetEntity = AVALONVulnerabilityEntity.class, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
+    @JoinColumn(name = "weightClass")
+    @JsonProperty("weight_class")
+  
+    private AVALONVulnerabilityEntity    weightClass;
+    /**
+     * Gets the weightClass.
+     * @return {@link AVALONVulnerabilityEntity}
+     */
+    public AVALONVulnerabilityEntity getWeightClass() {
+        return weightClass;
+    }
+    /**
+     * Sets the weightClass.
+     * @param val the new value
+     */
+    public void setWeightClass(final AVALONVulnerabilityEntity val) {
+        weightClass = val;
+    }
+
     /** the unalertedWeightClass. */
     @ManyToOne(targetEntity = AVALONVulnerabilityEntity.class, fetch = FetchType.EAGER)
     @Fetch(FetchMode.SELECT)
     @JoinColumn(name = "unalertedWeightClass")
     @JsonProperty("unalerted_weight_class")
-  @NotNull
+  
     private AVALONVulnerabilityEntity    unalertedWeightClass;
     /**
      * Gets the unalertedWeightClass.
@@ -135,24 +157,44 @@ public final class AVALONIoItemDataEntity {
         unalertedSharpness = val;
     }
 
-    /** the unalertedAttackSpeed. */
-    @Column(name = "unalerted_attack_speed")
-    @JsonProperty("unalerted_attack_speed")
+    /** the unalertedSpeed. */
+    @Column(name = "unalerted_speed")
+    @JsonProperty("unalerted_speed")
     
-    private Long                    unalertedAttackSpeed;
+    private Long                    unalertedSpeed;
     /**
-     * Gets the unalertedAttackSpeed.
+     * Gets the unalertedSpeed.
      * @return {@link Long}
      */
-    public Long getUnalertedAttackSpeed() {
-        return unalertedAttackSpeed;
+    public Long getUnalertedSpeed() {
+        return unalertedSpeed;
     }
     /**
-     * Sets the unalertedAttackSpeed.
+     * Sets the unalertedSpeed.
      * @param val the new value
      */
-    public void setUnalertedAttackSpeed(final Long val) {
-        unalertedAttackSpeed = val;
+    public void setUnalertedSpeed(final Long val) {
+        unalertedSpeed = val;
+    }
+
+    /** the title. */
+    @Column(name = "title")
+    @JsonProperty("title")
+    @NotNull
+    private String                    title;
+    /**
+     * Gets the title.
+     * @return {@link String}
+     */
+    public String getTitle() {
+        return title;
+    }
+    /**
+     * Sets the title.
+     * @param val the new value
+     */
+    public void setTitle(final String val) {
+        title = val;
     }
 
     /** the stealValue. */
@@ -215,6 +257,46 @@ public final class AVALONIoItemDataEntity {
         ringType = val;
     }
 
+    /** the priceDestroyed. */
+    @Column(name = "price_destroyed")
+    @JsonProperty("price_destroyed")
+    
+    private Float                    priceDestroyed;
+    /**
+     * Gets the priceDestroyed.
+     * @return {@link Float}
+     */
+    public Float getPriceDestroyed() {
+        return priceDestroyed;
+    }
+    /**
+     * Sets the priceDestroyed.
+     * @param val the new value
+     */
+    public void setPriceDestroyed(final Float val) {
+        priceDestroyed = val;
+    }
+
+    /** the priceDamaged. */
+    @Column(name = "price_damaged")
+    @JsonProperty("price_damaged")
+    
+    private Float                    priceDamaged;
+    /**
+     * Gets the priceDamaged.
+     * @return {@link Float}
+     */
+    public Float getPriceDamaged() {
+        return priceDamaged;
+    }
+    /**
+     * Sets the priceDamaged.
+     * @param val the new value
+     */
+    public void setPriceDamaged(final Float val) {
+        priceDamaged = val;
+    }
+
     /** the price. */
     @Column(name = "price")
     @JsonProperty("price")
@@ -233,6 +315,26 @@ public final class AVALONIoItemDataEntity {
      */
     public void setPrice(final float val) {
         price = val;
+    }
+
+    /** the notoriety. */
+    @Column(name = "notoriety")
+    @JsonProperty("notoriety")
+    
+    private Long                    notoriety;
+    /**
+     * Gets the notoriety.
+     * @return {@link Long}
+     */
+    public Long getNotoriety() {
+        return notoriety;
+    }
+    /**
+     * Sets the notoriety.
+     * @param val the new value
+     */
+    public void setNotoriety(final Long val) {
+        notoriety = val;
     }
 
     /** the name. */
@@ -355,6 +457,28 @@ public final class AVALONIoItemDataEntity {
         internalScript = val;
     }
 
+    /** the horseType. */
+    @ManyToOne(targetEntity = AVALONHorseTypeEntity.class, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
+    @JoinColumn(name = "horseType")
+    @JsonProperty("horse_type")
+  
+    private AVALONHorseTypeEntity    horseType;
+    /**
+     * Gets the horseType.
+     * @return {@link AVALONHorseTypeEntity}
+     */
+    public AVALONHorseTypeEntity getHorseType() {
+        return horseType;
+    }
+    /**
+     * Sets the horseType.
+     * @param val the new value
+     */
+    public void setHorseType(final AVALONHorseTypeEntity val) {
+        horseType = val;
+    }
+
     /** the foodValue. */
     @Column(name = "food_value")
     @JsonProperty("food_value")
@@ -373,6 +497,26 @@ public final class AVALONIoItemDataEntity {
      */
     public void setFoodValue(final Long val) {
         foodValue = val;
+    }
+
+    /** the fame. */
+    @Column(name = "fame")
+    @JsonProperty("fame")
+    
+    private Long                    fame;
+    /**
+     * Gets the fame.
+     * @return {@link Long}
+     */
+    public Long getFame() {
+        return fame;
+    }
+    /**
+     * Sets the fame.
+     * @param val the new value
+     */
+    public void setFame(final Long val) {
+        fame = val;
     }
 
     /** the description. */
@@ -464,7 +608,7 @@ public final class AVALONIoItemDataEntity {
     @Fetch(FetchMode.SELECT)
     @JoinColumn(name = "alertedWeightClass")
     @JsonProperty("alerted_weight_class")
-  @NotNull
+  
     private AVALONVulnerabilityEntity    alertedWeightClass;
     /**
      * Gets the alertedWeightClass.
@@ -501,24 +645,24 @@ public final class AVALONIoItemDataEntity {
         alertedSharpness = val;
     }
 
-    /** the alertedAttackSpeed. */
-    @Column(name = "alerted_attack_speed")
-    @JsonProperty("alerted_attack_speed")
+    /** the alertedSpeed. */
+    @Column(name = "alerted_speed")
+    @JsonProperty("alerted_speed")
     
-    private Long                    alertedAttackSpeed;
+    private Long                    alertedSpeed;
     /**
-     * Gets the alertedAttackSpeed.
+     * Gets the alertedSpeed.
      * @return {@link Long}
      */
-    public Long getAlertedAttackSpeed() {
-        return alertedAttackSpeed;
+    public Long getAlertedSpeed() {
+        return alertedSpeed;
     }
     /**
-     * Sets the alertedAttackSpeed.
+     * Sets the alertedSpeed.
      * @param val the new value
      */
-    public void setAlertedAttackSpeed(final Long val) {
-        alertedAttackSpeed = val;
+    public void setAlertedSpeed(final Long val) {
+        alertedSpeed = val;
     }
 
     /**

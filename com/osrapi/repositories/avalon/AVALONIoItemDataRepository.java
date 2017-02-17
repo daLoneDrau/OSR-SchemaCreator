@@ -16,11 +16,11 @@ import com.osrapi.models.avalon.AVALONIoItemDataEntity;
 public interface AVALONIoItemDataRepository
 extends CrudRepository<AVALONIoItemDataEntity, Long> {
 	/**
-	 * Retrieves a list of io item datas by their alertedAttackSpeed.
-	 * @param alertedAttackSpeed the alertedAttackSpeed
+	 * Retrieves a list of io item datas by their alertedSpeed.
+	 * @param alertedSpeed the alertedSpeed
 	 * @return {@link List}<{@link AVALONIoItemDataEntity}>
 	 */
-	List<AVALONIoItemDataEntity> findByAlertedAttackSpeed(Long alertedAttackSpeed);
+	List<AVALONIoItemDataEntity> findByAlertedSpeed(Long alertedSpeed);
 	/**
 	 * Retrieves a list of io item datas by their alertedSharpness.
 	 * @param alertedSharpness the alertedSharpness
@@ -39,6 +39,12 @@ extends CrudRepository<AVALONIoItemDataEntity, Long> {
 	 * @return {@link List}<{@link AVALONIoItemDataEntity}>
 	 */
 	List<AVALONIoItemDataEntity> findByDescription(String description);
+	/**
+	 * Retrieves a list of io item datas by their fame.
+	 * @param fame the fame
+	 * @return {@link List}<{@link AVALONIoItemDataEntity}>
+	 */
+	List<AVALONIoItemDataEntity> findByFame(Long fame);
 	/**
 	 * Retrieves a list of io item datas by their foodValue.
 	 * @param foodValue the foodValue
@@ -82,11 +88,29 @@ extends CrudRepository<AVALONIoItemDataEntity, Long> {
 	 */
 	List<AVALONIoItemDataEntity> findByName(String name);
 	/**
+	 * Retrieves a list of io item datas by their notoriety.
+	 * @param notoriety the notoriety
+	 * @return {@link List}<{@link AVALONIoItemDataEntity}>
+	 */
+	List<AVALONIoItemDataEntity> findByNotoriety(Long notoriety);
+	/**
 	 * Retrieves a list of io item datas by their price.
 	 * @param price the price
 	 * @return {@link List}<{@link AVALONIoItemDataEntity}>
 	 */
 	List<AVALONIoItemDataEntity> findByPrice(Float price);
+	/**
+	 * Retrieves a list of io item datas by their priceDamaged.
+	 * @param priceDamaged the priceDamaged
+	 * @return {@link List}<{@link AVALONIoItemDataEntity}>
+	 */
+	List<AVALONIoItemDataEntity> findByPriceDamaged(Float priceDamaged);
+	/**
+	 * Retrieves a list of io item datas by their priceDestroyed.
+	 * @param priceDestroyed the priceDestroyed
+	 * @return {@link List}<{@link AVALONIoItemDataEntity}>
+	 */
+	List<AVALONIoItemDataEntity> findByPriceDestroyed(Float priceDestroyed);
 	/**
 	 * Retrieves a list of io item datas by their ringType.
 	 * @param ringType the ringType
@@ -106,11 +130,17 @@ extends CrudRepository<AVALONIoItemDataEntity, Long> {
 	 */
 	List<AVALONIoItemDataEntity> findByStealValue(Long stealValue);
 	/**
-	 * Retrieves a list of io item datas by their unalertedAttackSpeed.
-	 * @param unalertedAttackSpeed the unalertedAttackSpeed
+	 * Retrieves a list of io item datas by their title.
+	 * @param title the title
 	 * @return {@link List}<{@link AVALONIoItemDataEntity}>
 	 */
-	List<AVALONIoItemDataEntity> findByUnalertedAttackSpeed(Long unalertedAttackSpeed);
+	List<AVALONIoItemDataEntity> findByTitle(String title);
+	/**
+	 * Retrieves a list of io item datas by their unalertedSpeed.
+	 * @param unalertedSpeed the unalertedSpeed
+	 * @return {@link List}<{@link AVALONIoItemDataEntity}>
+	 */
+	List<AVALONIoItemDataEntity> findByUnalertedSpeed(Long unalertedSpeed);
 	/**
 	 * Retrieves a list of io item datas by their unalertedSharpness.
 	 * @param unalertedSharpness the unalertedSharpness

@@ -2,6 +2,19 @@
 DROP SCHEMA IF EXISTS avalon CASCADE;
 CREATE SCHEMA avalon;
 
+-- Table: avalon.action_chit
+-- TODO add table description
+
+DROP TABLE IF EXISTS avalon.action_chit CASCADE;
+
+CREATE SEQUENCE avalon.action_chit_id_seq MINVALUE 0;
+
+CREATE TABLE avalon.action_chit
+(
+  action_chit_id smallint DEFAULT nextval('avalon.action_chit_id_seq') NOT NULL,
+  CONSTRAINT action_chit_action_chit_id_pk PRIMARY KEY (action_chit_id)
+);
+
 -- Table: avalon.advantage
 -- TODO add table description
 
@@ -329,27 +342,34 @@ CREATE SEQUENCE avalon.io_item_data_id_seq MINVALUE 0;
 CREATE TABLE avalon.io_item_data
 (
   io_item_data_id smallint DEFAULT nextval('avalon.io_item_data_id_seq') NOT NULL,
-  alerted_attack_speed smallint,
+  alerted_speed smallint,
   alerted_sharpness smallint,
-  alerted_weight_class smallint NOT NULL,
+  alerted_weight_class smallint,
   attack_method smallint,
   condition smallint,
   count smallint,
   description text,
+  fame smallint,
   food_value smallint,
+  horse_type smallint,
   internal_script character varying(255) NOT NULL,
   left_ring boolean,
   length smallint,
   light_value smallint,
   max_owned smallint,
   name character varying(40) NOT NULL,
+  notoriety smallint,
   price decimal NOT NULL,
+  price_damaged decimal,
+  price_destroyed decimal,
   ring_type smallint,
   stack_size smallint NOT NULL,
   steal_value smallint,
-  unalerted_attack_speed smallint,
+  title character varying(40) NOT NULL,
+  unalerted_speed smallint,
   unalerted_sharpness smallint,
-  unalerted_weight_class smallint NOT NULL,
+  unalerted_weight_class smallint,
+  weight_class smallint,
   weapon_length smallint,
   CONSTRAINT io_item_data_io_item_data_id_pk PRIMARY KEY (io_item_data_id),
   CONSTRAINT io_item_data_alerted_weight_class_fk FOREIGN KEY (alerted_weight_class)
@@ -361,8 +381,14 @@ CREATE TABLE avalon.io_item_data
   CONSTRAINT io_item_data_condition_fk FOREIGN KEY (condition)
     REFERENCES avalon.armor_condition (armor_condition_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_item_data_horse_type_fk FOREIGN KEY (horse_type)
+    REFERENCES avalon.horse_type (horse_type_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT io_item_data_name_un UNIQUE (name),
   CONSTRAINT io_item_data_unalerted_weight_class_fk FOREIGN KEY (unalerted_weight_class)
+    REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_item_data_weight_class_fk FOREIGN KEY (weight_class)
     REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
@@ -450,7 +476,7 @@ CREATE SEQUENCE avalon.io_npc_data_id_seq MINVALUE 0;
 CREATE TABLE avalon.io_npc_data
 (
   io_npc_data_id smallint DEFAULT nextval('avalon.io_npc_data_id_seq') NOT NULL,
-  behavior bigint NOT NULL,
+  behavior bigint,
   behavior_param decimal,
   climb_count decimal,
   collid_state bigint,
@@ -476,22 +502,6 @@ CREATE TABLE avalon.io_npc_data
     ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT io_npc_data_weapon_fk FOREIGN KEY (weapon)
     REFERENCES avalon.io_item_data (name) MATCH SIMPLE
-    ON UPDATE NO ACTION ON DELETE NO ACTION
-);
-
--- Table: avalon.io_npc_data_attributes_lookup
--- lookup table for io_npc_datas and their associated attributess.
-
-DROP TABLE IF EXISTS avalon.io_npc_data_attributes_lookup CASCADE;
-
-CREATE TABLE avalon.io_npc_data_attributes_lookup
-(
-  io_npc_data_id smallint NOT NULL,
-  key character varying(3) NOT NULL,
-  value smallint NOT NULL,
-  CONSTRAINT io_npc_data_attributes_lookup_io_npc_data_id_key_pk PRIMARY KEY (io_npc_data_id, key),
-  CONSTRAINT io_npc_data_attributes_lookup_key_fk FOREIGN KEY (key)
-    REFERENCES avalon.attribute (code) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 

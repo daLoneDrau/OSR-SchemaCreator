@@ -6,12 +6,10 @@ import com.dalonedrau.schemacreator.Annotations.CanBeNull;
 import com.dalonedrau.schemacreator.Annotations.ForeignKey;
 import com.dalonedrau.schemacreator.Annotations.MapForeignKey;
 import com.dalonedrau.schemacreator.Annotations.VarChar;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class IoNpcData {
-    /** the set of attributes defining the NPC. */
-    @MapForeignKey(keyColumnType = "character varying(3)", keyField = "code",
-            keyTargetClass = "Attribute", valueColumnType = "smallint")
-    private Map<String, Integer> attributes;
+    @CanBeNull
     long behavior;
     @CanBeNull
     float behaviorParam;
