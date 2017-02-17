@@ -412,7 +412,7 @@
   		"name": "Thrust"
   	}],
   	"price": 17,
-  	"price_damaged": 17,
+  	"price_damaged": 12,
   	"internal_script": "SuitofArmor",
   	"types": [{
   		"code": "OBJECT_TYPE_ARMOR"
