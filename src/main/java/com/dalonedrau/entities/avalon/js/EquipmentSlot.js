@@ -2,6 +2,9 @@
 	"code": "EQUIP_SLOT_TORSO",
 	"value": 5
 }, {
+	"code": "EQUIP_SLOT_ARMOR",
+	"value": 11
+}, {
 	"code": "EQUIP_SLOT_HELMET",
 	"value": 6
 }, {

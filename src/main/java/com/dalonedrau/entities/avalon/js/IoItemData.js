@@ -411,6 +411,69 @@
   		"name": "TREASURE"
   	}]
   }, {
+  	"name": "Scaly Hide",
+  	"title": "Scaly Hide",
+  	"weight_class": {
+  		"code": "T"
+  	},
+  	"protections": [{
+  		"name": "Smash"
+  	}, {
+  		"name": "Swing"
+  	}, {
+  		"name": "Thrust"
+  	}],
+  	"price": 0,
+  	"price_damaged": 0,
+  	"internal_script": "MonsterArmor",
+  	"types": [{
+  		"code": "OBJECT_TYPE_ARMOR"
+  	}, {
+  		"code": "OBJECT_TYPE_SUIT_OF_ARMOR"
+  	}]
+  }, {
+  	"name": "Tough Hide",
+  	"title": "Tough Hide",
+  	"weight_class": {
+  		"code": "H"
+  	},
+  	"protections": [{
+  		"name": "Smash"
+  	}, {
+  		"name": "Swing"
+  	}, {
+  		"name": "Thrust"
+  	}],
+  	"price": 0,
+  	"price_damaged": 0,
+  	"internal_script": "MonsterArmor",
+  	"types": [{
+  		"code": "OBJECT_TYPE_ARMOR"
+  	}, {
+  		"code": "OBJECT_TYPE_SUIT_OF_ARMOR"
+  	}]
+  }, {
+  	"name": "Scales",
+  	"title": "Scales",
+  	"weight_class": {
+  		"code": "M"
+  	},
+  	"protections": [{
+  		"name": "Smash"
+  	}, {
+  		"name": "Swing"
+  	}, {
+  		"name": "Thrust"
+  	}],
+  	"price": 0,
+  	"price_damaged": 0,
+  	"internal_script": "MonsterArmor",
+  	"types": [{
+  		"code": "OBJECT_TYPE_ARMOR"
+  	}, {
+  		"code": "OBJECT_TYPE_SUIT_OF_ARMOR"
+  	}]
+  }, {
   	"name": "Suit of Armor",
   	"title": "Suit of Armor",
   	"weight_class": {
@@ -741,6 +804,28 @@
   		"name": "BASHKARS"
   	}]
   }, {
+  	"name": "Pony8",
+  	"title": "Pony",
+  	"horse_type": {
+  		"name": "Pony"
+  	},
+  	"weight_class": {
+  		"code": "M"
+  	},
+  	"alerted_weight_class": {
+  		"code": "L"
+  	},
+  	"alerted_speed": 2,
+  	"unalerted_weight_class": {
+  		"code": "L"
+  	},
+  	"unalerted_speed": 4,
+  	"price": 0,
+  	"internal_script": "Pony",
+  	"groups": [{
+  		"name": "BASHKARS"
+  	}]
+  }, {
   	"name": "Workhorse1",
   	"title": "Workhorse",
   	"horse_type": {
@@ -855,6 +940,28 @@
   	"price": 8,
   	"internal_script": "Workhorse"
   }, {
+  	"name": "Workhorse7",
+  	"title": "Workhorse",
+  	"horse_type": {
+  		"name": "Workhorse"
+  	},
+  	"weight_class": {
+  		"code": "H"
+  	},
+  	"alerted_weight_class": {
+  		"code": "H"
+  	},
+  	"alerted_speed": 6,
+  	"unalerted_weight_class": {
+  		"code": "M"
+  	},
+  	"unalerted_speed": 6,
+  	"price": 0,
+  	"internal_script": "Workhorse",
+  	"groups": [{
+  		"name": "PATROL"
+  	}]
+  }, {
   	"name": "Gold Warhorse",
   	"title": "Gold Warhorse",
   	"horse_type": {
@@ -896,7 +1003,7 @@
   	"price": 22,
   	"internal_script": "Warhorse"
   }, {
-  	"name": "Warhorse21",
+  	"name": "Warhorse2",
   	"title": "Warhorse",
   	"horse_type": {
   		"name": "Warhorse"
@@ -932,5 +1039,24 @@
   	},
   	"unalerted_speed": 6,
   	"price": 18,
+  	"internal_script": "Warhorse"
+  }, {
+  	"name": "Warhorse4",
+  	"title": "Warhorse",
+  	"horse_type": {
+  		"name": "Warhorse"
+  	},
+  	"weight_class": {
+  		"code": "T"
+  	},
+  	"alerted_weight_class": {
+  		"code": "T"
+  	},
+  	"alerted_speed": 3,
+  	"unalerted_weight_class": {
+  		"code": "T"
+  	},
+  	"unalerted_speed": 5,
+  	"price": 0,
   	"internal_script": "Warhorse"
   }]
