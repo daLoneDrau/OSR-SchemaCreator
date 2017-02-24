@@ -325,6 +325,9 @@
   		"code": "OBJECT_TYPE_WEAPON"
   	}, {
   		"code": "OBJECT_TYPE_2H"
+  	}],
+  	"groups": [{
+  		"name": "TREASURE"
   	}]
   }, {
   	"name": "Devil Sword",
@@ -349,6 +352,9 @@
   		"code": "OBJECT_TYPE_WEAPON"
   	}, {
   		"code": "OBJECT_TYPE_1H"
+  	}],
+  	"groups": [{
+  		"name": "TREASURE"
   	}]
   }, {
   	"name": "Truesteel Sword",
@@ -373,6 +379,9 @@
   		"code": "OBJECT_TYPE_WEAPON"
   	}, {
   		"code": "OBJECT_TYPE_1H"
+  	}],
+  	"groups": [{
+  		"name": "TREASURE"
   	}]
   }, {
   	"name": "Living Sword",
@@ -397,6 +406,9 @@
   		"code": "OBJECT_TYPE_WEAPON"
   	}, {
   		"code": "OBJECT_TYPE_1H"
+  	}],
+  	"groups": [{
+  		"name": "TREASURE"
   	}]
   }, {
   	"name": "Suit of Armor",
@@ -497,6 +509,9 @@
   		"code": "OBJECT_TYPE_ARMOR"
   	}, {
   		"code": "OBJECT_TYPE_SUIT_OF_ARMOR"
+  	}],
+  	"groups": [{
+  		"name": "TREASURE"
   	}]
   }, {
   	"name": "Silver Breastplate",
@@ -517,6 +532,9 @@
   		"code": "OBJECT_TYPE_ARMOR"
   	}, {
   		"code": "OBJECT_TYPE_BREASTPLATE"
+  	}],
+  	"groups": [{
+  		"name": "TREASURE"
   	}]
   }, {
   	"name": "Gold Helmet",
@@ -535,6 +553,9 @@
   		"code": "OBJECT_TYPE_ARMOR"
   	}, {
   		"code": "OBJECT_TYPE_HELMET"
+  	}],
+  	"groups": [{
+  		"name": "TREASURE"
   	}]
   }, {
   	"name": "Jade Shield",
@@ -557,6 +578,9 @@
   		"code": "OBJECT_TYPE_ARMOR"
   	}, {
   		"code": "OBJECT_TYPE_SHIELD"
+  	}],
+  	"groups": [{
+  		"name": "TREASURE"
   	}]
   }, {
   	"name": "Gold Pony",
@@ -576,7 +600,10 @@
   	},
   	"unalerted_speed": 4,
   	"price": 16,
-  	"internal_script": "Pony"
+  	"internal_script": "Pony",
+  	"groups": [{
+  		"name": "TREASURE"
+  	}]
   }, {
   	"name": "Pony1",
   	"title": "Pony",
@@ -691,6 +718,28 @@
   	"unalerted_speed": 5,
   	"price": 12,
   	"internal_script": "Pony"
+  }, {
+  	"name": "Pony7",
+  	"title": "Pony",
+  	"horse_type": {
+  		"name": "Pony"
+  	},
+  	"weight_class": {
+  		"code": "M"
+  	},
+  	"alerted_weight_class": {
+  		"code": "M"
+  	},
+  	"alerted_speed": 2,
+  	"unalerted_weight_class": {
+  		"code": "L"
+  	},
+  	"unalerted_speed": 5,
+  	"price": 0,
+  	"internal_script": "Pony",
+  	"groups": [{
+  		"name": "BASHKARS"
+  	}]
   }, {
   	"name": "Workhorse1",
   	"title": "Workhorse",
@@ -823,7 +872,10 @@
   	},
   	"unalerted_speed": 5,
   	"price": 25,
-  	"internal_script": "Warhorse"
+  	"internal_script": "Warhorse",
+  	"groups": [{
+  		"name": "TREASURE"
+  	}]
   }, {
   	"name": "Warhorse1",
   	"title": "Warhorse",

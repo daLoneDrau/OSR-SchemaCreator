@@ -476,31 +476,98 @@ CREATE SEQUENCE avalon.io_npc_data_id_seq MINVALUE 0;
 CREATE TABLE avalon.io_npc_data
 (
   io_npc_data_id smallint DEFAULT nextval('avalon.io_npc_data_id_seq') NOT NULL,
-  behavior bigint,
-  behavior_param decimal,
-  climb_count decimal,
-  collid_state bigint,
-  collid_time bigint,
-  critical decimal,
-  cut boolean,
-  cuts smallint,
-  damages decimal,
+  alerted_attack_speed smallint NOT NULL,
+  alerted_attack_stars smallint,
+  alerted_attack_weight smallint NOT NULL,
+  alerted_move smallint NOT NULL,
   gender smallint NOT NULL,
+  gold_bounty smallint,
   internal_script text,
-  life decimal,
-  mana decimal,
-  maxlife decimal,
-  maxmana decimal,
+  move_strength smallint NOT NULL,
   name character varying(50) NOT NULL,
+  notoriety smallint NOT NULL,
   npc_flags bigint,
   title character varying(50) NOT NULL,
-  weapon text NOT NULL,
-  xpvalue smallint,
+  unalerted_attack_speed smallint NOT NULL,
+  unalerted_attack_stars smallint,
+  unalerted_attack_weight smallint NOT NULL,
+  unalerted_move smallint NOT NULL,
+  vulnerability smallint NOT NULL,
+  wage smallint,
+  weight smallint NOT NULL,
   CONSTRAINT io_npc_data_io_npc_data_id_pk PRIMARY KEY (io_npc_data_id),
+  CONSTRAINT io_npc_data_alerted_attack_weight_fk FOREIGN KEY (alerted_attack_weight)
+    REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT io_npc_data_gender_fk FOREIGN KEY (gender)
     REFERENCES avalon.gender (gender_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT io_npc_data_weapon_fk FOREIGN KEY (weapon)
+  CONSTRAINT io_npc_data_move_strength_fk FOREIGN KEY (move_strength)
+    REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_name_un UNIQUE (name),
+  CONSTRAINT io_npc_data_unalerted_attack_weight_fk FOREIGN KEY (unalerted_attack_weight)
+    REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_vulnerability_fk FOREIGN KEY (vulnerability)
+    REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_weight_fk FOREIGN KEY (weight)
+    REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+-- Table: avalon.io_npc_data_groups_lookup
+-- lookup table for io_npc_datas and their associated groupss.
+
+DROP TABLE IF EXISTS avalon.io_npc_data_groups_lookup CASCADE;
+
+CREATE TABLE avalon.io_npc_data_groups_lookup
+(
+  io_npc_data_id smallint NOT NULL,
+  group_id smallint NOT NULL,
+  CONSTRAINT io_npc_data_groups_lookup_io_npc_data_id_group_id_pk PRIMARY KEY (io_npc_data_id, group_id),
+  CONSTRAINT io_npc_data_groups_lookup_io_npc_data_id_fk FOREIGN KEY (io_npc_data_id)
+    REFERENCES avalon.io_npc_data (io_npc_data_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_groups_lookup_group_id_fk FOREIGN KEY (group_id)
+    REFERENCES avalon.group (group_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+-- Table: avalon.io_npc_data_inventory_items_lookup
+-- lookup table for io_npc_datas and their associated inventory_itemss.
+
+DROP TABLE IF EXISTS avalon.io_npc_data_inventory_items_lookup CASCADE;
+
+CREATE TABLE avalon.io_npc_data_inventory_items_lookup
+(
+  io_npc_data_id smallint NOT NULL,
+  io_item_data_id smallint NOT NULL,
+  CONSTRAINT io_npc_data_inventory_items_lookup_io_npc_data_id_io_item_data_id_pk PRIMARY KEY (io_npc_data_id, io_item_data_id),
+  CONSTRAINT io_npc_data_inventory_items_lookup_io_npc_data_id_fk FOREIGN KEY (io_npc_data_id)
+    REFERENCES avalon.io_npc_data (io_npc_data_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_inventory_items_lookup_io_item_data_id_fk FOREIGN KEY (io_item_data_id)
+    REFERENCES avalon.io_item_data (io_item_data_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+-- Table: avalon.io_npc_data_equipped_items_lookup
+-- lookup table for io_npc_datas and their associated equipped_itemss.
+
+DROP TABLE IF EXISTS avalon.io_npc_data_equipped_items_lookup CASCADE;
+
+CREATE TABLE avalon.io_npc_data_equipped_items_lookup
+(
+  io_npc_data_id smallint NOT NULL,
+  key character varying(40) NOT NULL,
+  value character varying(40) NOT NULL,
+  CONSTRAINT io_npc_data_equipped_items_lookup_io_npc_data_id_key_pk PRIMARY KEY (io_npc_data_id, key),
+  CONSTRAINT io_npc_data_equipped_items_lookup_key_fk FOREIGN KEY (key)
+    REFERENCES avalon.equipment_slot (code) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_equipped_items_lookup_value_fk FOREIGN KEY (value)
     REFERENCES avalon.io_item_data (name) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );

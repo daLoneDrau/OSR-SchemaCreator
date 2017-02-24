@@ -103,7 +103,16 @@ INSERT INTO avalon.gender(description, name) VALUES(
 INSERT INTO avalon.group(name) VALUES(
   'TREASURE'), (
   'NATIVE'), (
-  'ARMORY');
+  'ARMORY'), (
+  'BASHKARS'), (
+  'COMPANY'), (
+  'GUARD'), (
+  'LANCERS'), (
+  'ORDER'), (
+  'PATROL'), (
+  'ROGUES'), (
+  'SOLDIERS'), (
+  'WOODFOLK');
 
 
 -- ADD HEX_NODES
@@ -195,7 +204,7 @@ INSERT INTO avalon.io_item_data(alerted_speed, alerted_sharpness, alerted_weight
   3, 1, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), (SELECT attack_type_id FROM avalon.attack_type WHERE name='Striking'), NULL, 0, NULL, 0, 0, NULL, 'Broadsword', false, 0, 0, 0, 'Devil Sword', 0, 20.0, 0.0, 0.0, 0, 0, 0, 'Devil Sword', 4, 1, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 7), (
   0, 2, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), (SELECT attack_type_id FROM avalon.attack_type WHERE name='Striking'), NULL, 0, NULL, 0, 0, NULL, 'Broadsword', false, 0, 0, 0, 'Truesteel Sword', 0, 25.0, 0.0, 0.0, 0, 0, 0, 'Truesteel Sword', 0, 2, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 7), (
   2, 1, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), (SELECT attack_type_id FROM avalon.attack_type WHERE name='Striking'), NULL, 0, NULL, 0, 0, NULL, 'ThrustingSword', false, 0, 0, 0, 'Living Sword', 0, 25.0, 0.0, 0.0, 0, 0, 0, 'Living Sword', 3, 1, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), NULL, 4), (
-  0, 0, NULL, NULL, NULL, 0, NULL, 0, 0, NULL, 'SuitofArmor', false, 0, 0, 0, 'Suit of Armor', 0, 17.0, 17.0, 0.0, 0, 0, 0, 'Suit of Armor', 0, 0, NULL, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), 0), (
+  0, 0, NULL, NULL, NULL, 0, NULL, 0, 0, NULL, 'SuitofArmor', false, 0, 0, 0, 'Suit of Armor', 0, 17.0, 12.0, 0.0, 0, 0, 0, 'Suit of Armor', 0, 0, NULL, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), 0), (
   0, 0, NULL, NULL, NULL, 0, NULL, 0, 0, NULL, 'Breastplate', false, 0, 0, 0, 'Breastplate', 0, 9.0, 6.0, 0.0, 0, 0, 0, 'Breastplate', 0, 0, NULL, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), 0), (
   0, 0, NULL, NULL, NULL, 0, NULL, 0, 0, NULL, 'Helmet', false, 0, 0, 0, 'Helmet', 0, 5.0, 3.0, 0.0, 0, 0, 0, 'Helmet', 0, 0, NULL, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), 0), (
   0, 0, NULL, NULL, NULL, 0, NULL, 0, 0, NULL, 'Shield', false, 0, 0, 0, 'Shield', 0, 7.0, 5.0, 0.0, 0, 0, 0, 'Shield', 0, 0, NULL, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), 0), (
@@ -222,6 +231,36 @@ INSERT INTO avalon.io_item_data(alerted_speed, alerted_sharpness, alerted_weight
   4, 0, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, NULL, 0, NULL, 0, 0, (SELECT horse_type_id FROM avalon.horse_type WHERE name='Warhorse'), 'Warhorse', false, 0, 0, 0, 'Warhorse3', 0, 18.0, 0.0, 0.0, 0, 0, 0, 'Warhorse', 6, 0, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), 0);
 
 -- ADD io_item_data's RELATED groupss
+INSERT INTO avalon.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM avalon.io_item_data WHERE name='Bane Sword'),
+  (SELECT group_id FROM avalon.group WHERE name='TREASURE'));
+INSERT INTO avalon.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM avalon.io_item_data WHERE name='Devil Sword'),
+  (SELECT group_id FROM avalon.group WHERE name='TREASURE'));
+INSERT INTO avalon.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM avalon.io_item_data WHERE name='Truesteel Sword'),
+  (SELECT group_id FROM avalon.group WHERE name='TREASURE'));
+INSERT INTO avalon.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM avalon.io_item_data WHERE name='Living Sword'),
+  (SELECT group_id FROM avalon.group WHERE name='TREASURE'));
+INSERT INTO avalon.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM avalon.io_item_data WHERE name='Tremendous Armor'),
+  (SELECT group_id FROM avalon.group WHERE name='TREASURE'));
+INSERT INTO avalon.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM avalon.io_item_data WHERE name='Silver Breastplate'),
+  (SELECT group_id FROM avalon.group WHERE name='TREASURE'));
+INSERT INTO avalon.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM avalon.io_item_data WHERE name='Gold Helmet'),
+  (SELECT group_id FROM avalon.group WHERE name='TREASURE'));
+INSERT INTO avalon.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM avalon.io_item_data WHERE name='Jade Shield'),
+  (SELECT group_id FROM avalon.group WHERE name='TREASURE'));
+INSERT INTO avalon.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM avalon.io_item_data WHERE name='Gold Pony'),
+  (SELECT group_id FROM avalon.group WHERE name='TREASURE'));
+INSERT INTO avalon.io_item_data_groups_lookup(io_item_data_id, group_id) VALUES (
+  (SELECT io_item_data_id FROM avalon.io_item_data WHERE name='Gold Warhorse'),
+  (SELECT group_id FROM avalon.group WHERE name='TREASURE'));
 
 -- ADD io_item_data's RELATED protectionss
 INSERT INTO avalon.io_item_data_protections_lookup(io_item_data_id, armor_protection_id) VALUES (
@@ -435,7 +474,28 @@ INSERT INTO avalon.io_item_data_types_lookup(io_item_data_id, object_type_id) VA
 
 
 -- ADD IO_NPC_DATAS
-INSERT INTO avalon.io_npc_data(behavior, behavior_param, climb_count, collid_state, collid_time, critical, cut, cuts, damages, gender, internal_script, life, mana, maxlife, maxmana, name, npc_flags, title, weapon, xpvalue) VALUES(
+INSERT INTO avalon.io_npc_data(alerted_attack_speed, alerted_attack_stars, alerted_attack_weight, alerted_move, gender, gold_bounty, internal_script, move_strength, name, notoriety, npc_flags, title, unalerted_attack_speed, unalerted_attack_stars, unalerted_attack_weight, unalerted_move, vulnerability, wage, weight) VALUES(
+  4, 1, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), 2, (SELECT gender_id FROM avalon.gender WHERE name='Female'), 2, NULL, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), 'Bashkar Leader', 4, 0, 'Raider', 4, 1, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), 2, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), 2, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'));
+
+-- ADD io_npc_data's RELATED groupss
+INSERT INTO avalon.io_npc_data_groups_lookup(io_npc_data_id, group_id) VALUES (
+  (SELECT io_npc_data_id FROM avalon.io_npc_data WHERE name='Bashkar Leader'),
+  (SELECT group_id FROM avalon.group WHERE name='NATIVE'));
+INSERT INTO avalon.io_npc_data_groups_lookup(io_npc_data_id, group_id) VALUES (
+  (SELECT io_npc_data_id FROM avalon.io_npc_data WHERE name='Bashkar Leader'),
+  (SELECT group_id FROM avalon.group WHERE name='BASHKARS'));
+
+-- ADD io_npc_data's RELATED inventory_itemss
+INSERT INTO avalon.io_npc_data_inventory_items_lookup(io_npc_data_id, io_item_data_id) VALUES (
+  (SELECT io_npc_data_id FROM avalon.io_npc_data WHERE name='Bashkar Leader'),
+  (SELECT io_item_data_id FROM avalon.io_item_data WHERE name='Pony2'));
+
+-- ADD io_npc_data's RELATED equipped_itemss
+INSERT INTO avalon.io_npc_data_equipped_items_lookup(io_npc_data_id, key, value) VALUES (
+  (SELECT io_npc_data_id FROM avalon.io_npc_data WHERE name='Bashkar Leader'),
+  'EQUIP_SLOT_WEAPON',
+  'Short Sword');
+
 
 -- ADD IO_PC_DATAS
 INSERT INTO avalon.io_pc_data(bags, gender, gold, interface_flags, level, name, xp) VALUES(
