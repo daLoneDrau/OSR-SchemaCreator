@@ -55,6 +55,26 @@
 	}],
 	"weight": 3
 }, {
+	"description": "A heavy weapon consisting of a horizontal bow-like assembly mounted on a stock.",
+	"damages": {
+		"code": "ONE_D8"
+	},
+	"groups": [{
+		"name": "PIERCING_WEAPON"
+	}, {
+		"name": "PROJECTILE_WEAPON"
+	}],
+	"internal_script": "HeavyCrossbow",
+	"name": "Heavy Crossbow",
+	"title": "Heavy Crossbow",
+	"max_owned": 99,
+	"price": 25,
+	"stack_size": 5,
+	"types": [{
+		"code": "OBJECT_TYPE_2H"
+	}],
+	"weight": 8
+}, {
 	"description": "The arrow used in a heavy crossbow.",
 	"groups": [{
 		"name": "HEAVY_CROSSBOW_AMMUNITION"
@@ -80,12 +100,12 @@
 	"name": "Light Crossbow",
 	"title": "Light Crossbow",
 	"max_owned": 99,
-	"price": 7,
+	"price": 16,
 	"stack_size": 5,
 	"types": [{
 		"code": "OBJECT_TYPE_2H"
 	}],
-	"weight": 10
+	"weight": 4
 }, {
 	"description": "The arrow used in a light crossbow.",
 	"groups": [{
@@ -375,16 +395,16 @@
 	"name": "Light Pick",
 	"title": "Shepherd's Pick",
 	"max_owned": 99,
-	"price": 8,
+	"price": 5,
 	"stack_size": 5,
 	"types": [{
 		"code": "OBJECT_TYPE_1H"
 	}],
-	"weight": 6
+	"weight": 3
 }, {
 	"description": "An axe blade mounted on a long shaft.",
 	"damages": {
-		"code": "ONE_D8"
+		"code": "ONE_D10"
 	},
 	"groups": [{
 		"name": "EDGED_WEAPON"
@@ -597,12 +617,12 @@
 	"title": "Zweihänder",
 	"name": "Two-handed Sword",
 	"max_owned": 99,
-	"price": 7,
+	"price": 15,
 	"stack_size": 10,
 	"types": [{
 		"code": "OBJECT_TYPE_2H"
 	}],
-	"weight": 2
+	"weight": 15
 }, {
 	"description": "A three-pronged spear.",
 	"damages": {
@@ -681,12 +701,12 @@
 	"modifiers": {
 		"ELEMENT_ARMOR_CLASS": "MINUS_1"
 	},
-	"price": 20,
+	"price": 5,
 	"stack_size": 10,
 	"types": [{
 		"code": "OBJECT_TYPE_ARMOR"
 	}],
-	"weight": 15
+	"weight": 10
 }, {
 	"description": "A full suit of personal body armour made from iron or steel plates.",
 	"groups": [{
@@ -699,12 +719,12 @@
 	"modifiers": {
 		"ELEMENT_ARMOR_CLASS": "MINUS_6"
 	},
-	"price": 150,
+	"price": 600,
 	"stack_size": 10,
 	"types": [{
 		"code": "OBJECT_TYPE_ARMOR"
 	}],
-	"weight": 30
+	"weight": 50
 }, {
 	"description": "A long leather jacket covered with overlapping rows of armour scales.",
 	"groups": [{

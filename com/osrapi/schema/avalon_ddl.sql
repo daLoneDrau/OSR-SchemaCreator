@@ -2,17 +2,19 @@
 DROP SCHEMA IF EXISTS avalon CASCADE;
 CREATE SCHEMA avalon;
 
--- Table: avalon.action_chit
+-- Table: avalon.action_type
 -- TODO add table description
 
-DROP TABLE IF EXISTS avalon.action_chit CASCADE;
+DROP TABLE IF EXISTS avalon.action_type CASCADE;
 
-CREATE SEQUENCE avalon.action_chit_id_seq MINVALUE 0;
+CREATE SEQUENCE avalon.action_type_id_seq MINVALUE 0;
 
-CREATE TABLE avalon.action_chit
+CREATE TABLE avalon.action_type
 (
-  action_chit_id smallint DEFAULT nextval('avalon.action_chit_id_seq') NOT NULL,
-  CONSTRAINT action_chit_action_chit_id_pk PRIMARY KEY (action_chit_id)
+  action_type_id smallint DEFAULT nextval('avalon.action_type_id_seq') NOT NULL,
+  name character varying(40) NOT NULL,
+  CONSTRAINT action_type_action_type_id_pk PRIMARY KEY (action_type_id),
+  CONSTRAINT action_type_name_un UNIQUE (name)
 );
 
 -- Table: avalon.advantage
@@ -253,10 +255,10 @@ CREATE TABLE avalon.magic_color
 (
   magic_color_id smallint DEFAULT nextval('avalon.magic_color_id_seq') NOT NULL,
   long_name character varying(40) NOT NULL,
-  short_name character varying(10) NOT NULL,
+  name character varying(10) NOT NULL,
   CONSTRAINT magic_color_magic_color_id_pk PRIMARY KEY (magic_color_id),
   CONSTRAINT magic_color_long_name_un UNIQUE (long_name),
-  CONSTRAINT magic_color_short_name_un UNIQUE (short_name)
+  CONSTRAINT magic_color_name_un UNIQUE (name)
 );
 
 -- Table: avalon.magic_type
@@ -330,6 +332,32 @@ CREATE TABLE avalon.vulnerability
   CONSTRAINT vulnerability_harm_name_un UNIQUE (harm_name),
   CONSTRAINT vulnerability_value_un UNIQUE (value),
   CONSTRAINT vulnerability_weight_class_un UNIQUE (weight_class)
+);
+
+-- Table: avalon.action_chit
+-- TODO add table description
+
+DROP TABLE IF EXISTS avalon.action_chit CASCADE;
+
+CREATE SEQUENCE avalon.action_chit_id_seq MINVALUE 0;
+
+CREATE TABLE avalon.action_chit
+(
+  action_chit_id smallint DEFAULT nextval('avalon.action_chit_id_seq') NOT NULL,
+  type smallint NOT NULL,
+  strength smallint NOT NULL,
+  magic_type smallint NOT NULL,
+  fatigue_asterisk smallint NOT NULL,
+  CONSTRAINT action_chit_action_chit_id_pk PRIMARY KEY (action_chit_id),
+  CONSTRAINT action_chit_type_fk FOREIGN KEY (type)
+    REFERENCES avalon.action_type (action_type_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT action_chit_strength_fk FOREIGN KEY (strength)
+    REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT action_chit_magic_type_fk FOREIGN KEY (magic_type)
+    REFERENCES avalon.magic_color (magic_color_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 -- Table: avalon.io_item_data
@@ -492,8 +520,9 @@ CREATE TABLE avalon.io_npc_data
   npc_flags bigint,
   title character varying(50) NOT NULL,
   unalerted_attack_speed smallint NOT NULL,
+  unalerted_attack_spell smallint,
   unalerted_attack_stars smallint,
-  unalerted_attack_weight smallint NOT NULL,
+  unalerted_attack_weight smallint,
   unalerted_move smallint NOT NULL,
   vulnerability smallint,
   wage smallint,
@@ -511,6 +540,9 @@ CREATE TABLE avalon.io_npc_data
   CONSTRAINT io_npc_data_name_un UNIQUE (name),
   CONSTRAINT io_npc_data_natural_weapon_type_fk FOREIGN KEY (natural_weapon_type)
     REFERENCES avalon.attack_type (attack_type_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_npc_data_unalerted_attack_spell_fk FOREIGN KEY (unalerted_attack_spell)
+    REFERENCES avalon.magic_type (magic_type_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT io_npc_data_unalerted_attack_weight_fk FOREIGN KEY (unalerted_attack_weight)
     REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE

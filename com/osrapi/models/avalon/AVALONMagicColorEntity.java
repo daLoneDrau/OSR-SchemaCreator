@@ -73,24 +73,24 @@ public final class AVALONMagicColorEntity {
         id = val;
     }
 
-    /** the shortName. */
-    @Column(name = "short_name")
-    @JsonProperty("short_name")
+    /** the name. */
+    @Column(name = "name")
+    @JsonProperty("name")
     @NotNull
-    private String                    shortName;
+    private String                    name;
     /**
-     * Gets the shortName.
+     * Gets the name.
      * @return {@link String}
      */
-    public String getShortName() {
-        return shortName;
+    public String getName() {
+        return name;
     }
     /**
-     * Sets the shortName.
+     * Sets the name.
      * @param val the new value
      */
-    public void setShortName(final String val) {
-        shortName = val;
+    public void setName(final String val) {
+        name = val;
     }
 
     /** the longName. */

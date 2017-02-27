@@ -47,10 +47,10 @@
   	"name": "71",
   	"text": "There is a right-hand turn to the north in the passage. Cautiously you approach a sentry post on the corner and, as you look in, you can see a strange Goblin-like creature in leather armour asleep at his post. You try to tiptoe past him.\r\n"
   }, {
-  	"name": "278",
+  	"name": "12",
   	"text": "The passageway soon comes to an end at a locked wooden door. You listen at the door but hear nothing.\r\n"
   }, {
-  	"name": "278_WEST",
+  	"name": "12_WEST",
   	"text": "You follow the passage west to the junction."
   }, {
   	"name": "orc_sentry_aggression",
