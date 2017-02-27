@@ -27,7 +27,11 @@ public class IoNpcData {
             valueColumnType = "character varying(40)",
             valueTargetClass = "IoItemData", valueField = "name")
     private Map<String, String> equippedItems;
+    @CanBeNull
+    @JsonProperty("fame_bounty")
+    private int fameBounty;
     /** the {@link IoNpcData}'s gender. */
+    @CanBeNull
     private Gender gender;
     @CanBeNull
     @JsonProperty("gold_bounty")
@@ -40,13 +44,20 @@ public class IoNpcData {
     private String internalScript;
     @JsonProperty("inventory_items")
     private List<IoItemData> inventoryItems;
-    /** the npc's vulnerability. */
+    /** the npc's move strength. */
+    @CanBeNull
     @JsonProperty("move_strength")
     private Vulnerability moveStrength;
     /** the {@link IoNpcData}'s name. */
     @Unique
     @VarChar(length = 50)
     private String name;
+    @CanBeNull
+    @JsonProperty("natural_weapon_length")
+    private int naturalWeaponLength;
+    @CanBeNull
+    @JsonProperty("natural_weapon_type")
+    private AttackType naturalWeaponType;
     private int notoriety;
     /** all NPC flags. */
     @CanBeNull
@@ -57,17 +68,23 @@ public class IoNpcData {
     @JsonProperty("unalerted_attack_speed")
     private int unalertedAttackSpeed;
     @CanBeNull
+    @JsonProperty("unalerted_attack_spell")
+    private MagicType unalertedAttackSpell;
+    @CanBeNull
     @JsonProperty("unalerted_attack_stars")
     private int unalertedAttackStars;
+    @CanBeNull
     @JsonProperty("unalerted_attack_weight")
     private Vulnerability unalertedAttackWeight;
     @JsonProperty("unalerted_move")
     private int unalertedMove;
     /** the npc's vulnerability. */
+    @CanBeNull
     private Vulnerability vulnerability;
     @CanBeNull
     private int wage;
     /** the npc's weight. */
+    @CanBeNull
     @JsonProperty("weight")
     private Vulnerability weight;
 }

@@ -12,5 +12,5 @@ public class MagicColor {
     @JsonProperty("short_name")
     @Unique
     @VarChar(length = 10)
-    private String shortName;
+    private String name;
 }

@@ -480,11 +480,14 @@ CREATE TABLE avalon.io_npc_data
   alerted_attack_stars smallint,
   alerted_attack_weight smallint NOT NULL,
   alerted_move smallint NOT NULL,
-  gender smallint NOT NULL,
+  fame_bounty smallint,
+  gender smallint,
   gold_bounty smallint,
   internal_script text,
-  move_strength smallint NOT NULL,
+  move_strength smallint,
   name character varying(50) NOT NULL,
+  natural_weapon_length smallint,
+  natural_weapon_type smallint,
   notoriety smallint NOT NULL,
   npc_flags bigint,
   title character varying(50) NOT NULL,
@@ -492,9 +495,9 @@ CREATE TABLE avalon.io_npc_data
   unalerted_attack_stars smallint,
   unalerted_attack_weight smallint NOT NULL,
   unalerted_move smallint NOT NULL,
-  vulnerability smallint NOT NULL,
+  vulnerability smallint,
   wage smallint,
-  weight smallint NOT NULL,
+  weight smallint,
   CONSTRAINT io_npc_data_io_npc_data_id_pk PRIMARY KEY (io_npc_data_id),
   CONSTRAINT io_npc_data_alerted_attack_weight_fk FOREIGN KEY (alerted_attack_weight)
     REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE
@@ -506,6 +509,9 @@ CREATE TABLE avalon.io_npc_data
     REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT io_npc_data_name_un UNIQUE (name),
+  CONSTRAINT io_npc_data_natural_weapon_type_fk FOREIGN KEY (natural_weapon_type)
+    REFERENCES avalon.attack_type (attack_type_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT io_npc_data_unalerted_attack_weight_fk FOREIGN KEY (unalerted_attack_weight)
     REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,

@@ -1639,79 +1639,219 @@
   		"name": "Female"
   	}
   }, {
-	  	"name": "Woodfolk II",
-	  	"title": "Archer",
+  	"name": "Woodfolk II",
+  	"title": "Archer",
+  	"equipped_items": {
+  		"EQUIP_SLOT_WEAPON": "Light Bow"
+  	},
+  	"vulnerability": {
+  		"code": "M"
+  	},
+  	"wage": 2,
+  	"notoriety": 4,
+  	"gold_bounty": 2,
+  	"move_strength": {
+  		"code": "M"
+  	},
+  	"weight": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "N"
+  	},
+  	"unalerted_attack_speed": 0,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 2,
+  	"alerted_attack_weight": {
+  		"code": "L"
+  	},
+  	"alerted_attack_speed": 1,
+  	"alerted_attack_stars": 2,
+  	"alerted_move": 4,
+  	"groups": [{
+  		"name": "NATIVE"
+  	}, {
+  		"name": "WOODFOLK"
+  	}],
+  	"gender": {
+  		"name": "Male"
+  	}
+  }, {
+  	"name": "Tremendous Flying Dragon",
+  	"title": "Tremendous Flying Dragon",
+  	"equipped_items": {
+  		"EQUIP_SLOT_ARMOR": "Scaly Hide"
+  	},
+  	"vulnerability": {
+  		"code": "T"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_speed": 3,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 4,
+  	"alerted_attack_weight": {
+  		"code": "T"
+  	},
+  	"alerted_attack_speed": 6,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 4,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 12,
+  	"notoriety": 12,
+  	"groups": [{
+  		"name": "DRAGONS"
+  	}, {
+  		"name": "FLYING"
+  	}]
+  }, {
+  	"name": "Tremendous Flying Dragon Head",
+  	"title": "Tremendous Flying Dragon Head",
+  	"unalerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_speed": 3,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 0,
+  	"alerted_attack_weight": {
+  		"code": "T"
+  	},
+  	"alerted_attack_speed": 3,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 0,
+  	"natural_weapon_length": 7,
+  	"natural_weapon_type": {
+  		"name": "Striking"
+  	},
+  	"fame_bounty": 0,
+  	"notoriety": 0,
+  	"groups": [{
+  		"name": "MONSTER_WEAPON"
+  	}]
+  }, {
+	  	"name": "Tremendous Dragon",
+	  	"title": "Tremendous Dragon",
 	  	"equipped_items": {
-	  		"EQUIP_SLOT_WEAPON": "Light Bow"
+	  		"EQUIP_SLOT_ARMOR": "Scaly Hide"
 	  	},
 	  	"vulnerability": {
-	  		"code": "M"
-	  	},
-	  	"wage": 2,
-	  	"notoriety": 4,
-	  	"gold_bounty": 2,
-	  	"move_strength": {
-	  		"code": "M"
-	  	},
-	  	"weight": {
-	  		"code": "M"
+	  		"code": "T"
 	  	},
 	  	"unalerted_attack_weight": {
-	  		"code": "N"
+	  		"code": "H"
 	  	},
-	  	"unalerted_attack_speed": 0,
+	  	"unalerted_attack_speed": 5,
 	  	"unalerted_attack_stars": 0,
-	  	"unalerted_move": 2,
+	  	"unalerted_move": 6,
 	  	"alerted_attack_weight": {
-	  		"code": "L"
+	  		"code": "T"
 	  	},
-	  	"alerted_attack_speed": 1,
-	  	"alerted_attack_stars": 2,
-	  	"alerted_move": 4,
+	  	"alerted_attack_speed": 3,
+	  	"alerted_attack_stars": 0,
+	  	"alerted_move": 6,
+	  	"natural_weapon_length": 0,
+	  	"fame_bounty": 10,
+	  	"notoriety": 10,
 	  	"groups": [{
-	  		"name": "NATIVE"
-	  	}, {
-	  		"name": "WOODFOLK"
-	  	}],
-	  	"gender": {
-	  		"name": "Male"
-	  	}
+	  		"name": "DRAGONS"
+	  	}]
 	  }, {
-		  	"name": "Tremendous Flying Dragon",
-		  	"title": "Tremendous Flying Dragon",
-		  	"equipped_items": {
-		  		"EQUIP_SLOT_ARMOR": "Scaly Hide"
+		  	"name": "Tremendous Dragon Head",
+		  	"title": "Tremendous Dragon Head",
+		  	"unalerted_attack_weight": {
+		  		"code": "H"
 		  	},
-		  	"vulnerability": {
+		  	"unalerted_attack_speed": 4,
+		  	"unalerted_attack_stars": 0,
+		  	"unalerted_move": 0,
+		  	"alerted_attack_weight": {
 		  		"code": "T"
 		  	},
-		  	"unalerted_attack_weight": {
-		  		"code": "M"
+		  	"alerted_attack_speed": 4,
+		  	"alerted_attack_stars": 0,
+		  	"alerted_move": 0,
+		  	"natural_weapon_length": 9,
+		  	"natural_weapon_type": {
+		  		"name": "Striking"
 		  	},
-		  	"unalerted_attack_speed": 3,
-		  	"unalerted_attack_stars": 0,
-		  	"unalerted_move": 4,
-		  	"alerted_attack_weight": {
-		  		"code": "L"
-		  	},
-		  	"wage": 2,
-		  	"notoriety": 4,
-		  	"gold_bounty": 2,
-		  	"move_strength": {
-		  		"code": "M"
-		  	},
-		  	"weight": {
-		  		"code": "M"
-		  	},
-		  	"alerted_attack_speed": 1,
-		  	"alerted_attack_stars": 2,
-		  	"alerted_move": 4,
+		  	"fame_bounty": 0,
+		  	"notoriety": 0,
 		  	"groups": [{
-		  		"name": "NATIVE"
-		  	}, {
-		  		"name": "WOODFOLK"
-		  	}],
-		  	"gender": {
-		  		"name": "Male"
-		  	}
-		  }]
+		  		"name": "MONSTER_WEAPON"
+		  	}]
+		  }, {
+			  	"name": "Giant",
+			  	"title": "Giant",
+			  	"vulnerability": {
+			  		"code": "T"
+			  	},
+			  	"unalerted_attack_weight": {
+			  		"code": "H"
+			  	},
+			  	"unalerted_attack_speed": 5,
+			  	"unalerted_attack_stars": 0,
+			  	"unalerted_move": 5,
+			  	"alerted_attack_weight": {
+			  		"code": "T"
+			  	},
+			  	"alerted_attack_speed": 4,
+			  	"alerted_attack_stars": 0,
+			  	"alerted_move": 6,
+			  	"natural_weapon_length": 0,
+			  	"fame_bounty": 8,
+			  	"notoriety": 8
+			  }, {
+				  	"name": "Giant Club",
+				  	"title": "Giant Club",
+				  	"unalerted_attack_weight": {
+				  		"code": "H"
+				  	},
+				  	"unalerted_attack_speed": 4,
+				  	"unalerted_attack_stars": 0,
+				  	"unalerted_move": 0,
+				  	"alerted_attack_weight": {
+				  		"code": "T"
+				  	},
+				  	"alerted_attack_speed": 4,
+				  	"alerted_attack_stars": 0,
+				  	"alerted_move": 0,
+				  	"natural_weapon_length": 8,
+				  	"natural_weapon_type": {
+				  		"name": "Striking"
+				  	},
+				  	"fame_bounty": 0,
+				  	"notoriety": 0,
+				  	"groups": [{
+				  		"name": "MONSTER_WEAPON"
+				  	}]
+				  }, {
+					  	"name": "Winged Demon",
+					  	"title": "Winged Demon",
+					  	"vulnerability": {
+					  		"code": "T"
+					  	},
+					  	"unalerted_attack_spell": {
+					  		"code": "V"
+					  	},
+					  	"unalerted_attack_speed": 3,
+					  	"unalerted_attack_stars": 0,
+					  	"unalerted_move": 3,
+					  	"alerted_attack_weight": {
+					  		"code": "T"
+					  	},
+					  	"alerted_attack_speed": 5,
+					  	"alerted_attack_stars": 0,
+					  	"alerted_move": 2,
+					  	"natural_weapon_length": 17,
+					  	"natural_weapon_type": {
+					  		"name": "Power of the Pit"
+					  	},
+					  	"fame_bounty": 8,
+					  	"notoriety": 8,
+					  	"groups": [{
+					  		"name": "DEMONS"
+					  	}, {
+					  		"name": "FLYING"
+					  	}]
+					  }]
