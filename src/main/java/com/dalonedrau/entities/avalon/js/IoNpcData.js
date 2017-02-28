@@ -1854,4 +1854,477 @@
   	}, {
   		"name": "FLYING"
   	}]
+  }, {
+  	"name": "Demon",
+  	"title": "Demon",
+  	"vulnerability": {
+  		"code": "T"
+  	},
+  	"unalerted_attack_spell": {
+  		"code": "V"
+  	},
+  	"unalerted_attack_speed": 2,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 4,
+  	"alerted_attack_weight": {
+  		"code": "T"
+  	},
+  	"alerted_attack_speed": 4,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 4,
+  	"natural_weapon_length": 17,
+  	"natural_weapon_type": {
+  		"name": "Power of the Pit"
+  	},
+  	"fame_bounty": 8,
+  	"notoriety": 8,
+  	"groups": [{
+  		"name": "DEMONS"
+  	}]
+  }, {
+  	"name": "Tremendous Troll",
+  	"title": "Tremendous Troll",
+  	"vulnerability": {
+  		"code": "T"
+  	},
+  	"equipped_items": {
+  		"EQUIP_SLOT_ARMOR": "Scaly Hide"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "H"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 4,
+  	"alerted_attack_weight": {
+  		"code": "T"
+  	},
+  	"alerted_attack_speed": 2,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 6,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 8,
+  	"notoriety": 8
+  }, {
+  	"name": "Octopus",
+  	"title": "Octopus",
+  	"vulnerability": {
+  		"code": "T"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "L"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 2,
+  	"alerted_attack_weight": {
+  		"code": "T"
+  	},
+  	"alerted_attack_speed": 4,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 3,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 8,
+  	"notoriety": 8
+  }, {
+  	"name": "Tremendous Serpent",
+  	"title": "Tremendous Serpent",
+  	"vulnerability": {
+  		"code": "T"
+  	},
+  	"equipped_items": {
+  		"EQUIP_SLOT_ARMOR": "Scaly Hide"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "L"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 4,
+  	"alerted_attack_weight": {
+  		"code": "T"
+  	},
+  	"alerted_attack_speed": 4,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 5,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 7,
+  	"notoriety": 7
+  }, {
+  	"name": "Tremendous Spider",
+  	"title": "Tremendous Spider",
+  	"vulnerability": {
+  		"code": "T"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 3,
+  	"alerted_attack_weight": {
+  		"code": "T"
+  	},
+  	"alerted_attack_speed": 5,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 4,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 6,
+  	"notoriety": 6
+  }, {
+  	"name": "Heavy Flying Dragon",
+  	"title": "Heavy Flying Dragon",
+  	"equipped_items": {
+  		"EQUIP_SLOT_ARMOR": "Tough Hide"
+  	},
+  	"vulnerability": {
+  		"code": "H"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "H"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 4,
+  	"alerted_attack_weight": {
+  		"code": "L"
+  	},
+  	"alerted_attack_speed": 4,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 3,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 5,
+  	"notoriety": 5,
+  	"groups": [{
+  		"name": "DRAGONS"
+  	}, {
+  		"name": "FLYING"
+  	}]
+  }, {
+  	"name": "Heavy Dragon",
+  	"title": "Heavy Dragon",
+  	"equipped_items": {
+  		"EQUIP_SLOT_ARMOR": "Tough Hide"
+  	},
+  	"vulnerability": {
+  		"code": "H"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "H"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 4,
+  	"alerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"alerted_attack_speed": 4,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 3,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 5,
+  	"notoriety": 5,
+  	"groups": [{
+  		"name": "DRAGONS"
+  	}]
+  }, {
+  	"name": "Heavy Troll",
+  	"title": "Heavy Troll",
+  	"vulnerability": {
+  		"code": "H"
+  	},
+  	"equipped_items": {
+  		"EQUIP_SLOT_ARMOR": "Tough Hide"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 4,
+  	"alerted_attack_weight": {
+  		"code": "H"
+  	},
+  	"alerted_attack_speed": 5,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 4,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 5,
+  	"notoriety": 5
+  }, {
+  	"name": "Heavy Serpent",
+  	"title": "Heavy Serpent",
+  	"vulnerability": {
+  		"code": "H"
+  	},
+  	"equipped_items": {
+  		"EQUIP_SLOT_ARMOR": "Tough Hide"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 3,
+  	"alerted_attack_weight": {
+  		"code": "H"
+  	},
+  	"alerted_attack_speed": 5,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 4,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 5,
+  	"notoriety": 5
+  }, {
+  	"name": "Giant Bat",
+  	"title": "Giant Bat",
+  	"vulnerability": {
+  		"code": "H"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_speed": 2,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 3,
+  	"alerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"alerted_attack_speed": 3,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 2,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 3,
+  	"notoriety": 3,
+  	"groups": [{
+  		"name": "FLYING"
+  	}]
+  }, {
+  	"name": "Heavy Spider",
+  	"title": "Heavy Spider",
+  	"vulnerability": {
+  		"code": "H"
+  	},
+  	"equipped_items": {
+  		"EQUIP_SLOT_ARMOR": "Tough Hide"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "L"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 3,
+  	"alerted_attack_weight": {
+  		"code": "T"
+  	},
+  	"alerted_attack_speed": 5,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 4,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 3,
+  	"notoriety": 3
+  }, {
+  	"name": "Imp",
+  	"title": "Imp",
+  	"vulnerability": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_spell": {
+  		"code": "V"
+  	},
+  	"unalerted_attack_speed": 2,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 2,
+  	"alerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"alerted_attack_speed": 4,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 3,
+  	"natural_weapon_length": 17,
+  	"natural_weapon_type": {
+  		"name": "Curse"
+  	},
+  	"fame_bounty": 2,
+  	"notoriety": 1,
+  	"groups": [{
+  		"name": "DEMONS"
+  	}]
+  }, {
+  	"name": "Goblin With Spear",
+  	"title": "Goblin Spearman",
+  	"vulnerability": {
+  		"code": "M"
+  	},
+  	"equipped_items": {
+  		"EQUIP_SLOT_WEAPON": "Spear"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "N"
+  	},
+  	"unalerted_attack_speed": 0,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 3,
+  	"alerted_attack_weight": {
+  		"code": "H"
+  	},
+  	"alerted_attack_speed": 5,
+  	"alerted_attack_stars": 1,
+  	"alerted_move": 5,
+  	"fame_bounty": 1,
+  	"notoriety": 1
+  }, {
+  	"name": "Goblin With Great Sword",
+  	"title": "Goblin Landesknecht",
+  	"vulnerability": {
+  		"code": "M"
+  	},
+  	"equipped_items": {
+  		"EQUIP_SLOT_WEAPON": "Great Sword"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "H"
+  	},
+  	"unalerted_attack_speed": 6,
+  	"unalerted_attack_stars": 1,
+  	"unalerted_move": 3,
+  	"alerted_attack_weight": {
+  		"code": "T"
+  	},
+  	"alerted_attack_speed": 5,
+  	"alerted_attack_stars": 1,
+  	"alerted_move": 5,
+  	"fame_bounty": 1,
+  	"notoriety": 1
+  }, {
+  	"name": "Goblin With Axe",
+  	"title": "Goblin Axeman",
+  	"vulnerability": {
+  		"code": "M"
+  	},
+  	"equipped_items": {
+  		"EQUIP_SLOT_WEAPON": "Axe"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "L"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 1,
+  	"unalerted_move": 3,
+  	"alerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"alerted_attack_speed": 4,
+  	"alerted_attack_stars": 1,
+  	"alerted_move": 4,
+  	"fame_bounty": 1,
+  	"notoriety": 1
+  }, {
+  	"name": "Viper",
+  	"title": "Viper",
+  	"vulnerability": {
+  		"code": "M"
+  	},
+  	"equipped_items": {
+  		"EQUIP_SLOT_ARMOR": "Scales"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 2,
+  	"unalerted_move": 4,
+  	"alerted_attack_weight": {
+  		"code": "L"
+  	},
+  	"alerted_attack_speed": 2,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 2,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 1,
+  	"notoriety": 2
+  }, {
+  	"name": "Ghost",
+  	"title": "Ghost",
+  	"vulnerability": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "H"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 4,
+  	"alerted_attack_weight": {
+  		"code": "L"
+  	},
+  	"alerted_attack_speed": 2,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 2,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 0,
+  	"notoriety": 2
+  }, {
+  	"name": "Ogre",
+  	"title": "Ogre",
+  	"vulnerability": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "T"
+  	},
+  	"unalerted_attack_speed": 5,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 5,
+  	"alerted_attack_weight": {
+  		"code": "H"
+  	},
+  	"alerted_attack_speed": 5,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 4,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 0,
+  	"notoriety": 2
+  }, {
+  	"name": "Wolf1",
+  	"title": "Wolf",
+  	"vulnerability": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "L"
+  	},
+  	"unalerted_attack_speed": 4,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 3,
+  	"alerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"alerted_attack_speed": 4,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 4,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 0,
+  	"notoriety": 1
+  }, {
+  	"name": "Wolf2",
+  	"title": "Wolf",
+  	"vulnerability": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_weight": {
+  		"code": "M"
+  	},
+  	"unalerted_attack_speed": 5,
+  	"unalerted_attack_stars": 0,
+  	"unalerted_move": 3,
+  	"alerted_attack_weight": {
+  		"code": "L"
+  	},
+  	"alerted_attack_speed": 3,
+  	"alerted_attack_stars": 0,
+  	"alerted_move": 4,
+  	"natural_weapon_length": 0,
+  	"fame_bounty": 0,
+  	"notoriety": 1
   }]
