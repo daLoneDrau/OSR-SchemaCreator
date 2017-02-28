@@ -1,11 +1,14 @@
 package com.dalonedrau.entities.ff;
 
+import java.util.List;
 import java.util.Map;
 
+import com.dalonedrau.entities.avalon.Group;
 import com.dalonedrau.schemacreator.Annotations.CanBeNull;
 import com.dalonedrau.schemacreator.Annotations.ForeignKey;
 import com.dalonedrau.schemacreator.Annotations.MapForeignKey;
 import com.dalonedrau.schemacreator.Annotations.VarChar;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class IoNpcData {
     /** the set of attributes defining the NPC. */
@@ -31,9 +34,12 @@ public class IoNpcData {
     @CanBeNull
     float damages;
     /** the {@link IoNpcData}'s gender. */
-    private Gender gender;
-    /** the name of the internal script used. */
     @CanBeNull
+    private Gender gender;
+    /** the list of groups the item belongs to. */
+    private List<Group> groups;
+    /** the name of the internal script used. */
+    @JsonProperty("internal_script")
     private String internalScript;
     @CanBeNull
     float life;
@@ -57,6 +63,7 @@ public class IoNpcData {
     /** the {@link IoNpcData}'s title. */
     @VarChar(length = 50)
     private String title;
+    @CanBeNull
     @ForeignKey(clazz = IoItemData.class, fieldName = "name")
     private String weapon;
     @CanBeNull

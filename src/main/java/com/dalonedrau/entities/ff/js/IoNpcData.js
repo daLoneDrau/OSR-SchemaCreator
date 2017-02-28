@@ -9,8 +9,22 @@
 	"gender":  {
 		"name": "Male"
 	},
-	"internalScript": "OrcSentry",
+	"internal_script": "OrcSentry",
 	"name": "ORC_SENTRY",
 	"title": "ORC",
 	"weapon": "ORC CLEAVER"
+}, {
+	"attributes": {
+		"ST": 2,
+		"MST": 2
+	},
+	"behavior": 0,
+	"internal_script": "Door12",
+	"name": "DOOR_12",
+	"title": "WOODEN DOOR",
+	"groups": [
+		{
+			"name": "DOORS"
+		}
+	]
 }]

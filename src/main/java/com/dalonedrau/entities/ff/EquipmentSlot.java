@@ -8,5 +8,5 @@ public class EquipmentSlot {
     @VarChar(length = 40)
     private String name;
     /** value. */
-    private int val;
+    private int value;
 }
