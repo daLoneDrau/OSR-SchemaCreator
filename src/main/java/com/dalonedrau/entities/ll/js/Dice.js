@@ -49,13 +49,6 @@
 	},
 	"code": "ONE_D8"
 }, {
-	"number": 3,
-	"die": {
-		"value": 6,
-		"code": "D6"
-	},
-	"code": "THREE_D6"
-}, {
 	"number": 2,
 	"die": {
 		"value": 4,
@@ -69,4 +62,18 @@
 		"code": "D6"
 	},
 	"code": "TWO_D6"
+}, {
+	"number": 3,
+	"die": {
+		"value": 6,
+		"code": "D6"
+	},
+	"code": "THREE_D6"
+}, {
+	"number": 4,
+	"die": {
+		"value": 6,
+		"code": "D6"
+	},
+	"code": "FOUR_D6"
 }]

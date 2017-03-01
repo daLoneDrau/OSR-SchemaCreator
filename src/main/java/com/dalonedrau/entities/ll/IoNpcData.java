@@ -51,6 +51,9 @@ public class IoNpcData {
     @CanBeNull
     @JsonProperty("hoard_class")
     int hoardClass;
+    @CanBeNull
+    @VarChar(length = 50)
+    String icon;
     /** the name of the internal script used. */
     @CanBeNull
     @JsonProperty("internal_script")
@@ -79,6 +82,12 @@ public class IoNpcData {
     /** the {@link IoNpcData}'s name. */
     @VarChar(length = 50)
     private String name;
+    @CanBeNull
+    @JsonProperty("num_appearing")
+    Dice numberAppearing;
+    @CanBeNull
+    @JsonProperty("num_appearing_in_lair")
+    Dice numberAppearingInLair;
     /** all NPC flags. */
     @CanBeNull
     private long npcFlags;

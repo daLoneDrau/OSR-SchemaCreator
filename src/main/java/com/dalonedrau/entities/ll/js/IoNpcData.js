@@ -119,6 +119,13 @@
 }, {
 	"name": "Giant Ant",
 	"title": "Giant Ant",
+	"icon": "insect-jaws",
+	"num_appearing": {
+		"code": "TWO_D4"
+	},
+	"num_appearing_in_lair": {
+		"code": "FOUR_D6"
+	},
 	"groups": [{
 		"name": "NEUTRAL"
 	}],
@@ -138,5 +145,6 @@
 	"gender": {
 		"name": "Female"
 	},
+	"description": "Giant ants are hardy and adaptable. Workers are about 6' long, but the queen may be immense. Giant ants eat almost anything, since they are omnivores, and will never retreat if defending the nest. They will tend to only have a small amount of treasure around, from past opponents, but in some rare instances giant ants will inexplicably mine precious metals. This occurs in about 30% of nests, and there will be as much as 1d10x1000 gold pieces worth of raw gold nuggets.",
 	"module": "Labyrinth Lord Revised Edition"
 }]
