@@ -11,48 +11,51 @@
 	"name": "EAST",
 	"sort_order": 3
 }, {
-	"name": "TALK",
+	"name": "CLIMB",
 	"sort_order": 4
 }, {
-	"name": "GIVE",
+	"name": "TALK",
 	"sort_order": 5
 }, {
-	"name": "ATTACK",
+	"name": "GIVE",
 	"sort_order": 6
 }, {
-	"name": "OPEN",
+	"name": "ATTACK",
 	"sort_order": 7
 }, {
-	"name": "SMASH",
+	"name": "OPEN",
 	"sort_order": 8
 }, {
-	"name": "TAKE",
+	"name": "SMASH",
 	"sort_order": 9
 }, {
-	"name": "SIT",
+	"name": "TAKE",
 	"sort_order": 10
 }, {
-	"name": "STEP",
+	"name": "SIT",
 	"sort_order": 11
 }, {
-	"name": "BRIBE",
+	"name": "STEP",
 	"sort_order": 12
 }, {
-	"name": "INTIMIDATE",
+	"name": "BRIBE",
 	"sort_order": 13
 }, {
-	"name": "THROW",
+	"name": "INTIMIDATE",
 	"sort_order": 14
 }, {
-	"name": "EAT",
+	"name": "THROW",
 	"sort_order": 15
 }, {
-	"name": "SEARCH",
+	"name": "EAT",
 	"sort_order": 16
 }, {
-	"name": "USE",
+	"name": "SEARCH",
 	"sort_order": 17
 }, {
-	"name": "INVENTORY",
+	"name": "USE",
 	"sort_order": 18
+}, {
+	"name": "INVENTORY",
+	"sort_order": 19
 }]

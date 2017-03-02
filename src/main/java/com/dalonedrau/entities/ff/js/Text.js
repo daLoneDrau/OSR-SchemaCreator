@@ -23,6 +23,30 @@
   	"name": "invalid_exit",
   	"text": "You can't go that way."
   }, {
+  	"name": "exit_blocked",
+  	"text": "The way is blocked by <tioName>."
+  }, {
+	"name": "smash_no_door",
+	"text": "There are no doors here to smash!"
+  }, {
+	"name": "smash_which_door",
+	"text": "Which door do you want to smash?"
+  }, {
+	"name": "smash_door_12_success",
+	"text": "The door bursts open and you fall headlong into a room. But your heart jumps as you realize you are not landing on the floor, but plunging down a pit of some kind! Lose 1 STAMINA."
+  }, {
+	"name": "smash_door_12_failure",
+	"text": "You rub your bruised shoulder and stare at the intact, still-locked door."
+  }, {
+	"name": "climb_139_out",
+	"text": "You climb out of the pit."
+  }, {
+	"name": "climb_139_in",
+	"text": "You climb into the pit. Yep, just you remember it - an empty hole. You climb back out."
+  }, {
+	"name": "climb_no_where",
+	"text": "Climb what?  I don't see anything."
+  }, {
   	"name": "choice",
   	"text": "Please enter your choice: "
   }, {
@@ -45,7 +69,16 @@
   	"text": "You are at a junction in a cave passage.  Passages lead further into the cave to the West and East.  There is also a passage to the South, leading both to the cave's exit and to everlasting shame for abandoning your adventure.\r\n"
   }, {
   	"name": "71",
-  	"text": "There is a right-hand turn to the north in the passage. Cautiously you approach a sentry post on the corner and, as you look in, you can see a strange Goblin-like creature in leather armour asleep at his post. You try to tiptoe past him.\r\n"
+  	"text": "There is a right-hand turn to the north in the passage. Cautiously you approach a sentry post on the corner and, as you look in, you can see a strange Goblin-like creature in leather armour asleep at his post. You might be able to tiptoe past him.\r\n"
+  }, {
+  	"name": "71_EAST",
+  	"text": "You head east."
+  }, {
+  	"name": "71_SECONDARY",
+  	"text": "You are in an L-shaped passage traveling North and East.  A Goblin-like creature snores blissfully in the corner.\r\n"
+  }, {
+  	"name": "71_TERTIARY",
+  	"text": "You are in an L-shaped passage traveling North and East.  In the corner a bloodied ORC sleeps with the dead.\r\n"
   }, {
   	"name": "12",
   	"text": "The passageway soon comes to an end at a locked wooden door. You listen at the door but hear nothing.\r\n"
@@ -55,6 +88,18 @@
   }, {
   	"name": "12_SECONDARY",
   	"text": "You are in an east-west corridor.  There is a locked wooden door on the eastern end.\r\n"
+  }, {
+  	"name": "12_TERTIARY",
+  	"text": "You are in an east-west corridor.  A wooden door on the eastern end hangs open.\r\n"
+  }, {
+    "name": "139",
+    "text": "You are standing in a pit about two metres deep. The room is otherwise empty, and there is a corridor beyond a broken wooden door to the west."
+  }, {
+	"name": "139_SECONDARY",
+	"text": "You are in an empty room whose only feature is a small pit. Beyond a broken wooden door a corridor leads west."
+  }, {
+	"name": "139_WEST",
+	"text": "You step out of the room into the corridor."
   }, {
   	"name": "orc_sentry_aggression",
   	"text": "The ORC scrambles to his feet and turns to grasp at a rope which is probably the alarm bell. You must attack him quickly."

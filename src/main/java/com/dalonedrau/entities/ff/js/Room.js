@@ -15,5 +15,17 @@
   		"name": "SMASH"
   	}]
   }, {
-  	"code": "71"
+  	"code": "139",
+  	"commands": [{
+  		"name": "CLIMB"
+  	}]
+  }, {
+  	"code": "71",
+  	"commands": [{
+  		"name": "EAST"
+  	}, {
+  		"name": "NORTH"
+  	}, {
+  		"name": "ATTACK"
+  	}]
   }]
