@@ -87,8 +87,6 @@ public final class EntityField {
         if (entityClazz != null) {
             section = TextLoader.getInstance().loadText(
                     "entity_template.txt", "entity_entity_member");
-            System.out.println(
-                    "entity_entity_member for " + name + "::" + entityClazz);
             if (jsonProperty != null) {
                 section = TextProcessor.getInstance().processText(
                         new String[] {
@@ -126,17 +124,21 @@ public final class EntityField {
         } else {
             section = TextLoader.getInstance().loadText(
                     "entity_template.txt", "entity_member");
+            String tableName = SchemaUtilities.getInstance().getTableName(name);
+            if (jsonProperty != null) {
+                tableName = jsonProperty;
+            }
             section = TextProcessor.getInstance().processText(
                     new String[] {
                             "<fieldName>", "<tableFieldName>",
                             "<fieldClass>", "<notNull>", "<fieldNameFirstCap>"
                     }, new String[] {
-                            name, SchemaUtilities.getInstance()
-                                    .getTableName(name),
+                            name, tableName,
                             primitiveClazz, n,
                             SchemaUtilities.getInstance()
                                     .capitalizeFirst(name)
                     }, section);
+            tableName = null;
         }
         writer.println(section);
     }

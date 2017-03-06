@@ -22,4 +22,6 @@
 	"name": "SOLDIERS"
 }, {
 	"name": "WOODFOLK"
+}, {
+	"name": "SHAMAN"
 }]
