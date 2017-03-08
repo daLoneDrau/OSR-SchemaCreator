@@ -11,8 +11,6 @@
   		"name": "WEST"
   	}, {
   		"name": "EAST"
-  	}, {
-  		"name": "SMASH"
   	}]
   }, {
   	"code": "139",
@@ -25,7 +23,17 @@
   		"name": "EAST"
   	}, {
   		"name": "NORTH"
+  	}]
+  }, {
+  	"code": "43",
+  	"commands": [{
+  		"name": "SOUTH"
   	}, {
-  		"name": "ATTACK"
+  		"name": "NORTH"
+  	}]
+  }, {
+  	"code": "82",
+  	"commands": [{
+  		"name": "EAST"
   	}]
   }]

@@ -909,4 +909,326 @@
 		"description": "",
 		"name": "CAVE_WALL"
 	}
+}, {
+	"room_number": 43,
+	"x": 635,
+	"y": 1330,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 43,
+	"x": 636,
+	"y": 1330,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 43,
+	"x": 637,
+	"y": 1330,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 43,
+	"x": 635,
+	"y": 1331,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 43,
+	"x": 636,
+	"y": 1331,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 43,
+	"x": 637,
+	"y": 1331,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 43,
+	"x": 635,
+	"y": 1332,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 43,
+	"x": 636,
+	"y": 1332,
+	"is_main_node": true,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 43,
+	"x": 637,
+	"y": 1332,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 43,
+	"x": 635,
+	"y": 1333,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 43,
+	"x": 636,
+	"y": 1333,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 43,
+	"x": 637,
+	"y": 1333,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 43,
+	"x": 635,
+	"y": 1334,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 43,
+	"x": 636,
+	"y": 1334,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 43,
+	"x": 637,
+	"y": 1334,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 630,
+	"y": 1330,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 631,
+	"y": 1330,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 632,
+	"y": 1330,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 633,
+	"y": 1330,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 634,
+	"y": 1330,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 630,
+	"y": 1331,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 631,
+	"y": 1331,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 82,
+	"x": 632,
+	"y": 1331,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 82,
+	"x": 633,
+	"y": 1331,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 82,
+	"x": 634,
+	"y": 1331,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 630,
+	"y": 1332,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 631,
+	"y": 1332,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 82,
+	"x": 632,
+	"y": 1332,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 82,
+	"x": 633,
+	"y": 1332,
+	"is_main_node": true,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 82,
+	"x": 634,
+	"y": 1332,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 82,
+	"x": 630,
+	"y": 1333,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 631,
+	"y": 1333,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 82,
+	"x": 632,
+	"y": 1333,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 82,
+	"x": 633,
+	"y": 1333,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_FLOOR"
+	}
+}, {
+	"room_number": 82,
+	"x": 634,
+	"y": 1333,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 630,
+	"y": 1334,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 631,
+	"y": 1334,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 632,
+	"y": 1334,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 633,
+	"y": 1334,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
+}, {
+	"room_number": 82,
+	"x": 634,
+	"y": 1334,
+	"terrain": {
+		"description": "",
+		"name": "CAVE_WALL"
+	}
 }]

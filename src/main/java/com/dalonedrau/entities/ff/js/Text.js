@@ -14,6 +14,9 @@
   	"name": "stats_table",
   	"text": "Skill  : <genText>\nStamina: <genText>\nLuck   : <genText>"
   }, {
+  	"name": "enemy_stats_table",
+  	"text": "<genText>\nSkill  : <genText>\nStamina: <genText>"
+  }, {
   	"name": "continue",
   	"text": "-- Press [Enter] to Continue --"
   }, {
@@ -26,26 +29,41 @@
   	"name": "exit_blocked",
   	"text": "The way is blocked by <tioName>."
   }, {
-	"name": "smash_no_door",
-	"text": "There are no doors here to smash!"
+  	"name": "attack_no_one",
+  	"text": "Settle down, there's no one here to attack."
   }, {
-	"name": "smash_which_door",
-	"text": "Which door do you want to smash?"
+  	"name": "no_escape",
+  	"text": "You can't escape.  You'll have to fight your way out."
   }, {
-	"name": "smash_door_12_success",
-	"text": "The door bursts open and you fall headlong into a room. But your heart jumps as you realize you are not landing on the floor, but plunging down a pit of some kind! Lose 1 STAMINA."
+  	"name": "open_no_door",
+  	"text": "There are no doors here to open!"
   }, {
-	"name": "smash_door_12_failure",
-	"text": "You rub your bruised shoulder and stare at the intact, still-locked door."
+  	"name": "open_which_door",
+  	"text": "Which door do you want to open?"
   }, {
-	"name": "climb_139_out",
-	"text": "You climb out of the pit."
+  	"name": "open_locked_door",
+  	"text": "It's locked.  Try to USE a key or SMASH it open."
   }, {
-	"name": "climb_139_in",
-	"text": "You climb into the pit. Yep, just you remember it - an empty hole. You climb back out."
+  	"name": "smash_no_door",
+  	"text": "There are no doors here to smash!"
   }, {
-	"name": "climb_no_where",
-	"text": "Climb what?  I don't see anything."
+  	"name": "smash_which_door",
+  	"text": "Which door do you want to smash?"
+  }, {
+  	"name": "smash_door_12_success",
+  	"text": "The door bursts open and you fall headlong into a room. But your heart jumps as you realize you are not landing on the floor, but plunging down a pit of some kind! Lose 1 STAMINA."
+  }, {
+  	"name": "smash_door_12_failure",
+  	"text": "You rub your bruised shoulder and stare at the intact, still-locked door."
+  }, {
+  	"name": "climb_139_out",
+  	"text": "You climb out of the pit."
+  }, {
+  	"name": "climb_139_in",
+  	"text": "You climb into the pit. Yep, just you remember it - an empty hole. You climb back out."
+  }, {
+  	"name": "climb_no_where",
+  	"text": "Climb what?  I don't see anything."
   }, {
   	"name": "choice",
   	"text": "Please enter your choice: "
@@ -68,23 +86,8 @@
   	"name": "1_SECONDARY",
   	"text": "You are at a junction in a cave passage.  Passages lead further into the cave to the West and East.  There is also a passage to the South, leading both to the cave's exit and to everlasting shame for abandoning your adventure.\r\n"
   }, {
-  	"name": "71",
-  	"text": "There is a right-hand turn to the north in the passage. Cautiously you approach a sentry post on the corner and, as you look in, you can see a strange Goblin-like creature in leather armour asleep at his post. You might be able to tiptoe past him.\r\n"
-  }, {
-  	"name": "71_EAST",
-  	"text": "You head east."
-  }, {
-  	"name": "71_SECONDARY",
-  	"text": "You are in an L-shaped passage traveling North and East.  A Goblin-like creature snores blissfully in the corner.\r\n"
-  }, {
-  	"name": "71_TERTIARY",
-  	"text": "You are in an L-shaped passage traveling North and East.  In the corner a bloodied ORC sleeps with the dead.\r\n"
-  }, {
   	"name": "12",
   	"text": "The passageway soon comes to an end at a locked wooden door. You listen at the door but hear nothing.\r\n"
-  }, {
-  	"name": "12_WEST",
-  	"text": "You follow the passage west to the junction."
   }, {
   	"name": "12_SECONDARY",
   	"text": "You are in an east-west corridor.  There is a locked wooden door on the eastern end.\r\n"
@@ -92,17 +95,65 @@
   	"name": "12_TERTIARY",
   	"text": "You are in an east-west corridor.  A wooden door on the eastern end hangs open.\r\n"
   }, {
-    "name": "139",
-    "text": "You are standing in a pit about two metres deep. The room is otherwise empty, and there is a corridor beyond a broken wooden door to the west."
+  	"name": "12_EAST",
+  	"text": "You follow the passage east."
   }, {
-	"name": "139_SECONDARY",
-	"text": "You are in an empty room whose only feature is a small pit. Beyond a broken wooden door a corridor leads west."
+  	"name": "12_WEST",
+  	"text": "You follow the passage west to the junction."
   }, {
-	"name": "139_WEST",
-	"text": "You step out of the room into the corridor."
+  	"name": "43",
+  	"text": "To your left, on the west face of the passage, there is a rough-cut wooden door. You listen at the door and can hear a rasping sound which may be some sort of creature snoring.\r\n"
+  }, {
+  	"name": "43_SECONDARY",
+  	"text": "You are in a North-South passage.  There is a doorway on west face.\r\n"
+  }, {
+  	"name": "43_WEST",
+  	"text": "You enter the room."
+  }, {
+  	"name": "43_NORTH",
+  	"text": "You follow the passage north."
+  }, {
+  	"name": "43_SOUTH",
+  	"text": "You follow the passage south."
+  }, {
+  	"name": "71",
+  	"text": "There is a right-hand turn to the north in the passage. Cautiously you approach a sentry post on the corner and, as you look in, you can see a strange Goblin-like creature in leather armour asleep at his post. You might be able to tiptoe past him.\r\n"
+  }, {
+  	"name": "71_EAST",
+  	"text": "You head east."
+  }, {
+  	"name": "71_NORTH",
+  	"text": "You head north."
+  }, {
+  	"name": "71_SECONDARY",
+  	"text": "You are in an L-shaped passage traveling North and East.  A Goblin-like creature snores blissfully in the corner.\r\n"
+  }, {
+  	"name": "71_TERTIARY",
+  	"text": "You are in an L-shaped passage traveling North and East.  In the corner a bloodied ORC sleeps with the dead.\r\n"
+  }, {
+  	"name": "82",
+  	"text": "The door opens to reveal a small, smelly room. In the centre of the room is a rickety wooden table on which stands a lit candle. Underneath the table is a small wooden box. Asleep on a straw mattress in the far corner of the room is a short, stocky creature with an ugly, warty face; the same sort of creature that you found asleep at the sentry post. He must be the guard for the night watch.\r\n"
+  }, {
+  	"name": "82_SECONDARY",
+  	"text": "You are in a small, smelly room. In the centre of the room is a rickety wooden table on which stands a lit candle.\r\n"
+  }, {
+  	"name": "82_TERTIARY",
+  	"text": "You are in a small, smelly room whose walls are spattered with blood and viscera. In the centre of the room is a rickety wooden table on which stands a lit candle.\r\n"
+  }, {
+  	"name": "82_EAST",
+  	"text": "You leave the room."
+  }, {
+  	"name": "139",
+  	"text": "You are standing in a pit about two metres deep. The room is otherwise empty, and there is a corridor beyond a broken wooden door to the west."
+  }, {
+  	"name": "139_SECONDARY",
+  	"text": "You are in an empty room whose only feature is a small pit. Beyond a broken wooden door a corridor leads west."
+  }, {
+  	"name": "139_WEST",
+  	"text": "You step out of the room into the corridor."
   }, {
   	"name": "orc_sentry_aggression",
-  	"text": "The ORC scrambles to his feet and turns to grasp at a rope which is probably the alarm bell. You must attack him quickly."
+  	"text": "You step with a crunch on some loose ground. The ORC's eyes flick open and he scrambles to his feet and turns to grasp at a rope which is probably the alarm bell. You must attack him quickly."
   }, {
   	"name": "orc_sentry_dying",
   	"text": "The ORC gurgles as it collapses. '~burz~'"
@@ -127,4 +178,13 @@
   }, {
   	"name": "orc_sentry_victory",
   	"text": "'~skai~', the ORC sneers."
+  }, {
+  	"name": "orc_sentry_2_aggression",
+  	"text": "You smash through the unlocked door. The source of the snoring you heard awakens startled. He jumps up and rushes at you, unarmed. With your sword you should be able to defeat him, but his sharp teeth look rather vicious."
+  }, {
+  	"name": "orc_sentry_2_aggression_2",
+  	"text": "The sleeping creature awakens startled. He jumps up and rushes at you, unarmed. With your sword you should be able to defeat him, but his sharp teeth look rather vicious."
+  }, {
+  	"name": "orc_sentry_2_aggression_3",
+  	"text": "The ORC stares in disbelief as you saunter back into the room you ran away from.  He charges."
   }]
