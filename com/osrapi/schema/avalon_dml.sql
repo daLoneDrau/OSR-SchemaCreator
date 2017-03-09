@@ -1,7 +1,9 @@
 -- ADD ACTION_TYPES
 INSERT INTO avalon.action_type(name) VALUES(
   'MOVE'), (
-  'FIGHT');
+  'FIGHT'), (
+  'BERSERK'), (
+  'DUCK');
 
 
 -- ADD ADVANTAGES
@@ -193,13 +195,32 @@ INSERT INTO avalon.vulnerability(code, harm_name, value, weight_class) VALUES(
 -- ADD ACTION_CHITS
 INSERT INTO avalon.action_chit(type, strength, magic_type, speed, fatigue_asterisk, code) VALUES(
   (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 3, 1, 'Move M3*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 3, 2, 'Move M3**'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 4, 0, 'Move M4'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 4, 1, 'Move M4*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 5, 0, 'Move M5'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 4, 2, 'Move H4**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 5, 0, 'Move H5'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 5, 1, 'Move H5*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 6, 0, 'Move H6'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 6, 1, 'Move T6*'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), NULL, 4, 0, 'Fight L4'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 3, 2, 'Fight M3**'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 4, 1, 'Fight M4*'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 5, 0, 'Fight M5'), (
-  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 4, 2, 'Fight H4**');
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 4, 1, 'Fight H4*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 4, 2, 'Fight H4**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 5, 0, 'Fight H5'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 5, 1, 'Fight H5*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 6, 0, 'Fight H6'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='BERSERK'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 4, 2, 'Berserk T4**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 4, 2, 'Fight T4**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 5, 1, 'Fight T5*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 6, 1, 'Fight T6*');
 
+
+-- ADD DEVELOPMENT_ACTIONSS
+INSERT INTO avalon.development_actions(action, quantity, code) VALUES(
 
 -- ADD IO_ITEM_DATAS
 INSERT INTO avalon.io_item_data(alerted_speed, alerted_sharpness, alerted_weight_class, attack_method, condition, count, description, fame, food_value, horse_type, internal_script, left_ring, length, light_value, max_owned, name, notoriety, price, price_damaged, price_destroyed, ring_type, stack_size, steal_value, title, unalerted_speed, unalerted_sharpness, unalerted_weight_class, weight_class, weapon_length) VALUES(
@@ -1319,12 +1340,24 @@ INSERT INTO avalon.io_npc_data_equipped_items_lookup(io_npc_data_id, key, value)
 
 
 -- ADD IO_PC_DATAS
-INSERT INTO avalon.io_pc_data(advantage1, advantage2, evaluation, gender, gold, interface_flags, name, stage_one_name, stage_two_name, stage_three_name, starting_location, vulnerability) VALUES(
-  (SELECT advantage_id FROM avalon.advantage WHERE name='AIM'), (SELECT advantage_id FROM avalon.advantage WHERE name='STAMINA'), 'The Amazon is a skilled warrior and soldier, with excellent speed and fair strength. She is deadliest against Medium and Heavy opponents. She should avoid or run from Tremendous and armored Heavy monsters, who are too dangerous for her to handle even if she obtains heavier equipment.', (SELECT gender_id FROM avalon.gender WHERE name='Female'), 0.0, 0, 'Amazon', 'Scout', 'Warrior', 'Champion', 'Inn', (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'));
+INSERT INTO avalon.io_pc_data(advantage1, advantage2, evaluation, gender, gold, interface_flags, name, stage_one_name, stage_two_name, stage_three_name, vulnerability) VALUES(
+  (SELECT advantage_id FROM avalon.advantage WHERE name='AIM'), (SELECT advantage_id FROM avalon.advantage WHERE name='STAMINA'), 'The Amazon is a skilled warrior and soldier, with excellent speed and fair strength. She is deadliest against Medium and Heavy opponents. She should avoid or run from Tremendous and armored Heavy monsters, who are too dangerous for her to handle even if she obtains heavier equipment.', (SELECT gender_id FROM avalon.gender WHERE name='Female'), 0.0, 0, 'Amazon', 'Scout', 'Warrior', 'Champion', (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M')), (
+  (SELECT advantage_id FROM avalon.advantage WHERE name='ROBUST'), (SELECT advantage_id FROM avalon.advantage WHERE name='BERSERK'), 'The Berserker is a powerful fighting man with the strength to dispatch the largest monsters and humans and the speed to outmaneuver them. He is not fast enough to escape faster opponents, so against them he must rely on going berserk to survive and on his robust health to help him recover from his wounds.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 0.0, 0, 'Berserker', 'Youth', 'Raider', 'Viking', (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H')), (
+  (SELECT advantage_id FROM avalon.advantage WHERE name='AIM'), (SELECT advantage_id FROM avalon.advantage WHERE name='FEAR'), 'The Black Knight is a deadly and feared veteran of many battlefields. He is at his best against humans. He is too weak to dispatch Tremendous monsters until he gets a heavier weapon.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 0.0, 0, 'Black Knight', 'Spearman', 'Mercenary', 'Heavy Footman', (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M')), (
+  (SELECT advantage_id FROM avalon.advantage WHERE name='AIM'), (SELECT advantage_id FROM avalon.advantage WHERE name='REPUTATION'), 'The Captain is a renowned hero of many wars. His strength, weapon and armor make him dangerous when facing Medium or Heavy opponents, but he needs heavier equipment to deal with heavily armored foes. He is not really strong enough to face Tremendous foes.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 0.0, 0, 'Captain', 'Spearman', 'Soldier', 'Lieutenant', (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'));
 
 -- ADD io_pc_data's RELATED allys
+INSERT INTO avalon.io_pc_data_ally_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT group_id FROM avalon.group WHERE name='COMPANY'));
 
 -- ADD io_pc_data's RELATED enemys
+INSERT INTO avalon.io_pc_data_enemy_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT group_id FROM avalon.group WHERE name='GUARD'));
+INSERT INTO avalon.io_pc_data_enemy_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT group_id FROM avalon.group WHERE name='BASHKARS'));
 
 -- ADD io_pc_data's RELATED friendlys
 INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
@@ -1336,50 +1369,182 @@ INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
 INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
   (SELECT group_id FROM avalon.group WHERE name='SHAMAN'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT group_id FROM avalon.group WHERE name='ROGUES'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT group_id FROM avalon.group WHERE name='LANCERS'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT group_id FROM avalon.group WHERE name='SHAMAN'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT group_id FROM avalon.group WHERE name='SOLDIERS'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT group_id FROM avalon.group WHERE name='CRONE'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT group_id FROM avalon.group WHERE name='PATROL'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT group_id FROM avalon.group WHERE name='SOLDIERS'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT group_id FROM avalon.group WHERE name='GUARD'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT group_id FROM avalon.group WHERE name='SCHOLAR'));
 
 -- ADD io_pc_data's RELATED stage_one_actionss
-INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, action_chit_id) VALUES (
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
-  (SELECT action_chit_id FROM avalon.action_chit WHERE code='Move M4'));
-INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, action_chit_id) VALUES (
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M4'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
-  (SELECT action_chit_id FROM avalon.action_chit WHERE code='Move M3*'));
-INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, action_chit_id) VALUES (
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M3*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
-  (SELECT action_chit_id FROM avalon.action_chit WHERE code='Fight L4'));
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight L4'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move H6'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move H5*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H4*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M5'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move H5*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H5*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M4*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M5'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H5*'));
 
 -- ADD io_pc_data's RELATED stage_two_actionss
-INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, action_chit_id) VALUES (
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
-  (SELECT action_chit_id FROM avalon.action_chit WHERE code='Move M4'));
-INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, action_chit_id) VALUES (
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M4'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
-  (SELECT action_chit_id FROM avalon.action_chit WHERE code='Fight M5'));
-INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, action_chit_id) VALUES (
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M5'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
-  (SELECT action_chit_id FROM avalon.action_chit WHERE code='Fight M4*'));
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M4*'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move T6*'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move H4**'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H5'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move H6'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M4*'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H6'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M5'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M3**'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M3**'));
 
 -- ADD io_pc_data's RELATED stage_three_actionss
-INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, action_chit_id) VALUES (
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
-  (SELECT action_chit_id FROM avalon.action_chit WHERE code='Move M3*'));
-INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, action_chit_id) VALUES (
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M3*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
-  (SELECT action_chit_id FROM avalon.action_chit WHERE code='Fight M3**'));
-INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, action_chit_id) VALUES (
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M3**'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
-  (SELECT action_chit_id FROM avalon.action_chit WHERE code='Fight H4**'));
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H4**'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move H4**'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight T6*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight T4**'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='2 Fight M4*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M5'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M4*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H5*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M4*'));
 
 -- ADD io_pc_data's RELATED stage_four_actionss
-INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, action_chit_id) VALUES (
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
-  (SELECT action_chit_id FROM avalon.action_chit WHERE code='Fight M4*'));
-INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, action_chit_id) VALUES (
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M4*'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
-  (SELECT action_chit_id FROM avalon.action_chit WHERE code='Fight M3**'));
-INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, action_chit_id) VALUES (
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M3**'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
-  (SELECT action_chit_id FROM avalon.action_chit WHERE code='Move M3*'));
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M3*'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Berserk T4**'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight T5*'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight T4**'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move H4**'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H4**'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M3**'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M4*'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H6'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M4*'));
 
 -- ADD io_pc_data's RELATED unfriendlys
 INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
@@ -1388,12 +1553,52 @@ INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES 
 INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
   (SELECT group_id FROM avalon.group WHERE name='BASHKARS'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT group_id FROM avalon.group WHERE name='PATROL'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  (SELECT group_id FROM avalon.group WHERE name='GUARD'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  (SELECT group_id FROM avalon.group WHERE name='LANCERS'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  (SELECT group_id FROM avalon.group WHERE name='WOODFOLK'));
 
 -- ADD io_pc_data's RELATED stage_one_equipped_itemss
 INSERT INTO avalon.io_pc_data_stage_one_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
   'EQUIP_SLOT_WEAPON',
   'Light Bow');
+INSERT INTO avalon.io_pc_data_stage_one_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  'EQUIP_SLOT_WEAPON',
+  'Axe');
+INSERT INTO avalon.io_pc_data_stage_one_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_one_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_WEAPON',
+  'Spear');
+INSERT INTO avalon.io_pc_data_stage_one_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_one_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_TORSO',
+  'Breastplate');
+INSERT INTO avalon.io_pc_data_stage_one_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  'EQUIP_SLOT_WEAPON',
+  'Spear');
+INSERT INTO avalon.io_pc_data_stage_one_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  'EQUIP_SLOT_SHIELD',
+  'Shield');
 
 -- ADD io_pc_data's RELATED stage_two_equipped_itemss
 INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
@@ -1410,6 +1615,46 @@ INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key
   'Breastplate');
 INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
+  'EQUIP_SLOT_SHIELD',
+  'Shield');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  'EQUIP_SLOT_WEAPON',
+  'Axe');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  'EQUIP_SLOT_SHIELD',
+  'Shield');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_WEAPON',
+  'Crossbow');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_TORSO',
+  'Breastplate');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  'EQUIP_SLOT_WEAPON',
+  'Short Sword');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  'EQUIP_SLOT_TORSO',
+  'Breastplate');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   'EQUIP_SLOT_SHIELD',
   'Shield');
 
@@ -1430,6 +1675,54 @@ INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, k
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
   'EQUIP_SLOT_SHIELD',
   'Shield');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  'EQUIP_SLOT_WEAPON',
+  'Axe');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  'EQUIP_SLOT_TORSO',
+  'Breastplate');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  'EQUIP_SLOT_SHIELD',
+  'Shield');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_WEAPON',
+  'Mace');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_TORSO',
+  'Breastplate');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_SHIELD',
+  'Shield');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  'EQUIP_SLOT_WEAPON',
+  'Short Sword');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  'EQUIP_SLOT_TORSO',
+  'Breastplate');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  'EQUIP_SLOT_SHIELD',
+  'Shield');
 
 -- ADD io_pc_data's RELATED stage_four_equipped_itemss
 INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
@@ -1446,6 +1739,42 @@ INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, ke
   'Breastplate');
 INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Amazon'),
+  'EQUIP_SLOT_SHIELD',
+  'Shield');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  'EQUIP_SLOT_WEAPON',
+  'Great Axe');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Berserker'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_WEAPON',
+  'Mace');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_ARMOR',
+  'Suit of Armor');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
+  'EQUIP_SLOT_SHIELD',
+  'Shield');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  'EQUIP_SLOT_WEAPON',
+  'Short Sword');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
+  'EQUIP_SLOT_TORSO',
+  'Breastplate');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   'EQUIP_SLOT_SHIELD',
   'Shield');
 

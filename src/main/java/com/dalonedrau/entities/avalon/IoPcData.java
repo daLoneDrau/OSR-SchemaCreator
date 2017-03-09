@@ -38,7 +38,7 @@ public final class IoPcData {
     @VarChar(length = 40)
     private String name;
     @JsonProperty("stage_one_actions")
-    private List<ActionChit> stageOneActions;
+    private List<DevelopmentActions> stageOneActions;
     /**
      * the reference ids of all items equipped by the {@link IoPcData}, indexed
      * by equipment slot.
@@ -53,7 +53,7 @@ public final class IoPcData {
     @JsonProperty("stage_one_name")
     private String stageOneName;
     @JsonProperty("stage_two_actions")
-    private List<ActionChit> stageTwoActions;
+    private List<DevelopmentActions> stageTwoActions;
     /**
      * the reference ids of all items equipped by the {@link IoPcData}, indexed
      * by equipment slot.
@@ -68,7 +68,7 @@ public final class IoPcData {
     @JsonProperty("stage_two_name")
     private String stageTwoName;
     @JsonProperty("stage_three_actions")
-    private List<ActionChit> stageThreeActions;
+    private List<DevelopmentActions> stageThreeActions;
     /**
      * the reference ids of all items equipped by the {@link IoPcData}, indexed
      * by equipment slot.
@@ -83,7 +83,7 @@ public final class IoPcData {
     @VarChar(length = 40)
     private String stageThreeName;
     @JsonProperty("stage_four_actions")
-    private List<ActionChit> stageFourActions;
+    private List<DevelopmentActions> stageFourActions;
     /**
      * the reference ids of all items equipped by the {@link IoPcData}, indexed
      * by equipment slot.
@@ -96,7 +96,7 @@ public final class IoPcData {
     private Map<String, String> stageFourEquippedItems;
     @JsonProperty("starting_location")
     @VarChar(length=20)
-    String startingLocation;
+    List<String> startingLocation;
     @CanBeNull
     List<Group> unfriendly;
     /** the npc's vulnerability. */

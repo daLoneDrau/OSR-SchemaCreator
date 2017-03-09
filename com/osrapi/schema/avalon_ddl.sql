@@ -363,6 +363,27 @@ CREATE TABLE avalon.action_chit
   CONSTRAINT action_chit_code_un UNIQUE (code)
 );
 
+-- Table: avalon.development_actions
+-- TODO add table description
+
+DROP TABLE IF EXISTS avalon.development_actions CASCADE;
+
+CREATE SEQUENCE avalon.development_actions_id_seq MINVALUE 0;
+
+CREATE TABLE avalon.development_actions
+(
+  development_actions_id smallint DEFAULT nextval('avalon.development_actions_id_seq') NOT NULL,
+  action smallint NOT NULL,
+  quantity smallint NOT NULL,
+  code character varying(20) NOT NULL,
+  CONSTRAINT development_actions_development_actions_id_pk PRIMARY KEY (development_actions_id),
+  CONSTRAINT development_actions_action_quantity_un UNIQUE (action, quantity),
+  CONSTRAINT development_actions_action_fk FOREIGN KEY (action)
+    REFERENCES avalon.action_chit (action_chit_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT development_actions_code_un UNIQUE (code)
+);
+
 -- Table: avalon.io_item_data
 -- TODO add table description
 
@@ -633,7 +654,6 @@ CREATE TABLE avalon.io_pc_data
   stage_one_name character varying(40) NOT NULL,
   stage_two_name character varying(40) NOT NULL,
   stage_three_name character varying(40) NOT NULL,
-  starting_location character varying(20) NOT NULL,
   vulnerability smallint,
   CONSTRAINT io_pc_data_io_pc_data_id_pk PRIMARY KEY (io_pc_data_id),
   CONSTRAINT io_pc_data_advantage1_fk FOREIGN KEY (advantage1)
@@ -712,13 +732,13 @@ DROP TABLE IF EXISTS avalon.io_pc_data_stage_one_actions_lookup CASCADE;
 CREATE TABLE avalon.io_pc_data_stage_one_actions_lookup
 (
   io_pc_data_id smallint NOT NULL,
-  action_chit_id smallint NOT NULL,
-  CONSTRAINT io_pc_data_stage_one_actions_lookup_io_pc_data_id_action_chit_id_pk PRIMARY KEY (io_pc_data_id, action_chit_id),
+  development_actions_id smallint NOT NULL,
+  CONSTRAINT io_pc_data_stage_one_actions_lookup_io_pc_data_id_development_actions_id_pk PRIMARY KEY (io_pc_data_id, development_actions_id),
   CONSTRAINT io_pc_data_stage_one_actions_lookup_io_pc_data_id_fk FOREIGN KEY (io_pc_data_id)
     REFERENCES avalon.io_pc_data (io_pc_data_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT io_pc_data_stage_one_actions_lookup_action_chit_id_fk FOREIGN KEY (action_chit_id)
-    REFERENCES avalon.action_chit (action_chit_id) MATCH SIMPLE
+  CONSTRAINT io_pc_data_stage_one_actions_lookup_development_actions_id_fk FOREIGN KEY (development_actions_id)
+    REFERENCES avalon.development_actions (development_actions_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
@@ -730,13 +750,13 @@ DROP TABLE IF EXISTS avalon.io_pc_data_stage_two_actions_lookup CASCADE;
 CREATE TABLE avalon.io_pc_data_stage_two_actions_lookup
 (
   io_pc_data_id smallint NOT NULL,
-  action_chit_id smallint NOT NULL,
-  CONSTRAINT io_pc_data_stage_two_actions_lookup_io_pc_data_id_action_chit_id_pk PRIMARY KEY (io_pc_data_id, action_chit_id),
+  development_actions_id smallint NOT NULL,
+  CONSTRAINT io_pc_data_stage_two_actions_lookup_io_pc_data_id_development_actions_id_pk PRIMARY KEY (io_pc_data_id, development_actions_id),
   CONSTRAINT io_pc_data_stage_two_actions_lookup_io_pc_data_id_fk FOREIGN KEY (io_pc_data_id)
     REFERENCES avalon.io_pc_data (io_pc_data_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT io_pc_data_stage_two_actions_lookup_action_chit_id_fk FOREIGN KEY (action_chit_id)
-    REFERENCES avalon.action_chit (action_chit_id) MATCH SIMPLE
+  CONSTRAINT io_pc_data_stage_two_actions_lookup_development_actions_id_fk FOREIGN KEY (development_actions_id)
+    REFERENCES avalon.development_actions (development_actions_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
@@ -748,13 +768,13 @@ DROP TABLE IF EXISTS avalon.io_pc_data_stage_three_actions_lookup CASCADE;
 CREATE TABLE avalon.io_pc_data_stage_three_actions_lookup
 (
   io_pc_data_id smallint NOT NULL,
-  action_chit_id smallint NOT NULL,
-  CONSTRAINT io_pc_data_stage_three_actions_lookup_io_pc_data_id_action_chit_id_pk PRIMARY KEY (io_pc_data_id, action_chit_id),
+  development_actions_id smallint NOT NULL,
+  CONSTRAINT io_pc_data_stage_three_actions_lookup_io_pc_data_id_development_actions_id_pk PRIMARY KEY (io_pc_data_id, development_actions_id),
   CONSTRAINT io_pc_data_stage_three_actions_lookup_io_pc_data_id_fk FOREIGN KEY (io_pc_data_id)
     REFERENCES avalon.io_pc_data (io_pc_data_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT io_pc_data_stage_three_actions_lookup_action_chit_id_fk FOREIGN KEY (action_chit_id)
-    REFERENCES avalon.action_chit (action_chit_id) MATCH SIMPLE
+  CONSTRAINT io_pc_data_stage_three_actions_lookup_development_actions_id_fk FOREIGN KEY (development_actions_id)
+    REFERENCES avalon.development_actions (development_actions_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
@@ -766,13 +786,28 @@ DROP TABLE IF EXISTS avalon.io_pc_data_stage_four_actions_lookup CASCADE;
 CREATE TABLE avalon.io_pc_data_stage_four_actions_lookup
 (
   io_pc_data_id smallint NOT NULL,
-  action_chit_id smallint NOT NULL,
-  CONSTRAINT io_pc_data_stage_four_actions_lookup_io_pc_data_id_action_chit_id_pk PRIMARY KEY (io_pc_data_id, action_chit_id),
+  development_actions_id smallint NOT NULL,
+  CONSTRAINT io_pc_data_stage_four_actions_lookup_io_pc_data_id_development_actions_id_pk PRIMARY KEY (io_pc_data_id, development_actions_id),
   CONSTRAINT io_pc_data_stage_four_actions_lookup_io_pc_data_id_fk FOREIGN KEY (io_pc_data_id)
     REFERENCES avalon.io_pc_data (io_pc_data_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT io_pc_data_stage_four_actions_lookup_action_chit_id_fk FOREIGN KEY (action_chit_id)
-    REFERENCES avalon.action_chit (action_chit_id) MATCH SIMPLE
+  CONSTRAINT io_pc_data_stage_four_actions_lookup_development_actions_id_fk FOREIGN KEY (development_actions_id)
+    REFERENCES avalon.development_actions (development_actions_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+-- Table: avalon.io_pc_data_starting_location_lookup
+-- lookup table for io_pc_datas and their associated startingLocation.
+
+DROP TABLE IF EXISTS avalon.io_pc_data_starting_location_lookup CASCADE;
+
+CREATE TABLE avalon.io_pc_data_starting_location_lookup
+(
+  io_pc_data_id smallint NOT NULL,
+  starting_location character varying(20) NOT NULL,
+  CONSTRAINT io_pc_data_starting_location_lookup_io_pc_data_id_starting_location_pk PRIMARY KEY (io_pc_data_id, starting_location),
+  CONSTRAINT io_pc_data_starting_location_lookup_io_pc_data_id_fk FOREIGN KEY (io_pc_data_id)
+    REFERENCES avalon.io_pc_data (io_pc_data_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 

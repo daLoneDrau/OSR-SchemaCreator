@@ -15,6 +15,16 @@
   	"strength": {
   		"code": "M"
   	},
+  	"speed": 3,
+  	"fatigue_asterisk": 2,
+  	"code": "Move M3**"
+  }, {
+  	"type": {
+  		"name": "MOVE"
+  	},
+  	"strength": {
+  		"code": "M"
+  	},
   	"speed": 4,
   	"code": "Move M4"
   }, {
