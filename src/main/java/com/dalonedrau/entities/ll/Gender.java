@@ -9,4 +9,19 @@ public class Gender {
     @Unique
     @VarChar(length = 10)
     private String name;
+    @Unique
+    @VarChar(length = 3)
+    private String subjective;
+    @Unique
+    @VarChar(length = 3)
+    private String objective;
+    @Unique
+    @VarChar(length = 3)
+    private String dependentPossessive;
+    @Unique
+    @VarChar(length = 4)
+    private String independentPossessive;
+    @Unique
+    @VarChar(length = 3)
+    private String reflexive;
 }
