@@ -28,6 +28,8 @@ public final class IoPcData {
     List<Group> friendly;
     /** the {@link IoPcData}'s gender. */
     private Gender gender;
+    @VarChar(length = 40)
+    private String glyph;
     /** the character's gold. */
     @CanBeNull
     private float gold;
@@ -52,6 +54,9 @@ public final class IoPcData {
     @VarChar(length = 40)
     @JsonProperty("stage_one_name")
     private String stageOneName;
+    @CanBeNull
+    @JsonProperty("stage_one_spells")
+    private int stageOneSpells;
     @JsonProperty("stage_two_actions")
     private List<DevelopmentActions> stageTwoActions;
     /**
@@ -67,6 +72,9 @@ public final class IoPcData {
     @VarChar(length = 40)
     @JsonProperty("stage_two_name")
     private String stageTwoName;
+    @CanBeNull
+    @JsonProperty("stage_two_spells")
+    private int stageTwoSpells;
     @JsonProperty("stage_three_actions")
     private List<DevelopmentActions> stageThreeActions;
     /**
@@ -82,6 +90,9 @@ public final class IoPcData {
     @JsonProperty("stage_three_name")
     @VarChar(length = 40)
     private String stageThreeName;
+    @CanBeNull
+    @JsonProperty("stage_three_spells")
+    private int stageThreeSpells;
     @JsonProperty("stage_four_actions")
     private List<DevelopmentActions> stageFourActions;
     /**
@@ -94,6 +105,9 @@ public final class IoPcData {
             valueColumnType = "character varying(40)",
             valueTargetClass = "IoItemData", valueField = "name")
     private Map<String, String> stageFourEquippedItems;
+    @CanBeNull
+    @JsonProperty("stage_four_spells")
+    private int stageFourSpells;
     @JsonProperty("starting_location")
     @VarChar(length=20)
     List<String> startingLocation;

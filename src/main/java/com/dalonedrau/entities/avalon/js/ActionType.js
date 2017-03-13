@@ -6,4 +6,6 @@
     "name": "BERSERK"
   }, {
     "name": "DUCK"
+  }, {
+    "name": "MAGIC"
   }]

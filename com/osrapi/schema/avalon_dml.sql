@@ -3,7 +3,8 @@ INSERT INTO avalon.action_type(name) VALUES(
   'MOVE'), (
   'FIGHT'), (
   'BERSERK'), (
-  'DUCK');
+  'DUCK'), (
+  'MAGIC');
 
 
 -- ADD ADVANTAGES
@@ -194,6 +195,10 @@ INSERT INTO avalon.vulnerability(code, harm_name, value, weight_class) VALUES(
 
 -- ADD ACTION_CHITS
 INSERT INTO avalon.action_chit(type, strength, magic_type, speed, fatigue_asterisk, code) VALUES(
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), NULL, 2, 1, 'Move L2*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), NULL, 2, 2, 'Move L2**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), NULL, 3, 1, 'Move L3*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), NULL, 4, 0, 'Move L4'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 3, 1, 'Move M3*'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 3, 2, 'Move M3**'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 4, 0, 'Move M4'), (
@@ -203,9 +208,16 @@ INSERT INTO avalon.action_chit(type, strength, magic_type, speed, fatigue_asteri
   (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 5, 0, 'Move H5'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 5, 1, 'Move H5*'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 6, 0, 'Move H6'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='DUCK'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 3, 1, 'Duck T3*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 5, 2, 'Move T5**'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='MOVE'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 6, 1, 'Move T6*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), NULL, 2, 2, 'Fight L2**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), NULL, 3, 1, 'Fight L3*'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L'), NULL, 4, 0, 'Fight L4'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 2, 2, 'Fight M2**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 3, 1, 'Fight M3*'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 3, 2, 'Fight M3**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 4, 0, 'Fight M4'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 4, 1, 'Fight M4*'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'), NULL, 5, 0, 'Fight M5'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H'), NULL, 4, 1, 'Fight H4*'), (
@@ -216,7 +228,24 @@ INSERT INTO avalon.action_chit(type, strength, magic_type, speed, fatigue_asteri
   (SELECT action_type_id FROM avalon.action_type WHERE name='BERSERK'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 4, 2, 'Berserk T4**'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 4, 2, 'Fight T4**'), (
   (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 5, 1, 'Fight T5*'), (
-  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 6, 1, 'Fight T6*');
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 5, 2, 'Fight T5**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='FIGHT'), (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='T'), NULL, 6, 1, 'Fight T6*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 4, 1, 'Magic I4*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 6, 1, 'Magic I6*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 2, 2, 'Magic II2**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 3, 1, 'Magic II3*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 2, 1, 'Magic III2*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 3, 1, 'Magic III3*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 4, 1, 'Magic III4*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 3, 1, 'Magic IV3*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 4, 2, 'Magic V4**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 4, 1, 'Magic VI4*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 3, 1, 'Magic VII3*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 4, 1, 'Magic VII4*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 4, 2, 'Magic VII4**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 2, 2, 'Magic VIII2**'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 3, 1, 'Magic VIII3*'), (
+  (SELECT action_type_id FROM avalon.action_type WHERE name='MAGIC'), NULL, NULL, 4, 1, 'Magic VIII4*');
 
 
 -- ADD DEVELOPMENT_ACTIONSS
@@ -1340,16 +1369,30 @@ INSERT INTO avalon.io_npc_data_equipped_items_lookup(io_npc_data_id, key, value)
 
 
 -- ADD IO_PC_DATAS
-INSERT INTO avalon.io_pc_data(advantage1, advantage2, evaluation, gender, gold, interface_flags, name, stage_one_name, stage_two_name, stage_three_name, vulnerability) VALUES(
-  (SELECT advantage_id FROM avalon.advantage WHERE name='AIM'), (SELECT advantage_id FROM avalon.advantage WHERE name='STAMINA'), 'The Amazon is a skilled warrior and soldier, with excellent speed and fair strength. She is deadliest against Medium and Heavy opponents. She should avoid or run from Tremendous and armored Heavy monsters, who are too dangerous for her to handle even if she obtains heavier equipment.', (SELECT gender_id FROM avalon.gender WHERE name='Female'), 0.0, 0, 'Amazon', 'Scout', 'Warrior', 'Champion', (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M')), (
-  (SELECT advantage_id FROM avalon.advantage WHERE name='ROBUST'), (SELECT advantage_id FROM avalon.advantage WHERE name='BERSERK'), 'The Berserker is a powerful fighting man with the strength to dispatch the largest monsters and humans and the speed to outmaneuver them. He is not fast enough to escape faster opponents, so against them he must rely on going berserk to survive and on his robust health to help him recover from his wounds.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 0.0, 0, 'Berserker', 'Youth', 'Raider', 'Viking', (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H')), (
-  (SELECT advantage_id FROM avalon.advantage WHERE name='AIM'), (SELECT advantage_id FROM avalon.advantage WHERE name='FEAR'), 'The Black Knight is a deadly and feared veteran of many battlefields. He is at his best against humans. He is too weak to dispatch Tremendous monsters until he gets a heavier weapon.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 0.0, 0, 'Black Knight', 'Spearman', 'Mercenary', 'Heavy Footman', (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M')), (
-  (SELECT advantage_id FROM avalon.advantage WHERE name='AIM'), (SELECT advantage_id FROM avalon.advantage WHERE name='REPUTATION'), 'The Captain is a renowned hero of many wars. His strength, weapon and armor make him dangerous when facing Medium or Heavy opponents, but he needs heavier equipment to deal with heavily armored foes. He is not really strong enough to face Tremendous foes.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 0.0, 0, 'Captain', 'Spearman', 'Soldier', 'Lieutenant', (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'));
+INSERT INTO avalon.io_pc_data(advantage1, advantage2, evaluation, gender, glyph, gold, interface_flags, name, stage_one_name, stage_one_spells, stage_two_name, stage_two_spells, stage_three_name, stage_three_spells, stage_four_spells, vulnerability) VALUES(
+  (SELECT advantage_id FROM avalon.advantage WHERE name='AIM'), (SELECT advantage_id FROM avalon.advantage WHERE name='STAMINA'), 'The Amazon is a skilled warrior and soldier, with excellent speed and fair strength. She is deadliest against Medium and Heavy opponents. She should avoid or run from Tremendous and armored Heavy monsters, who are too dangerous for her to handle even if she obtains heavier equipment.', (SELECT gender_id FROM avalon.gender WHERE name='Female'), 'icon-swordwoman', 0.0, 0, 'Amazon', 'Scout', 0, 'Warrior', 0, 'Champion', 0, 0, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M')), (
+  (SELECT advantage_id FROM avalon.advantage WHERE name='ROBUST'), (SELECT advantage_id FROM avalon.advantage WHERE name='BERSERK'), 'The Berserker is a powerful fighting man with the strength to dispatch the largest monsters and humans and the speed to outmaneuver them. He is not fast enough to escape faster opponents, so against them he must rely on going berserk to survive and on his robust health to help him recover from his wounds.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 'icon-viking-head', 0.0, 0, 'Berserker', 'Youth', 0, 'Raider', 0, 'Viking', 0, 0, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='H')), (
+  (SELECT advantage_id FROM avalon.advantage WHERE name='AIM'), (SELECT advantage_id FROM avalon.advantage WHERE name='FEAR'), 'The Black Knight is a deadly and feared veteran of many battlefields. He is at his best against humans. He is too weak to dispatch Tremendous monsters until he gets a heavier weapon.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 'icon-black-knight-helm', 0.0, 0, 'Black Knight', 'Spearman', 0, 'Mercenary', 0, 'Heavy Footman', 0, 0, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M')), (
+  (SELECT advantage_id FROM avalon.advantage WHERE name='AIM'), (SELECT advantage_id FROM avalon.advantage WHERE name='REPUTATION'), 'The Captain is a renowned hero of many wars. His strength, weapon and armor make him dangerous when facing Medium or Heavy opponents, but he needs heavier equipment to deal with heavily armored foes. He is not really strong enough to face Tremendous foes.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 'icon-swordman', 0.0, 0, 'Captain', 'Spearman', 0, 'Soldier', 0, 'Lieutenant', 0, 0, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M')), (
+  (SELECT advantage_id FROM avalon.advantage WHERE name='CONCEALMENT'), (SELECT advantage_id FROM avalon.advantage WHERE name='PEACE WITH NATURE'), 'The Druid is an elusive magician at peace with nature. Since he cannot deal with most opponents even if he gets a weapon, he must operate alone, avoiding and hiding from monsters and running from them at need. He needs to win without combat, if possible.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 'icon-holy-oak', 0.0, 0, 'Druid', 'Herbalist', 0, 'Animalist', 0, 'Soothsayer', 1, 2, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L')), (
+  (SELECT advantage_id FROM avalon.advantage WHERE name='SHORT LEGS'), (SELECT advantage_id FROM avalon.advantage WHERE name='CAVE KNOWLEDGE'), 'The Dwarf is a slow and powerful fighter who is at his best in the caves, where he is respected as a master of searching, hiding and fighting the monsters that live there. Outside of the caves he is slow and clumsy. In battle, his ability to duck allows him to swiftly escape enemy blows and out-maneuver the largest and slowest denizens. He must be careful to avoid the fast opponents who live outside of the caves, however, and he is extremely vulnerable to attacks made by other characters, who can always Smash him as he ducks. Since he relies heavily on the ducking maneuver, his helmet is a critical part of his defenses.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 'icon-dwarf-face', 0.0, 0, 'Dwarf', 'Youngster', 0, 'Smith', 0, 'Warrior', 0, 0, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M')), (
+  (SELECT advantage_id FROM avalon.advantage WHERE name='ELUSIVENESS'), (SELECT advantage_id FROM avalon.advantage WHERE name='ARCHER'), 'The Elf is an elusive and graceful warrior and magician. With his Light bow, he is a deadly match for anything less than an armored Heavy foe, and with a Medium bow he can face any opponent. He has the speed to escape numerous opponents.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 'icon-woman-elf-face', 0.0, 0, 'Elf', 'Stripling', 1, 'Faerie', 2, 'Hunter', 2, 2, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L')), (
+  (SELECT advantage_id FROM avalon.advantage WHERE name='MAGICAL PARAPHERNALIA'), (SELECT advantage_id FROM avalon.advantage WHERE name='KNOWLEDGE'), 'The Magician knows a little about a lot of different types of magic. He can cast nearly any spell – if he can obtain the right magic color. He must make the best use of the magic color he finds in the game, for he lacks the paired magic chits necessary to enchant tiles. Obviously, he values enchanted cards above all else. When he picks his starting spells, he must be very careful to pick spells that he can cast with the chits he has available.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 'icon-magic-swirl', 0.0, 0, 'Magician', 'Student', 0, 'Trickster', 1, 'Illusionist', 2, 3, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='L')), (
+  (SELECT advantage_id FROM avalon.advantage WHERE name='HEAVENLY PROTECTION'), (SELECT advantage_id FROM avalon.advantage WHERE name='LEARNIN'), 'The Pilgrim is an adventurous cleric who must rely on his alliance with the Order and his ability to swiftly dispatch Medium opponents. With better weapons and armor, he can defeat heavier opponents, but he is very slow and must choose his battles cautiously. He can wield powerful White magic, and his choice of a starting spell is critical in determining his strategy.', (SELECT gender_id FROM avalon.gender WHERE name='Male'), 'icon-monk-face', 0.0, 0, 'Pilgrim', 'Acolyte', 0, 'Guardian', 1, 'Missionary', 1, 1, (SELECT vulnerability_id FROM avalon.vulnerability WHERE code='M'));
 
 -- ADD io_pc_data's RELATED allys
 INSERT INTO avalon.io_pc_data_ally_lookup(io_pc_data_id, group_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Black Knight'),
   (SELECT group_id FROM avalon.group WHERE name='COMPANY'));
+INSERT INTO avalon.io_pc_data_ally_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT group_id FROM avalon.group WHERE name='BASHKARS'));
+INSERT INTO avalon.io_pc_data_ally_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT group_id FROM avalon.group WHERE name='WOODFOLK'));
+INSERT INTO avalon.io_pc_data_ally_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT group_id FROM avalon.group WHERE name='ORDER'));
 
 -- ADD io_pc_data's RELATED enemys
 INSERT INTO avalon.io_pc_data_enemy_lookup(io_pc_data_id, group_id) VALUES (
@@ -1358,6 +1401,12 @@ INSERT INTO avalon.io_pc_data_enemy_lookup(io_pc_data_id, group_id) VALUES (
 INSERT INTO avalon.io_pc_data_enemy_lookup(io_pc_data_id, group_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   (SELECT group_id FROM avalon.group WHERE name='BASHKARS'));
+INSERT INTO avalon.io_pc_data_enemy_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT group_id FROM avalon.group WHERE name='WOODFOLK'));
+INSERT INTO avalon.io_pc_data_enemy_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT group_id FROM avalon.group WHERE name='LANCERS'));
 
 -- ADD io_pc_data's RELATED friendlys
 INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
@@ -1396,6 +1445,27 @@ INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
 INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   (SELECT group_id FROM avalon.group WHERE name='SCHOLAR'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT group_id FROM avalon.group WHERE name='LANCERS'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT group_id FROM avalon.group WHERE name='COMPANY'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT group_id FROM avalon.group WHERE name='GUARD'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT group_id FROM avalon.group WHERE name='SCHOLAR'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT group_id FROM avalon.group WHERE name='BASHKARS'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT group_id FROM avalon.group WHERE name='COMPANY'));
+INSERT INTO avalon.io_pc_data_friendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT group_id FROM avalon.group WHERE name='ROGUES'));
 
 -- ADD io_pc_data's RELATED stage_one_actionss
 INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
@@ -1434,6 +1504,51 @@ INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, developmen
 INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H5*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move L3*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move L4'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight L3*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Duck T3*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move H6'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H5*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic III3*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic III4*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic VII4*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move L3*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move L4'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight L3*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M4*'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M5'));
+INSERT INTO avalon.io_pc_data_stage_one_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M3*'));
 
 -- ADD io_pc_data's RELATED stage_two_actionss
 INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
@@ -1472,6 +1587,51 @@ INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, developmen
 INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M3**'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight L4'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move L2**'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight L2**'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move T6*'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H6'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H4**'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic III2*'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic III3*'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic VII3*'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M4'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight L4'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic II3*'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move H5*'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M4'));
+INSERT INTO avalon.io_pc_data_stage_two_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M2**'));
 
 -- ADD io_pc_data's RELATED stage_three_actionss
 INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
@@ -1507,6 +1667,51 @@ INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, developm
 INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M4*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic II3*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic VIII4*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic VIII3*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move H5*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight T6*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H4**'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move L2*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move L3*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight L3*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic III3*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic VII4**'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic VIII4*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M3*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic I6*'));
+INSERT INTO avalon.io_pc_data_stage_three_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic VII3*'));
 
 -- ADD io_pc_data's RELATED stage_four_actionss
 INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
@@ -1545,6 +1750,48 @@ INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, developme
 INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M4*'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic II2**'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic VIII3*'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic VIII2**'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move T5**'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='2 Fight T5**'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move M4'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M3*'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight M4'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic IV3*'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic V4**'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic VI4*'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Move H6'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Fight H4*'));
+INSERT INTO avalon.io_pc_data_stage_four_actions_lookup(io_pc_data_id, development_actions_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT development_actions_id FROM avalon.development_actions WHERE code='1 Magic I4*'));
 
 -- ADD io_pc_data's RELATED unfriendlys
 INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
@@ -1565,6 +1812,42 @@ INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES 
 INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   (SELECT group_id FROM avalon.group WHERE name='WOODFOLK'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT group_id FROM avalon.group WHERE name='ORDER'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Druid'),
+  (SELECT group_id FROM avalon.group WHERE name='SHAMAN'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT group_id FROM avalon.group WHERE name='WOODFOLK'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  (SELECT group_id FROM avalon.group WHERE name='BASHKARS'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT group_id FROM avalon.group WHERE name='ORDER'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  (SELECT group_id FROM avalon.group WHERE name='SCHOLAR'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT group_id FROM avalon.group WHERE name='PATROL'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT group_id FROM avalon.group WHERE name='SOLDIERS'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Magician'),
+  (SELECT group_id FROM avalon.group WHERE name='CRONE'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT group_id FROM avalon.group WHERE name='COMPANY'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT group_id FROM avalon.group WHERE name='BASHKARS'));
+INSERT INTO avalon.io_pc_data_unfriendly_lookup(io_pc_data_id, group_id) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  (SELECT group_id FROM avalon.group WHERE name='CRONE'));
 
 -- ADD io_pc_data's RELATED stage_one_equipped_itemss
 INSERT INTO avalon.io_pc_data_stage_one_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
@@ -1599,6 +1882,14 @@ INSERT INTO avalon.io_pc_data_stage_one_equipped_items_lookup(io_pc_data_id, key
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   'EQUIP_SLOT_SHIELD',
   'Shield');
+INSERT INTO avalon.io_pc_data_stage_one_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  'EQUIP_SLOT_WEAPON',
+  'Axe');
+INSERT INTO avalon.io_pc_data_stage_one_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
 
 -- ADD io_pc_data's RELATED stage_two_equipped_itemss
 INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
@@ -1657,6 +1948,18 @@ INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   'EQUIP_SLOT_SHIELD',
   'Shield');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  'EQUIP_SLOT_WEAPON',
+  'Axe');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_two_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  'EQUIP_SLOT_WEAPON',
+  'Staff');
 
 -- ADD io_pc_data's RELATED stage_three_equipped_itemss
 INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
@@ -1723,6 +2026,22 @@ INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, k
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   'EQUIP_SLOT_SHIELD',
   'Shield');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  'EQUIP_SLOT_WEAPON',
+  'Great Axe');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  'EQUIP_SLOT_WEAPON',
+  'Light Bow');
+INSERT INTO avalon.io_pc_data_stage_three_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  'EQUIP_SLOT_WEAPON',
+  'Staff');
 
 -- ADD io_pc_data's RELATED stage_four_equipped_itemss
 INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
@@ -1777,5 +2096,21 @@ INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, ke
   (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Captain'),
   'EQUIP_SLOT_SHIELD',
   'Shield');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  'EQUIP_SLOT_WEAPON',
+  'Great Axe');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Dwarf'),
+  'EQUIP_SLOT_HELMET',
+  'Helmet');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Elf'),
+  'EQUIP_SLOT_WEAPON',
+  'Light Bow');
+INSERT INTO avalon.io_pc_data_stage_four_equipped_items_lookup(io_pc_data_id, key, value) VALUES (
+  (SELECT io_pc_data_id FROM avalon.io_pc_data WHERE name='Pilgrim'),
+  'EQUIP_SLOT_WEAPON',
+  'Staff');
 
 

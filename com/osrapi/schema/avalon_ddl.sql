@@ -349,7 +349,7 @@ CREATE TABLE avalon.action_chit
   magic_type smallint,
   speed smallint NOT NULL,
   fatigue_asterisk smallint,
-  code character varying(12) NOT NULL,
+  code character varying(20) NOT NULL,
   CONSTRAINT action_chit_action_chit_id_pk PRIMARY KEY (action_chit_id),
   CONSTRAINT action_chit_type_fk FOREIGN KEY (type)
     REFERENCES avalon.action_type (action_type_id) MATCH SIMPLE
@@ -358,7 +358,7 @@ CREATE TABLE avalon.action_chit
     REFERENCES avalon.vulnerability (vulnerability_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT action_chit_magic_type_fk FOREIGN KEY (magic_type)
-    REFERENCES avalon.magic_color (magic_color_id) MATCH SIMPLE
+    REFERENCES avalon.magic_type (magic_type_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT action_chit_code_un UNIQUE (code)
 );
@@ -648,12 +648,17 @@ CREATE TABLE avalon.io_pc_data
   advantage2 smallint NOT NULL,
   evaluation text NOT NULL,
   gender smallint NOT NULL,
+  glyph character varying(40) NOT NULL,
   gold decimal,
   interface_flags smallint,
   name character varying(40) NOT NULL,
   stage_one_name character varying(40) NOT NULL,
+  stage_one_spells smallint,
   stage_two_name character varying(40) NOT NULL,
+  stage_two_spells smallint,
   stage_three_name character varying(40) NOT NULL,
+  stage_three_spells smallint,
+  stage_four_spells smallint,
   vulnerability smallint,
   CONSTRAINT io_pc_data_io_pc_data_id_pk PRIMARY KEY (io_pc_data_id),
   CONSTRAINT io_pc_data_advantage1_fk FOREIGN KEY (advantage1)

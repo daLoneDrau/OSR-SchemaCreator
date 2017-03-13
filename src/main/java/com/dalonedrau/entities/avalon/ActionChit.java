@@ -12,13 +12,12 @@ public class ActionChit {
     @JsonProperty("strength")
     private Vulnerability strength;
     @CanBeNull
-    @JsonProperty("magic_type")
-    private MagicColor magicType;
+    private MagicType magicType;
     private int speed;
     @CanBeNull
     @JsonProperty("fatigue_asterisk")
     private int fatigueAsterisk;
     @Unique
-    @VarChar(length = 12)
+    @VarChar(length = 20)
     String code;
 }
