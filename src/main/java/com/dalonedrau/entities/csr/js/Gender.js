@@ -3,15 +3,15 @@
 	"description": "male",
 	"subjective": "he",
 	"objective": "him",
-	"dependentPossessive": "his",
-	"independentPossessive": "his",
+	"dependent_possessive": "his",
+	"independent_possessive": "his",
 	"reflexive": "himself"
 }, {
 	"name": "Female",
 	"description": "female",
 	"subjective": "she",
 	"objective": "her",
-	"dependentPossessive": "her",
-	"independentPossessive": "hers",
+	"dependent_possessive": "her",
+	"independent_possessive": "hers",
 	"reflexive": "herself"
 }]

@@ -34,4 +34,8 @@
 	"name": "Piety",
 	"description": "Measures a character's religious faith or belief.",
 	"code": "PTY"
+}, {
+	"name": "Difficulty Factor",
+	"description": "How difficult it is to learn a skill.",
+	"code": "DF"
 }]

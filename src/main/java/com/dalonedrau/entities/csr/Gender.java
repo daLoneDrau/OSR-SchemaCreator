@@ -22,6 +22,6 @@ public class Gender {
     @VarChar(length = 4)
     private String independentPossessive;
     @Unique
-    @VarChar(length = 3)
+    @VarChar(length = 7)
     private String reflexive;
 }

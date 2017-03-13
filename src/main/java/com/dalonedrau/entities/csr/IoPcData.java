@@ -62,6 +62,8 @@ public class IoPcData {
     private String name;
     /** the {@link IoPcData}'s race. */
     private Race race;
+    /** the {@link IoPcData}'s social class. */
+    private SocialClass socialClass;
     /** the {@link IoPcData}'s experience points. */
     private long xp;
 }

@@ -10,4 +10,9 @@ public class BirthAspect {
     @Unique
     @VarChar(length = 20)
     private String title;
+    @Unique
+    private int rollMin;
+    @Unique
+    private int rollMax;
+    private int pointsAdjustment;
 }
