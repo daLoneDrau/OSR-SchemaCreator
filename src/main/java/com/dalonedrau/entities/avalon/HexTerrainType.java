@@ -5,6 +5,6 @@ import com.dalonedrau.schemacreator.Annotations.VarChar;
 
 public class HexTerrainType {
     @Unique
-    @VarChar(length = 10)
+    @VarChar(length = 20)
     String code;
 }
