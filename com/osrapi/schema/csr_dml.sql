@@ -65,6 +65,9 @@ INSERT INTO csr.race(name) VALUES(
   'VAMPIRE');
 
 
+-- ADD SKILLS
+INSERT INTO csr.skill(name) VALUES(
+
 -- ADD SOCIAL_CLASSS
 INSERT INTO csr.social_class(name, title, roll_min, roll_max, points_adjustment) VALUES(
   'SERVILE', 'Villein', 0, 0, 0), (
@@ -77,6 +80,13 @@ INSERT INTO csr.social_class(name, title, roll_min, roll_max, points_adjustment)
   'BARON', 'Baron', 0, 0, 0), (
   'TITLED NOBLE', 'Nobility', 0, 0, 0), (
   'ROYALTY', 'Royalty', 0, 0, 0);
+
+
+-- ADD FATHER_VOCATIONS
+INSERT INTO csr.father_vocation(social_class, name, social_status, num_starting_agricultural_skills, num_starting_bonus_skills, roll_min, roll_max) VALUES(
+  NULL, 'Farmer', 0, 0, 0, 0, 0);
+
+-- ADD father_vocation's RELATED starting_skillss
 
 
 -- ADD IO_PC_DATAS
