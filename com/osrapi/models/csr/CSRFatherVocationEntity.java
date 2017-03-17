@@ -222,6 +222,35 @@ public final class CSRFatherVocationEntity {
     @OneToMany(targetEntity = CSRSkillEntity.class,
       fetch = FetchType.EAGER)
     @Fetch(FetchMode.SELECT)
+    @JoinTable(name = "father_vocation_binary_skills_lookup", schema = "csr",
+  joinColumns = @JoinColumn(name = "father_vocation_id",
+  referencedColumnName = "father_vocation_id"),
+  inverseJoinColumns = @JoinColumn(name = "skill_id",
+  referencedColumnName = "skill_id"))
+    @JsonProperty("binary_skills")
+    private List<CSRSkillEntity>    binarySkills;
+    /**
+     * Gets the list of binarySkillss.
+     * @return {@link List}<{@link CSRSkillEntity}>
+     */
+    public List<CSRSkillEntity> getBinarySkills() {
+        return binarySkills;
+    }
+    /**
+     * Sets the list of binarySkillss.
+     * @param val the new value
+     */
+    public void setBinarySkills(final List<CSRSkillEntity> val) {
+        binarySkills = val;
+    }
+
+    /**
+     * the list of {@link CSRSkillEntity}s associated with this
+     * {@link CSRFatherVocationEntity}.
+     */
+    @OneToMany(targetEntity = CSRSkillEntity.class,
+      fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     @JoinTable(name = "father_vocation_starting_skills_lookup", schema = "csr",
   joinColumns = @JoinColumn(name = "father_vocation_id",
   referencedColumnName = "father_vocation_id"),

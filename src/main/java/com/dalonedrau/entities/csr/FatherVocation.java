@@ -16,9 +16,17 @@ public class FatherVocation {
     @CanBeNull
     int numStartingAgriculturalSkills;
     @CanBeNull
+    int numStartingCombatSkills;
+    @CanBeNull
+    int numStartingOutdoorSkills;
+    @CanBeNull
     int numStartingBonusSkills;
     @JsonProperty("starting_skills")
     List<Skill> startingSkills;
+    @JsonProperty("binary_skills")
+    List<Skill> binarySkills;
     private int rollMin;
     private int rollMax;
+    @CanBeNull
+    private boolean isLiveried;
 }

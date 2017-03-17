@@ -201,6 +201,83 @@ public class CSRFatherVocationController {
             }
         }
 
+    if (entity.getBinarySkills() != null
+                && !entity.getBinarySkills().isEmpty()) {
+            for (int i = entity.getBinarySkills().size() - 1; i >= 0; i--) {
+                CSRSkillEntity binarySkills = null;
+                List<Resource<CSRSkillEntity>> list = null;
+                try {
+                    Method method = null;
+          try {
+            method = CSRSkillController.class.getDeclaredMethod(
+                "getByName", new Class[] { String.class });
+          } catch (NoSuchMethodException e) {
+            System.out.println("Cannot get embedded lookup Entity CSRSkillEntity from Controller by name");
+                    }
+                    Field field = null;
+          try {
+            field = CSRSkillEntity.class
+                .getDeclaredField("name");
+          } catch (NoSuchFieldException e) {
+            System.out.println("Cannot get embedded lookup Entity CSRSkillEntity from class by name");
+                    }
+                    if (method != null
+                            && field != null) {
+                        field.setAccessible(true);
+                        if (field.get(entity.getBinarySkills().get(i)) != null) {
+                            list = (List<Resource<CSRSkillEntity>>) method
+                                    .invoke(
+                                            CSRSkillController.getInstance(),
+                                            (String) field.get(entity.getBinarySkills().get(i)));
+                        }
+                    }
+                    if (list == null) {
+            try {
+              method = CSRSkillController.class.getDeclaredMethod(
+                  "getByCode", new Class[] { String.class });
+            } catch (NoSuchMethodException e) {
+              System.out.println("Cannot get embedded lookup Entity CSRSkillEntity from Controller by code");
+            }
+            try {
+              field = CSRSkillEntity.class.getDeclaredField(
+                  "code");
+            } catch (NoSuchFieldException e) {
+              System.out.println("Cannot get embedded lookup Entity CSRSkillEntity from class by code");
+            }
+                        if (method != null
+                                && field != null) {
+                            field.setAccessible(true);
+                            if (field.get(entity.getBinarySkills().get(i)) != null) {
+                                list = (List<Resource<CSRSkillEntity>>) method
+                                        .invoke(
+                                                CSRSkillController
+                                                        .getInstance(),
+                                                (String) field
+                                                        .get(entity.getBinarySkills().get(i)));
+                            }
+                        }
+                    }
+                    method = null;
+                    field = null;
+                } catch (SecurityException | IllegalArgumentException
+                        | IllegalAccessException
+                        | InvocationTargetException e) {
+              System.out.println("CANNOT get embedded lookup Entity CSRSkillEntity by name or code");
+                }
+                if (list != null
+                        && !list.isEmpty()) {
+                    binarySkills = list.get(0).getContent();
+                }
+                if (binarySkills == null) {
+                    binarySkills = (CSRSkillEntity) ((Resource) CSRSkillController
+                            .getInstance()
+                            .save(entity.getBinarySkills().get(i)).get(0)).getContent();
+                }
+                entity.getBinarySkills().set(i, binarySkills);
+                list = null;
+            }
+        }
+
         if (entity.getSocialClass() != null
         && entity.getSocialClass().getId() == null) {
       setSocialClassIdFromRepository(entity);
@@ -374,6 +451,83 @@ public class CSRFatherVocationController {
                             .save(entity.getStartingSkills().get(i)).get(0)).getContent();
                 }
                 entity.getStartingSkills().set(i, startingSkills);
+                list = null;
+            }
+        }
+
+    if (entity.getBinarySkills() != null
+                && !entity.getBinarySkills().isEmpty()) {
+            for (int i = entity.getBinarySkills().size() - 1; i >= 0; i--) {
+                CSRSkillEntity binarySkills = null;
+                List<Resource<CSRSkillEntity>> list = null;
+                try {
+                    Method method = null;
+          try {
+            method = CSRSkillController.class.getDeclaredMethod(
+                "getByName", new Class[] { String.class });
+          } catch (NoSuchMethodException e) {
+            System.out.println("Cannot get embedded lookup Entity CSRSkillEntity from Controller by name");
+                    }
+                    Field field = null;
+          try {
+            field = CSRSkillEntity.class
+                .getDeclaredField("name");
+          } catch (NoSuchFieldException e) {
+            System.out.println("Cannot get embedded lookup Entity CSRSkillEntity from class by name");
+                    }
+                    if (method != null
+                            && field != null) {
+                        field.setAccessible(true);
+                        if (field.get(entity.getBinarySkills().get(i)) != null) {
+                            list = (List<Resource<CSRSkillEntity>>) method
+                                    .invoke(
+                                            CSRSkillController.getInstance(),
+                                            (String) field.get(entity.getBinarySkills().get(i)));
+                        }
+                    }
+                    if (list == null) {
+            try {
+              method = CSRSkillController.class.getDeclaredMethod(
+                  "getByCode", new Class[] { String.class });
+            } catch (NoSuchMethodException e) {
+              System.out.println("Cannot get embedded lookup Entity CSRSkillEntity from Controller by code");
+            }
+            try {
+              field = CSRSkillEntity.class.getDeclaredField(
+                  "code");
+            } catch (NoSuchFieldException e) {
+              System.out.println("Cannot get embedded lookup Entity CSRSkillEntity from class by code");
+            }
+                        if (method != null
+                                && field != null) {
+                            field.setAccessible(true);
+                            if (field.get(entity.getBinarySkills().get(i)) != null) {
+                                list = (List<Resource<CSRSkillEntity>>) method
+                                        .invoke(
+                                                CSRSkillController
+                                                        .getInstance(),
+                                                (String) field
+                                                        .get(entity.getBinarySkills().get(i)));
+                            }
+                        }
+                    }
+                    method = null;
+                    field = null;
+                } catch (SecurityException | IllegalArgumentException
+                        | IllegalAccessException
+                        | InvocationTargetException e) {
+              System.out.println("CANNOT get embedded lookup Entity CSRSkillEntity by name or code");
+                }
+                if (list != null
+                        && !list.isEmpty()) {
+                    binarySkills = list.get(0).getContent();
+                }
+                if (binarySkills == null) {
+                    binarySkills = (CSRSkillEntity) ((Resource) CSRSkillController
+                            .getInstance()
+                            .save(entity.getBinarySkills().get(i)).get(0)).getContent();
+                }
+                entity.getBinarySkills().set(i, binarySkills);
                 list = null;
             }
         }

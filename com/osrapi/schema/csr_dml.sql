@@ -84,9 +84,68 @@ INSERT INTO csr.social_class(name, title, roll_min, roll_max, points_adjustment)
 
 -- ADD FATHER_VOCATIONS
 INSERT INTO csr.father_vocation(social_class, name, social_status, num_starting_agricultural_skills, num_starting_bonus_skills, roll_min, roll_max) VALUES(
-  NULL, 'Farmer', 0, 0, 0, 0, 0);
+  NULL, 'Farmer', 0, 0, 0, 0, 0), (
+  NULL, 'Horse Handler', 0, 0, 0, 0, 0), (
+  NULL, 'Cowherd', 0, 0, 0, 0, 0), (
+  NULL, 'Swineherd', 0, 0, 0, 0, 0), (
+  NULL, 'Shepherd', 0, 0, 0, 0, 0), (
+  NULL, 'Castle Servant', 0, 0, 0, 0, 0), (
+  NULL, 'Cook', 0, 0, 0, 0, 0), (
+  NULL, 'Blacksmith', 0, 0, 0, 0, 0), (
+  NULL, 'Stable Hand', 0, 0, 0, 0, 0), (
+  NULL, 'Labourer', 0, 0, 0, 0, 0);
 
 -- ADD father_vocation's RELATED starting_skillss
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Horse Handler'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Horse Handler'),
+  (SELECT skill_id FROM csr.skill WHERE name='Animal Handling'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Swineherd'),
+  (SELECT skill_id FROM csr.skill WHERE name='Pig Raising'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Shepherd'),
+  (SELECT skill_id FROM csr.skill WHERE name='Sheep Herding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Castle Servant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Cook'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cooking'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Cook'),
+  (SELECT skill_id FROM csr.skill WHERE name='Knife Fighting'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Blacksmith'),
+  (SELECT skill_id FROM csr.skill WHERE name='Blacksmithing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Blacksmith'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mace Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Stable Hand'),
+  (SELECT skill_id FROM csr.skill WHERE name='Animal Handling'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Stable Hand'),
+  (SELECT skill_id FROM csr.skill WHERE name='Quarterstaff'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Labourer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Endurance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Labourer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Conditioning'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Labourer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Lifting'));
+
+-- ADD father_vocation's RELATED binary_skillss
+INSERT INTO csr.father_vocation_binary_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Cowherd'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cattle Herding'));
+INSERT INTO csr.father_vocation_binary_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Cowherd'),
+  (SELECT skill_id FROM csr.skill WHERE name='Dairy Herding'));
 
 
 -- ADD IO_PC_DATAS

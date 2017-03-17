@@ -330,6 +330,24 @@ CREATE TABLE csr.father_vocation_starting_skills_lookup
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
+-- Table: csr.father_vocation_binary_skills_lookup
+-- lookup table for father_vocations and their associated binary_skillss.
+
+DROP TABLE IF EXISTS csr.father_vocation_binary_skills_lookup CASCADE;
+
+CREATE TABLE csr.father_vocation_binary_skills_lookup
+(
+  father_vocation_id smallint NOT NULL,
+  skill_id smallint NOT NULL,
+  CONSTRAINT father_vocation_binary_skills_lookup_father_vocation_id_skill_id_pk PRIMARY KEY (father_vocation_id, skill_id),
+  CONSTRAINT father_vocation_binary_skills_lookup_father_vocation_id_fk FOREIGN KEY (father_vocation_id)
+    REFERENCES csr.father_vocation (father_vocation_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT father_vocation_binary_skills_lookup_skill_id_fk FOREIGN KEY (skill_id)
+    REFERENCES csr.skill (skill_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
 -- Table: csr.io_pc_data
 -- TODO add table description
 
