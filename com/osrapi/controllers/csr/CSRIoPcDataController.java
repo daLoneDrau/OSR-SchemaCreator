@@ -22,6 +22,7 @@ import com.osrapi.models.csr.CSRBirthAspectEntity;
 import com.osrapi.models.csr.CSRGenderEntity;
 import com.osrapi.models.csr.CSRRaceEntity;
 import com.osrapi.models.csr.CSRSocialClassEntity;
+import com.osrapi.models.csr.CSRFatherVocationEntity;
 import com.osrapi.models.csr.CSRGroupEntity;
 import com.osrapi.models.csr.CSRIoItemDataEntity;
 
@@ -302,6 +303,11 @@ public class CSRIoPcDataController {
       setSocialClassIdFromRepository(entity);
         }
 
+        if (entity.getFatherVocation() != null
+        && entity.getFatherVocation().getId() == null) {
+      setFatherVocationIdFromRepository(entity);
+        }
+
 
     
         CSRIoPcDataEntity savedEntity = repository.save(entity);
@@ -571,6 +577,11 @@ public class CSRIoPcDataController {
       setSocialClassIdFromRepository(entity);
         }
 
+        if (entity.getFatherVocation() != null
+        && entity.getFatherVocation().getId() == null) {
+      setFatherVocationIdFromRepository(entity);
+        }
+
 
     
         CSRIoPcDataEntity savedEntity = repository.save(entity);
@@ -825,6 +836,68 @@ public class CSRIoPcDataController {
               entity.getSocialClass()).get(0)).getContent();
     }
     entity.setSocialClass(memberEntity);
+    list = null;
+    }
+
+  private void setFatherVocationIdFromRepository(
+      final CSRIoPcDataEntity entity) {
+    CSRFatherVocationEntity memberEntity = null;
+    List<Resource<CSRFatherVocationEntity>> list = null;
+    try {
+      Method method = null;
+      Field field = null;
+      try {
+        method = CSRFatherVocationController.class.getDeclaredMethod(
+            "getByName", new Class[] { String.class });
+        field = CSRFatherVocationEntity.class.getDeclaredField("name");
+      } catch (NoSuchMethodException | NoSuchFieldException e) {
+      }
+      if (method != null
+          && field != null) {
+        field.setAccessible(true);
+        if (field.get(entity.getFatherVocation()) != null) {
+          list = (List<Resource<CSRFatherVocationEntity>>) method
+              .invoke(
+                  CSRFatherVocationController.getInstance(),
+                  (String) field
+                      .get(entity.getFatherVocation()));
+        }
+      }
+      if (list == null) {
+        try {
+          method = CSRFatherVocationController.class.getDeclaredMethod(
+              "getByCode", new Class[] { String.class });
+          field = CSRFatherVocationEntity.class
+              .getDeclaredField("code");
+        } catch (NoSuchMethodException | NoSuchFieldException e) {
+        }
+        if (method != null
+            && field != null) {
+          field.setAccessible(true);
+          if (field.get(entity.getFatherVocation()) != null) {
+            list = (List<Resource<CSRFatherVocationEntity>>)
+                method.invoke(CSRFatherVocationController
+                    .getInstance(),(String) field.get(
+                        entity.getFatherVocation()));
+          }
+        }
+      }
+      method = null;
+      field = null;
+    } catch (SecurityException | IllegalArgumentException
+        | IllegalAccessException
+        | InvocationTargetException e) {
+    }
+    if (list != null
+        && !list.isEmpty()) {
+      memberEntity = list.get(0).getContent();
+    }
+    if (memberEntity == null) {
+      memberEntity = (CSRFatherVocationEntity)
+          ((Resource) CSRFatherVocationController.getInstance().save(
+              entity.getFatherVocation()).get(0)).getContent();
+    }
+    entity.setFatherVocation(memberEntity);
     list = null;
     }
 

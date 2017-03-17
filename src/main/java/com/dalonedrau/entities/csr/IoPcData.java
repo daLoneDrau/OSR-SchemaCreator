@@ -66,4 +66,5 @@ public class IoPcData {
     private SocialClass socialClass;
     /** the {@link IoPcData}'s experience points. */
     private long xp;
+    private FatherVocation fatherVocation;
 }

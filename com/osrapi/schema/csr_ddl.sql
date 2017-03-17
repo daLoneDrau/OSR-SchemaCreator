@@ -300,11 +300,17 @@ CREATE TABLE csr.father_vocation
   father_vocation_id smallint DEFAULT nextval('csr.father_vocation_id_seq') NOT NULL,
   social_class smallint NOT NULL,
   name character varying(40) NOT NULL,
+  thieves_guild_status smallint NOT NULL,
   social_status smallint NOT NULL,
+  num_starting_animal_skills smallint,
   num_starting_agricultural_skills smallint,
+  num_starting_combat_skills smallint,
+  num_starting_outdoor_skills smallint,
+  num_starting_thievery_skills smallint,
   num_starting_bonus_skills smallint,
   roll_min smallint NOT NULL,
   roll_max smallint NOT NULL,
+  is_liveried boolean,
   CONSTRAINT father_vocation_father_vocation_id_pk PRIMARY KEY (father_vocation_id),
   CONSTRAINT father_vocation_social_class_fk FOREIGN KEY (social_class)
     REFERENCES csr.social_class (social_class_id) MATCH SIMPLE
@@ -370,6 +376,7 @@ CREATE TABLE csr.io_pc_data
   race smallint NOT NULL,
   social_class smallint NOT NULL,
   xp bigint NOT NULL,
+  father_vocation smallint NOT NULL,
   CONSTRAINT io_pc_data_io_pc_data_id_pk PRIMARY KEY (io_pc_data_id),
   CONSTRAINT io_pc_data_aspect_fk FOREIGN KEY (aspect)
     REFERENCES csr.birth_aspect (birth_aspect_id) MATCH SIMPLE
@@ -382,6 +389,9 @@ CREATE TABLE csr.io_pc_data
     ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT io_pc_data_social_class_fk FOREIGN KEY (social_class)
     REFERENCES csr.social_class (social_class_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_pc_data_father_vocation_fk FOREIGN KEY (father_vocation)
+    REFERENCES csr.father_vocation (father_vocation_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 

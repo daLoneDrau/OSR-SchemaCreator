@@ -12,13 +12,18 @@ public class FatherVocation {
     @Unique
     @VarChar(length = 40)
     private String name;
+    private int thievesGuildStatus;
     private int socialStatus;
+    @CanBeNull
+    int numStartingAnimalSkills;
     @CanBeNull
     int numStartingAgriculturalSkills;
     @CanBeNull
     int numStartingCombatSkills;
     @CanBeNull
     int numStartingOutdoorSkills;
+    @CanBeNull
+    int numStartingThieverySkills;
     @CanBeNull
     int numStartingBonusSkills;
     @JsonProperty("starting_skills")
