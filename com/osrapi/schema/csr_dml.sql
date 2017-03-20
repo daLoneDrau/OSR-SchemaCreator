@@ -83,51 +83,137 @@ INSERT INTO csr.social_class(name, title, roll_min, roll_max, points_adjustment)
 
 
 -- ADD FATHER_VOCATIONS
-INSERT INTO csr.father_vocation(social_class, name, thieves_guild_status, social_status, num_starting_animal_skills, num_starting_agricultural_skills, num_starting_combat_skills, num_starting_outdoor_skills, num_starting_thievery_skills, num_starting_bonus_skills, roll_min, roll_max, is_liveried) VALUES(
-  NULL, 'Farmer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Horse Handler', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Cowherd', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Swineherd', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Shepherd', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Castle Servant', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Cook', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Blacksmith', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Bonded Stable Hand', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Labourer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Castle Chamberlain', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Scribe Secretary', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Sergeant-Commander', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Sergeant', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Man-At-Arms', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Archer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Chief Forest Ranger', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Forest Ranger', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Sergeant-Armourer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Castle Armourer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Castle Blacksmith', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Falconer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Horse Trainer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Master of Hounds', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Castle Cook', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Rural Carpenter', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Rural Mason', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Forester', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Fisherman', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Village Blacksmith', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Freehold Miller', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Freehold Farmer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Freehold Stockman', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Petit Sergeant', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Peddler', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Tinker', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Beggar', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Brothel Keeper', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Stable Hand', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Stable Owner', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Cobbler', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Tailor', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Clothmaker', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
-  NULL, 'Tanner', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false);
+INSERT INTO csr.father_vocation(, social_class, name, feudal_holding, thieves_guild_status, num_bonus_d10_social_status, social_status, num_starting_animal_skills, num_starting_agricultural_skills, num_starting_artistic_skills, num_starting_craftt_skills, num_starting_combat_skills, num_starting_lore_skills, num_starting_outdoor_skills, num_starting_sea_skills, num_starting_thievery_skills, num_starting_trade_skills, num_starting_bonus_skills, num_starting_binary0_magick_methods, num_starting_binary1_magick_methods, num_starting_binary1_lore_skills, num_starting_foreign_languages, num_starting_written_languages, reading_int_required, roll_min, roll_maxis_liveried) VALUES(
+  NULL, 'Farmer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Horse Handler', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Cowherd', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Swineherd', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Shepherd', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Castle Servant', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Cook', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Blacksmith', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Bonded Stable Hand', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Labourer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Castle Chamberlain', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Scribe Secretary', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Sergeant-Commander', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Sergeant', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Man-At-Arms', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Archer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Chief Forest Ranger', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Forest Ranger', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Sergeant-Armourer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Castle Armourer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Castle Blacksmith', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Falconer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Horse Trainer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Master of Hounds', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Castle Cook', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Rural Carpenter', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Rural Mason', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Forester', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Fisherman', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Village Blacksmith', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Freehold Miller', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Freehold Farmer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Freehold Stockman', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Petit Sergeant', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Peddler', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Tinker', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Beggar', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Brothel Keeper', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Stable Hand', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Stable Owner', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Cobbler', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Tailor', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Clothmaker', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Tanner', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Town Blacksmith', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Shopkeeper', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Innkeeper', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Town Cook', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Harnessmaker', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Stall-keeper', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Barber', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Butcher', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Baker', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Wine Merchant', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Money Lender', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Town Labourer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Cloth Merchant', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Weaver', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Dyer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Mason', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Guild Mason', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Builder', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Goldsmith', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Goldsmith', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Jewelsmith', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Ship-Owner/Captain', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Ship''s Captain', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Ship''s Mate', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mariner', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Carpenter', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Guild Carpenter', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Cabinetmaker', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Barrelwright', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Cartwright', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Shipbuilder', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Shipbuilder', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Armourer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Armourer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mercenary Captain', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mercenary Sergeant', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mercenary Man-at-arms', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mercenary Archer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mercenary Cross-bowman', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Glassblower', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Glassblower', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Potter', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Potter', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Perfumer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Perfumer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Apothecary', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Entertainer', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Artist', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Sculptor', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Foundryman', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Foundryman', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mine Owner', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Miner', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Engraver', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Mstr. Thief', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Thief', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Assassin', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Scribe/Clerk', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Physician', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Guild Scholar', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Scholar', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Magus', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, '"Merchant Prince"', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight-Errant', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'In Household of a Landed Knight', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'In Household of a Bannerette', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'In Household of a Baron of the Realm', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'In Household of a Titled Nobleman', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'In Household of the Royal Family', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'In Household of the King', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight(A)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight(B)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight(C)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight(D)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight(E)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight(F)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight(G)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight(H)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight(I)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight(J)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight(K)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Knight(L)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Bannerette(M)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Bannerette(N)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Bannerette(O)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false), (
+  NULL, 'Bannerette(P)', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false);
 
 -- ADD father_vocation's RELATED starting_skillss
 INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
@@ -403,6 +489,852 @@ INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill
 INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
   (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Tanner'),
   (SELECT skill_id FROM csr.skill WHERE name='Knife Fighting'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Town Blacksmith'),
+  (SELECT skill_id FROM csr.skill WHERE name='Blacksmithing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Town Blacksmith'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mace Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Shopkeeper'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Innkeeper'),
+  (SELECT skill_id FROM csr.skill WHERE name='Innkeeping'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Innkeeper'),
+  (SELECT skill_id FROM csr.skill WHERE name='Brewing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Town Cook'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cooking'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Town Cook'),
+  (SELECT skill_id FROM csr.skill WHERE name='Knife Fighting'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Harnessmaker'),
+  (SELECT skill_id FROM csr.skill WHERE name='Leatherworking'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Harnessmaker'),
+  (SELECT skill_id FROM csr.skill WHERE name='Animal Handling'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Stall-keeper'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Stall-keeper'),
+  (SELECT skill_id FROM csr.skill WHERE name='Con'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Barber'),
+  (SELECT skill_id FROM csr.skill WHERE name='First Aid'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Barber'),
+  (SELECT skill_id FROM csr.skill WHERE name='Knife Fighting'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Butcher'),
+  (SELECT skill_id FROM csr.skill WHERE name='Axe Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Butcher'),
+  (SELECT skill_id FROM csr.skill WHERE name='Knife Fighting'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Baker'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cooking'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Wine Merchant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Wine Merchant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wine Making'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Money Lender'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Money Lender'),
+  (SELECT skill_id FROM csr.skill WHERE name='Diplomacy & Politics'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Town Labourer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Endurance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Town Labourer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Conditioning'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Town Labourer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Lifting'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Cloth Merchant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Cloth Merchant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Spinning & Weaving'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Cloth Merchant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Dyeing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Weaver'),
+  (SELECT skill_id FROM csr.skill WHERE name='Spinning & Weaving'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Dyer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Dyeing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Mason'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Mason'),
+  (SELECT skill_id FROM csr.skill WHERE name='Masonry'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Mason'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mace Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Guild Mason'),
+  (SELECT skill_id FROM csr.skill WHERE name='Masonry'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Guild Mason'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mace Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Builder'),
+  (SELECT skill_id FROM csr.skill WHERE name='Architecture'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Builder'),
+  (SELECT skill_id FROM csr.skill WHERE name='Masonry'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Goldsmith'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Goldsmith'),
+  (SELECT skill_id FROM csr.skill WHERE name='Goldsmithing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Jewelsmith'),
+  (SELECT skill_id FROM csr.skill WHERE name='Jewelsmithing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Ship-Owner/Captain'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Ship''s Captain'),
+  (SELECT skill_id FROM csr.skill WHERE name='Leadership'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Ship''s Mate'),
+  (SELECT skill_id FROM csr.skill WHERE name='Intimidation'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mariner'),
+  (SELECT skill_id FROM csr.skill WHERE name='Knife Fighting'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Carpenter'),
+  (SELECT skill_id FROM csr.skill WHERE name='Carpentry'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Carpenter'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Carpenter'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mace Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Guild Carpenter'),
+  (SELECT skill_id FROM csr.skill WHERE name='Carpentry'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Guild Carpenter'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mace Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Cabinetmaker'),
+  (SELECT skill_id FROM csr.skill WHERE name='Carpentry'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Cabinetmaker'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Cabinetmaker'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mace Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Barrelwright'),
+  (SELECT skill_id FROM csr.skill WHERE name='Carpentry'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Barrelwright'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cooper'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Barrelwright'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mace Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Cartwright'),
+  (SELECT skill_id FROM csr.skill WHERE name='Carpentry'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Cartwright'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cart-making'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Cartwright'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mace Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Shipbuilder'),
+  (SELECT skill_id FROM csr.skill WHERE name='Carpentry'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Shipbuilder'),
+  (SELECT skill_id FROM csr.skill WHERE name='Shipbuilding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Shipbuilder'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Shipbuilder'),
+  (SELECT skill_id FROM csr.skill WHERE name='Marine Architecture'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Shipbuilder'),
+  (SELECT skill_id FROM csr.skill WHERE name='Carpentry'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Shipbuilder'),
+  (SELECT skill_id FROM csr.skill WHERE name='Shipbuilding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Armourer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Blacksmithing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Armourer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Weaponsmithing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Armourer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Engraving'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Armourer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Blacksmithing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Armourer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Weaponsmithing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mercenary Captain'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mercenary Captain'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mercenary Captain'),
+  (SELECT skill_id FROM csr.skill WHERE name='Leadership'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mercenary Sergeant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mercenary Sergeant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mercenary Archer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Archery'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mercenary Archer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Short Sword'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mercenary Cross-bowman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Crossbow'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mercenary Cross-bowman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Short Sword'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Glassblower'),
+  (SELECT skill_id FROM csr.skill WHERE name='Glassblowing & Glazing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Glassblower'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Glassblower'),
+  (SELECT skill_id FROM csr.skill WHERE name='Glassblowing & Glazing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Potter'),
+  (SELECT skill_id FROM csr.skill WHERE name='Pottery'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Potter'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Potter'),
+  (SELECT skill_id FROM csr.skill WHERE name='Pottery'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Perfumer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Perfumery'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Perfumer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Perfumer'),
+  (SELECT skill_id FROM csr.skill WHERE name='Perfumery'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Apothecary'),
+  (SELECT skill_id FROM csr.skill WHERE name='Make Drugs'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Apothecary'),
+  (SELECT skill_id FROM csr.skill WHERE name='Poisons'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Apothecary'),
+  (SELECT skill_id FROM csr.skill WHERE name='Herbal Lore'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Artist'),
+  (SELECT skill_id FROM csr.skill WHERE name='Painting'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Sculptor'),
+  (SELECT skill_id FROM csr.skill WHERE name='Sculpture'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Foundryman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Smelting'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Foundryman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Foundryman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Endurance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Foundryman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Smelting'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Foundryman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Endurance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mine Owner'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mine Owner'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mine Owner'),
+  (SELECT skill_id FROM csr.skill WHERE name='Geological Lore'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Miner'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Miner'),
+  (SELECT skill_id FROM csr.skill WHERE name='Endurance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Engraver'),
+  (SELECT skill_id FROM csr.skill WHERE name='Goldsmithing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Engraver'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Engraver'),
+  (SELECT skill_id FROM csr.skill WHERE name='Engraving'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Thief'),
+  (SELECT skill_id FROM csr.skill WHERE name='Con'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Thief'),
+  (SELECT skill_id FROM csr.skill WHERE name='Con'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Assassin'),
+  (SELECT skill_id FROM csr.skill WHERE name='Intimidation'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Assassin'),
+  (SELECT skill_id FROM csr.skill WHERE name='Stealth'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Assassin'),
+  (SELECT skill_id FROM csr.skill WHERE name='Skulking in Shadows'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Assassin'),
+  (SELECT skill_id FROM csr.skill WHERE name='Disguise'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Scribe/Clerk'),
+  (SELECT skill_id FROM csr.skill WHERE name='Writing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Scribe/Clerk'),
+  (SELECT skill_id FROM csr.skill WHERE name='Paper Making'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Scribe/Clerk'),
+  (SELECT skill_id FROM csr.skill WHERE name='Calligraphy & Illumination'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Physician'),
+  (SELECT skill_id FROM csr.skill WHERE name='Writing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Physician'),
+  (SELECT skill_id FROM csr.skill WHERE name='Herb Lore'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Physician'),
+  (SELECT skill_id FROM csr.skill WHERE name='First Aid'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Guild Scholar'),
+  (SELECT skill_id FROM csr.skill WHERE name='Writing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Scholar'),
+  (SELECT skill_id FROM csr.skill WHERE name='Writing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Magus'),
+  (SELECT skill_id FROM csr.skill WHERE name='Ancient Language'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Magus'),
+  (SELECT skill_id FROM csr.skill WHERE name='Writing'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='"Merchant Prince"'),
+  (SELECT skill_id FROM csr.skill WHERE name='Bargaining'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='"Merchant Prince"'),
+  (SELECT skill_id FROM csr.skill WHERE name='Con'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='"Merchant Prince"'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight-Errant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight-Errant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight-Errant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight-Errant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight-Errant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight-Errant'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Landed Knight'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Landed Knight'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Landed Knight'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Landed Knight'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Landed Knight'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Landed Knight'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Landed Knight'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Bannerette'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Bannerette'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Bannerette'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Bannerette'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Bannerette'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Bannerette'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Bannerette'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Baron of the Realm'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Baron of the Realm'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Baron of the Realm'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Baron of the Realm'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Baron of the Realm'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Baron of the Realm'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Baron of the Realm'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Titled Nobleman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Titled Nobleman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Titled Nobleman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Titled Nobleman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Titled Nobleman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Titled Nobleman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of a Titled Nobleman'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the Royal Family'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the Royal Family'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the Royal Family'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the Royal Family'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the Royal Family'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the Royal Family'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the Royal Family'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the King'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the King'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the King'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the King'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the King'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the King'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='In Household of the King'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(A)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(A)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(A)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(A)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(A)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(A)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(A)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(B)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(B)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(B)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(B)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(B)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(B)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(B)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(C)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(C)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(C)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(C)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(C)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(C)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(C)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(D)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(D)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(D)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(D)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(D)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(D)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(D)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(E)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(E)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(E)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(E)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(E)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(E)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(E)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(F)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(F)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(F)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(F)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(F)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(F)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(F)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(G)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(G)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(G)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(G)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(G)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(G)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(G)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(H)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(H)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(H)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(H)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(H)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(H)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(H)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(I)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(I)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(I)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(I)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(I)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(I)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(I)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(J)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(J)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(J)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(J)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(J)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(J)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(J)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(K)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(K)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(K)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(K)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(K)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(K)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(K)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(L)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(L)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(L)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(L)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(L)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(L)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Knight(L)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(M)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(M)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(M)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(M)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(M)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(M)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(M)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(N)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(N)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(N)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(N)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(N)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(N)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(N)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(O)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(O)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(O)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(O)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(O)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(O)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(O)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(P)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(P)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Riding a Warhorse'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(P)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Mounted Combat'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(P)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Cavalry Lance'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(P)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Wearing Armour'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(P)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Courtly Manners'));
+INSERT INTO csr.father_vocation_starting_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Bannerette(P)'),
+  (SELECT skill_id FROM csr.skill WHERE name='Reading'));
 
 -- ADD father_vocation's RELATED binary_skillss
 INSERT INTO csr.father_vocation_binary_skills_lookup(father_vocation_id, skill_id) VALUES (
@@ -411,6 +1343,12 @@ INSERT INTO csr.father_vocation_binary_skills_lookup(father_vocation_id, skill_i
 INSERT INTO csr.father_vocation_binary_skills_lookup(father_vocation_id, skill_id) VALUES (
   (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Cowherd'),
   (SELECT skill_id FROM csr.skill WHERE name='Dairy Herding'));
+INSERT INTO csr.father_vocation_binary_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Goldsmith'),
+  (SELECT skill_id FROM csr.skill WHERE name='Goldsmithing'));
+INSERT INTO csr.father_vocation_binary_skills_lookup(father_vocation_id, skill_id) VALUES (
+  (SELECT father_vocation_id FROM csr.father_vocation WHERE name='Mstr. Goldsmith'),
+  (SELECT skill_id FROM csr.skill WHERE name='Jewelsmithing'));
 
 
 -- ADD IO_PC_DATAS

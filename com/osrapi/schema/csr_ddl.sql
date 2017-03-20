@@ -298,20 +298,37 @@ CREATE SEQUENCE csr.father_vocation_id_seq MINVALUE 0;
 CREATE TABLE csr.father_vocation
 (
   father_vocation_id smallint DEFAULT nextval('csr.father_vocation_id_seq') NOT NULL,
+  overlord smallint,
   social_class smallint NOT NULL,
   name character varying(40) NOT NULL,
+  feudal_holding smallint NOT NULL,
   thieves_guild_status smallint NOT NULL,
+  num_bonus_d10_social_status smallint NOT NULL,
   social_status smallint NOT NULL,
   num_starting_animal_skills smallint,
   num_starting_agricultural_skills smallint,
+  num_starting_artistic_skills smallint,
+  num_starting_craftt_skills smallint,
   num_starting_combat_skills smallint,
+  num_starting_lore_skills smallint,
   num_starting_outdoor_skills smallint,
+  num_starting_sea_skills smallint,
   num_starting_thievery_skills smallint,
+  num_starting_trade_skills smallint,
   num_starting_bonus_skills smallint,
+  num_starting_binary0_magick_methods smallint,
+  num_starting_binary1_magick_methods smallint,
+  num_starting_binary1_lore_skills smallint,
+  num_starting_foreign_languages smallint,
+  num_starting_written_languages smallint,
+  reading_int_required smallint,
   roll_min smallint NOT NULL,
   roll_max smallint NOT NULL,
   is_liveried boolean,
   CONSTRAINT father_vocation_father_vocation_id_pk PRIMARY KEY (father_vocation_id),
+  CONSTRAINT father_vocation_overlord_fk FOREIGN KEY (overlord)
+    REFERENCES csr.father_vocation (father_vocation_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT father_vocation_social_class_fk FOREIGN KEY (social_class)
     REFERENCES csr.social_class (social_class_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
