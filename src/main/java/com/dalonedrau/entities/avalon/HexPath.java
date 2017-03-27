@@ -10,6 +10,6 @@ public class HexPath {
     @Unique
     @VarChar(length = 20)
     String code;
-    @JsonProperty("path")
-    List<Vector3> path;
+    @JsonProperty("nodes")
+    List<PathNode> nodes;
 }
