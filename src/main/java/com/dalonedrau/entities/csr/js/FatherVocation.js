@@ -2827,4 +2827,528 @@
 	}],
 	"reading_int_req": 11,
 	"social_status": 30
+}, {
+	"social_class": {
+		"name": "BARON"
+	},
+	"roll_min": 1,
+	"roll_max": 25,
+	"name": "Baronet(Q)",
+	"feudal_holding": 144,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 31
+}, {
+	"social_class": {
+		"name": "BARON"
+	},
+	"roll_min": 26,
+	"roll_max": 45,
+	"name": "Baronet(R)",
+	"feudal_holding": 162,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 31
+}, {
+	"social_class": {
+		"name": "BARON"
+	},
+	"roll_min": 46,
+	"roll_max": 60,
+	"name": "Baronet(S)",
+	"feudal_holding": 182,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 31
+}, {
+	"social_class": {
+		"name": "BARON"
+	},
+	"roll_min": 61,
+	"roll_max": 70,
+	"name": "Baron/Viscount(T)",
+	"feudal_holding": 190,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 32
+}, {
+	"social_class": {
+		"name": "BARON"
+	},
+	"roll_min": 71,
+	"roll_max": 80,
+	"name": "Baron/Viscount(U)",
+	"feudal_holding": 220,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 32
+}, {
+	"social_class": {
+		"name": "BARON"
+	},
+	"roll_min": 81,
+	"roll_max": 90,
+	"name": "Baron/Viscount(V)",
+	"feudal_holding": 240,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 33
+}, {
+	"social_class": {
+		"name": "BARON"
+	},
+	"roll_min": 91,
+	"roll_max": 100,
+	"name": "Baron/Viscount(W)",
+	"feudal_holding": 260,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 35
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 1,
+	"roll_max": 20,
+	"name": "Count/Earl(X)",
+	"feudal_holding": 280,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 32
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 21,
+	"roll_max": 35,
+	"name": "Count/Earl(Y)",
+	"feudal_holding": 300,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 34
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 36,
+	"roll_max": 50,
+	"name": "Count/Earl(Z)",
+	"feudal_holding": 320,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 36
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 51,
+	"roll_max": 60,
+	"name": "Count/Earl(AA)",
+	"feudal_holding": 340,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 38
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 61,
+	"roll_max": 70,
+	"name": "Count/Earl(BB)",
+	"feudal_holding": 362,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 40
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 71,
+	"roll_max": 80,
+	"name": "Count/Earl(CC)",
+	"feudal_holding": 382,
+	"num_starting_combat_skills": 4,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 42
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 81,
+	"roll_max": 85,
+	"name": "Count/Earl(DD)",
+	"feudal_holding": 402,
+	"num_starting_combat_skills": 5,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 44
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 86,
+	"roll_max": 89,
+	"name": "Count/Earl(EE)",
+	"feudal_holding": 422,
+	"num_starting_combat_skills": 5,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 46
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 91,
+	"roll_max": 94,
+	"name": "Marquis(FF)",
+	"feudal_holding": 444,
+	"num_starting_combat_skills": 5,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 48
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 95,
+	"roll_max": 96,
+	"name": "Duke(GG)",
+	"feudal_holding": 464,
+	"num_starting_combat_skills": 5,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 50
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 97,
+	"roll_max": 98,
+	"name": "Duke(HH)",
+	"feudal_holding": 504,
+	"num_starting_combat_skills": 5,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}],
+	"reading_int_req": 11,
+	"social_status": 53
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 99,
+	"roll_max": 99,
+	"name": "Sovereign Prince(PR)",
+	"feudal_holding": 804,
+	"num_starting_combat_skills": 5,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}, {
+		"name": "Diplomacy & Politics"
+	}],
+	"reading_int_req": 11,
+	"social_status": 60
+}, {
+	"social_class": {
+		"name": "TITLED NOBLE"
+	},
+	"roll_min": 100,
+	"roll_max": 100,
+	"name": "King(KG)",
+	"feudal_holding": 962,
+	"num_starting_combat_skills": 5,
+	"starting_skills": [{
+		"name": "Riding"
+	}, {
+		"name": "Riding a Warhorse"
+	}, {
+		"name": "Mounted Combat"
+	}, {
+		"name": "Cavalry Lance"
+	}, {
+		"name": "Wearing Armour"
+	}, {
+		"name": "Courtly Manners"
+	}, {
+		"name": "Reading"
+	}, {
+		"name": "Diplomacy & Politics"
+	}],
+	"reading_int_req": 11,
+	"social_status": 75
 }]
