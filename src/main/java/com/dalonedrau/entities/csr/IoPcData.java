@@ -17,6 +17,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class IoPcData {
     /** the {@link IoPcData}'s birth aspect. */
     private BirthAspect aspect;
+    /** the {@link IoPcData}'s sibling rank. */
+    private SiblingRank rank;
+    /** the {@link IoPcData}'s family status. */
+    private FamilyStatus status;
     /** the set of attributes defining the PC. */
     @MapForeignKey(keyField = "code", keyTargetClass = "Attribute",
             keyColumnType = "character varying(3)",
