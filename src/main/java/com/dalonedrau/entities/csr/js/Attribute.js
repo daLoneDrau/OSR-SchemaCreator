@@ -38,4 +38,12 @@
 	"name": "Difficulty Factor",
 	"description": "How difficult it is to learn a skill.",
 	"code": "DF"
+}, {
+	"name": "Body Points",
+	"description": "The current amount of physical damage the character can sustain.",
+	"code": "BP"
+}, {
+	"name": "Maximum Body Points",
+	"description": "The maximum amount of physical damage the character can sustain.",
+	"code": "MBP"
 }]

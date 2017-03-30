@@ -15,6 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author drau
  */
 public class IoPcData {
+    private int build;
+    private int height;
+    private int weight;
     /** the {@link IoPcData}'s birth aspect. */
     private BirthAspect aspect;
     /** the {@link IoPcData}'s sibling rank. */

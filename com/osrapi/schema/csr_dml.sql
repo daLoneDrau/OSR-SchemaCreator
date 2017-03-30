@@ -9,7 +9,9 @@ INSERT INTO csr.attribute(code, description, name) VALUES(
   'CON', 'A measure of how healthy and durable a character is. It helps determine Body and Fatigue Points, influences how a character heals or resists disease, and affects survival.', 'Constitution'), (
   'DISC', 'Measures your character''s patience and ability to remain focused on a subject or goal. Disciplined characters tend to learn skills faster and their morale is higher as well.', 'Discipline'), (
   'PTY', 'Measures a character''s religious faith or belief.', 'Piety'), (
-  'DF', 'How difficult it is to learn a skill.', 'Difficulty Factor');
+  'DF', 'How difficult it is to learn a skill.', 'Difficulty Factor'), (
+  'BP', 'The current amount of physical damage the character can sustain.', 'Body Points'), (
+  'MBP', 'The maximum amount of physical damage the character can sustain.', 'Maximum Body Points');
 
 
 -- ADD BIRTH_ASPECTS
@@ -1817,7 +1819,7 @@ INSERT INTO csr.father_vocation_binary_skills_lookup(father_vocation_id, skill_i
 
 
 -- ADD IO_PC_DATAS
-INSERT INTO csr.io_pc_data(aspect, rank, status, bags, flags, gender, gold, interface_flags, internal_script, level, name, race, social_class, xp, father_vocation) VALUES(
+INSERT INTO csr.io_pc_data(build, height, weight, aspect, rank, status, bags, flags, gender, gold, interface_flags, internal_script, level, name, race, social_class, xp, father_vocation) VALUES(
 -- ADD io_pc_data's RELATED groupss
 
 -- ADD io_pc_data's RELATED inventory_itemss

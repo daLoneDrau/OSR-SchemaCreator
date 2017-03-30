@@ -425,6 +425,9 @@ CREATE SEQUENCE csr.io_pc_data_id_seq MINVALUE 0;
 CREATE TABLE csr.io_pc_data
 (
   io_pc_data_id smallint DEFAULT nextval('csr.io_pc_data_id_seq') NOT NULL,
+  build smallint NOT NULL,
+  height smallint NOT NULL,
+  weight smallint NOT NULL,
   aspect smallint NOT NULL,
   rank smallint NOT NULL,
   status smallint NOT NULL,
