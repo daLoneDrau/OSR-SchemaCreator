@@ -283,8 +283,8 @@ CREATE SEQUENCE csr.sibling_rank_id_seq MINVALUE 0;
 CREATE TABLE csr.sibling_rank
 (
   sibling_rank_id smallint DEFAULT nextval('csr.sibling_rank_id_seq') NOT NULL,
-  code character varying(30) NOT NULL,
-  title character varying(30) NOT NULL,
+  code character varying(50) NOT NULL,
+  title character varying(50) NOT NULL,
   roll_min smallint NOT NULL,
   roll_max smallint NOT NULL,
   points_adjustment smallint NOT NULL,
