@@ -5,7 +5,9 @@
 	"objective": "him",
 	"dependent_possessive": "his",
 	"independent_possessive": "his",
-	"reflexive": "himself"
+	"reflexive": "himself",
+	"gender_offspring": "son",
+	"gender_parent": "father"
 }, {
 	"name": "Female",
 	"description": "female",
@@ -13,5 +15,7 @@
 	"objective": "her",
 	"dependent_possessive": "her",
 	"independent_possessive": "hers",
-	"reflexive": "herself"
+	"reflexive": "herself",
+	"gender_offspring": "daughter",
+	"gender_parent": "mother"
 }]

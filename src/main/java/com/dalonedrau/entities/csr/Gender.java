@@ -24,4 +24,10 @@ public class Gender {
     @Unique
     @VarChar(length = 7)
     private String reflexive;
+    @Unique
+    @VarChar(length = 8)
+    private String genderOffspring;
+    @Unique
+    @VarChar(length = 6)
+    private String genderParent;
 }

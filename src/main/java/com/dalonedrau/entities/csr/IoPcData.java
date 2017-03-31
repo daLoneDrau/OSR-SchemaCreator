@@ -15,6 +15,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author drau
  */
 public class IoPcData {
+    @JsonProperty("first_name")
+    private Name firstName;
+    @JsonProperty("last_name")
+    private Name lastName;
     private int build;
     private int height;
     private int weight;

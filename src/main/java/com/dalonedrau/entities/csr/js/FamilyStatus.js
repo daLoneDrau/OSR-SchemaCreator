@@ -12,7 +12,7 @@
 	"points_adjustment": 0
 }, {
 	"code": "GOOD_SON_DAUGHTER",
-	"title": "Good Son/Daughter",
+	"title": "Good <gen_off>",
 	"roll_min": 86,
 	"roll_max": 100,
 	"points_adjustment": -5

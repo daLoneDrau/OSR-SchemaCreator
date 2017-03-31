@@ -133,6 +133,8 @@ CREATE TABLE csr.gender
   dependent_possessive character varying(3) NOT NULL,
   independent_possessive character varying(4) NOT NULL,
   reflexive character varying(7) NOT NULL,
+  gender_offspring character varying(8) NOT NULL,
+  gender_parent character varying(6) NOT NULL,
   CONSTRAINT gender_gender_id_pk PRIMARY KEY (gender_id),
   CONSTRAINT gender_description_un UNIQUE (description),
   CONSTRAINT gender_name_un UNIQUE (name),
@@ -140,7 +142,9 @@ CREATE TABLE csr.gender
   CONSTRAINT gender_objective_un UNIQUE (objective),
   CONSTRAINT gender_dependent_possessive_un UNIQUE (dependent_possessive),
   CONSTRAINT gender_independent_possessive_un UNIQUE (independent_possessive),
-  CONSTRAINT gender_reflexive_un UNIQUE (reflexive)
+  CONSTRAINT gender_reflexive_un UNIQUE (reflexive),
+  CONSTRAINT gender_gender_offspring_un UNIQUE (gender_offspring),
+  CONSTRAINT gender_gender_parent_un UNIQUE (gender_parent)
 );
 
 -- Table: csr.group
@@ -156,6 +160,23 @@ CREATE TABLE csr.group
   name character varying(255) NOT NULL,
   CONSTRAINT group_group_id_pk PRIMARY KEY (group_id),
   CONSTRAINT group_name_un UNIQUE (name)
+);
+
+-- Table: csr.name
+-- TODO add table description
+
+DROP TABLE IF EXISTS csr.name CASCADE;
+
+CREATE SEQUENCE csr.name_id_seq MINVALUE 0;
+
+CREATE TABLE csr.name
+(
+  name_id smallint DEFAULT nextval('csr.name_id_seq') NOT NULL,
+  is_last boolean NOT NULL,
+  is_female boolean NOT NULL,
+  name character varying(40) NOT NULL,
+  CONSTRAINT name_name_id_pk PRIMARY KEY (name_id),
+  CONSTRAINT name_name_is_last_un UNIQUE (name, is_last)
 );
 
 -- Table: csr.object_type
@@ -425,6 +446,8 @@ CREATE SEQUENCE csr.io_pc_data_id_seq MINVALUE 0;
 CREATE TABLE csr.io_pc_data
 (
   io_pc_data_id smallint DEFAULT nextval('csr.io_pc_data_id_seq') NOT NULL,
+  first_name smallint NOT NULL,
+  last_name smallint NOT NULL,
   build smallint NOT NULL,
   height smallint NOT NULL,
   weight smallint NOT NULL,
@@ -444,6 +467,12 @@ CREATE TABLE csr.io_pc_data
   xp bigint NOT NULL,
   father_vocation smallint NOT NULL,
   CONSTRAINT io_pc_data_io_pc_data_id_pk PRIMARY KEY (io_pc_data_id),
+  CONSTRAINT io_pc_data_first_name_fk FOREIGN KEY (first_name)
+    REFERENCES csr.name (name_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT io_pc_data_last_name_fk FOREIGN KEY (last_name)
+    REFERENCES csr.name (name_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT io_pc_data_aspect_fk FOREIGN KEY (aspect)
     REFERENCES csr.birth_aspect (birth_aspect_id) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION,
