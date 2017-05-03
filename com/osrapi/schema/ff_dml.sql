@@ -25,6 +25,34 @@ INSERT INTO ff.command(name, sort_order) VALUES(
 -- ADD DAMAGE_TYPES
 INSERT INTO ff.damage_type(flag, name) VALUES(
 
+-- ADD DIES
+INSERT INTO ff.die(code, value) VALUES(
+  'D2', 2), (
+  'D3', 3), (
+  'D4', 4), (
+  'D6', 6), (
+  'D8', 8), (
+  'D10', 10), (
+  'D12', 12), (
+  'D20', 20), (
+  'D100', 100);
+
+
+-- ADD DICES
+INSERT INTO ff.dice(code, die, number, plus) VALUES(
+  'ONE_D10', (SELECT die_id FROM ff.die WHERE code='D10'), 1, 0), (
+  'ONE_D2', (SELECT die_id FROM ff.die WHERE code='D2'), 1, 0), (
+  'ONE_D3', (SELECT die_id FROM ff.die WHERE code='D3'), 1, 0), (
+  'ONE_D4', (SELECT die_id FROM ff.die WHERE code='D4'), 1, 0), (
+  'ONE_D4_PLUS_1', (SELECT die_id FROM ff.die WHERE code='D4'), 1, 1), (
+  'ONE_D6', (SELECT die_id FROM ff.die WHERE code='D6'), 1, 0), (
+  'ONE_D8', (SELECT die_id FROM ff.die WHERE code='D8'), 1, 0), (
+  'TWO_D4', (SELECT die_id FROM ff.die WHERE code='D4'), 2, 0), (
+  'TWO_D6', (SELECT die_id FROM ff.die WHERE code='D6'), 2, 0), (
+  'THREE_D6', (SELECT die_id FROM ff.die WHERE code='D6'), 3, 0), (
+  'FOUR_D6', (SELECT die_id FROM ff.die WHERE code='D6'), 4, 0);
+
+
 -- ADD DIRECTIONS
 INSERT INTO ff.direction(code, value) VALUES(
   'NORTH', 0), (

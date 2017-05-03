@@ -33,6 +33,44 @@ CREATE TABLE ff.damage_type
   CONSTRAINT damage_type_name_un UNIQUE (name)
 );
 
+-- Table: ff.die
+-- TODO add table description
+
+DROP TABLE IF EXISTS ff.die CASCADE;
+
+CREATE SEQUENCE ff.die_id_seq MINVALUE 0;
+
+CREATE TABLE ff.die
+(
+  die_id smallint DEFAULT nextval('ff.die_id_seq') NOT NULL,
+  code character varying(4) NOT NULL,
+  value smallint NOT NULL,
+  CONSTRAINT die_die_id_pk PRIMARY KEY (die_id),
+  CONSTRAINT die_code_un UNIQUE (code),
+  CONSTRAINT die_value_un UNIQUE (value)
+);
+
+-- Table: ff.dice
+-- TODO add table description
+
+DROP TABLE IF EXISTS ff.dice CASCADE;
+
+CREATE SEQUENCE ff.dice_id_seq MINVALUE 0;
+
+CREATE TABLE ff.dice
+(
+  dice_id smallint DEFAULT nextval('ff.dice_id_seq') NOT NULL,
+  code character varying(40) NOT NULL,
+  die smallint NOT NULL,
+  number smallint NOT NULL,
+  plus smallint,
+  CONSTRAINT dice_dice_id_pk PRIMARY KEY (dice_id),
+  CONSTRAINT dice_code_un UNIQUE (code),
+  CONSTRAINT dice_die_fk FOREIGN KEY (die)
+    REFERENCES ff.die (die_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
 -- Table: ff.direction
 -- TODO add table description
 
