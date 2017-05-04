@@ -58,10 +58,10 @@ public final class SchemaCreator {
                 // "com.dalonedrau.entities.avalon",
                 // "com.dalonedrau.entities.bp",
                 // "com.dalonedrau.entities.csr",
-                // "com.dalonedrau.entities.ff",
+                "com.dalonedrau.entities.ff",
                 // "com.dalonedrau.entities.ll",
                 // "com.dalonedrau.entities.lablord",
-                "com.dalonedrau.entities.tft",
+                // "com.dalonedrau.entities.tft",
                 // "com.dalonedrau.entities.wfrp"
         };
         final SchemaCreator[] creators = new SchemaCreator[pkgs.length];
