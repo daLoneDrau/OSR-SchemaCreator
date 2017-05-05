@@ -141,11 +141,11 @@ INSERT INTO ff.object_type(code, flag) VALUES(
 
 
 -- ADD IO_ITEM_DATAS
-INSERT INTO ff.io_item_data(count, description, food_value, internal_script, left_ring, light_value, max_owned, name, price, ring_type, stack_size, steal_value, title, weight) VALUES(
-  0, 'Your trusty iron sword.', 0, 'IronSword', false, 0, 1, 'IRON SWORD', 0.0, 0, 1, 0, 'IRON SWORD', 1.0), (
-  0, 'A wicked Orc cleaver.', 0, 'OrcCleaver', false, 0, 1, 'ORC CLEAVER', 0.0, 0, 1, 0, 'ORC CLEAVER', 1.0), (
-  0, 'A meaty fist.', 0, 'Fist', false, 0, 1, 'FIST', 0.0, 0, 1, 0, 'FIST', 1.0), (
-  0, 'A small wooden box.', 0, 'Box', false, 0, 1, 'BOX_1', 0.0, 0, 1, 0, 'BOX', 1.0);
+INSERT INTO ff.io_item_data(count, description, food_value, internal_script, internal_script_js, left_ring, light_value, max_owned, name, price, ring_type, stack_size, steal_value, title, weight) VALUES(
+  0, 'Your trusty iron sword.', 0, 'IronSword', 'com/dalonedrow/module/ff/scripts/items/ironsword', false, 0, 1, 'IRON SWORD', 0.0, 0, 1, 0, 'IRON SWORD', 1.0), (
+  0, 'A wicked Orc cleaver.', 0, 'OrcCleaver', 'com/dalonedrow/module/ff/scripts/items/orcleaver', false, 0, 1, 'ORC CLEAVER', 0.0, 0, 1, 0, 'ORC CLEAVER', 1.0), (
+  0, 'A meaty fist.', 0, 'Fist', 'com/dalonedrow/module/ff/scripts/items/fist', false, 0, 1, 'FIST', 0.0, 0, 1, 0, 'FIST', 1.0), (
+  0, 'A small wooden box.', 0, 'Box', 'com/dalonedrow/module/ff/scripts/items/box', false, 0, 1, 'BOX_1', 0.0, 0, 1, 0, 'BOX', 1.0);
 
 -- ADD io_item_data's RELATED groupss
 
@@ -536,11 +536,11 @@ INSERT INTO ff.door(attribute_test, direction, leads_to, locked, name, num_dice_
 
 
 -- ADD IO_NPC_DATAS
-INSERT INTO ff.io_npc_data(behavior, behavior_param, climb_count, collid_state, collid_time, critical, cut, cuts, damages, gender, internal_script, life, mana, maxlife, maxmana, name, npc_flags, title, weapon, xpvalue) VALUES(
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'Orc', 0.0, 0.0, 0.0, 0.0, 'ORC_SENTRY', 0, 'Sleeping Goblin-like creature', 'ORC CLEAVER', 0), (
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'Orc', 0.0, 0.0, 0.0, 0.0, 'ORC_SENTRY_2', 0, 'Ugly, warty-faced Goblin-creature', 'FIST', 0), (
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, NULL, 'Door', 0.0, 0.0, 0.0, 0.0, 'DOOR_12', 0, 'WOODEN DOOR', NULL, 0), (
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, NULL, 'Door', 0.0, 0.0, 0.0, 0.0, 'DOOR_43', 0, 'WOODEN DOOR', NULL, 0);
+INSERT INTO ff.io_npc_data(behavior, behavior_param, climb_count, collid_state, collid_time, critical, cut, cuts, damages, gender, internal_script, internal_script_js, life, mana, maxlife, maxmana, name, npc_flags, title, weapon, xpvalue) VALUES(
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'Orc', NULL, 0.0, 0.0, 0.0, 0.0, 'ORC_SENTRY', 0, 'Sleeping Goblin-like creature', 'ORC CLEAVER', 0), (
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'Orc', NULL, 0.0, 0.0, 0.0, 0.0, 'ORC_SENTRY_2', 0, 'Ugly, warty-faced Goblin-creature', 'FIST', 0), (
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, NULL, 'Door', NULL, 0.0, 0.0, 0.0, 0.0, 'DOOR_12', 0, 'WOODEN DOOR', NULL, 0), (
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, NULL, 'Door', NULL, 0.0, 0.0, 0.0, 0.0, 'DOOR_43', 0, 'WOODEN DOOR', NULL, 0);
 
 -- ADD io_npc_data's RELATED groupss
 INSERT INTO ff.io_npc_data_groups_lookup(io_npc_data_id, group_id) VALUES (

@@ -1,6 +1,7 @@
 [{
 	"description": "Your trusty iron sword.",
 	"internal_script": "IronSword",
+	"internal_script_js": "com/dalonedrow/module/ff/scripts/items/ironsword",
 	"name": "IRON SWORD",
 	"max_owned": 1,
 	"modifiers": {
@@ -16,6 +17,7 @@
 }, {
 	"description": "A wicked Orc cleaver.",
 	"internal_script": "OrcCleaver",
+	"internal_script_js": "com/dalonedrow/module/ff/scripts/items/orcleaver",
 	"name": "ORC CLEAVER",
 	"max_owned": 1,
 	"modifiers": {
@@ -31,6 +33,7 @@
 }, {
 	"description": "A meaty fist.",
 	"internal_script": "Fist",
+	"internal_script_js": "com/dalonedrow/module/ff/scripts/items/fist",
 	"name": "FIST",
 	"max_owned": 1,
 	"modifiers": {
@@ -46,6 +49,7 @@
 }, {
 	"description": "A small wooden box.",
 	"internal_script": "Box",
+	"internal_script_js": "com/dalonedrow/module/ff/scripts/items/box",
 	"name": "BOX_1",
 	"max_owned": 1,
 	"price": 0,

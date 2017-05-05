@@ -40,7 +40,12 @@ public class IoNpcData {
     private List<Group> groups;
     /** the name of the internal script used. */
     @JsonProperty("internal_script")
+    @VarChar(length = 255)
     private String internalScript;
+    /** the name of the internal script used in the javascript implementation. */
+    @JsonProperty("internal_script_js")
+    @VarChar(length = 255)
+    private String internalScriptJs;
     @CanBeNull
     float life;
     @CanBeNull

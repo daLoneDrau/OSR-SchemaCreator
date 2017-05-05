@@ -25,6 +25,10 @@ public class IoItemData {
     @JsonProperty("internal_script")
     @VarChar(length = 255)
     private String internalScript;
+    /** the name of the internal script used in the javascript implementation. */
+    @JsonProperty("internal_script_js")
+    @VarChar(length = 255)
+    private String internalScriptJs;
     /** flag indicating the left ring needs to be replaced. */
     @CanBeNull
     @JsonProperty("left_ring")
