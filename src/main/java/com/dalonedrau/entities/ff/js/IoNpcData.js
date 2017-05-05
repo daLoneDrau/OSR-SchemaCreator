@@ -10,6 +10,7 @@
 		"name": "Male"
 	},
 	"internal_script": "Orc",
+	"internal_script_js": "com/dalonedrow/module/ff/scripts/npcs/orc",
 	"name": "ORC_SENTRY",
 	"title": "Sleeping Goblin-like creature",
 	"weapon": "ORC CLEAVER"
@@ -25,6 +26,7 @@
 		"name": "Male"
 	},
 	"internal_script": "Orc",
+	"internal_script_js": "com/dalonedrow/module/ff/scripts/npcs/orc",
 	"name": "ORC_SENTRY_2",
 	"title": "Ugly, warty-faced Goblin-creature",
 	"weapon": "FIST"
@@ -35,6 +37,7 @@
 	},
 	"behavior": 0,
 	"internal_script": "Door",
+	"internal_script_js": "com/dalonedrow/module/ff/scripts/npcs/door",
 	"name": "DOOR_12",
 	"title": "WOODEN DOOR",
 	"groups": [{
@@ -47,6 +50,7 @@
 	},
 	"behavior": 0,
 	"internal_script": "Door",
+	"internal_script_js": "com/dalonedrow/module/ff/scripts/npcs/door",
 	"name": "DOOR_43",
 	"title": "WOODEN DOOR",
 	"groups": [{
