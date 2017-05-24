@@ -59,9 +59,7 @@ public class Annotations {
 
     @Retention(RetentionPolicy.RUNTIME)
     public @interface UniqueCompositeKey {
-        String column0();
-
-        String column1();
+        String[] columns();
     }
 
     @Retention(RetentionPolicy.RUNTIME)

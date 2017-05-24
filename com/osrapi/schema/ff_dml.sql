@@ -124,6 +124,54 @@ INSERT INTO ff.group(name) VALUES(
   'UNDEAD');
 
 
+-- ADD MAP_TILES
+INSERT INTO ff.map_tile(name, code_number) VALUES(
+  'TILE_GRASS_NO_VEG', 0), (
+  'TILE_GRASS_LT_VEG', 1), (
+  'TILE_GRASS_HV_VEG', 2), (
+  'TILE_BUSH', 3), (
+  'TILE_TREE', 4), (
+  'TILE_ROCKS', 5), (
+  'TILE_ROAD', 6), (
+  'TILE_WATER', 7), (
+  'TILE_WALL', 8), (
+  'TILE_FLOWERS', 9);
+
+
+-- ADD MAP_CELLS
+INSERT INTO ff.map_cell(name, x, y, tile) VALUES(
+  'Baron Paschall''s Manor Grounds elevation 1', 2, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 3, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 4, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 2', 4, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_TREE')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 5, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 6, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_ROAD')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 7, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 8, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 9, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 10, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 1, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 2, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 3, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 4, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 5, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 6, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_ROAD')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 7, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 8, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 2', 8, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_ROCKS')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 9, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 10, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
+  'Baron Paschall''s Manor Grounds elevation 1', 11, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG'));
+
+
+-- ADD MAP_LEVELS
+INSERT INTO ff.map_level(name) VALUES(
+  'Baron Paschall''s Manor Grounds elevation 1'), (
+  'Baron Paschall''s Manor Grounds elevation 2');
+
+-- ADD map_level's RELATED cellss
+
+
 -- ADD OBJECT_TYPES
 INSERT INTO ff.object_type(code, flag) VALUES(
   'OBJECT_TYPE_WEAPON', 1), (
@@ -537,10 +585,10 @@ INSERT INTO ff.door(attribute_test, direction, leads_to, locked, name, num_dice_
 
 -- ADD IO_NPC_DATAS
 INSERT INTO ff.io_npc_data(behavior, behavior_param, climb_count, collid_state, collid_time, critical, cut, cuts, damages, gender, internal_script, internal_script_js, life, mana, maxlife, maxmana, name, npc_flags, title, weapon, xpvalue) VALUES(
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'Orc', NULL, 0.0, 0.0, 0.0, 0.0, 'ORC_SENTRY', 0, 'Sleeping Goblin-like creature', 'ORC CLEAVER', 0), (
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'Orc', NULL, 0.0, 0.0, 0.0, 0.0, 'ORC_SENTRY_2', 0, 'Ugly, warty-faced Goblin-creature', 'FIST', 0), (
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, NULL, 'Door', NULL, 0.0, 0.0, 0.0, 0.0, 'DOOR_12', 0, 'WOODEN DOOR', NULL, 0), (
-  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, NULL, 'Door', NULL, 0.0, 0.0, 0.0, 0.0, 'DOOR_43', 0, 'WOODEN DOOR', NULL, 0);
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'Orc', 'com/dalonedrow/module/ff/scripts/npcs/orc', 0.0, 0.0, 0.0, 0.0, 'ORC_SENTRY', 0, 'Sleeping Goblin-like creature', 'ORC CLEAVER', 0), (
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, (SELECT gender_id FROM ff.gender WHERE name='Male'), 'Orc', 'com/dalonedrow/module/ff/scripts/npcs/orc', 0.0, 0.0, 0.0, 0.0, 'ORC_SENTRY_2', 0, 'Ugly, warty-faced Goblin-creature', 'FIST', 0), (
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, NULL, 'Door', 'com/dalonedrow/module/ff/scripts/npcs/door', 0.0, 0.0, 0.0, 0.0, 'DOOR_12', 0, 'WOODEN DOOR', NULL, 0), (
+  0, 0.0, 0.0, 0, 0, 0.0, false, 0, 0.0, NULL, 'Door', 'com/dalonedrow/module/ff/scripts/npcs/door', 0.0, 0.0, 0.0, 0.0, 'DOOR_43', 0, 'WOODEN DOOR', NULL, 0);
 
 -- ADD io_npc_data's RELATED groupss
 INSERT INTO ff.io_npc_data_groups_lookup(io_npc_data_id, group_id) VALUES (

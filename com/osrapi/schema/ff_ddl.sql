@@ -209,6 +209,76 @@ CREATE TABLE ff.group
   CONSTRAINT group_name_un UNIQUE (name)
 );
 
+-- Table: ff.map_tile
+-- TODO add table description
+
+DROP TABLE IF EXISTS ff.map_tile CASCADE;
+
+CREATE SEQUENCE ff.map_tile_id_seq MINVALUE 0;
+
+CREATE TABLE ff.map_tile
+(
+  map_tile_id smallint DEFAULT nextval('ff.map_tile_id_seq') NOT NULL,
+  name character varying(200) NOT NULL,
+  code_number smallint NOT NULL,
+  CONSTRAINT map_tile_map_tile_id_pk PRIMARY KEY (map_tile_id),
+  CONSTRAINT map_tile_code_number_un UNIQUE (code_number)
+);
+
+-- Table: ff.map_cell
+-- TODO add table description
+
+DROP TABLE IF EXISTS ff.map_cell CASCADE;
+
+CREATE SEQUENCE ff.map_cell_id_seq MINVALUE 0;
+
+CREATE TABLE ff.map_cell
+(
+  map_cell_id smallint DEFAULT nextval('ff.map_cell_id_seq') NOT NULL,
+  name text NOT NULL,
+  x smallint NOT NULL,
+  y smallint NOT NULL,
+  tile smallint NOT NULL,
+  CONSTRAINT map_cell_map_cell_id_pk PRIMARY KEY (map_cell_id),
+  CONSTRAINT map_cell_name_x_y_un UNIQUE (name, x, y),
+  CONSTRAINT map_cell_tile_fk FOREIGN KEY (tile)
+    REFERENCES ff.map_tile (map_tile_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+-- Table: ff.map_level
+-- TODO add table description
+
+DROP TABLE IF EXISTS ff.map_level CASCADE;
+
+CREATE SEQUENCE ff.map_level_id_seq MINVALUE 0;
+
+CREATE TABLE ff.map_level
+(
+  map_level_id smallint DEFAULT nextval('ff.map_level_id_seq') NOT NULL,
+  name character varying(200) NOT NULL,
+  CONSTRAINT map_level_map_level_id_pk PRIMARY KEY (map_level_id),
+  CONSTRAINT map_level_name_un UNIQUE (name)
+);
+
+-- Table: ff.map_level_cells_lookup
+-- lookup table for map_levels and their associated cellss.
+
+DROP TABLE IF EXISTS ff.map_level_cells_lookup CASCADE;
+
+CREATE TABLE ff.map_level_cells_lookup
+(
+  map_level_id smallint NOT NULL,
+  map_cell_id smallint NOT NULL,
+  CONSTRAINT map_level_cells_lookup_map_level_id_map_cell_id_pk PRIMARY KEY (map_level_id, map_cell_id),
+  CONSTRAINT map_level_cells_lookup_map_level_id_fk FOREIGN KEY (map_level_id)
+    REFERENCES ff.map_level (map_level_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT map_level_cells_lookup_map_cell_id_fk FOREIGN KEY (map_cell_id)
+    REFERENCES ff.map_cell (map_cell_id) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
 -- Table: ff.object_type
 -- TODO add table description
 

@@ -156,16 +156,8 @@ public final class SchemaCreator {
         System.out.println("write ddl markup for " + table);
         ddl.setTable(table);
         if (clazz.getAnnotation(UniqueCompositeKey.class) != null) {
-            final String col0 = clazz.getAnnotation(UniqueCompositeKey.class)
-                    .column0();
-            final String col1 = clazz.getAnnotation(UniqueCompositeKey.class)
-                    .column1();
-            if (col0 != null
-                    && col0.length() > 0
-                    && col1 != null
-                    && col1.length() > 0) {
-                ddl.addConstraint(new DDLUniqueConstraint(col0, col1));
-            }
+            String[] cols = clazz.getAnnotation(UniqueCompositeKey.class).columns();
+            ddl.addConstraint(new DDLUniqueConstraint(cols));
         }
         final Field[] fields = clazz.getDeclaredFields();
         for (int i = 0, len = fields.length; i < len; i++) {

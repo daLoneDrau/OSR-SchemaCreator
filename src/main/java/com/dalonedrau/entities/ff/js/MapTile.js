@@ -1,0 +1,31 @@
+  [{
+  	"name": "TILE_GRASS_NO_VEG",
+  	"code_number": 0
+  }, {
+  	"name": "TILE_GRASS_LT_VEG",
+  	"code_number": 1
+  }, {
+  	"name": "TILE_GRASS_HV_VEG",
+  	"code_number": 2
+  }, {
+  	"name": "TILE_BUSH",
+  	"code_number": 3
+  }, {
+  	"name": "TILE_TREE",
+  	"code_number": 4
+  }, {
+  	"name": "TILE_ROCKS",
+  	"code_number": 5
+  }, {
+  	"name": "TILE_ROAD",
+  	"code_number": 6
+  }, {
+  	"name": "TILE_WATER",
+  	"code_number": 7
+  }, {
+  	"name": "TILE_WALL",
+  	"code_number": 8
+  }, {
+  	"name": "TILE_FLOWERS",
+  	"code_number": 9
+  }]
