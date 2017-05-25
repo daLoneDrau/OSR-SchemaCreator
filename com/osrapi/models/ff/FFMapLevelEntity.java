@@ -73,6 +73,26 @@ public final class FFMapLevelEntity {
         id = val;
     }
 
+    /** the elevation. */
+    @Column(name = "elevation")
+    @JsonProperty("elevation")
+    @NotNull
+    private long                    elevation;
+    /**
+     * Gets the elevation.
+     * @return {@link long}
+     */
+    public long getElevation() {
+        return elevation;
+    }
+    /**
+     * Sets the elevation.
+     * @param val the new value
+     */
+    public void setElevation(final long val) {
+        elevation = val;
+    }
+
     /** the name. */
     @Column(name = "name")
     @JsonProperty("name")

@@ -123,9 +123,9 @@ public class FFMapCellController {
     @RequestMapping(method = RequestMethod.POST)
     public List<Resource<FFMapCellEntity>> save(
             @RequestBody final FFMapCellEntity entity) {
-            if (entity.getTile() != null
-        && entity.getTile().getId() == null) {
-      setTileIdFromRepository(entity);
+            if (entity.getMapTile() != null
+        && entity.getMapTile().getId() == null) {
+      setMapTileIdFromRepository(entity);
         }
 
 
@@ -223,9 +223,9 @@ public class FFMapCellController {
         if (entity.getId() == null) {
             setIdFromRepository(entity);
         }
-            if (entity.getTile() != null
-        && entity.getTile().getId() == null) {
-      setTileIdFromRepository(entity);
+            if (entity.getMapTile() != null
+        && entity.getMapTile().getId() == null) {
+      setMapTileIdFromRepository(entity);
         }
 
 
@@ -237,7 +237,7 @@ public class FFMapCellController {
         return list;
     }
 
-  private void setTileIdFromRepository(
+  private void setMapTileIdFromRepository(
       final FFMapCellEntity entity) {
     FFMapTileEntity memberEntity = null;
     List<Resource<FFMapTileEntity>> list = null;
@@ -253,12 +253,12 @@ public class FFMapCellController {
       if (method != null
           && field != null) {
         field.setAccessible(true);
-        if (field.get(entity.getTile()) != null) {
+        if (field.get(entity.getMapTile()) != null) {
           list = (List<Resource<FFMapTileEntity>>) method
               .invoke(
                   FFMapTileController.getInstance(),
                   (String) field
-                      .get(entity.getTile()));
+                      .get(entity.getMapTile()));
         }
       }
       if (list == null) {
@@ -272,11 +272,11 @@ public class FFMapCellController {
         if (method != null
             && field != null) {
           field.setAccessible(true);
-          if (field.get(entity.getTile()) != null) {
+          if (field.get(entity.getMapTile()) != null) {
             list = (List<Resource<FFMapTileEntity>>)
                 method.invoke(FFMapTileController
                     .getInstance(),(String) field.get(
-                        entity.getTile()));
+                        entity.getMapTile()));
           }
         }
       }
@@ -293,13 +293,32 @@ public class FFMapCellController {
     if (memberEntity == null) {
       memberEntity = (FFMapTileEntity)
           ((Resource) FFMapTileController.getInstance().save(
-              entity.getTile()).get(0)).getContent();
+              entity.getMapTile()).get(0)).getContent();
     }
-    entity.setTile(memberEntity);
+    entity.setMapTile(memberEntity);
     list = null;
     }
 
 
+    /**
+     * Gets a list of {@link FFMapCellEntity}s that share a levelName.
+     * @param levelName the map_cell' levelName
+     * @return {@link List}<{@link Resource}<{@link FFMapCellEntity}>>
+     */
+    @RequestMapping(path = "level_name/{levelName}",
+            method = RequestMethod.GET)
+    public List<Resource<FFMapCellEntity>> getByLevelName(
+            @PathVariable final String levelName) {
+        Iterator<FFMapCellEntity> iter = repository.findByLevelName(levelName)
+                .iterator();
+        List<Resource<FFMapCellEntity>> resources =
+                new ArrayList<Resource<FFMapCellEntity>>();
+        while (iter.hasNext()) {
+            resources.add(getMapCellResource(iter.next()));
+        }
+        iter = null;
+        return resources;
+    }
     /**
      * Gets a list of {@link FFMapCellEntity}s that share a name.
      * @param name the map_cell' name

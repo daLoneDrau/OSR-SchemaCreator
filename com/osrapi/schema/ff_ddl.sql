@@ -235,15 +235,17 @@ CREATE SEQUENCE ff.map_cell_id_seq MINVALUE 0;
 CREATE TABLE ff.map_cell
 (
   map_cell_id smallint DEFAULT nextval('ff.map_cell_id_seq') NOT NULL,
-  name text NOT NULL,
+  level_name character varying(200) NOT NULL,
+  map_tile smallint NOT NULL,
+  name character varying(200) NOT NULL,
   x smallint NOT NULL,
   y smallint NOT NULL,
-  tile smallint NOT NULL,
   CONSTRAINT map_cell_map_cell_id_pk PRIMARY KEY (map_cell_id),
   CONSTRAINT map_cell_name_x_y_un UNIQUE (name, x, y),
-  CONSTRAINT map_cell_tile_fk FOREIGN KEY (tile)
+  CONSTRAINT map_cell_map_tile_fk FOREIGN KEY (map_tile)
     REFERENCES ff.map_tile (map_tile_id) MATCH SIMPLE
-    ON UPDATE NO ACTION ON DELETE NO ACTION
+    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT map_cell_name_un UNIQUE (name)
 );
 
 -- Table: ff.map_level
@@ -257,8 +259,9 @@ CREATE TABLE ff.map_level
 (
   map_level_id smallint DEFAULT nextval('ff.map_level_id_seq') NOT NULL,
   name character varying(200) NOT NULL,
+  elevation smallint NOT NULL,
   CONSTRAINT map_level_map_level_id_pk PRIMARY KEY (map_level_id),
-  CONSTRAINT map_level_name_un UNIQUE (name)
+  CONSTRAINT map_level_name_elevation_un UNIQUE (name, elevation)
 );
 
 -- Table: ff.map_level_cells_lookup

@@ -400,4 +400,23 @@ public class FFMapLevelController {
         iter = null;
         return resources;
     }
+    /**
+     * Gets a list of {@link FFMapLevelEntity}s that share a elevation.
+     * @param elevation the map_level' elevation
+     * @return {@link List}<{@link Resource}<{@link FFMapLevelEntity}>>
+     */
+    @RequestMapping(path = "elevation/{elevation}",
+            method = RequestMethod.GET)
+    public List<Resource<FFMapLevelEntity>> getByElevation(
+            @PathVariable final Long elevation) {
+        Iterator<FFMapLevelEntity> iter = repository.findByElevation(elevation)
+                .iterator();
+        List<Resource<FFMapLevelEntity>> resources =
+                new ArrayList<Resource<FFMapLevelEntity>>();
+        while (iter.hasNext()) {
+            resources.add(getMapLevelResource(iter.next()));
+        }
+        iter = null;
+        return resources;
+    }
 }

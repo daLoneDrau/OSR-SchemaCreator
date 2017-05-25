@@ -73,28 +73,6 @@ public final class FFMapCellEntity {
         id = val;
     }
 
-    /** the tile. */
-    @ManyToOne(targetEntity = FFMapTileEntity.class, fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SELECT)
-    @JoinColumn(name = "tile")
-    @JsonProperty("map_tile")
-  @NotNull
-    private FFMapTileEntity    tile;
-    /**
-     * Gets the tile.
-     * @return {@link FFMapTileEntity}
-     */
-    public FFMapTileEntity getTile() {
-        return tile;
-    }
-    /**
-     * Sets the tile.
-     * @param val the new value
-     */
-    public void setTile(final FFMapTileEntity val) {
-        tile = val;
-    }
-
     /** the y. */
     @Column(name = "y")
     @JsonProperty("y")
@@ -153,6 +131,48 @@ public final class FFMapCellEntity {
      */
     public void setName(final String val) {
         name = val;
+    }
+
+    /** the mapTile. */
+    @ManyToOne(targetEntity = FFMapTileEntity.class, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
+    @JoinColumn(name = "mapTile")
+    @JsonProperty("map_tile")
+  @NotNull
+    private FFMapTileEntity    mapTile;
+    /**
+     * Gets the mapTile.
+     * @return {@link FFMapTileEntity}
+     */
+    public FFMapTileEntity getMapTile() {
+        return mapTile;
+    }
+    /**
+     * Sets the mapTile.
+     * @param val the new value
+     */
+    public void setMapTile(final FFMapTileEntity val) {
+        mapTile = val;
+    }
+
+    /** the levelName. */
+    @Column(name = "level_name")
+    @JsonProperty("level_name")
+    @NotNull
+    private String                    levelName;
+    /**
+     * Gets the levelName.
+     * @return {@link String}
+     */
+    public String getLevelName() {
+        return levelName;
+    }
+    /**
+     * Sets the levelName.
+     * @param val the new value
+     */
+    public void setLevelName(final String val) {
+        levelName = val;
     }
 
 }

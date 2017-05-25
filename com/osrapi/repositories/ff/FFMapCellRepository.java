@@ -16,6 +16,12 @@ import com.osrapi.models.ff.FFMapCellEntity;
 public interface FFMapCellRepository
 extends CrudRepository<FFMapCellEntity, Long> {
 	/**
+	 * Retrieves a list of map cells by their levelName.
+	 * @param levelName the levelName
+	 * @return {@link List}<{@link FFMapCellEntity}>
+	 */
+	List<FFMapCellEntity> findByLevelName(String levelName);
+	/**
 	 * Retrieves a list of map cells by their name.
 	 * @param name the name
 	 * @return {@link List}<{@link FFMapCellEntity}>

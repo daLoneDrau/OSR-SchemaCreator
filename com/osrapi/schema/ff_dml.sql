@@ -139,37 +139,103 @@ INSERT INTO ff.map_tile(name, code_number) VALUES(
 
 
 -- ADD MAP_CELLS
-INSERT INTO ff.map_cell(name, x, y, tile) VALUES(
-  'Baron Paschall''s Manor Grounds elevation 1', 2, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 3, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 4, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 2', 4, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_TREE')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 5, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 6, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_ROAD')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 7, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 8, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 9, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 10, 0, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 1, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 2, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 3, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 4, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 5, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 6, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_ROAD')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 7, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 8, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 2', 8, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_ROCKS')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 9, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 10, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG')), (
-  'Baron Paschall''s Manor Grounds elevation 1', 11, 1, (SELECT map_tile_id FROM ff.map_tile WHERE name='TILE_GRASS_NO_VEG'));
+INSERT INTO ff.map_cell(level_name, map_tile, name, x, y) VALUES(
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 2, 0), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 3, 0), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 4, 0), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 2', 4, 0), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 5, 0), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 6, 0), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 7, 0), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 8, 0), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 9, 0), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 10, 0), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 1, 1), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 2, 1), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 3, 1), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 4, 1), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 5, 1), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 6, 1), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 7, 1), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 8, 1), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 2', 8, 1), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 9, 1), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 10, 1), (
+  NULL, NULL, 'Baron Paschall''s Manor Grounds elevation 1', 11, 1);
 
 
 -- ADD MAP_LEVELS
-INSERT INTO ff.map_level(name) VALUES(
-  'Baron Paschall''s Manor Grounds elevation 1'), (
-  'Baron Paschall''s Manor Grounds elevation 2');
+INSERT INTO ff.map_level(name, elevation) VALUES(
+  'Baron Paschall''s Manor Grounds', 1), (
+  'Baron Paschall''s Manor Grounds', 2);
 
 -- ADD map_level's RELATED cellss
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_2_0'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_3_0'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_4_0'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_5_0'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_6_0'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_7_0'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_8_0'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_9_0'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_10_0'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_1_1'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_2_1'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_3_1'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_4_1'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_5_1'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_6_1'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_7_1'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_8_1'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_9_1'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_10_1'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_1_11_1'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_2_4_0'));
+INSERT INTO ff.map_level_cells_lookup(map_level_id, map_cell_id) VALUES (
+  (SELECT map_level_id FROM ff.map_level WHERE name='Baron Paschall''s Manor Grounds'),
+  (SELECT map_cell_id FROM ff.map_cell WHERE name='BPMG_2_8_1'));
 
 
 -- ADD OBJECT_TYPES

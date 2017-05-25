@@ -21,4 +21,10 @@ extends CrudRepository<FFMapLevelEntity, Long> {
 	 * @return {@link List}<{@link FFMapLevelEntity}>
 	 */
 	List<FFMapLevelEntity> findByName(String name);
+	/**
+	 * Retrieves a list of map levels by their elevation.
+	 * @param elevation the elevation
+	 * @return {@link List}<{@link FFMapLevelEntity}>
+	 */
+	List<FFMapLevelEntity> findByElevation(Long elevation);
 }
