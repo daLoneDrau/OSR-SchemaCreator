@@ -5,7 +5,7 @@ import com.dalonedrau.schemacreator.Annotations.UniqueCompositeKey;
 import com.dalonedrau.schemacreator.Annotations.VarChar;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@UniqueCompositeKey(column0 = "action", column1 = "quantity")
+@UniqueCompositeKey(columns = { "action", "quantity" })
 public class DevelopmentActions {
     @JsonProperty("action")
     ActionChit action;

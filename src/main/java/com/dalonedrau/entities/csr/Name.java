@@ -1,10 +1,9 @@
 package com.dalonedrau.entities.csr;
 
-import com.dalonedrau.schemacreator.Annotations.Unique;
 import com.dalonedrau.schemacreator.Annotations.UniqueCompositeKey;
 import com.dalonedrau.schemacreator.Annotations.VarChar;
 
-@UniqueCompositeKey(column0 = "name", column1 = "isLast")
+@UniqueCompositeKey(columns = { "name", "isLast" })
 public final class Name {
     private boolean isLast;
     private boolean isFemale;
