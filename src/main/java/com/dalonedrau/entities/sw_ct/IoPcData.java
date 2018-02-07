@@ -19,6 +19,8 @@ public class IoPcData {
             keyColumnType = "character varying(3)",
             valueColumnType = "smallint")
     private Map<String, Integer> attributes;
+    /** the {@link IoPcData}'s background. */
+    private Background background;
     /** the number of bags the player has. */
     private int bags;
     /**
@@ -35,6 +37,8 @@ public class IoPcData {
     private float gold;
     /** the list of groups the item belongs to. */
     private List<Group> groups;
+    /** the {@link IoPcData}'s homeland. */
+    private Homeland homeland;
     /** interface flags. */
     private int interfaceFlags;
     /** the name of the internal script used. */
@@ -45,8 +49,6 @@ public class IoPcData {
     private List<String> keyring;
     /** the {@link IoPcData}'s level. */
     private final int level = 0;
-    /** the list of groups the item belongs to. */
-    private List<LifeEvent> lifeEvents;
     /** the {@link IoPcData}'s name. */
     @VarChar(length = 40)
     private List<String> name;

@@ -1,0 +1,58 @@
+[{
+	"code": "EQUIP_ELEMENT_AC",
+	"value": 0
+}, {
+	"code": "EQUIP_ELEMENT_AC_MODIFIER",
+	"value": 1
+}, {
+	"code": "EQUIP_ELEMENT_STRENGTH",
+	"value": 2
+}, {
+	"code": "EQUIP_ELEMENT_WISDOM",
+	"value": 3
+}, {
+	"code": "EQUIP_ELEMENT_DEXTERITY",
+	"value": 4
+}, {
+	"code": "EQUIP_ELEMENT_CHARM",
+	"value": 5
+}, {
+	"code": "EQUIP_ELEMENT_CORRUPTION",
+	"value": 6
+}, {
+	"code": "EQUIP_ELEMENT_DMG_BONUS",
+	"value": 7
+}, {
+	"code": "EQUIP_ELEMENT_INTELLIGENCE",
+	"value": 8
+}, {
+	"code": "EQUIP_ELEMENT_MAX_HIRELINGS",
+	"value": 9
+}, {
+	"code": "EQUIP_ELEMENT_CONSTITUTION",
+	"value": 10
+}, {
+	"code": "EQUIP_ELEMENT_TO_HIT",
+	"value": 11
+}, {
+	"code": "EQUIP_ELEMENT_LANGUAGE",
+	"value": 12
+}, {
+	"code": "EQUIP_ELEMENT_CHARISMA",
+	"value": 13
+}, {
+	"code": "EQUIP_ELEMENT_LUCK",
+	"value": 14
+}, {
+	"code": "EQUIP_ELEMENT_MHP",
+	"value": 15
+}, {
+	"code": "EQUIP_ELEMENT_MISSILE_BONUS",
+	"value": 16
+}, {
+	"code": "EQUIP_ELEMENT_SANITY",
+	"value": 17
+}, {
+	"code": "EQUIP_ELEMENT_SKILL",
+	"value": 18
+}]
