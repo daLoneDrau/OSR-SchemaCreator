@@ -26,4 +26,8 @@
 	"code": "PLUS_8",
 	"percent": false,
 	"value": 8
+}, {
+	"code": "PLUS_1",
+	"percent": false,
+	"value": 1
 }]
